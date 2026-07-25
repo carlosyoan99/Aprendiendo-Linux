@@ -741,7 +741,7 @@ podman compose up -d                    # con docker-compose
 
 ---
 
-## 4. Editores e IDEs
+## 5. Editores e IDEs
 
 | Editor | Ideal para | Rendimiento | LSP | Depurador |
 |---|---|---|---|---|
@@ -759,7 +759,7 @@ podman compose up -d                    # con docker-compose
 
 ---
 
-## 5. Terminal y multiplexores
+## 6. Terminal y multiplexores
 
 ```bash
 # Terminal moderna con GPU-acceleración
@@ -779,7 +779,7 @@ sudo apt install tmux                   # múltiples sesiones en una terminal
 
 ---
 
-## 6. Bases de datos locales para desarrollo
+## 7. Bases de datos locales para desarrollo
 
 ```bash
 # Usar contenedores para bases de datos (no instalar en el sistema):
@@ -809,7 +809,7 @@ sudo apt install sqlite3                # cliente CLI
 
 ---
 
-## 7. Git y control de versiones
+## 8. Git y control de versiones
 
 ```bash
 # Configuración inicial
@@ -837,7 +837,7 @@ sudo apt install gh                     # GitHub CLI (PRs, issues, codespaces)
 
 ---
 
-## 8. Dockerfile de desarrollo multi-etapa (ejemplo completo)
+## 9. Dockerfile de desarrollo multi-etapa (ejemplo completo)
 
 ```dockerfile
 # Dockerfile de desarrollo para Python + Node.js
@@ -869,7 +869,7 @@ CMD ["bash"]
 
 ---
 
-## 9. Checklist: entorno de desarrollo completo
+## 10. Checklist: entorno de desarrollo completo
 
 Al instalar Linux para desarrollo, este es el orden recomendado:
 
@@ -888,7 +888,7 @@ Al instalar Linux para desarrollo, este es el orden recomendado:
 
 ---
 
-## 10. Troubleshooting común
+## 11. Troubleshooting común
 
 | Problema | Causa | Solución |
 |---|---|---|
@@ -903,7 +903,7 @@ Al instalar Linux para desarrollo, este es el orden recomendado:
 
 ---
 
-## 11. Flujo completo: de cero a proyecto funcionando
+## 12. Flujo completo: de cero a proyecto funcionando
 
 ```bash
 # ── 1. Instalar toolchain ──
