@@ -14,27 +14,27 @@ categoria: indice
 
 | Métrica | Total |
 |---|---|
-| Notas totales | **~307** |
-| Estado **resuelto** | 302 |
-| Estado **en progreso** | 4 (Dashboard, MoC, Log, Cheat Sheet) |
-| Estado **borrador** | 0 |
-| Prioridad **alta** | 148 |
-| Prioridad **media** | 102 |
-| Prioridad **baja** | 52 |
+| Notas totales | **316** |
+| Estado **resuelto** | 311 |
+| Estado **en progreso** | 4 (TODO, MoC, Dashboard, Log) |
+| Estado **borrador** | 0 (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto) |
+| Prioridad **alta** | 153 |
+| Prioridad **media** | 105 |
+| Prioridad **baja** | 53 |
 
 ### Por categoría
 
 | Categoría | Notas |
 |---|---|
-| Comando | 66 |
-| Programa | 68 |
-| Concepto | 34 |
+| Comando | 67 |
+| Programa | 70 |
+| Concepto | 36 |
 | Distribución | 40 |
 | Sistema | 28 |
-| Entorno / WM | 28 |
+| Entorno / WM | 29 |
 | Troubleshooting | 16 |
+| Índice | 12 |
 | Instalación | 9 |
-| Índice | 9 |
 | Terminal | 4 |
 | Automatización | 3 |
 | Log | 1 |
@@ -162,7 +162,7 @@ LIMIT 20
 
 ## 📈 Notas por prioridad
 
-### Alta (148 notas)
+### Alta (153 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"
@@ -171,7 +171,7 @@ WHERE prioridad = "alta" AND categoria != "indice"
 SORT categoria ASC
 ```
 
-### Media (102 notas)
+### Media (105 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"
@@ -180,7 +180,7 @@ WHERE prioridad = "media"
 SORT estado ASC, categoria ASC
 ```
 
-### Baja (52 notas)
+### Baja (53 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"

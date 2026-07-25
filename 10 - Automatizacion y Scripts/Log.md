@@ -241,4 +241,8 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Commit**: `22ac5a2` + `fix`: 1136 líneas añadidas, 4 archivos modificados.
 - **Vault: 317 notas (+ 7 templates).**
 
+## 2026-07-24 — Dashboard actualizado con stats reales
+- **Dashboard.md actualizado**: stats corregidas (316 notas, 311 resuelto, 4 en progreso), categorías actualizadas (Comando 67, Programa 70, Concepto 36, Índice 12, Entorno/WM 29), hardcoded counts de prioridades corregidos (153/105/53).
+- **Nota**: Las queries Dataview se actualizan automáticamente en Obsidian; las cifras manuales ahora coinciden con el escaneo real.
+
 #log
