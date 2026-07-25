@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-25
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -10,92 +10,147 @@ base: independiente
 
 # openSUSE
 
-## Filosofía / público objetivo
-
-Distro alemana con dos ediciones muy distintas según el caso de uso, y una herramienta de administración propia (**YaST**) que centraliza casi toda la configuración del sistema con GUI y terminal. Es una de las distros más veteranas (1994), con gran tradición en Europa.
+> Distro alemana con tradición desde 1994. Destaca por sus **dos ediciones** (Leap estable y Tumbleweed rolling), la herramienta de administración **YaST**, y el sistema de rollback con **Snapper + Btrfs**.
 
 ## Ediciones
 
-| Edición | Tipo | Ideal para |
+| Edición | Tipo | Base | Ideal para |
+|---|---|---|---|
+| **Leap** | Release fija (~anual) | SUSE Linux Enterprise (SLE) | Escritorio estable, servidores, producción |
+| **Leap 16** | Release fija (2025-2031) | SLE 16 | Nuevo ciclo con minor releases (16.0, 16.1...) |
+| **Tumbleweed** | Rolling continuo | Independiente | Entusiastas, developers, lo último en paquetes |
+| **Aeon** | Inmutable (GNOME) | MicroOS | Escritorio moderno con atomic updates |
+| **Kalpa** | Inmutable (KDE) | MicroOS | Lo mismo pero con KDE Plasma |
+
+### Leap vs Tumbleweed: ¿cuál elegir?
+
+| Aspecto | Leap (16.x) | Tumbleweed |
 |---|---|---|
-| **Leap** | Release fija (~cada año) | Escritorio estable, servidores, conservadores |
-| **Tumbleweed** | Rolling release continuo | Entusiastas, desarrolladores, usuarios que quieren lo último |
+| **Modelo** | Fixed, minor releases anuales | Rolling, snapshots semanales |
+| **Paquetes** | Estables, testeados contra SLE | Últimas versiones upstream |
+| **Seguridad** | Parches backportados | Parches inmediatos upstream |
+| **OpenQA** | Tests previo a minor release | Tests automatizados en cada snapshot |
+| **Frecuencia updates** | Semanal/mensual | Múltiples por semana |
+| **Riesgo de rotura** | Muy bajo | Bajo (openQA detecta regresiones) |
+| **Soporte** | ~2 años por minor release | Rolling (último snapshot = soporte) |
 
-Leap usa paquetes compartidos con **SUSE Linux Enterprise (SLE)**, lo que le da una base extremadamente probada. Tumbleweed es rolling pero con un proceso automatizado de testeo (OpenQA) que detecta regresiones antes de publicar las actualizaciones — más seguro que el rolling de Arch en ese sentido.
+> Tumbleweed es más seguro que Arch porque cada snapshot pasa por **openQA** (pruebas automáticas de instalación, GUI y actualizaciones) antes de publicarse. Si un paquete introduce una regresión, no llega al usuario.
 
-## Gestor de paquetes: zypper
+## Zypper — Gestor de paquetes
 
 ```bash
-sudo zypper install <paquete>          # instalar
-sudo zypper update                     # actualizar
-sudo zypper search <termino>           # buscar
-sudo zypper remove <paquete>           # eliminar
-sudo zypper info <paquete>             # info detallada
-sudo zypper ps                         # procesos que usan librerías actualizadas (pedir reinicio)
-sudo zypper patch                      # solo parches de seguridad (en lugar de update completo)
+# Búsqueda e instalación
+zypper search <termino>                  # buscar paquetes
+zypper info <paquete>                    # información detallada
+zypper install <paquete>                 # instalar (con dependencias)
+zypper install --no-recommends <paquete> # sin recomendados
+zypper remove <paquete>                  # eliminar
+zypper remove --clean-deps <paquete>     # eliminar + dependencias huérfanas
 
-# Añadir repositorio
-sudo zypper addrepo <url> nombre
-sudo zypper lr                         # listar repositorios
+# Actualizaciones
+zypper refresh                           # actualizar índices de repos
+zypper update                            # actualizar todos los paquetes
+zypper patch                             # solo parches de seguridad
+zypper list-patches                      # ver parches disponibles
+
+# Repositorios
+zypper lr                                # listar repos (lr = list repos)
+zypper lr -u                             # listar con URLs
+zypper addrepo <url> <nombre>            # añadir repositorio
+zypper removerepo <nombre>               # eliminar repositorio
+zypper mr -e <nombre>                    # habilitar repositorio
+zypper mr -d <nombre>                    # deshabilitar repositorio
+
+# Diagnóstico
+zypper ps                                # procesos con libs actualizadas (pedir reinicio)
+zypper ve                                # verificar dependencias
+zypper pkg <ruta/al/binario>            # ¿qué paquete instaló este archivo?
+zypper what-provides <ruta>              # ¿qué paquete provee este archivo?
 ```
 
 ## YaST (Yet another Setup Tool)
 
-Es el centro de control de openSUSE — permite configurar casi todo sin terminal:
+YaST es el centro de control de openSUSE — permite configurar casi todo con GUI o desde terminal:
 
 ```bash
-sudo yast                              # lanzar YaST en modo GUI (si hay DE)
-sudo yast2                             # versión GTK
-sudo yast                              # modo terminal si no hay DE
+sudo yast                                # modo gráfico (Qt)
+sudo yast2                               # modo GTK (alternativa)
+sudo yast                                # modo terminal si no hay DE
 ```
 
-Desde YaST se puede configurar:
-- Particionado y gestor de volúmenes
-- Red (interfaces, DNS, firewall)
-- Usuarios y grupos
-- Repositorios de software
-- Servicios (habilitar/deshabilitar systemd)
-- Impresoras y escáneres
-- Arranque (GRUB, EFI)
+### Módulos principales de YaST
 
-## Snapper + Btrfs (rollback integrado)
+| Módulo | Función |
+|---|---|
+| **Software** | Gestión de repositorios, instalación/eliminación de paquetes |
+| **Hardware** | Impresoras, escáneres, tarjetas gráficas, sonido |
+| **Sistema** | Particionado (storage-ng), arranque (GRUB), fecha/hora, idioma |
+| **Red** | Interfaces (NetworkManager/Wicked), DNS, firewall, SSH |
+| **Seguridad** | AppArmor, certificados, política de usuarios |
+| **Servicios** | Activar/desactivar systemd, configurar servidores (DHCP, DNS, Samba) |
+| **Virtualización** | KVM, Docker, Podman (gestión integrada) |
 
-openSUSE (especialmente Tumbleweed) configura **snapshots automáticos de Btrfs** antes de cada actualización / instalación de paquetes:
+## Snapper + Btrfs (rollback automático)
+
+openSUSE configura **snapshots automáticos de Btrfs** antes de cada operación con zypper:
 
 ```bash
-snapper list                           # ver snapshots disponibles
-sudo snapper -c root create -d "antes de experimento"  # crear snapshot manual
-snapper status XX..YY                  # diferencias entre dos snapshots
+snapper list                             # ver snapshots disponibles
+sudo snapper -c root create -d "antes de experimento"  # snapshot manual
+snapper status XX..YY                    # diferencias entre snapshots
+snapper diff XX..YY                      # diff de archivos concretos
+sudo snapper rollback XX                 # restaurar snapshot
+
+# En el arranque: GRUB muestra los snapshots disponibles
+# → Arrancar un snapshot anterior = rollback instantáneo
 ```
 
-Si una actualización rompe el sistema:
-1. Reiniciar y elegir un snapshot anterior en el menú de GRUB (aparece automáticamente).
-2. O desde el sistema en funcionamiento: `sudo snapper rollback XX`
+## OBS (Open Build Service)
 
-## OBS (Open Build System)
+Plataforma para compilar paquetes para múltiples distribuciones desde un solo archivo de especificaciones:
 
-Plataforma de empaquetado que permite compilar paquetes para múltiples distros (openSUSE, Fedora, Debian, Ubuntu, Arch, etc.) desde un solo archivo de especificaciones. Es el motor detrás de build.opensuse.org.
+```bash
+# OBS público: https://build.opensuse.org
+# Permite compilar para: openSUSE, Fedora, Debian, Ubuntu, Arch, RHEL...
+
+# Estructura de un proyecto OBS:
+# mi-proyecto/
+# ├── mi-app.spec        # archivo de especificaciones RPM
+# ├── mi-app.tar.gz      # código fuente
+# └── _service           # (opcional) servicio para descargar fuente automáticamente
+
+# Usar OBS CLI (osc):
+sudo zypper install osc
+osc checkout home:usuario/mi-proyecto   # clonar proyecto
+osc build openSUSE_Tumbleweed x86_64    # compilar localmente
+osc commit                               # subir cambios
+```
 
 ## Ciclo de lanzamiento
 
-| Edición | Ciclo |
-|---|---|
-| **Leap** | ~1 año entre releases, ~4 años de soporte |
-| **Tumbleweed** | Rolling continuo, actualizaciones múltiples por semana |
-
-## Notas de instalación propias
+| Edición | Ciclo | Soportes |
+|---|---|---|
+| **Leap 16.x** | Minor release anual | 24 meses por minor release |
+| **Tumbleweed** | Rolling (snapshots semanales) | Siempre actual |
+| **Aeon/Kalpa** | Rolling (atomic updates) | Siempre actual |
 
 ## Enlaces externos
 
+- [Sitio oficial de openSUSE](https://www.opensuse.org/)
 - [Wikipedia — openSUSE](https://en.wikipedia.org/wiki/OpenSUSE)
-- [Sitio oficial](https://www.opensuse.org/)
-- [Organización en GitHub](https://github.com/opensuse)
+- [openSUSE Wiki — YaST](https://en.opensuse.org/Portal:YaST)
+- [openSUSE Wiki — Tumbleweed](https://en.opensuse.org/Portal:Tumbleweed)
+- [Open Build Service](https://build.opensuse.org/)
+- [Snapper — Documentación](https://snapper.io/)
+- [openSUSE Aeon](https://aeon.opensuse.org/)
 
 ## Ver también
 
-- [[Rocky Linux]] — otra distro empresarial (pero RHEL-based)
 - [[Fedora]] — otra distro con adopción temprana de tecnologías
-- [[Gestores de Paquetes]]
-- [[Cron y Systemd Timers]]
+- [[Rocky Linux]] — distro empresarial RHEL-based (SLE alternative)
+- [[Gestores de Paquetes]] — comparativa zypper vs apt vs dnf vs pacman
+- [[Btrfs]] — sistema de archivos usado por Snapper
+- [[Cron y Systemd Timers]] — automatización con openSUSE
+- SUSE Linux Enterprise (SLE) — base empresarial de Leap
 
 #distro

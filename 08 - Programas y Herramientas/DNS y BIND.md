@@ -95,18 +95,15 @@ dig @a.root-servers.net ejemplo.com       # desde root
 dig @ns1.ejemplo.com ejemplo.com          # desde el servidor autoritativo
 ```
 
-### host (simplificado)
+### host y nslookup
 
 ```bash
-host ejemplo.com                    # consulta simple
-host -t MX ejemplo.com              # tipo específico
-host -a ejemplo.com                 # todo (equivalente a ANY)
-host 8.8.8.8                        # resolución inversa
-```
+# host (simplificado)
+host ejemplo.com                     # consulta simple
+host -t MX ejemplo.com               # tipo específico
+host 8.8.8.8                         # resolución inversa
 
-### nslookup (legado, aún útil)
-
-```bash
+# nslookup (legado, aún útil)
 nslookup ejemplo.com
 nslookup -type=MX ejemplo.com
 nslookup 8.8.8.8
@@ -114,69 +111,39 @@ nslookup 8.8.8.8
 
 ## Resolución local en Linux
 
-### /etc/hosts
-
-Resolución estática, tiene prioridad sobre DNS:
+### /etc/hosts y /etc/resolv.conf
 
 ```bash
-# /etc/hosts
-127.0.0.1   localhost
-::1         localhost
+# /etc/hosts — resolución estática (prioridad sobre DNS)
+# 127.0.0.1   localhost
+# 127.0.0.1   facebook.com www.facebook.com   # bloqueo de dominios
+# 127.0.0.1   miproyecto.local                # desarrollo local
 
-# Bloqueo de dominios (redirigir a 127.0.0.1)
-127.0.0.1   facebook.com www.facebook.com
-127.0.0.1   doubleclick.net
+# /etc/resolv.conf — servidores DNS (gestionado automáticamente en sistemas modernos)
+# nameserver 127.0.0.53    → stub resolver de systemd-resolved
+# options edns0 trust-ad
+# search misitio.com
 
-# Entradas de desarrollo
-127.0.0.1   miproyecto.local
+# Si usas resolver manual (sin systemd-resolved):
+# nameserver 1.1.1.1
+# nameserver 8.8.8.8
 ```
 
-### /etc/resolv.conf
-
-En sistemas modernos este archivo suele ser gestionado automáticamente por `systemd-resolved` o `NetworkManager`:
+### systemd-resolved y NSSwitch
 
 ```bash
-# /etc/resolv.conf típico (gestionado automáticamente)
-nameserver 127.0.0.53              # stub resolver de systemd-resolved
-options edns0 trust-ad
-search misitio.com
-```
+# ── systemd-resolved ──
+resolvectl status                        # estado
+resolvectl query ejemplo.com             # consultar
+resolvectl statistics                    # caché hits/misses
+resolvectl dns eth0 1.1.1.1 8.8.8.8     # DNS por interfaz
+sudo resolvectl flush-caches             # limpiar caché
 
-```bash
-# Si usas un resolver manual (sin systemd-resolved)
-nameserver 1.1.1.1
-nameserver 8.8.8.8
-```
-
-### systemd-resolved
-
-```bash
-# Estado de la resolución
-resolvectl status
-resolvectl query ejemplo.com       # consultar vía systemd-resolved
-resolvectl statistics              # estadísticas (caché, hits, misses)
-
-# Configuración por interfaz
-resolvectl dns eth0 1.1.1.1 8.8.8.8
-resolvectl domain eth0 misitio.com
-
-# Gestionar caché
-sudo resolvectl flush-caches       # limpiar caché DNS
-```
-
-### NSSwitch (/etc/nsswitch.conf)
-
-Controla el orden de las fuentes de resolución:
-
-```bash
-# /etc/nsswitch.conf - línea hosts
-hosts: files mymachines resolve [!UNAVAIL=return] dns
-
-# Orden típico:
-# files → /etc/hosts
-# mymachines → contenedores systemd-nspawn
-# resolve → systemd-resolved
-# dns → /etc/resolv.conf directo
+# ── NSSwitch: orden de fuentes (/etc/nsswitch.conf) ──
+# hosts: files mymachines resolve [!UNAVAIL=return] dns
+# files    → /etc/hosts
+# resolve  → systemd-resolved
+# dns      → /etc/resolv.conf directo
 ```
 
 ## BIND: instalación y configuración básica
@@ -322,25 +289,17 @@ $TTL 3600
 3       IN  PTR     ns2.ejemplo.com.
 ```
 
-### Activar y probar zonas
+### Verificar y probar zonas
 
 ```bash
-# Verificar configuración de BIND
-sudo named-checkconf
+sudo named-checkconf                   # verificar config de BIND
+sudo named-checkzone ejemplo.com /etc/bind/db.ejemplo.com   # zona directa
+sudo named-checkzone 2.0.192.in-addr.arpa /etc/bind/db.192.0.2  # zona inversa
+sudo systemctl reload bind9            # recargar configuración
 
-# Verificar zona directa
-sudo named-checkzone ejemplo.com /etc/bind/db.ejemplo.com
-
-# Verificar zona inversa
-sudo named-checkzone 2.0.192.in-addr.arpa /etc/bind/db.192.0.2
-
-# Recargar configuración
-sudo systemctl reload bind9
-
-# Probar consultas contra el servidor local
-dig @127.0.0.1 ejemplo.com
+dig @127.0.0.1 ejemplo.com             # probar contra servidor local
 dig @127.0.0.1 www.ejemplo.com
-dig @127.0.0.1 -x 192.0.2.10
+dig @127.0.0.1 -x 192.0.2.10           # resolución inversa
 ```
 
 ### Serial
@@ -390,6 +349,8 @@ options {
 ```
 
 ### ACLs
+
+Puedes definir listas de control de acceso y aplicarlas a las opciones:
 
 ```nginx
 acl "trusted" {

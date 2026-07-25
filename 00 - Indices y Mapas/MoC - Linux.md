@@ -99,6 +99,7 @@ categoria: indice
 - [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
 - [[Parted Magic]] — Live CD de particionado y rescate
 - [[GNUstep]] — framework Cocoa libre
+- [[GTK]] · [[Qt]] — toolkits de interfaces gráficas (GNOME y KDE respectivamente)
 - [[Heartbeat (Linux-HA)]] — alta disponibilidad · [[Linux Virtual Server]] — balanceo de carga · [[Open-Xchange]] — suite colaborativa · [[SONiC]] — SO redes Microsoft
 - [[Ansible]] — gestión de configuración, playbooks, roles
 - [[Entorno de desarrollo Linux]] — toolchain completo por lenguaje, contenedores para desarrollo

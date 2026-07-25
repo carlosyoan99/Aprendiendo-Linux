@@ -38,35 +38,19 @@ gh --version
 Antes de usar `gh`, necesitas autenticarte:
 
 ```bash
-# Autenticación interactiva (recomendado)
-gh auth login
+# ── Autenticación ──
+gh auth login                            # interactiva (guía paso a paso)
+gh auth login --with-token < token.txt   # con token (CI/CD)
+echo "ghp_xxx" | gh auth login --with-token
+gh auth status                           # verificar sesión activa
+gh auth logout                           # cerrar sesión
+gh auth token                            # mostrar token actual
 
-# Te guiará por:
-# 1. ¿Cuenta GitHub.com o GitHub Enterprise Server?
-# 2. ¿HTTPS o SSH?
-# 3. Autenticar en el navegador (pegar un código de 8 caracteres)
-# 4. Configurar git credential helper (opcional)
-
-# Autenticación con token (CI/CD, scripting)
-gh auth login --with-token < ~/mi-token-github.txt
-# o
-echo "ghp_xxxxxxxxxxxx" | gh auth login --with-token
-
-# Verificar autenticación
-gh auth status
-
-# Cambiar de cuenta
-gh auth logout
-gh auth login
-
-# Ver token actual
-gh auth token
-```
-
-```bash
-# Configuración del host (útil si usas GitHub Enterprise)
-gh config set git_protocol ssh          # o https
-gh config set editor code               # editor para commits/issues
+# ── Configuración del cliente ──
+gh config set git_protocol ssh           # ssh | https
+gh config set editor code                # editor para commits/issues
+gh config set browser firefox            # navegador para gh ... --web
+gh config list                           # ver configuración actual
 ```
 
 ---
@@ -125,94 +109,39 @@ gh repo unarchive owner/repo
 
 Esta es probablemente la funcionalidad más usada de `gh` — gestionar PRs sin abrir el navegador.
 
-### Crear PRs
-
 ```bash
-# Crear PR desde la rama actual
-git checkout -b feat/login              # crear rama
-# ... trabajar, commitear, pushear ...
-git push -u origin feat/login
-gh pr create                            # abre un asistente interactivo
+# ── Crear PRs ──
+git checkout -b feat/login && git push -u origin feat/login
+gh pr create                            # interactivo (asistente)
+gh pr create --title "feat: login" --body "Implementa OAuth" --label enhancement
+gh pr create --fill                     # usa mensaje del commit como título/cuerpo
+gh pr create --draft                    # modo draft (no listo para review)
+gh pr create --web                      # abrir formulario en navegador
 
-# Crear PR directamente
-gh pr create --title "feat: login con OAuth" \
-             --body "Implementa autenticación OAuth2 con Google y GitHub" \
-             --assignee @me \
-             --label enhancement \
-             --reviewer carlos
-
-gh pr create --fill                     # usa el mensaje del commit como título y cuerpo
-gh pr create --draft                    # PR en modo draft (no listo para review)
-gh pr create --web                      # abrir el formulario en el navegador
-```
-
-### Listar y ver PRs
-
-```bash
-# Listar PRs
+# ── Listar y ver ──
 gh pr list                              # PRs abiertos
-gh pr list --state merged               # PRs mergeados
-gh pr list --state closed               # PRs cerrados
-gh pr list --author @me                 # mis PRs
-gh pr list --label bug                  # filtrados por label
-gh pr list --limit 50                   # más resultados
-gh pr list --base main                  # PRs contra main
-gh pr list --search "login"             # búsqueda textual
+gh pr list --state merged --author @me --label bug --limit 50
+gh pr list --base main --search "login"
+gh pr view 42                           # detalle del PR
+gh pr view 42 --web --comments          # en navegador o con comentarios
+gh pr view 42 -c                        # solo los commits del PR
 
-# Ver detalle de un PR
-gh pr view 42                           # información del PR #42
-gh pr view 42 --web                     # abrir en navegador
-gh pr view 42 --comments                # ver comentarios
-gh pr view 42 -c                        # ver solo los commits del PR
-```
-
-### Revisar PRs
-
-```bash
-# Revisar un PR desde la terminal
+# ── Revisar ──
 gh pr review 42 --approve               # aprobar
 gh pr review 42 --request-changes       # solicitar cambios
-gh pr review 42 --comment               # comentar sin aprobar/rechazar
-gh pr review 42 --approve --body "LGTM! 🚀"
+gh pr review 42 --comment               # solo comentar
+gh pr edit 42 --add-reviewer usuario1    # añadir revisor
+gh pr edit 42 --remove-reviewer usuario1 # quitar revisor
+gh pr checkout 42                       # descargar PR localmente
 
-# Añadir revisores
-gh pr edit 42 --add-reviewer usuario1,usuario2
-gh pr edit 42 --remove-reviewer usuario1
-```
-
-### Checkout de PRs
-
-```bash
-gh pr checkout 42                       # descargar PR en nueva rama local
-gh pr checkout 42 --branch feat-mejorado  # con nombre personalizado
-```
-
-### Mergear PRs
-
-```bash
-gh pr merge 42                          # merge interactivo
-gh pr merge 42 --merge                  # merge commit
-gh pr merge 42 --squash                 # squash and merge
-gh pr merge 42 --rebase                 # rebase and merge
-gh pr merge 42 --delete-branch          # eliminar rama remota tras merge
-gh pr merge 42 --auto                   # habilitar auto-merge
-```
-
-### Cerrar y reabrir
-
-```bash
-gh pr close 42                          # cerrar sin mergear
-gh pr close 42 --comment "Ya no es necesario"
-gh pr reopen 42                         # reabrir
-```
-
-### Diff y checks
-
-```bash
-gh pr diff 42                           # ver el diff del PR
-gh pr checks 42                         # ver estado de los checks (Actions)
-gh pr checks 42 --watch                 # ver checks en tiempo real
-gh pr status                            # resumen: PRs abiertos, revisores pendientes, checks
+# ── Merge, cerrar, diff ──
+gh pr merge 42 --squash --delete-branch  # squash + eliminar rama
+gh pr merge 42 --auto --squash           # auto-merge cuando checks pasen
+gh pr close 42                           # cerrar sin mergear
+gh pr reopen 42                          # reabrir
+gh pr diff 42                            # ver diff
+gh pr checks 42 --watch                  # checks en tiempo real
+gh pr status                             # resumen de PRs del repo
 ```
 
 ---
@@ -220,124 +149,63 @@ gh pr status                            # resumen: PRs abiertos, revisores pendi
 ## Issues — `gh issue`
 
 ```bash
-# Crear issue
+# ── Issues ──
 gh issue create                         # interactivo
-gh issue create --title "Bug: login falla con email inválido" \
-                --body "Pasos para reproducir: ..." \
-                --label bug \
-                --assignee @me
-
-gh issue create --label "good first issue" --project "Q3 Sprint"
-
-# Listar issues
-gh issue list                           # issues abiertos
-gh issue list --state closed            # issues cerrados
-gh issue list --label bug               # filtrados por label
-gh issue list --assignee @me            # asignados a mí
-gh issue list --mention @me             # me mencionan
-gh issue list --milestone "v2.0"        # issues de un milestone
-
-# Ver issue
-gh issue view 123                       # detalle del issue #123
-gh issue view 123 --web                 # abrir en navegador
-gh issue view 123 --comments            # ver comentarios
-
-# Cerrar y reabrir
+gh issue create --title "Bug: ..." --body "Pasos..." --label bug --assignee @me
+gh issue list                           # abiertos
+gh issue list --state closed --label bug --assignee @me
+gh issue list --milestone "v2.0"
+gh issue view 123                       # detalle
+gh issue view 123 --web --comments
 gh issue close 123 --comment "Resuelto en #42"
 gh issue reopen 123
 
-# Buscar issues
+# ── Búsqueda global (en todo GitHub, no solo el repo actual) ──
+# Tipos de búsqueda:
+#   Repos:   gh search repos "machine learning" --limit 20 --stars=">=100"
+#   Issues:  gh search issues "bug" --label help-wanted
+#   PRs:     gh search prs --review-required=@me
+#   Code:    gh search code "function main" --language go
+#   Commits: gh search commits "fix" --author @me --repo owner/repo
 gh search issues "error de login" --repo owner/repo
 gh search issues --label "help wanted" --language python
-```
-
-### Búsqueda global — `gh search`
-
-`gh search` busca en todo GitHub (no solo en el repo actual):
-
-| Tipo | Comando | Descripción |
-|---|---|---|
-| **Repos** | `gh search repos "machine learning" --limit 20` | Buscar repositorios por nombre/descripción |
-| **Issues** | `gh search issues "bug" --label help-wanted` | Issues con ciertas etiquetas |
-| **PRs** | `gh search prs --review-required=@me` | PRs que requieren tu revisión |
-| **Code** | `gh search code "function main" --language go` | Buscar código en repositorios públicos |
-| **Commits** | `gh search commits "fix" --author @me` | Commits que coinciden con el mensaje |
-
-```bash
-gh search repos "todo-app" --stars=">=100" --language=python
 gh search prs --author @me --state open
 gh search code "import React" --extension=tsx -R facebook/react
 ```
 
 ---
 
-## Actions Secrets y Variables — `gh secret` / `gh variable`
+## Actions, Secrets y Variables — `gh run`, `gh secret`, `gh variable`
 
 ```bash
-# Secrets (encriptados)
+# ── Secrets (encriptados) ──
 gh secret list                          # listar secrets del repo
 gh secret list --org mi-org             # secrets de organización
-gh secret set API_KEY < api_key.txt     # crear secret desde archivo
-gh secret set API_KEY -b "valor-secreto" # desde inline
-gh secret set DEPLOY_KEY --env production # secreto de entorno
+gh secret set API_KEY < api_key.txt     # desde archivo
+gh secret set API_KEY -b "valor-secreto" # inline
+gh secret set DEPLOY_KEY --env production
 gh secret delete API_KEY
 
-# Variables (no encriptadas)
-gh variable list                        # listar variables del repo
+# ── Variables (no encriptadas) ──
+gh variable list
 gh variable set NODE_VERSION -b "20"
-gh variable set DB_HOST -b "prod.example.com"
 gh variable delete NODE_VERSION
-```
 
----
-
-## GitHub Actions — `gh run` y `gh workflow`
-
-```bash
-# Ver workflows disponibles
-gh workflow list                        # todos los workflows del repo
-gh workflow list --all                  # incluir workflows deshabilitados
-
-# Activar/desactivar workflow
+# ── Workflows ──
+gh workflow list                        # listar workflows
 gh workflow enable build.yml
 gh workflow disable build.yml
-
-# Ejecutar workflow manualmente
-gh workflow run build.yml               # con valores por defecto
-gh workflow run build.yml --ref main    # en una rama específica
+gh workflow run build.yml --ref main    # ejecutar manualmente
 gh workflow run deploy.yml -f env=production -f tag=v2.0  # con inputs
 
-# Ver ejecuciones (runs)
-gh run list                             # últimas ejecuciones
-gh run list --workflow=build.yml        # de un workflow específico
-gh run list --branch main               # de una rama específica
-gh run list --status failure            # solo las que fallaron
-gh run list --limit 30                  # más resultados
-
-# Ver detalle de una ejecución
-gh run view 1234567890                  # información de la ejecución
+# ── Runs (ejecuciones) ──
+gh run list --workflow=build.yml --branch main --status failure
 gh run view 1234567890 --log            # logs completos
-gh run view 1234567890 --log-failed     # solo logs de pasos que fallaron
-
-# Seguir ejecución en tiempo real
-gh run watch 1234567890                 # mostrar progreso en vivo
-
-# Cancelar / re-ejecutar
+gh run view 1234567890 --log-failed     # solo pasos fallidos
+gh run watch 1234567890                 # progreso en tiempo real
 gh run cancel 1234567890
-gh run rerun 1234567890                 # re-ejecutar
-gh run rerun 1234567890 --failed        # solo los jobs que fallaron
-
-# Descargar artefactos
-gh run download 1234567890              # descargar artefactos del run
-gh run download 1234567890 -n build-zip # descargar un artefacto específico
-```
-
-```bash
-# Verificar estado de CI de un PR específico
-gh pr checks 42
-
-# Revisar si los checks pasaron antes de mergear
-gh pr merge 42 --auto --squash          # auto-merge cuando checks pasen
+gh run rerun 1234567890 --failed        # solo jobs fallidos
+gh run download 1234567890 -n build-zip # descargar artefactos
 ```
 
 ---
@@ -378,29 +246,16 @@ gh codespace cp remote:~/output.txt .   # copiar archivo del codespace
 ## Releases — `gh release`
 
 ```bash
-# Crear release
+# ── Crear ──
 gh release create v1.0.0               # desde el tag v1.0.0
-gh release create v1.0.0 --title "v1.0.0 - Release inicial" \
-                    --notes "Primera versión estable" \
-                    --target main
+gh release create v1.0.0 --notes "Primera versión" --target main
 gh release create v1.0.0 dist/*.tar.gz  # con archivos adjuntos
-gh release create v1.0.0 --generate-notes  # notas generadas automáticamente
-gh release create v1.0.0 --draft       # release en borrador
-gh release create v1.0.0 --prerelease # pre-release
+gh release create v1.0.0 --generate-notes --draft --prerelease
 
-# Listar releases
-gh release list                         # releases publicados
-gh release list --limit 30              # más resultados
-gh release list --exclude-drafts        # excluir borradores
-
-# Ver release
-gh release view v1.0.0                 # detalle del release
-gh release view v1.0.0 --web           # abrir en navegador
-
-# Descargar assets
-gh release download v1.0.0             # descargar todos los assets
-gh release download v1.0.0 -p "*.tar.gz"  # descargar solo .tar.gz
-gh release download v1.0.0 -D ./dist   # descargar a directorio específico
+# ── Listar / Ver / Descargar ──
+gh release list --limit 30 --exclude-drafts
+gh release view v1.0.0 --web
+gh release download v1.0.0 -p "*.tar.gz" -D ./dist
 ```
 
 ---
@@ -408,25 +263,17 @@ gh release download v1.0.0 -D ./dist   # descargar a directorio específico
 ## Gists — `gh gist`
 
 ```bash
-# Crear gist
-gh gist create archivo.txt              # gist público
-gh gist create archivo.txt --secret     # gist secreto
-gh gist create src/*.py                 # múltiples archivos
-gh gist create -d "Utilidad para..."    # con descripción
+# ── Crear ──
+gh gist create archivo.txt              # público
+gh gist create archivo.txt --secret     # secreto
+gh gist create src/*.py -d "Utilidad"   # múltiples archivos + descripción
 
-# Listar gists
-gh gist list                            # tus gists
-gh gist list --public                   # solo públicos
-gh gist list --limit 50
-
-# Ver gist
-gh gist view gist_id                    # contenido del gist
-gh gist view gist_id --web              # abrir en navegador
-gh gist view gist_id --files src/main.py  # archivo específico
-
-# Editar y eliminar
-gh gist edit gist_id                    # editar gist
-gh gist delete gist_id                  # eliminar gist
+# ── Listar / Ver / Editar ──
+gh gist list --public --limit 50
+gh gist view gist_id --web
+gh gist view gist_id --files src/main.py
+gh gist edit gist_id                    # editar
+gh gist delete gist_id                  # eliminar
 ```
 
 ---
@@ -518,115 +365,58 @@ gh saluda                                # ejecuta el script
 ## Alias — Atajos personalizados
 
 ```bash
-# Crear alias
+# ── Alias simples ──
 gh alias set co "pr checkout"           # gh co 42 → gh pr checkout 42
 gh alias set iv "issue view"            # gh iv 123 → gh issue view 123
 gh alias set pc "pr create --fill"      # gh pc → gh pr create --fill
-gh alias set prs "pr list --author @me" # gh prs → mis PRs abiertos
+gh alias set prs "pr list --author @me"
 gh alias set todos "issue list --assignee @me --label todo"
 
-# Alias con argumentos
-gh alias set find "!gh issue list --label \"$1\" | gh issue view \"$(fzf)\""
+# ── Alias con argumentos (usando ! para shell) ──
 gh alias set open "!gh repo view --web"
+gh alias set find "!gh issue list --label \"$1\" | gh issue view \"$(fzf)\""
 
-# Listar alias
-gh alias list
-
-# Eliminar alias
-gh alias delete co
+# ── Gestionar alias ──
+gh alias list                            # listar todos
+gh alias delete co                       # eliminar
 ```
 
 ---
 
 ## Flujos de trabajo comunes
 
-### Flujo completo: feature → PR → merge
-
 ```bash
-# 1. Partir de main actualizado
-git switch main
-git pull --rebase
-
-# 2. Crear rama de feature
-git switch -c feat/autenticacion-oauth
-
-# 3. Trabajar, commitear, pushear
-git add .
-git commit -m "feat: implementar autenticación OAuth"
-git push -u origin feat/autenticacion-oauth
-
-# 4. Crear PR
-gh pr create --title "feat: autenticación OAuth" \
-             --body "Implementa login con Google y GitHub" \
-             --assignee @me \
-             --reviewer carlos
-
-# 5. Mientras esperas revisión, puedes ver el estado
+# ── Feature → PR → Merge ──────────────────────────
+git switch main && git pull --rebase
+git switch -c feat/autenticacion
+# trabajar, commitear...
+git push -u origin feat/autenticacion
+gh pr create --title "feat: ..." --body "Implementa..." --assignee @me --reviewer carlos
+# mientras esperas review:
 gh pr status
-gh pr checks 42 --watch                  # ver CI en tiempo real
-
-# 6. Cuando te aprueben, mergear
+gh pr checks 42 --watch                  # CI en tiempo real
+# cuando aprueben:
 gh pr review 42 --approve
 gh pr merge 42 --squash --delete-branch
+git switch main && git pull --rebase
 
-# 7. Volver a main actualizado
-git switch main
-git pull --rebase
-```
+# ── Revisar PRs de otros ───────────────────────────
+gh search prs --review-required=@me      # qué PRs necesitan review
+gh pr checkout 42                        # descargar localmente
+gh pr diff 42                            # revisar cambios
+gh pr review 42 --approve --body "LGTM ✅"
 
-### Revisar PRs de otros
+# ── CI/CD con Actions ──────────────────────────────
+gh run list --limit 5                    # estado del CI
+gh pr checks 42                          # checks de un PR
+gh run view 1234567890 --log-failed      # logs de paso fallido
+gh run rerun 1234567890 --failed         # re-ejecutar solo lo fallido
+gh pr merge 42 --auto --squash           # auto-merge cuando CI pase
 
-```bash
-# 1. Ver qué PRs necesitan review
-gh search prs --review-required=@me --json=number,title,author
-# o usar gh-dash: gh dash
-
-# 2. Checkout del PR localmente
-gh pr checkout 42
-
-# 3. Revisar cambios
-gh pr diff 42
-# o: code .  (vs code con diff)
-
-# 4. Aprobar o solicitar cambios
-gh pr review 42 --approve --body "Código limpio, tests pasan ✅"
-# gh pr review 42 --request-changes --body "Falta validación de email"
-```
-
-### CI/CD con GitHub Actions
-
-```bash
-# 1. Ver estado del CI del proyecto
-gh run list --limit 5
-
-# 2. Ver si un PR específico pasa los checks
-gh pr checks 42
-
-# 3. Si un workflow falló, ver logs
-gh run view 1234567890 --log-failed
-
-# 4. Corregir y re-ejecutar
-gh run rerun 1234567890 --failed
-
-# 5. Habilitar auto-merge en PR para cuando pase CI
-gh pr merge 42 --auto --squash
-```
-
-### Publicar una release
-
-```bash
-# 1. Crear tag
-git tag -a v2.0.0 -m "v2.0.0"
-git push origin v2.0.0
-
-# 2. Crear release con assets
-gh release create v2.0.0 \
-  --title "v2.0.0 - Nueva API" \
-  --notes "**Cambios:**\n- Nueva API REST\n- Corrección de bugs" \
-  dist/*.tar.gz dist/*.deb
-
-# 3. Verificar
-gh release view v2.0.0
+# ── Publicar una release ───────────────────────────
+git tag -a v2.0.0 -m "v2.0.0" && git push origin v2.0.0
+gh release create v2.0.0 --title "v2.0.0" --notes "Cambios..." dist/*.tar.gz
+gh release view v2.0.0                   # verificar
 ```
 
 ---
@@ -649,19 +439,17 @@ gh release view v2.0.0
 
 ---
 
-## Configuración
+## Configuración avanzada
 
 ```bash
-# Ver configuración actual
-gh config list
+# ── Opciones del cliente ──
+gh config list                           # ver todo
+gh config set git_protocol ssh           # ssh | https
+gh config set editor code                # editor para gh edit, issue create
+gh config set browser firefox            # navegador para gh ... --web
+gh config set pager delta                # pager para salidas largas
 
-# Configurar opciones
-gh config set git_protocol ssh          # ssh | https (protocolo git)
-gh config set editor code               # editor para gh edit, gh issue create
-gh config set browser firefox           # navegador para gh ... --web
-gh config set pager delta              # pager para salidas largas (delta, bat, less)
-
-# Configuración por host (GitHub Enterprise)
+# ── Configuración por host (GitHub Enterprise) ──
 gh config set git_protocol https --host github.empresa.com
 ```
 

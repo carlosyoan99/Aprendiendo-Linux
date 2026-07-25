@@ -45,6 +45,17 @@ FS por defecto de Red Hat Linux, Fedora Core y Debian durante años. Sin journal
 ```bash
 # Crear ext2 (aún usado para particiones /boot en algunos sistemas)
 sudo mkfs.ext2 /dev/sda1
+
+# Migrar de ext2 a ext3 (añadir journal, online)
+sudo tune2fs -j /dev/sda1
+
+# Convertir ext3 a ext2 (quitar journal, requiere desmontar)
+sudo tune2fs -O ^has_journal /dev/sda1
+sudo fsck.ext2 -f /dev/sda1
+
+# Migrar de ext3 a ext4 (online, irreversible)
+sudo tune2fs -O extents,uninit_bg,dir_index /dev/sda1
+sudo fsck -pf /dev/sda1
 ```
 
 ### ext3 — Journaling retrocompatible (2001)
@@ -61,22 +72,7 @@ Añadió **journaling** a ext2 manteniendo compatibilidad total: un FS ext3 pod�
 
 **Limitaciones:** máx. 32,000 subdirectorios, sin extents, sin desfragmentación online, sin checksums en journal.
 
-```bash
-# Migrar de ext2 a ext3 (añadir journal, online)
-sudo tune2fs -j /dev/sda1
-# Convertir ext3 a ext2 (quitar journal, requiere desmontar)
-sudo tune2fs -O ^has_journal /dev/sda1
-sudo fsck.ext2 -f /dev/sda1
-```
-
 ### ext4 — Mejoras sobre ext3 (2008)
-
-```bash
-# Migrar de ext3 a ext4 (online, irreversible)
-sudo tune2fs -O extents,uninit_bg,dir_index /dev/sda1
-sudo fsck -pf /dev/sda1
-# ⚠️ Una vez convertido a ext4, NO se puede volver a ext3
-```
 
 **Mejoras clave de ext4 sobre ext3:**
 - **Extents**: reemplazan el esquema de bloques individuales. Un extent mapea hasta 128 MiB contiguos ← reduce drásticamente la fragmentación
@@ -116,44 +112,35 @@ fallocate -l 10G archivo.img            # instantáneo, no escribe ceros
 | **Desfragmentación** | ✅ Online (e4defrag) |
 | **Timestamps** | ✅ Nanosegundos |
 
-### Comandos básicos
+### Comandos básicos y opciones de montaje
 
 ```bash
-# Crear
+# ── Crear ──
 sudo mkfs.ext4 /dev/sda1
 sudo mkfs.ext4 -L DATOS /dev/sda1        # con etiqueta
 sudo mkfs.ext4 -O ^has_journal /dev/sda1 # sin journal (discos temporales)
 
-# Información
+# ── Información ──
 dumpe2fs -h /dev/sda1                    # info detallada
 tune2fs -l /dev/sda1                     # resumen legible
+df -hT                                   # tipo de FS incluido
+lsblk -f                                 # UUID y tipo FS
 
-# Ajustes
+# ── Ajustes ──
 sudo tune2fs -c 30 /dev/sda1             # forzar fsck cada 30 montajes
-sudo tune2fs -C -1 /dev/sda1             # resetear contador de montajes
-sudo tune2fs -m 5 /dev/sda1              # reservar 5% para root (default 5%)
+sudo tune2fs -C -1 /dev/sda1             # resetear contador
+sudo tune2fs -m 5 /dev/sda1              # reservar 5% para root
 
-# Comprobar errores
+# ── fsck ──
 sudo fsck.ext4 -f /dev/sda1              # forzar revisión (desmontado)
 sudo fsck.ext4 -p /dev/sda1              # reparar automáticamente
 
-# Espacio
-df -hT                                   # tipo de FS incluido
-lsblk -f                                 # UUID y tipo FS
-```
-
-### Opciones de montaje
-
-```bash
-# /etc/fstab
-UUID=xxx  /  ext4  defaults,noatime,nodiratime  0  1
-
+# ── /etc/fstab (opciones de montaje) ──
+# UUID=xxx  /  ext4  defaults,noatime,nodiratime  0  1
 # noatime: no actualizar tiempo de acceso
-# nodiratime: lo mismo para directorios
 # commit=60: sincronizar cada 60s
 # data=ordered: journal de metadatos + datos antes (default)
-# data=writeback: journal de metadatos, datos sin orden (más rápido, menos seguro)
-# barrier=1: barreras de escritura (evita corrupción con HW reordenando)
+# barrier=1: barreras de escritura
 ```
 
 ### ¿Cuándo usar ext4?
@@ -185,74 +172,32 @@ UUID=xxx  /  ext4  defaults,noatime,nodiratime  0  1
 | **Tamaño máx. archivo** | 16 EiB |
 | **Defragmentación** | ✅ Online |
 
-### Subvolúmenes
-
-Los subvolúmenes son la clave del diseño de Btrfs. Son como particiones lógicas que comparten el mismo pool de espacio:
+### Subvolúmenes, snapshots, compresión y mantenimiento
 
 ```bash
-# Ver subvolúmenes existentes
-sudo btrfs subvolume list /
+# ── Subvolúmenes (particiones lógicas) ──
+sudo btrfs subvolume list /                    # listar existentes
+sudo btrfs subvolume create /mnt/btrfs/@datos   # crear uno nuevo
+sudo mount -o subvol=@datos /dev/sda1 /mnt/datos # montar específico
 
-# Crear un subvolumen
-sudo btrfs subvolume create /mnt/btrfs/@datos
+# ── Snapshots (instantáneos, casi sin costo) ──
+sudo btrfs subvolume snapshot / /@pre-update    # snapshot completo
+sudo btrfs subvolume snapshot -r /home /home-ro # snapshot solo-lectura
+sudo btrfs subvolume show /@pre-update          # espacio usado
+sudo btrfs subvolume delete /@pre-update        # eliminar
+sudo snapper -c root create -d "antes de X"    # snapshots con snapper
 
-# Montar un subvolumen específico
-sudo mount -o subvol=@datos /dev/sda1 /mnt/datos
+# ── Compresión transparente (zstd recomendado) ──
+# UUID=xxx  /  btrfs  defaults,compress=zstd:3  0  0  (/etc/fstab)
+sudo btrfs filesystem usage /                   # ratio de compresión
+compsize /ruta                                   # ratio por archivo
 
-# Snapshot de un subvolumen (instantáneo, ocupa espacio solo de los cambios)
-sudo btrfs subvolume snapshot /home /home-backup
-sudo btrfs subvolume snapshot -r /home /home-backup-readonly  # solo-lectura
-```
-
-### Snapshots
-
-Los snapshots de Btrfs son **instantáneos y casi sin costo de espacio** (solo almacenan las diferencias con el original). Ideales para backups y antes de cambios riesgosos:
-
-```bash
-# Snapshot del sistema completo antes de una actualización grande
-sudo btrfs subvolume snapshot / /@pre-update
-
-# Ver espacio usado por snapshots
-sudo btrfs subvolume show /@pre-update
-
-# Eliminar un snapshot
-sudo btrfs subvolume delete /@pre-update
-
-# Snapshot automáticos con snapper (openSUSE/Fedora)
-sudo snapper -c root create -d "antes de instalar paquete X"
-sudo snapper list
-```
-
-### Compresión transparente
-
-```bash
-# Activar compresión en montaje
-# /etc/fstab
-UUID=xxx  /  btrfs  defaults,compress=zstd:3  0  0
-
-# Comprobar ratio de compresión
-sudo btrfs filesystem usage /
-compsize /ruta                               # ratio por archivo
-
-# zstd tiene buena relación compresión/velocidad. Nivel 1-3 para uso diario.
-```
-
-### Mantenimiento
-
-```bash
-# Verificar integridad (escanear todo el FS, no necesita desmontar)
-sudo btrfs scrub start /
-sudo btrfs scrub status /
-
-# Balancear (redistribuir datos entre dispositivos)
-sudo btrfs balance start /                    # recomendado para RAID
-sudo btrfs balance status /
-
-# Liberar espacio no usado (trim, útil en SSD)
-sudo fstrim -av
-
-# Ver uso de espacio por subvolumen
-sudo btrfs filesystem df /
+# ── Mantenimiento ──
+sudo btrfs scrub start /                        # verificar integridad
+sudo btrfs scrub status /                        # progreso
+sudo btrfs balance start /                       # redistribuir datos (RAID)
+sudo btrfs filesystem df /                       # uso por subvolumen
+sudo fstrim -av                                  # trim en SSD
 ```
 
 ### ¿Cuándo usar Btrfs?
@@ -279,19 +224,11 @@ XFS es un sistema de archivos de 64 bits con journaling, creado por **Silicon Gr
 
 ### Grupos de asignación (Allocation Groups)
 
-XFS divide internamente el sistema de archivos en **grupos de asignación**, regiones lineales del mismo tamaño. Cada grupo gestiona sus propios inodos y espacio libre de forma independiente. Esto proporciona:
-
-- **Escalabilidad**: múltiples hilos pueden operar en distintos grupos simultáneamente
-- **Paralelismo**: E/S paralela en sistemas con muchos núcleos
-- **Rendimiento constante**: el tamaño del FS no degrada el rendimiento
+XFS divide internamente el sistema de archivos en **grupos de asignación**, regiones lineales del mismo tamaño. Cada grupo gestiona sus propios inodos y espacio libre de forma independiente. Esto proporciona escalabilidad, E/S paralela y rendimiento constante independientemente del tamaño del FS.
 
 ### Journaling lógico
 
-A diferencia de ext3 (journaling físico que copia bloques), XFS usa **journaling lógico**: registra descripciones de alto nivel de las operaciones. El journal es un buffer circular de bloques fuera del FS principal. Esto hace que:
-
-- La recuperación sea **independiente del tamaño del FS** (siempre rápida)
-- El rendimiento no se degrade con discos grandes
-- Las actualizaciones del journal sean asincrónicas (evita bajadas de rendimiento)
+A diferencia de ext3 (journaling físico que copia bloques), XFS usa **journaling lógico**: registra descripciones de alto nivel de las operaciones. La recuperación es siempre rápida independientemente del tamaño del FS.
 
 ### Características clave
 
@@ -304,29 +241,23 @@ A diferencia de ext3 (journaling físico que copia bloques), XFS usa **journalin
 | **Compresión** | ❌ No |
 | **Checksums** | ✅ Metadatos (v5+, CRC32) — datos no |
 | **Defragmentación** | ✅ Online (`xfs_fsr`) |
-| **Delayed allocation** | ✅ Excelente para evitar fragmentación |
-| **Allocation Groups** | ✅ Grupos paralelos independientes |
-| **Reducir tamaño** | ❌ **No se puede reducir** |
+| **Delayed allocation** | ✅ Excelente |
+| **Reducir tamaño** | ❌ No se puede |
 
 ### Comandos básicos
 
 ```bash
-# Crear
+# ── Crear ──
 sudo mkfs.xfs /dev/sda1
-sudo mkfs.xfs -L DATOS -m reflink=1 /dev/sda1   # reflink (copias rápidas, Btrfs-like)
+sudo mkfs.xfs -L DATOS -m reflink=1 /dev/sda1   # reflink (copias rápidas)
 
-# NO se puede reducir (shrink) — solo crecer
-# Redimensionar
-sudo xfs_growfs /mount-point              # crecer al tamaño completo del dispositivo
+# ── Redimensionar (solo crecer) ──
+sudo xfs_growfs /mount-point                     # crecer al tamaño del dispositivo
 
-# Ver información
-xfs_info /mount-point
-
-# Reparar (requiere desmontar)
-sudo xfs_repair /dev/sda1
-
-# Fragmentación
-xfs_db -c "frag" /dev/sda1
+# ── Información y reparación ──
+xfs_info /mount-point                            # info del FS
+xfs_db -c "frag" /dev/sda1                       # fragmentación
+sudo xfs_repair /dev/sda1                        # reparar (requiere desmontar)
 ```
 
 ### Limitación importante
@@ -405,32 +336,24 @@ sudo dnf install zfs                       # requiere RPM Fusion non-free
 ### Comandos básicos
 
 ```bash
-# Crear un pool
-sudo zpool create -f tanque /dev/sda /dev/sdb /dev/sdc   # 3 discos, sin redundancia
-sudo zpool create -f tanque mirror /dev/sda /dev/sdb      # RAID 1 (mirror)
-sudo zpool create -f tanque raidz /dev/sda /dev/sdb /dev/sdc  # RAID-Z (como RAID 5)
+# ── Pool ──
+sudo zpool create -f tanque /dev/sda /dev/sdb /dev/sdc         # 3 discos
+sudo zpool create -f tanque mirror /dev/sda /dev/sdb            # RAID 1
+sudo zpool create -f tanque raidz /dev/sda /dev/sdb /dev/sdc    # RAID-Z
+zpool status                             # estado del pool
+zpool list                               # listar pools
+sudo zpool scrub tanque                  # verificar integridad
 
-# Ver pools
-zpool status
-zpool list
-
-# Crear datasets (subvolúmenes)
+# ── Datasets (subvolúmenes) ──
 sudo zfs create tanque/backups
 sudo zfs set compression=lz4 tanque/backups
 sudo zfs set mountpoint=/backups tanque/backups
 
-# Snapshots
+# ── Snapshots ──
 sudo zfs snapshot tanque/backups@2026-07-18
-sudo zfs list -t snapshot
-
-# Rollback (volver a un snapshot)
-sudo zfs rollback tanque/backups@2026-07-18
-
-# Enviar/replicar snapshots a otro equipo
-zfs send tanque/backups@2026-07-18 | ssh otro-pc zfs receive tanque/backups
-
-# Scrub (verificar integridad de todos los datos)
-sudo zpool scrub tanque
+sudo zfs list -t snapshot                # listar snapshots
+sudo zfs rollback tanque/backups@2026-07-18  # rollback
+zfs send tanque/backups@2026-07-18 | ssh otro-pc zfs receive tanque/backups  # replicar
 ```
 
 ### Cuidados
@@ -465,69 +388,34 @@ sudo zpool scrub tanque
 
 ## Operaciones comunes
 
-### Crear y montar
+### Crear, montar, UUID, fsck y conversión
 
 ```bash
-# Particionar primero (fdisk o gdisk)
-sudo fdisk /dev/sda                       # o cfdisk, gdisk
-
-# Crear FS
-sudo mkfs.ext4 /dev/sda1
-sudo mkfs.btrfs /dev/sda1
-sudo mkfs.xfs /dev/sda1
-
-# Montar temporal
+# ── Crear y montar temporal ──
+sudo fdisk /dev/sda                       # particionar
+sudo mkfs.ext4 /dev/sda1                  # o mkfs.btrfs, mkfs.xfs
 sudo mount /dev/sda1 /mnt                 # montar
-sudo umount /mnt                           # desmontar
+sudo umount /mnt                          # desmontar
 
-# Montar permanente (/etc/fstab)
-# Usar UUID en lugar de /dev/sda1 (los UUID no cambian)
-blkid /dev/sda1                            # obtener UUID
-# Añadir a /etc/fstab:
+# ── Montar permanente (/etc/fstab) ──
+blkid /dev/sda1                          # obtener UUID
 # UUID=xxxx-xxxx  /mnt/datos  ext4  defaults  0  2
-```
 
-### UUID y LABEL
-
-```bash
-lsblk -f                                   # UUID y LABEL de todos los dispositivos
-blkid                                      # UUID y tipo de FS
-
-# Poner/quitar etiqueta
+# ── UUID y LABEL ──
+lsblk -f                                  # UUID y tipo de FS
 sudo e2label /dev/sda1 DATOS              # ext4
 sudo btrfs filesystem label / DATOS       # Btrfs
 sudo xfs_admin -L DATOS /dev/sda1         # XFS
 sudo zfs set mountpoint=/datos tanque     # ZFS
-```
 
-### fsck (File System Check)
+# ── fsck (cada FS tiene su método) ──
+sudo fsck.ext4 -y /dev/sda1               # ext4 (desmontado)
+sudo btrfs scrub start /                  # Btrfs (online, no necesita desmontar)
+sudo xfs_repair /dev/sda1                 # XFS (desmontado)
+sudo zpool scrub tanque                   # ZFS (online)
 
-```bash
-# ext4
-sudo fsck.ext4 /dev/sda1                   # o: sudo fsck -t ext4
-sudo fsck -y /dev/sda1                     # responder sí automáticamente
-
-# Btrfs (no necesita desmontar para check)
-sudo btrfs scrub start /                   # verificar integridad online
-
-# XFS (necesita desmontar)
-sudo xfs_repair /dev/sda1
-
-# ZFS
-sudo zpool scrub tanque                    # verificar online
-```
-
-### Convertir entre tipos
-
-No hay conversión directa entre sistemas de archivos. El procedimiento siempre es:
-
-```bash
-# 1. Hacer backup de los datos
-# 2. Formatear con el nuevo FS
-# 3. Restaurar los datos
-
-# Alternativa si tienes espacio en otro disco:
-sudo rsync -aAXv /mnt/viejo/ /mnt/nuevo/   # preservando permisos + atributos + ACLs
+# ── Convertir (no hay directa: backup → formatear → restaurar) ──
+sudo rsync -aAXv /mnt/viejo/ /mnt/nuevo/  # preservando permisos + ACLs
 ```
 
 ## ¿Cuál elegir?

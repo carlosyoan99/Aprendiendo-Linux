@@ -35,98 +35,68 @@ NixOS es radicalmente distinta a cualquier otra distro: **todo el sistema** (paq
 
 El método clásico (`/etc/nixos/configuration.nix`) sigue funcionando, pero **flakes** es el estándar moderno desde 2023. Un flake es un proyecto Nix autocontenido con su propio `flake.nix` y `flake.lock` (similar a `package.json` + `package-lock.json`).
 
-```nix
-# ~/nixos-config/flake.nix
-{
-  description = "Configuración NixOS moderna";
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";      # canal estable
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";  # canal unstable
-    home-manager.url = "github:nix-community/home-manager";  # gestión de dotfiles
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";         # mismo canal que el sistema
-  };
-
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
-    nixosConfigurations.carlos-laptop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # ── Configuración del sistema ──
-        ({ pkgs, ... }: {
-          boot.loader.systemd-boot.enable = true;
-          boot.loader.efi.canTouchEfiVariables = true;
-
-          networking.hostName = "carlos-laptop";
-          networking.networkmanager.enable = true;
-
-          # Paquetes del sistema
-          environment.systemPackages = with pkgs; [ git vim htop firefox ];
-
-          # Servicios
-          services.openssh.enable = true;
-
-          # Usuario
-          users.users.carlos = {
-            isNormalUser = true;
-            extraGroups = [ "wheel" "networkmanager" "docker" ];
-          };
-
-          # Paquetes del canal unstable (para tener lo último)
-          nixpkgs.config.packageOverrides = pkgs: {
-            unstable = import nixpkgs-unstable {
-              system = pkgs.system;
-              config.allowUnfree = true;
-            };
-          };
-        })
-
-        # ── Home Manager (dotfiles de usuario) ──
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.users.carlos = { pkgs, ... }: {
-            home.stateVersion = "24.11";
-            home.username = "carlos";
-            home.homeDirectory = "/home/carlos";
-
-            programs.bash = {
-              enable = true;
-              initExtra = ''
-                alias ll='ls -la'
-                alias gs='git status'
-                export EDITOR=vim
-              '';
-            };
-
-            programs.git = {
-              enable = true;
-              userName = "Carlos";
-              userEmail = "carlos@email.com";
-            };
-
-            home.packages = with pkgs; [
-              ripgrep fd jq tree   # herramientas de terminal
-              spotify discord      # apps de escritorio
-            ];
-          };
-        }
-      ];
-    };
-  };
-}
-```
-
 ```bash
-# Aplicar configuración (desde el directorio del flake)
-sudo nixos-rebuild switch --flake ~/nixos-config#carlos-laptop
+# ── flake.nix (configuración del sistema) ─────────────────
+# Archivo: ~/nixos-config/flake.nix
+#
+# {
+#   description = "Configuración NixOS moderna";
+#   inputs = {
+#     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+#     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+#     home-manager.url = "github:nix-community/home-manager";
+#     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+#   };
+#   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
+#     nixosConfigurations.carlos-laptop = nixpkgs.lib.nixosSystem {
+#       system = "x86_64-linux";
+#       modules = [
+#         ({ pkgs, ... }: {
+#           boot.loader.systemd-boot.enable = true;
+#           boot.loader.efi.canTouchEfiVariables = true;
+#           networking.hostName = "carlos-laptop";
+#           networking.networkmanager.enable = true;
+#           environment.systemPackages = with pkgs; [ git vim htop firefox ];
+#           services.openssh.enable = true;
+#           users.users.carlos = {
+#             isNormalUser = true;
+#             extraGroups = [ "wheel" "networkmanager" "docker" ];
+#           };
+#         })
+#         home-manager.nixosModules.home-manager {
+#           home-manager.users.carlos = { pkgs, ... }: {
+#             home.stateVersion = "24.11";
+#             home.username = "carlos";
+#             home.homeDirectory = "/home/carlos";
+#             programs.bash = {
+#               enable = true;
+#               initExtra = ''
+#                 alias ll='ls -la'
+#                 alias gs='git status'
+#                 export EDITOR=vim
+#               '';
+#             };
+#             programs.git = {
+#               enable = true;
+#               userName = "Carlos";
+#               userEmail = "carlos@email.com";
+#             };
+#             home.packages = with pkgs; [
+#               ripgrep fd jq tree
+#               spotify discord
+#             ];
+#           };
+#         }
+#       ];
+#     };
+#   };
+# }
 
-# Test (sin hacer permanente)
-sudo nixos-rebuild test --flake ~/nixos-config#carlos-laptop
-
-# Ver generaciones
-sudo nixos-rebuild list-generations
-
-# Rollback a generación anterior
-sudo nixos-rebuild switch --rollback
+# ── comandos para aplicar el flake ──
+sudo nixos-rebuild switch --flake ~/nixos-config#carlos-laptop   # aplicar
+sudo nixos-rebuild test --flake ~/nixos-config#carlos-laptop    # probar sin guardar
+sudo nixos-rebuild list-generations                             # ver generaciones
+sudo nixos-rebuild switch --rollback                             # deshacer cambios
 ```
 
 ### ¿Por qué flakes?
@@ -143,40 +113,24 @@ sudo nixos-rebuild switch --rollback
 
 ## Flakes en profundidad
 
-### inputs (dependencias)
-
-```nix
-inputs = {
-  # Canales estables y unstable
-  nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-  nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-  # Home Manager
-  home-manager.url = "github:nix-community/home-manager/release-24.11";
-  home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-  # Otros flakes populares:
-  nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-  hyprland.url = "github:hyprwm/Hyprland";
-};
-```
-
-### Comandos de flake
+### inputs y comandos
 
 ```bash
-# Actualizar las dependencias del flake.lock
-nix flake update
+# ── inputs del flake (ejemplo para agregar a flake.nix) ──
+# inputs = {
+#   nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+#   nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+#   home-manager.url = "github:nix-community/home-manager/release-24.11";
+#   home-manager.inputs.nixpkgs.follows = "nixpkgs";
+#   nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+#   hyprland.url = "github:hyprwm/Hyprland";
+# };
 
-# Actualizar solo un input específico
-nix flake lock --update-input home-manager
-
-# Ejecutar un paquete desde el flake sin instalarlo
-nix run nixpkgs#firefox
-
-# Abrir una shell con paquetes del flake
-nix shell nixpkgs#python311 nixpkgs#nodejs_20
-
-# Construir algo del flake
+# ── comandos de flake ──
+nix flake update                              # actualizar dependencias
+nix flake lock --update-input home-manager     # actualizar solo un input
+nix run nixpkgs#firefox                        # ejecutar sin instalar
+nix shell nixpkgs#python311 nixpkgs#nodejs_20   # shell con paquetes
 nix build .#nixosConfigurations.carlos-laptop.config.system.build.toplevel
 ```
 
@@ -197,89 +151,49 @@ nix-shell '<home-manager>' -A install
 
 ### home.nix completo
 
-```nix
-{ config, pkgs, ... }: {
-  home.stateVersion = "24.11";
-  home.username = "carlos";
-  home.homeDirectory = "/home/carlos";
-
-  # Programas configurables
-  programs = {
-    bash = {
-      enable = true;
-      initExtra = ''
-        alias ll='ls -la'
-        alias la='ls -A'
-      '';
-      historyControl = [ "ignoredups" "ignorespace" ];
-    };
-
-    git = {
-      enable = true;
-      userName = "Carlos";
-      userEmail = "carlos@email.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-        pull.rebase = true;
-      };
-    };
-
-    vim = {
-      enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airride nerdtree ];
-      settings = { number = true; relativenumber = true; };
-    };
-
-    tmux = {
-      enable = true;
-      shortcut = "a";
-      mouse = true;
-    };
-
-    htop = {
-      enable = true;
-      settings = { treeView = true; highlightBaseName = true; };
-    };
-
-    ssh = {
-      enable = true;
-      matchBlocks = {
-        "servidor" = {
-          hostname = "192.168.1.100";
-          user = "admin";
-          forwardAgent = true;
-        };
-      };
-    };
-  };
-
-  # Paquetes solo para este usuario
-  home.packages = with pkgs; [
-    ripgrep fd jq tree
-    spotify discord
-    flameshot
-  ];
-
-  # Archivos de configuración (dotfiles)
-  home.file.".config/i3/config".source = ./dotfiles/i3/config;
-  home.file.".config/i3/config".text = ''  # o inline
-    # bindsym $mod+Return exec alacritty
-  '';
-
-  # Activar servicios de usuario
-  services = {
-    syncthing.enable = true;
-    blueman-applet.enable = true;
-  };
-}
-```
-
 ```bash
-# Aplicar solo home-manager (sin reconstruir todo el sistema)
-home-manager switch
+# ── home.nix (dotfiles de usuario) ──────────────────────
+# { config, pkgs, ... }: {
+#   home.stateVersion = "24.11";
+#   home.username = "carlos";
+#   home.homeDirectory = "/home/carlos";
+#
+#   programs.bash = {
+#     enable = true;
+#     initExtra = ''
+#       alias ll='ls -la'
+#       alias la='ls -A'
+#     '';
+#     historyControl = [ "ignoredups" "ignorespace" ];
+#   };
+#   programs.git = {
+#     enable = true;
+#     userName = "Carlos";
+#     userEmail = "carlos@email.com";
+#     extraConfig = { init.defaultBranch = "main"; pull.rebase = true; };
+#   };
+#   programs.vim = {
+#     enable = true;
+#     plugins = with pkgs.vimPlugins; [ vim-airride nerdtree ];
+#     settings = { number = true; relativenumber = true; };
+#   };
+#   programs.tmux = { enable = true; shortcut = "a"; mouse = true; };
+#   programs.htop = { enable = true; settings = { treeView = true; }; };
+#   programs.ssh = {
+#     enable = true;
+#     matchBlocks = {
+#       "servidor" = { hostname = "192.168.1.100"; user = "admin"; };
+#     };
+#   };
+#
+#   home.packages = with pkgs; [ ripgrep fd jq tree spotify discord flameshot ];
+#   services.syncthing.enable = true;
+#   services.blueman-applet.enable = true;
+# }
 
-# Test
-home-manager build
+# ── comandos home-manager ──
+home-manager switch   # aplicar configuración de usuario
+home-manager build    # test (construir sin aplicar)
 ```
 
 ---
@@ -288,71 +202,45 @@ home-manager build
 
 NixOS permite ejecutar contenedores ligeros (similares a Docker pero gestionados por el mismo Nix/NixOS) directamente desde la configuración del sistema:
 
-```nix
-{ config, pkgs, ... }: {
-  # Contenedor declarativo
-  containers.database = {
-    autoStart = true;
-    privateNetwork = true;
-    hostAddress = "10.0.0.1";
-    localAddress = "10.0.0.2";
-
-    config = { config, pkgs, ... }: {
-      system.stateVersion = "24.11";
-      networking.firewall.allowedTCPPorts = [ 5432 ];
-
-      services.postgresql = {
-        enable = true;
-        package = pkgs.postgresql_16;
-        enableTCPIP = true;
-        authentication = pkgs.lib.mkForce ''
-          local all all trust
-          host all all 10.0.0.0/24 trust
-        '';
-      };
-    };
-  };
-
-  # Contenedor para servidor web
-  containers.web = {
-    autoStart = true;
-    privateNetwork = true;
-    hostAddress = "10.0.0.3";
-    localAddress = "10.0.0.4";
-
-    config = { config, pkgs, ... }: {
-      system.stateVersion = "24.11";
-      networking.firewall.allowedTCPPorts = [ 80 443 ];
-
-      services.nginx = {
-        enable = true;
-        virtualHosts."localhost" = {
-          root = "/var/www";
-        };
-      };
-    };
-  };
-}
-```
-
 ```bash
-# Los contenedores se inician automáticamente con el sistema
-# También se pueden gestionar manualmente:
-sudo nixos-container start database
-sudo nixos-container stop database
-sudo nixos-container status database
+# ── configuración de contenedores NixOS ─────────────────
+# { config, pkgs, ... }: {
+#   containers.database = {
+#     autoStart = true;
+#     privateNetwork = true;
+#     hostAddress = "10.0.0.1";
+#     localAddress = "10.0.0.2";
+#     config = { config, pkgs, ... }: {
+#       services.postgresql = {
+#         enable = true;
+#         package = pkgs.postgresql_16;
+#         enableTCPIP = true;
+#         authentication = pkgs.lib.mkForce ''
+#           local all all trust
+#           host all all 10.0.0.0/24 trust
+#         '';
+#       };
+#     };
+#   };
+#   containers.web = {
+#     autoStart = true;
+#     privateNetwork = true;
+#     hostAddress = "10.0.0.3";
+#     localAddress = "10.0.0.4";
+#     config = { config, pkgs, ... }: {
+#       services.nginx.enable = true;
+#     };
+#   };
+# }
 
-# Entrar a un contenedor (como root)
-sudo nixos-container root-login database
-
-# Listar contenedores activos
-sudo nixos-container list
-
-# Actualizar un contenedor (sin reiniciar el sistema)
-sudo nixos-container update database
-
-# Ver logs del contenedor
-journalctl -u container@database.service
+# ── comandos para gestionar contenedores ──
+sudo nixos-container start database          # iniciar contenedor
+sudo nixos-container stop database           # detener
+sudo nixos-container status database         # estado
+sudo nixos-container root-login database     # entrar como root
+sudo nixos-container list                    # listar activos
+sudo nixos-container update database         # actualizar sin reiniciar host
+journalctl -u container@database.service     # logs del contenedor
 ```
 
 ### NixOS Containers vs Docker
@@ -436,39 +324,26 @@ cachix use mi-caché    # agrega automáticamente a substitutors
 
 Este es el punto de partida recomendado para cualquier instalación nueva de NixOS con flakes:
 
-```
-~/nixos-config/
-├── flake.nix          # entrada principal
-├── flake.lock         # versiones congeladas
-├── hosts/
-│   ├── laptop.nix     # configuración del equipo portátil
-│   └── server.nix     # configuración del servidor
-├── modules/
-│   ├── common.nix     # configuración común a todos los equipos
-│   ├── gaming.nix     # configuración de gaming
-│   └── development.nix # herramientas de desarrollo
-└── secrets/           # (gestionado aparte con agenix/sops-nix)
-```
-
 ```bash
-# Inicializar un flake nuevo
+# ── estructura recomendada de proyecto ──
+# ~/nixos-config/
+# ├── flake.nix          # entrada principal
+# ├── flake.lock         # versiones congeladas
+# ├── hosts/laptop.nix   # config por equipo
+# ├── modules/common.nix # config compartida
+# └── secrets/           # (gestionado aparte)
+
+# ── inicializar un flake nuevo ──
 mkdir -p ~/nixos-config/hosts
 cd ~/nixos-config
 nix flake init             # genera flake.nix básico
 git init && git add -A
 nix flake lock             # genera flake.lock
 
-# Aplicar por primera vez
-sudo nixos-rebuild switch --flake ~/nixos-config#laptop
-
-# Después de cada cambio:
-sudo nixos-rebuild switch --flake ~/nixos-config#laptop
-
-# Actualizar dependencias (como npm update)
-nix flake update
-
-# Ver diferencias entre generaciones actual y anterior
-nix store diff-closures /nix/var/nix/profiles/system-*-link
+# ── comandos diarios ──
+sudo nixos-rebuild switch --flake ~/nixos-config#laptop    # aplicar cambios
+nix flake update                                            # actualizar deps
+nix store diff-closures /nix/var/nix/profiles/system-*-link # ver diferencias
 ```
 
 ---

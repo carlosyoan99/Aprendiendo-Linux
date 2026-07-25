@@ -124,23 +124,15 @@ lsusb                  # dispositivos USB
 El directorio más importante para el administrador. Contiene **archivos de configuración en texto plano** del sistema y de los servicios instalados.
 
 ```bash
-ls /etc/
-# passwd, shadow, group    → usuarios y contraseñas
-# hosts, hostname          → resolución de nombres local
+ls /etc/                            # config del sistema
+# passwd, shadow, group    → usuarios
+# hosts, hostname          → resolución local
 # resolv.conf              → DNS
-# fstab                    → puntos de montaje al arranque
-# ssh/                     → configuración de SSH
-# systemd/                 → servicios systemd
-# NetworkManager/          → configuración de red
-# nginx/                   → configuración de Nginx (si está instalado)
-# apt/                     → repositorios APT (Debian/Ubuntu)
-# pacman.conf              → configuración de Pacman (Arch)
-```
-
-```bash
-# Editar configuración del sistema
-sudoedit /etc/ssh/sshd_config    # editar con copia de seguridad
-sudo cat /etc/hostname           # ver nombre del host
+# fstab                    → montajes al arranque
+# ssh/                     → SSH
+# systemd/                 → servicios
+sudoedit /etc/ssh/sshd_config        # editar con copia de seguridad
+sudo cat /etc/hostname               # ver nombre del host
 ```
 
 **⚠️**: No poner archivos personales aquí. `/etc/` es para configuración del sistema, no para tus scripts.
@@ -167,27 +159,17 @@ El directorio home del usuario root. Separado de `/home` por seguridad — si `/
 Archivos cuyo tamaño y contenido cambian durante la operación del sistema. Es donde se almacenan logs, bases de datos, cachés y colas de impresión.
 
 ```bash
-ls /var/
-# log/          → archivos de log del sistema y servicios
-#   syslog, auth.log, kern.log
-#   journal/    → logs de systemd (journalctl)
-# cache/        → caché de paquetes, fuentes, etc.
-#   apt/        → paquetes .deb descargados (Debian/Ubuntu)
-#   pacman/     → paquetes descargados (Arch)
-# lib/          → datos persistentes de aplicaciones
-#   docker/     → imágenes y contenedores Docker
-#   mysql/      → bases de datos MySQL
-#   postgres/   → bases de datos PostgreSQL
-# tmp/          → archivos temporales persistentes entre reinicios (a diferencia de /tmp)
+ls /var/                            # datos variables
+# log/          → logs del sistema y servicios
+# cache/        → caché de paquetes (apt, pacman)
+# lib/          → datos persistentes (docker, mysql, postgres)
+# tmp/          → temporales persistentes entre reinicios
 # spool/        → colas de impresión, correo
 # backups/      → backups locales (por convención)
-```
 
-```bash
-# Comandos útiles
-du -sh /var/log/*            # ver tamaño de cada log
-sudo journalctl --disk-usage # cuánto ocupan los logs de systemd
-du -sh /var/cache/apt        # cuánto ocupa la caché de apt (Debian/Ubuntu)
+du -sh /var/log/*                    # tamaño de cada log
+sudo journalctl --disk-usage         # cuánto ocupan los logs de systemd
+du -sh /var/cache/apt                # caché de apt (Debian/Ubuntu)
 ```
 
 **⚠️**: `/var/log` es lo primero que revisar al diagnosticar problemas. `/var/cache` puede crecer y ocupar GBs — limpiar periódicamente.
@@ -197,29 +179,16 @@ du -sh /var/cache/apt        # cuánto ocupa la caché de apt (Debian/Ubuntu)
 El directorio más grande del sistema. Contiene la mayoría de los programas, librerías, documentación y datos compartidos.
 
 ```bash
-ls /usr/
-# bin/          → ejecutables (la mayoría de los comandos: git, vim, python, node...)
-# sbin/         → binarios de administración (no esenciales para arranque)
+ls /usr/                            # programas del sistema
+# bin/          → ejecutables (git, vim, python, node...)
+# sbin/         → binarios de administración
 # lib/          → librerías compartidas
-# lib64/        → librerías de 64 bits
-# share/        → datos independientes de arquitectura
-#   doc/        → documentación
-#   man/        → páginas del manual
-#   icons/      → iconos
-#   locale/     → traducciones
-#   applications/ → archivos .desktop
-# local/        → software compilado manualmente (ver más abajo)
-# src/          → código fuente (opcional)
-```
+# share/        → datos: doc, man, icons, locale, applications
+# local/        → software compilado manualmente (ver abajo)
 
-**`/usr/local/`** — El directorio más importante para el administrador. Aquí se instala software **compilado manualmente** (`./configure && make && sudo make install`) sin conflictos con el gestor de paquetes.
-
-```bash
-ls /usr/local/
-# bin/          → binarios instalados manualmente
-# lib/          → librerías instaladas manualmente
-# share/        → datos de programas manuales
-# etc/          → configuración de programas manuales
+ls /usr/local/                      # instalaciones manuales
+# bin/          → binarios compilados a mano
+# lib/, share/, etc/  → librerías, datos y config propia
 ```
 
 > El PATH típico en Linux es: `/usr/local/bin` → `/usr/bin` → `/bin`. Los programas en `/usr/local` tienen prioridad sobre los del sistema.
@@ -229,71 +198,33 @@ ls /usr/local/
 No existe físicamente en el disco. Es una interfaz virtual que el kernel expone para acceder a información de procesos y del sistema.
 
 ```bash
-cat /proc/cpuinfo         # información de la CPU
-cat /proc/meminfo         # memoria RAM detallada
-cat /proc/version         # versión del kernel
-cat /proc/uptime          # tiempo desde el arranque
-ls /proc/                 # cada número es un PID de un proceso en ejecución
-cat /proc/1/status        # información del proceso init (PID 1)
+cat /proc/cpuinfo                    # info de la CPU
+cat /proc/meminfo                    # memoria RAM detallada
+cat /proc/version                    # versión del kernel
+cat /proc/uptime                     # tiempo desde el arranque
+ls /proc/                            # cada número = PID de un proceso
+cat /proc/1/status                   # info del proceso init
+
+ls /sys/class/                       # clasificación de dispositivos
+cat /sys/class/backlight/*/brightness # brillo de pantalla
+ls /sys/block/                       # dispositivos de bloque
 ```
 
-Ver también [[Proc y Sys]] para más detalles.
-
-### `/sys` — Dispositivos y drivers
-
-Sistema de archivos virtual más moderno que `/proc` para información de dispositivos. Usado por `systemd`, `udev`, y herramientas de hardware.
+### `/tmp`, `/run`, `/mnt`, `/media`, `/opt`
 
 ```bash
-ls /sys/class/            # clasificación de dispositivos (backlight, net, sound...)
-cat /sys/class/backlight/*/brightness   # brillo de pantalla
-ls /sys/block/            # dispositivos de bloque (discos)
-```
+# /tmp → archivos temporales (tmpfs en RAM, se borran al reiniciar)
+df -h /tmp                             # tmpfs — normalmente la mitad de la RAM
 
-### `/tmp` — Archivos temporales
+# /run → sockets IPC, archivos PID, locks de servicios
+ls /run/                               # systemd/, docker.sock, lock/, user/
 
-Cualquier usuario puede escribir aquí. Los archivos se borran al reiniciar (en la mayoría de distros, tmpfs montado en RAM).
+# /mnt → montaje manual / /media → montaje automático
+sudo mount /dev/sdb1 /mnt              # montar manual
+sudo umount /mnt                       # desmontar
 
-```bash
-# El sistema lo monta como tmpfs (en RAM)
-df -h /tmp                # tmpfs — normalmente la mitad de la RAM
-# Útil para descargas rápidas, pero no guardar nada importante aquí
-```
-
-**⚠️**: No usar `/tmp` para cosas que necesites conservar. Usar `/var/tmp` si necesitas persistencia entre reinicios.
-
-### `/run` — Archivos de ejecución
-
-Reemplaza a `/var/run` en sistemas modernos. Contiene sockets IPC, archivos PID, locks de servicios.
-
-```bash
-ls /run/
-# systemd/        → sockets de systemd
-# docker.sock     → socket de Docker
-# lock/           → archivos de bloqueo
-# user/           → por usuario (UID)
-```
-
-### `/mnt` y `/media` — Puntos de montaje
-
-| Ruta | Cuándo usarla |
-|---|---|
-| `/media/` | Montaje **automático** (al insertar un USB, el sistema lo monta aquí) |
-| `/mnt/` | Montaje **manual** temporal (tú eliges: `sudo mount /dev/sdb1 /mnt`) |
-
-```bash
-sudo mount /dev/sdb1 /mnt            # montar manual
-sudo umount /mnt                     # desmontar
-```
-
-### `/opt` — Software de terceros
-
-Paquetes de software que no forman parte de la distribución (no gestionados por apt/pacman/dnf). Suelen tener su propio árbol dentro de `/opt/`.
-
-```bash
-ls /opt/
-# google/        → Google Chrome, Earth
-# intellij/      → IntelliJ IDEA
-# vivaldi/       → Vivaldi browser
+# /opt → software de terceros no gestionado por el gestor de paquetes
+ls /opt/                               # google/, intellij/, vivaldi/
 ```
 
 ### `/srv` — Servicios del sistema

@@ -134,69 +134,31 @@ chgrp grupo archivo           # cambiar solo el grupo
 
 ## Bits especiales: Sticky, SUID y SGID
 
-### Sticky bit (`+t` / `chmod 1xxx`)
-
-Cuando se aplica a un **directorio**, el sticky bit restringe la eliminación: solo el **propietario del archivo**, el **propietario del directorio** o **root** pueden borrar o renombrar archivos dentro de él, incluso si el directorio tiene permisos `777`.
+### Sticky, SUID y SGID — Bits especiales
 
 ```bash
-# /tmp es el ejemplo clásico: cualquiera puede escribir, pero no borrar archivos ajenos
-$ ls -ld /tmp
-drwxrwxrwt 7 root root 4096 jul 18 12:00 /tmp
+# ── Sticky bit (+t / 1xxx): solo el dueño elimina sus archivos ──
+chmod +t /compartido                     # activar
+chmod 1777 /tmp                          # sticky + 777 (/tmp es el ejemplo clásico)
+ls -ld /tmp                              # drwxrwxrwt
 
-# Activar/desactivar
-chmod +t /compartido
-chmod -t /compartido
-chmod 1777 /compartido    # sticky + 777
-```
-
-**Aplicaciones típicas:** `/tmp`, `/var/tmp`, directorios compartidos de proyectos.
-
----
-
-### SUID (Set User ID) — `u+s` / `chmod 4xxx`
-
-Un archivo ejecutable con SUID se ejecuta con los permisos de su **propietario** (no del usuario que lo ejecuta). Esto permite que usuarios normales hagan tareas privilegiadas sin necesidad de `sudo`.
-
-```bash
-# passwd necesita SUID para modificar /etc/shadow como root
-$ ls -l /usr/bin/passwd
--rwsr-xr-x 1 root root 51280 ene  1  2024 /usr/bin/passwd
-#          ↑
-#          la s en vez de x indica SUID
-
-# Aplicar SUID
+# ── SUID (u+s / 4xxx): se ejecuta como el dueño del archivo ──
+ls -l /usr/bin/passwd                    # -rwsr-xr-x (s en dueño = SUID)
 sudo chmod u+s /usr/bin/miprograma
-sudo chmod 4755 /usr/bin/miprograma    # 4xxx activa SUID
-```
+sudo chmod 4755 /usr/bin/miprograma      # SUID + rwxr-xr-x
+# Auditoría: find / -perm -4000 -type f 2>/dev/null
+#
+# ⚠️ Linux ignora SUID en scripts con shebang (#!/bin/bash, #!/usr/bin/python).
+# Solo binarios ELF compilados pueden tener SUID efectivo.
+# Si necesitas un script con privilegios, usa `sudo` con reglas en /etc/sudoers.
 
-⚠️ **Riesgo de seguridad:** Un SUID mal configurado permite escalar privilegios a root. Herramientas de auditoría como `sudo find / -perm -4000` listan todos los binarios SUID del sistema.
-
-> 🔒 **Nota importante:** Linux **ignora el bit SUID en scripts con shebang** (`#!/bin/bash`, `#!/usr/bin/python`, etc.). Solo los binarios ELF compilados (como `/usr/bin/passwd`) pueden tener SUID efectivo. El kernel descarta el SUID en scripts por seguridad — de lo contrario, cualquier script malicioso podría ejecutarse con privilegios elevados. Si necesitas un script con privilegios, usa `sudo` con reglas en `/etc/sudoers` en lugar de SUID.
-
----
-
-### SGID (Set Group ID) — `g+s` / `chmod 2xxx`
-
-En **archivos ejecutables**: el proceso se ejecuta con los permisos del **grupo** del archivo (análogo a SUID pero con el grupo).
-
-En **directorios** (uso más común): los archivos nuevos creados dentro heredan el **grupo del directorio**, no el grupo primario del usuario que los crea.
-
-```bash
-# Caso típico: directorio compartido donde todos los archivos deben pertenecer al mismo grupo
+# ── SGID (g+s / 2xxx): heredar grupo del directorio ──
 sudo mkdir -p /var/www/proyecto
 sudo chgrp www-data /var/www/proyecto
-sudo chmod g+s /var/www/proyecto    # nuevos archivos → grupo www-data
-sudo chmod 2775 /var/www/proyecto   # SGID + rwxrwxr-x
-
-# Verificar
-$ ls -ld /var/www/proyecto
-drwxrwsr-x 2 root www-data 4096 jul 18 12:00 /var/www/proyecto
-#          ↑
-#          la s en grupo indica SGID
-
-# Activar/desactivar
-chmod g+s directorio/
-chmod g-s directorio/
+sudo chmod g+s /var/www/proyecto         # nuevos archivos → grupo www-data
+sudo chmod 2775 /var/www/proyecto        # SGID + rwxrwxr-x
+ls -ld /var/www/proyecto                 # drwxrwsr-x (s en grupo = SGID)
+chmod g-s directorio/                    # desactivar
 ```
 
 ---
@@ -210,10 +172,9 @@ chmod g-s directorio/
 | **Sticky** | `+t` | 1xxx | (sin efecto en Linux) | Solo el dueño puede eliminar sus archivos |
 
 ```bash
-# Buscar todos los binarios SUID/SGID del sistema
-sudo find / -perm -4000 -type f 2>/dev/null    # solo SUID
-sudo find / -perm -2000 -type f 2>/dev/null    # solo SGID
-sudo find / -perm /6000 -type f 2>/dev/null    # ambos
+sudo find / -perm -4000 -type f 2>/dev/null    # buscar SUID
+sudo find / -perm -2000 -type f 2>/dev/null    # buscar SGID
+sudo find / -perm /6000 -type f 2>/dev/null    # ambos combinados
 ```
 
 ---
@@ -289,55 +250,26 @@ getfacl archivo.txt
 # other::---
 ```
 
-### Comandos principales
+### Comandos, máscara y recetas prácticas
 
 ```bash
-# Asignar permisos a un usuario específico
-setfacl -m u:maria:rwx archivo.txt     # maria obtiene rwx
+# ── Asignar permisos con ACL ──
+setfacl -m u:maria:rwx archivo.txt       # maria obtiene rwx
+setfacl -m g:desarrolladores:rw archivo.txt  # grupo obtiene rw
+setfacl -x u:maria archivo.txt           # quitar entrada
+setfacl -b archivo.txt                   # quitar TODAS las ACLs
 
-# Asignar permisos a un grupo específico
-setfacl -m g:desarrolladores:rw archivo.txt
-
-# Quitar una entrada ACL
-setfacl -x u:maria archivo.txt
-
-# Copiar ACLs de un archivo a otro
+# ── Copiar ACLs ──
 getfacl modelo.txt | setfacl --set-file=- destino.txt
 
-# ACLs recursivas (directorios)
-setfacl -R -m u:maria:rwx directorio/
+# ── ACLs recursivas y por defecto ──
+setfacl -R -m u:invitado:rx directorio/               # recursivo
+setfacl -d -m g:desarrolladores:rw directorio/         # archivos nuevos heredan
 
-# ACLs por defecto (los archivos nuevos heredan)
-setfacl -d -m g:desarrolladores:rw directorio/
-```
-
-### Máscara ACL
-
-La **máscara** limita los permisos máximos que pueden tener las entradas de usuarios y grupos adicionales (excepto el dueño y `other`). Si cambias permisos con `chmod` en un archivo con ACLs, la máscara se recalcula automáticamente.
-
-```bash
-# Ver máscara actual
-getfacl archivo.txt | grep mask
-
-# Forzar máscara (recorta permisos de todas las entradas ACL)
-setfacl -m m::rx archivo.txt    # ninguno de los usuarios/grupos extra puede tener más que rx
-
-# ⚠️ Si haces chmod en un archivo con ACLs, la máscara se actualiza:
-chmod 644 archivo.txt   # recalcula la máscara a r--
-```
-
-### Recetas prácticas con ACLs
-
-```bash
-# Compartir carpeta con un usuario específico
-sudo setfacl -R -m u:invitado:rx /home/carlos/compartido
-sudo setfacl -R -dm u:invitado:rx /home/carlos/compartido   # archivos nuevos heredan
-
-# Dar acceso a un grupo en /var/www sin mover el usuario de grupo
-setfacl -R -m g:www-data:rx /home/desarrollador/sitio
-
-# Quitar todas las ACLs
-setfacl -b archivo.txt
+# ── Máscara ACL (limita el máximo permiso de entradas extra) ──
+getfacl archivo.txt | grep mask                        # ver máscara
+setfacl -m m::rx archivo.txt                           # forzar máscara
+# ⚠️ chmod en archivo con ACLs recalcula la máscara automáticamente
 ```
 
 ---
@@ -392,106 +324,60 @@ lsattr -R /etc/                     # todos los archivos en /etc
 
 SSH es muy estricto con los permisos de su directorio de configuración:
 
-> 🔒 **Hardening adicional:** Puedes proteger `~/.ssh/authorized_keys` con `chattr +i` para evitar que malware o configuraciones maliciosas añadan claves:
+```bash
+chmod 700 ~/.ssh                          # directorio: solo dueño
+chmod 600 ~/.ssh/id_ed25519               # clave privada: solo dueño
+chmod 644 ~/.ssh/id_ed25519.pub           # clave pública: lectura
+chmod 644 ~/.ssh/authorized_keys          # claves autorizadas
+chmod 644 ~/.ssh/config                   # configuración
+# Error típico: Permissions 0644 for 'id_rsa' are too open.
+```
+
+> 🔒 **Hardening:** Puedes proteger `~/.ssh/authorized_keys` con `chattr +i` para evitar modificaciones no autorizadas:
 > ```bash
-> sudo chattr +i ~/.ssh/authorized_keys   # nadie puede modificar (ni root)
-> # Antes de añadir una clave nueva legítima:
+> sudo chattr +i ~/.ssh/authorized_keys   # proteger (ni root puede tocarlo)
+> # Antes de añadir una clave nueva, quitar y re-aplicar:
 > sudo chattr -i ~/.ssh/authorized_keys
 > ssh-copy-id servidor
 > sudo chattr +i ~/.ssh/authorized_keys
 > ```
 
-```bash
-# Permisos correctos para SSH
-chmod 700 ~/.ssh                  # directorio: solo dueño (rwx------)
-chmod 600 ~/.ssh/id_ed25519       # clave privada: solo dueño (rw-------)
-chmod 600 ~/.ssh/id_rsa
-chmod 644 ~/.ssh/id_ed25519.pub   # clave pública: lectura para todos
-chmod 644 ~/.ssh/authorized_keys  # claves autorizadas (lectura, no escritura)
-chmod 644 ~/.ssh/config           # configuración SSH
-chmod 644 ~/.ssh/known_hosts      # hosts conocidos
-
-# Error típico: SSH se niega a usar una clave privada con permisos demasiado abiertos
-# $ ssh -i ~/.ssh/id_rsa servidor
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-# Permissions 0644 for 'id_rsa' are too open.
-```
-
 ### 2. `/etc/shadow` — contraseñas de usuarios
 
 ```bash
-# Solo root puede leer el hash de contraseñas
-$ ls -l /etc/shadow
--rw-r----- 1 root shadow 1234 jul 18 10:00 /etc/shadow
-
-# /etc/passwd (legible por todos) contiene los nombres de usuario
-$ ls -l /etc/passwd
--rw-r--r-- 1 root root 2345 jul 18 10:00 /etc/passwd
-
-# ⚠️ Si /etc/shadow tuviera permisos 644, cualquier usuario podría
-# extraer los hashes de contraseñas y crackearlos offline.
+ls -l /etc/shadow                         # -rw-r----- root shadow
+ls -l /etc/passwd                         # -rw-r--r-- root root
+# ⚠️ shadow debe ser 640 — si fuera 644, cualquiera podría leer hashes
 ```
 
-### 3. `/usr/bin/passwd` — el SUID clásico
+### 3. `/usr/bin/passwd` — SUID en acción
 
 ```bash
-$ ls -l /usr/bin/passwd
--rwsr-xr-x 1 root root 51280 ene  1  2024 /usr/bin/passwd
-#  ↑
-#  SUID: se ejecuta como root aunque lo ejecute un usuario normal
-
-# Esto permite que cualquier usuario cambie su contraseña:
-$ passwd                                  # se ejecuta como root gracias al SUID
-# Changing password for carlos.
-# Current password:
-# (passwd modifica /etc/shadow como root, no como carlos)
+ls -l /usr/bin/passwd                     # -rwsr-xr-x (SUID activo)
+# passwd se ejecuta como root aunque lo ejecute un usuario normal
 ```
 
-### 4. Archivos de logs (`/var/log/`)
+### 4. Logs (`/var/log/`) — grupos de lectura
 
 ```bash
-# Los logs suelen ser solo lectura para grupos específicos
-$ ls -la /var/log/
-drwxr-x---  2 root     adm      4096 jul 18 12:00 apache2
--rw-r-----  1 syslog   adm     12345 jul 18 12:00 syslog
--rw-rw----  1 root     utmp     1024 jul 18 12:00 wtmp
-
-# Para leer logs sin ser root:
+ls -la /var/log/                          # logs: solo lectura para adm/journal
 sudo usermod -aG adm $USER                # grupo adm (Debian/Ubuntu)
 sudo usermod -aG systemd-journal $USER    # grupo journal
-# (requiere cerrar sesión y volver a entrar)
 ```
 
-### 5. SUID malicioso — cómo auditar tu sistema
+### 5. Auditar SUID/SGID en tu sistema
 
 ```bash
-# Encontrar todos los binarios con SUID (potencial riesgo de seguridad)
-find / -perm -4000 -type f 2>/dev/null
-
-# Lo mismo con SGID
-find / -perm -2000 -type f 2>/dev/null
-
-# Comparar contra una línea base para detectar cambios (útil como script de auditoría)
-# Guardar línea base después de una instalación limpia:
-find / -perm -4000 -type f 2>/dev/null | sort > suid-baseline.txt
-# Luego, en auditorías:
-find / -perm -4000 -type f 2>/dev/null | sort | diff - suid-baseline.txt
+find / -perm -4000 -type f 2>/dev/null | sort > suid-baseline.txt  # línea base
+find / -perm -4000 -type f 2>/dev/null | sort | diff - suid-baseline.txt  # auditoría
 ```
 
-### 6. Directorio `/tmp` con Sticky bit
+### 6. `/tmp` y el Sticky bit
 
 ```bash
-$ ls -ld /tmp
-drwxrwxrwt 7 root root 4096 jul 18 12:00 /tmp
-
-# Cualquiera puede crear archivos en /tmp:
-$ touch /tmp/prueba.txt
-
-# Pero nadie puede borrar archivos de otros:
-$ rm /tmp/archivo-de-otro-usuario
-rm: remove write-protected regular file '/tmp/archivo-de-otro-usuario'? y
-rm: cannot remove '/tmp/archivo-de-otro-usuario': Operation not permitted
+ls -ld /tmp                               # drwxrwxrwt (sticky activo)
+touch /tmp/prueba.txt                     # cualquiera crea archivos
+rm /tmp/archivo-ajeno                     # pero no puede borrar los de otros (Operation not permitted)
 ```
 
 ---

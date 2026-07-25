@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-25 (sesión expansiones + enlaces externos)
+> Última actualización: 2026-07-25 (sesión revisión TODO.md post-auditoría)
 
 ---
 
@@ -152,6 +152,20 @@ prioridad: alta
 | ✅ | Fedora, CentOS, Rocky, EndeavourOS, Manjaro, Arch | Sitios oficiales, Wikipedia, Arch Wiki, foros, GitHub |
 | ✅ | jq, Nextcloud, Podman, Motif | Sitios oficiales, GitHub, Wikipedia, documentación |
 
+### ✅ Alta prioridad completada — Sesión 2026-07-25
+
+| Completado | Nota | Categoría | Contenido |
+|---|---|---|---|
+| ✅ | [[Entorno de desarrollo Linux]] | 08 - Programas | Toolchain completo por lenguaje, contenedores para desarrollo |
+| ✅ | [[Contenedores orquestación]] | 01 - Conceptos | Docker Compose, Swarm, K8s, árbol de decisión |
+| ✅ | [[Optimización de rendimiento]] | 01 - Conceptos | Tuning de kernel, sysctl, límites de recursos, perfiles por uso |
+
+### 🗒️ Nota nueva — Sesión 2026-07-25
+
+| Completado | Nota | Archivo | Contenido |
+|---|---|---|---|
+| ✅ | [[xh]] | 08 - Programas y Herramientas | Cliente HTTP Rust, binario estático, sintaxis httpie-compatible, flag --curl |
+
 ### 🐛 Bugs corregidos — Sesión 2026-07-25
 
 | Completado | Fix | Archivo |
@@ -165,14 +179,6 @@ prioridad: alta
 
 ## 🎯 PRÓXIMOS PASOS
 
-### 🔴 Prioridad alta
-
-| Tarea | Detalle | Estado |
-|---|---|---|
-| `Entorno de desarrollo Linux.md` | 08 - Programas — guía práctica de stacks (Python, Node, C/C++, Rust) | ✅ completado |
-| `Contenedores orquestación.md` | concepto — Docker Compose, Swarm, K8s, árbol de decisión | ✅ completado |
-| `Optimización de rendimiento.md` | concepto — tuning de kernel, sysctl, límites de recursos | ✅ completado |
-
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
@@ -185,34 +191,66 @@ prioridad: alta
 
 | Tarea | Detalle | Estado |
 |---|---|---|
-| Crea nota xh.md | Alternativa Rust a httpie (resolver wikilink roto) | ⚪ pendiente |
-| Unificar bloques de código sueltos | Agrupar en un solo bloque por sección | ⚪ pendiente |
-| Expandir Motif.md | ~50 → ~100 líneas | ⚪ pendiente |
+| ~~Crea nota xh.md~~ | Alternativa Rust a httpie (resolver wikilink roto) | ✅ ya creada (sesión auditoría) |
+| Unificar bloques de código sueltos | Fedora, NixOS, GitHub CLI, FHS, DNS, Sistemas de Archivos, Permisos | ✅ completado |
+| Expandir Motif.md | ~50 → ~100 líneas | ✅ completado |
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (reales — 2026-07-25)
+### 📝 Expansión de notas — Sesión 2026-07-25 (v3)
+
+| Completado | Nota | Antes | Después | Mejoras clave |
+|---|---|---|---|---|
+| ✅ | [[Motif]] | ~50 | **~110** | Historia CDE, Motif 2.1 vs 3.x, instalación, bindings Python/Rust |
+| ✅ | [[Alpine Linux]] | ~92 | **~190** | apk avanzado, OpenRC, musl vs glibc, Docker/container, multi-stage |
+| ✅ | [[Linux Lite]] | ~82 | **~165** | 6 herramientas propias, tabla equivalencias Windows, comparativa Zorin/Mint/LXLE |
+| ✅ | [[openSUSE]] | ~101 | **~175** | YaST módulos, Zypper avanzado, Tumbleweed vs Leap, OBS/osc, Snapper+Btrfs, Aeon/Kalpa |
+| ✅ | [[Versiones de Debian]] | ~103 | **~195** | Timeline releases, LTS/ELTS, freeze process, Toy Story naming, stable/testing/unstable |
+| ✅ | [[Peppermint OS]] | ~61 | **~115** | SSBs/Ice framework, requisitos HW, Pep Tools, edición Loaded, comparativa alternativas |
+
+### 🆕 Notas nuevas — Sesión 2026-07-25 (v3)
+
+| Completado | Nota | Categoría | Contenido |
+|---|---|---|---|
+| ✅ | [[GTK]] | programa | Historia, GTK3 vs GTK4, instalación, hello world C, comparativa con Qt, troubleshooting |
+| ✅ | [[Qt]] | programa | Historia, Qt5 vs Qt6, instalación, hello world C++/CMake, MOC, comparativa con GTK, troubleshooting |
+
+### 🔧 Unificación de bloques de código — Sesión 2026-07-25 (v3)
+
+| Completado | Nota | Bloques originales | Bloques tras unificar |
+|---|---|---|---|
+| ✅ | [[Fedora]] | 5 separados (dnf, rpm, RPM Fusion, COPR, upgrade) | 1 con comentarios de sección |
+| ✅ | [[NixOS]] | 5 pares consecutivos (nix+bash) | 4 unificados con comentarios `#` |
+| ✅ | [[GitHub CLI (gh)]] | ~27 minibloques | ~10 por tema (PRs, Issues, Actions, Releases...) |
+| ✅ | [[Sistemas de Archivos]] | ~12 bloques | ~5 (ext4, Btrfs, XFS, ZFS, crear+fsck+UUID) |
+| ✅ | [[Permisos y Propietarios]] | ~15 bloques | ~5 (sticky/SUID/SGID, ACLs, casos prácticos) |
+| ✅ | [[FHS]] | ~10 bloques | ~5 (etc, var, usr, proc+sys, tmp+run+mnt+opt) |
+| ✅ | [[DNS y BIND]] | ~8 bloques | ~4 (host+nslookup, hosts+resolv.conf, resolved+NSSwitch, verificación) |
+
+---
+
+## 📊 ESTADÍSTICAS DEL VAULT (reales — vault-stats.sh 2026-07-25)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **357** (+ 7 templates) |
-| **Estado resuelto** | 352 |
+| **Notas totales** | **360** (+ 7 templates) |
+| **Estado resuelto** | 355 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
-| **Estado borrador** | 1 (Log.md contiene la palabra en su texto) |
+| **Estado borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
 | **Prioridad alta** | 168 |
-| **Prioridad media** | 117 |
-| **Prioridad baja** | 67 |
+| **Prioridad media** | 119 |
+| **Prioridad baja** | 70 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 93 | **Comando** | 83 |
-| **Concepto** | 38 | **Distribución** | 41 |
+| **Programa** | 96 | **Comando** | 83 |
+| **Concepto** | 38 | **Distribución** | 42 |
 | **Sistema** | 30 | **Entorno / WM** | 29 |
-| **Troubleshooting** | 16 | **Índice** | 12 |
+| **Troubleshooting** | 17 | **Índice** | 12 |
 | **Instalación** | 9 | **Terminal** | 4 |
-| **Automatización** | 3 | **Log** | 1 |
+| **Automatización** | 4 | **Log** | 2 |
 
 ### Por carpeta (real)
 
@@ -222,8 +260,8 @@ prioridad: alta
 | 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 30 |
 | 04 - Entornos de Escritorio | 15 | 05 - Gestores de Ventanas | 13 |
 | 06 - La Terminal | 4 | 07 - Comandos Esenciales | 82 |
-| 08 - Programas y Herramientas | 92 | 09 - Solucion de Problemas | 16 |
-| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 42 |
+| 08 - Programas y Herramientas | 94 | 09 - Solucion de Problemas | 16 |
+| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 43 |
 
 ---
 
@@ -233,7 +271,8 @@ prioridad: alta
 - Las notas existentes NO se migraron automáticamente a las nuevas plantillas — se expandirán progresivamente según prioridad.
 - **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro histórico detallado de todas las sesiones.
 - Sesión 2026-07-24: 14 notas TUI (1 guía + 13 específicas) + 3 notas planificadas (Regex, Vim, systemd).
-- Sesión 2026-07-25: 6 notas alta prioridad (ripgrep, tree, procs, doggo, bandwhich, fx), 5 expandidas (ctop, httpie, fd-find, fzf, nala), enlaces externos a 10 notas.
+- Sesión 2026-07-25 (v2): 6 notas alta prioridad, 5 expandidas, enlaces externos, +3 alta prioridad completada, +xh.md creada, TODO.md actualizado con stats correctas (vault-stats.sh)
+- Sesión 2026-07-25 (v3): 6 distros expandidas (Motif, Alpine, Linux Lite, openSUSE, Versiones Debian, Peppermint OS), 2 notas nuevas (GTK, Qt), 7 notas con bloques de código unificados (Fedora, NixOS, gh CLI, FHS, DNS, Sistemas Archivos, Permisos), MoC actualizado
 
 ---
 

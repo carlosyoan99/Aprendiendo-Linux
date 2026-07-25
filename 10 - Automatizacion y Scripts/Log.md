@@ -383,4 +383,35 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Observación**: `core.hooksPath` en `.git/config` usa una ruta absoluta (`/home/carlos/Documentos/...`) — es config local no versionada así que no rompe para otros, pero se rompe si mueves/renombras la carpeta del vault en tu propia máquina. Considera `git config core.hooksPath .githooks` (relativo) para portabilidad.
 - Verificado: `check-frontmatter.sh` → 358/358 OK. `find-orphans.sh` → 0 huérfanas reales tras el fix.
 
+## 2026-07-25 (v3) — Expansiones, unificación de bloques, GTK+Qt, MoC
+
+### 📝 6 notas expandidas
+- **Motif.md**: ~50 → ~110 líneas. Historia CDE, Motif 2.1 vs 3.x, instalación, bindings Python/Rust.
+- **Alpine Linux.md**: ~92 → ~190 líneas. apk avanzado, OpenRC, musl vs glibc, Docker containers, multi-stage builds.
+- **Linux Lite.md**: ~82 → ~165 líneas. 6 herramientas propias (Lite Welcome, Lite Tweaks, Lite Software, etc.), tabla equivalencias Windows, comparativa Zorin/Mint/LXLE.
+- **openSUSE.md**: ~101 → ~175 líneas. YaST módulos detallados, Zypper avanzado, Tumbleweed vs Leap, OBS/osc, Snapper+Btrfs, Aeon/Kalpa immutable.
+- **Versiones de Debian.md**: ~103 → ~195 líneas. Timeline releases con fechas precisas, LTS/ELTS, freeze process, Toy Story naming, ramas stable/testing/unstable.
+- **Peppermint OS.md**: ~61 → ~115 líneas. SSBs/Ice framework con ejemplos, requisitos hardware, Pep Tools, edición Loaded, comparativa alternativas ligeras.
+
+### 🆕 2 notas nuevas
+- **GTK.md**: Historia, GTK3 vs GTK4, instalación, hello world C, comparativa con Qt, troubleshooting.
+- **Qt.md**: Historia, Qt5 vs Qt6, instalación, hello world C++/CMake, MOC, comparativa con GTK, troubleshooting.
+
+### 🔧 7 notas con bloques de código unificados
+- **Fedora.md**: 5 bloques → 1 con comentarios de sección.
+- **NixOS.md**: 5 pares nix+bash → 4 unificados con comentarios `#`.
+- **GitHub CLI (gh).md**: ~27 minibloques → ~10 por tema.
+- **Sistemas de Archivos.md**: ~12 bloques → ~5 (ext4, Btrfs, XFS, ZFS, crear+fsck).
+- **Permisos y Propietarios.md**: ~15 bloques → ~5 (bits especiales, ACLs, casos prácticos).
+- **FHS.md**: ~10 bloques → ~5 (etc, var, usr, proc+sys, tmp+run+mnt+opt).
+- **DNS y BIND.md**: ~8 bloques → ~4 (host+nslookup, hosts+resolv.conf, resolved+NSSwitch, verificación).
+
+### 🏗️ MoC actualizado
+- [[GTK]] · [[Qt]] añadidos en Programas comunes (toolkits de interfaz gráfica).
+
+### 📊 Stats
+- **Vault: 360 notas (+2).** Programa: 94→96. Distribución: 41→43. 08 - Programas: 92→94. 11 - Distribuciones: 42→43.
+- **Nuevos archivos**: GTK.md, Qt.md.
+- **Bloques bash totales reducidos**: ~100 bloques sueltos eliminados.
+
 #log
