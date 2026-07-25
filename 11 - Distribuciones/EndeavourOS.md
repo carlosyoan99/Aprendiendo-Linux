@@ -76,6 +76,13 @@ yay -Syu                                 # actualizar sistema + AUR
 | **Complejidad** | Alta | Baja-Media | Baja |
 | **Ideal para** | Usuarios avanzados | Entusiastas de Arch | Usuarios que quieren rolling estable |
 
+## Enlaces externos
+
+- [Sitio oficial de EndeavourOS](https://endeavouros.com/)
+- [Foro de EndeavourOS](https://forum.endeavouros.com/)
+- [Wikipedia — EndeavourOS](https://en.wikipedia.org/wiki/EndeavourOS)
+- [GitHub — EndeavourOS](https://github.com/endeavouros-team/)
+
 ## Ver también
 
 - [[Arch Linux]] — base del sistema

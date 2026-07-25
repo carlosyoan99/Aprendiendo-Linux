@@ -290,6 +290,13 @@ pacman-mirrors --fasttrack            # seleccionar mirrors rápidos
 pacman-mirrors --country Argentina    # mirrors por país
 ```
 
+## Enlaces externos
+
+- [Sitio oficial de Manjaro](https://manjaro.org/)
+- [Wikipedia — Manjaro](https://en.wikipedia.org/wiki/Manjaro)
+- [Foro de Manjaro](https://forum.manjaro.org/)
+- [Arch Wiki — Manjaro](https://wiki.archlinux.org/title/Manjaro)
+
 ## Ver también
 
 - [[Arch Linux]] — la base

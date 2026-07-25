@@ -88,6 +88,15 @@ sudo dnf system-upgrade reboot
 
 -
 
+## Enlaces externos
+
+- [Sitio oficial de Fedora](https://fedoraproject.org/)
+- [Fedora Spins (ediciones alternativas)](https://spins.fedoraproject.org/)
+- [Wikipedia — Fedora Linux](https://en.wikipedia.org/wiki/Fedora_Linux)
+- [Arch Wiki — Fedora](https://wiki.archlinux.org/title/Fedora)
+- [RPM Fusion](https://rpmfusion.org/)
+- [Fedora Copr](https://copr.fedorainfracloud.org/)
+
 ## Ver también
 
 - [[Rocky Linux]] — clon de RHEL, derivado indirecto de Fedora

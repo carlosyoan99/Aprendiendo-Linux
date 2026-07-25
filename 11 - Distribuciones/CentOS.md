@@ -101,6 +101,13 @@ Tras el anuncio de 2020, la comunidad creó dos forks principales:
 # - Procesador: x86_64
 ```
 
+## Enlaces externos
+
+- [Sitio oficial de CentOS](https://www.centos.org/)
+- [CentOS Stream](https://www.centos.org/centos-stream/)
+- [Wikipedia — CentOS](https://en.wikipedia.org/wiki/CentOS)
+- [Arch Wiki — CentOS](https://wiki.archlinux.org/title/CentOS)
+
 ## Ver también
 
 - [[Rocky Linux]] — sucesor directo de CentOS

@@ -104,6 +104,15 @@ Rolling release — no hay "versiones" discretas. Se instala una vez y se actual
 
 -
 
+## Enlaces externos
+
+- [Sitio oficial de Arch Linux](https://archlinux.org/)
+- [Arch Wiki](https://wiki.archlinux.org/) — la mejor documentación de Linux
+- [Wikipedia — Arch Linux](https://en.wikipedia.org/wiki/Arch_Linux)
+- [Arch User Repository (AUR)](https://aur.archlinux.org/)
+- [Arch Linux Package Search](https://archlinux.org/packages/)
+- [Guía de instalación](https://wiki.archlinux.org/title/Installation_guide)
+
 ## Ver también
 
 - [[CachyOS]] — Arch optimizado para rendimiento con instalador gráfico

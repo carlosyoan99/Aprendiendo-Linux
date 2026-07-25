@@ -87,6 +87,13 @@ Releases mayores cada ~3 años, con ~10 años de soporte completo (más 5 adicio
 
 -
 
+## Enlaces externos
+
+- [Sitio oficial de Rocky Linux](https://rockylinux.org/)
+- [Wikipedia — Rocky Linux](https://en.wikipedia.org/wiki/Rocky_Linux)
+- [Rocky Linux Wiki](https://docs.rockylinux.org/)
+- [Migrate2Rocky (desde CentOS)](https://github.com/rocky-linux/rocky-tools/tree/main/migrate2rocky)
+
 ## Ver también
 
 - [[Fedora]] — upstream de RHEL/Rocky
