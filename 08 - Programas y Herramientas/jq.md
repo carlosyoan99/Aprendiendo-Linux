@@ -46,6 +46,13 @@ curl -s https://api.github.com/users/octocat/repos | jq '.[0].name'
 curl -s https://api.github.com/users/octocat/repos | jq '.[] | select(.fork == false) | .name'
 ```
 
+## Enlaces externos
+
+- [Sitio oficial de jq](https://jqlang.github.io/jq/)
+- [GitHub — jqlang/jq](https://github.com/jqlang/jq)
+- [jq play (entorno interactivo)](https://jqplay.org/)
+- [Arch Wiki — Jq](https://wiki.archlinux.org/title/Jq)
+
 ## Ver también
 
 - [[curl]] — cliente HTTP (a menudo pipeado a jq)
@@ -53,12 +60,5 @@ curl -s https://api.github.com/users/octocat/repos | jq '.[] | select(.fork == f
 - [[grep]] — búsqueda clásica en texto
 - [[fx]] — visor JSON interactivo
 - APIs REST
-
-## Enlaces externos
-
-- [Sitio oficial de jq](https://jqlang.github.io/jq/)
-- [GitHub — jqlang/jq](https://github.com/jqlang/jq)
-- [jq play (entorno interactivo)](https://jqplay.org/)
-- [Arch Wiki — Jq](https://wiki.archlinux.org/title/Jq)
 
 #programa #herramientas #json
