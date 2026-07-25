@@ -65,7 +65,7 @@ categoria: indice
 
 ## Entornos gráficos
 - [[GNOME]] · [[KDE Plasma]] · [[XFCE]] · [[Cinnamon]]
-- [[MATE]] · [[Budgie]] · [[LXQt]] · [[Deepin]] · [[Pantheon]] · [[Enlightenment]]
+- [[MATE]] · [[Budgie]] · [[LXDE]] · [[LXQt]] · [[Deepin]] · [[Pantheon]] · [[Enlightenment]]
 - [[Sugar]] · [[Trinity]]
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico
 - [[Desktop Shells (Noctalia Caelestia)]]
