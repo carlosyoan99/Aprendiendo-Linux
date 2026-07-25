@@ -450,6 +450,18 @@ fd                                   # búsqueda rápida de archivos ✅ nota ex
 bat                                  # cat con syntax highlighting (moderno)
 procs                                # ps moderno con árbol
 doggo                                # dig moderno con colores
+ripgrep (rg)                         # grep moderno (más rápido, regex por defecto)
+```
+
+**ripgrep (rg)** — grep moderno escrito en Rust. Busca recursivamente respetando `.gitignore` por defecto. Mucho más rápido que `grep -r`:
+
+```bash
+sudo apt install ripgrep             # instalación
+rg "patrón" .                        # buscar recursivo (respeta .gitignore)
+rg -i "error" src/                   # case-insensitive
+rg -l "TODO" --type py               # solo archivos .py con TODO
+rg -C 3 "function" src/              # 3 líneas de contexto
+rg "patrón" --no-ignore              # ignorar .gitignore
 ```
 
 **bat** — cat con esteroides:
@@ -512,6 +524,7 @@ curl api.example.com | fx           # pipe de API
 | **ncdu** / **gdu** | `du -sh` | Explorar disco interactivamente |
 | **fzf** | Búsqueda manual | Búsqueda difusa en cualquier lista |
 | **fd-find** | `find` | Búsqueda de archivos más rápida e intuitiva |
+| **ripgrep** | `grep -r` | grep recursivo 10× más rápido, .gitignore-aware |
 
 ### 🟡 Muy recomendados
 
@@ -683,7 +696,7 @@ if ! dpkg -l | grep -q docker-ce; then
     sudo apt update
 fi
 
-sudo apt install -y lazydocker dive
+sudo apt install -y lazydocker dive || true
 sudo snap install ctop
 
 echo "✅ TUIs de contenedores instaladas."
@@ -704,14 +717,14 @@ MODE="${1:-menu}"
 instalar_essentials() {
     echo "🟢 Instalando esenciales..."
     sudo apt install -y htop bottom ncdu duf bat lazygit tig \
-        git-delta fzf fd-find ripgrep tree jq tmux zellij glow
+        git-delta fzf fd-find ripgrep tree jq tmux zellij glow || true
     echo "✅ Esenciales listos"
 }
 
 instalar_recomendados() {
     echo "🟡 Instalando recomendados..."
     sudo apt install -y btop glances gdu broot gitui trippy \
-        bmon nethogs cmus chafa timg newsboat doggo httpie
+        bmon nethogs cmus chafa timg newsboat doggo httpie || true
     echo "✅ Recomendados listos"
 }
 
@@ -719,8 +732,8 @@ instalar_todo() {
     instalar_essentials
     instalar_recomendados
     echo "🔴 Instalando opcionales..."
-    sudo apt install -y nvtop duf micro weechat irssi aerc \
-        neomutt slides screen bandwhich termshark oha cava
+    sudo apt install -y nvtop micro weechat irssi aerc \
+        neomutt slides screen bandwhich termshark oha cava || true
     echo "✅ Todo listo"
 }
 
@@ -729,7 +742,8 @@ case "$MODE" in
     full)        instalar_essentials; instalar_recomendados ;;
     all)         instalar_todo ;;
     containers)  echo "🐳 Instalando TUIs de contenedores...";
-                 sudo apt install -y lazydocker dive;;
+                 sudo apt install -y lazydocker dive || true
+                 sudo snap install ctop 2>/dev/null || echo "⚠️  ctop no disponible vía snap";;
     menu|*)
         echo "╔══════════════════════════════╗"
         echo "║   🚀 Instalador Masivo TUI   ║"
@@ -745,7 +759,8 @@ case "$MODE" in
             1) instalar_essentials ;;
             2) instalar_essentials; instalar_recomendados ;;
             3) instalar_todo ;;
-            4) sudo apt install -y lazydocker dive;;
+            4) sudo apt install -y lazydocker dive || true
+               sudo snap install ctop 2>/dev/null || echo "⚠️  ctop no disponible vía snap";;
             *) echo "Hasta luego! 👋"; exit 0;;
         esac
         ;;
