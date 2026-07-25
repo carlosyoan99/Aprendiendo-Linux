@@ -65,10 +65,10 @@ categoria: indice
 ## Entornos gráficos
 - [[GNOME]] · [[KDE Plasma]] · [[XFCE]] · [[Cinnamon]]
 - [[MATE]] · [[Budgie]] · [[LXQt]] · [[Deepin]] · [[Pantheon]] · [[Enlightenment]]
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
 - [[Sugar]] · [[Trinity]]
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico
 - [[Desktop Shells (Noctalia Caelestia)]]
+- [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
 - [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Niri]] · [[River]]
 - [[bspwm]] · [[Sway]] · [[qtile]] · [[Openbox]] · [[Fluxbox]] · [[spectrwm]]

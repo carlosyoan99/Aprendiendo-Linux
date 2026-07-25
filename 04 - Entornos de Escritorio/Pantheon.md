@@ -109,7 +109,7 @@ yay -S pantheon
 - [[GNOME]] — base técnica (Mutter, GTK)
 - [[Budgie]] — DE moderno alternativo
 - [[KDE Plasma]] — DE completo Qt
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 
 ## Enlaces externos
 

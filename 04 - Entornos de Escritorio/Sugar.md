@@ -142,7 +142,7 @@ Implementación portable de Sugar diseñada para ejecutarse desde un pendrive US
 
 ## Ver también
 
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]] — nota combinada con otras DEs
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 - [[GNOME]] — DE moderno por defecto
 - [[XFCE]] — DE ligero generalista
 - [[Videojuegos en Linux]] — otras aplicaciones educativas en Linux

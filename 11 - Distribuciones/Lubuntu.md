@@ -79,7 +79,7 @@ sudo dd if=lubuntu.iso of=/dev/sdX bs=4M status=progress
 ## Ver también
 
 - [[Ubuntu]] — distribución base
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)|LXQt]] — escritorio por defecto
+- [[LXQt]] — escritorio por defecto
 - [[XFCE]] — alternativa ligera similar
 - [[Linux Lite]] — otra distro ligera para Windows refugees
 - [[MX Linux]] — distro ligera basada en Debian

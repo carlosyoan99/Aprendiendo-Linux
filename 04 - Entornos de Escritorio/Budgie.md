@@ -102,7 +102,7 @@ budgie-desktop-settings
 - [[GNOME]] — base técnica (Mutter, GTK)
 - [[Solus]] — distro donde nació Budgie
 - [[XFCE]] — alternativa ligera
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 
 ## Enlaces externos
 

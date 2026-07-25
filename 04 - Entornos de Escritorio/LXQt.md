@@ -98,7 +98,7 @@ lxqt-config-globalkeyshortcuts
 - [[MATE]] — alternativa más completa
 - [[Openbox]] — WM por defecto de LXQt
 - [[KDE Plasma]] — DE Qt completo (LXQt es primo ligero de Plasma)
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 
 ## Enlaces externos
 

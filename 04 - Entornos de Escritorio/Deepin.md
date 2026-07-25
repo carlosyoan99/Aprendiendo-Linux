@@ -118,7 +118,7 @@ sudo zypper install -t pattern deepin
 - [[KDE Plasma]] — DE Qt completo y personalizable
 - [[GNOME]] — DE moderno alternativo
 - [[Pantheon]] — DE con diseño cuidado (elementary OS)
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 
 ## Enlaces externos
 

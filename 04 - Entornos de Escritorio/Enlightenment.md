@@ -197,7 +197,7 @@ El módulo **Everything** es un lanzador de aplicaciones integrado que busca en:
 - [[XFCE]] — DE ligero pero con GTK en lugar de EFL
 - [[LXQt]] — DE ligero en Qt
 - [[MATE]] — DE clásico (continuación GNOME 2)
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 - [[Personalización en Linux]] — theming, iconos, fuentes
 - [[Gestores de Archivos]] — Enlightenment incluye su propio gestor (efm)
 

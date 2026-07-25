@@ -152,7 +152,7 @@ yay -S trinity-desktop
 
 ## Ver también
 
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]] — nota combinada con otras DEs
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 - [[KDE Plasma]] — el DE moderno del que Trinity es fork
 - [[MATE]] — concepto similar (fork de GNOME 2)
 - [[XFCE]] — DE ligero alternativo

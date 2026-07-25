@@ -119,7 +119,7 @@ sudo apt install arc-theme
 - [[XFCE]] — alternativa ligera similar (pero sin herencia GNOME 2)
 - [[Cinnamon]] — otro DE clásico moderno (Linux Mint)
 - [[KDE Plasma]] — DE completo y personalizable
-- [[DEs adicionales (Budgie Deepin Enlightenment LXQt MATE Pantheon Sugar Trinity)]]
+- [[Comparativa entornos de escritorio]] — comparativa de todos los DEs
 
 ## Enlaces externos
 
