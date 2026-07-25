@@ -5,268 +5,317 @@ categoria: concepto
 prioridad: alta
 ---
 
-# Expresiones Regulares (Regex)
+# Regular Expressions
+
+> Los **patrones de búsqueda** universales que usan grep, sed, awk, vim y casi todas las herramientas de texto en Linux. Dominarlas multiplica tu velocidad procesando logs, configuraciones y código.
 
 ## Definición
 
-Una **expresión regular** (regex) es una secuencia de caracteres que define un **patrón de búsqueda**. Permite encontrar, extraer, validar o reemplazar texto que sigue una estructura determinada, sin importar el contenido exacto.
+Una expresión regular (regex) es una secuencia de caracteres que define un **patrón de búsqueda**. Cada herramienta busca líneas (o partes de líneas) que coincidan con ese patrón y permite filtrar, extraer o transformar el texto.
 
-```
-Patrón:  \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b
-Coincide con:  usuario@ejemplo.com, test@dominio.co.uk
-No coincide con:  @usuario, correo@, @.com
-```
+En Linux hay **tres sabores** principales de regex, cada uno con diferente potencia:
 
-En Linux, las regex son ubicuas: aparecen en [[grep]], [[sed]], [[awk]], [[Vim Neovim]], [[less]], y prácticamente cualquier herramienta que procese texto.
+| Sabor | Comandos | Características |
+|---|---|---|
+| **BRE** (Basic) | `grep` (default), `sed` (default) | Clásico: `( ) { } + ?` necesitan `\` para activarse |
+| **ERE** (Extended) | `grep -E`, `egrep`, `awk`, `sed -E` | `(){} +?|` sin escapar — más legible |
+| **PCRE** (Perl) | `grep -P`, lenguajes (Python, JS, PHP) | Lookahead/lookbehind, `\d \w \s`, non-greedy |
+
+> ⚠️ **Regla de oro**: Siempre usar **ERE** a menos que necesites PCRE. BRE solo cuando no haya alternativa. ERE es el punto óptimo entre potencia y compatibilidad.
 
 ## Por qué importa
 
-- **Buscar con precisión**: encontrar un error en 10 GB de logs sin saber el texto exacto
-- **Validar datos**: verificar que un input tenga formato de email, IP o fecha
-- **Transformar texto**: renombrar 200 archivos, limpiar un CSV, extraer campos de un log
-- **Automatizar**: las regex son el lenguaje común entre herramientas Linux — grep, sed, awk, find (con -regex), vim, y lenguajes de programación
-- Sin regex tendrías que buscar texto literal o escribir programas enteros para patrones simples
+Sin regex, procesar texto es artesanal — línea por línea, ojo por ojo. Con regex:
+- **Extraer IPs** de un log de acceso: `grep -oP '\d+\.\d+\.\d+\.\d+' access.log`
+- **Validar formato** de email en un script: `[[ "$email" =~ ^[a-z]+@[a-z]+\.[a-z]{2,}$ ]]`
+- **Transformar configs** en lote: `sed -E 's/Listen [0-9]+/Listen 8080/g' apache.conf`
+- **Refactorizar código**: buscar todas las funciones que empiezan con `get_` en 100 archivos
 
-## Sintaxis básica
+Sin regex, Linux sería 90% menos potente para procesar texto — y el texto es el formato universal del sistema.
 
-### Caracteres literales
+## Sintaxis de patrones
 
-La mayoría de caracteres se representan a sí mismos:
+### Caracteres literales y especiales
 
 | Patrón | Coincide con |
 |---|---|
-| `hola` | "hola" |
-| `error 404` | exactamente "error 404" |
-| `192.168.1.1` | "192.168.1.1" (el `.` coincide con cualquier carácter, ver abajo) |
+| `abc` | La cadena literal "abc" |
+| `.` | **Cualquier** carácter (excepto newline) |
+| `\.` | Un punto literal (escapado) |
+| `\\` | Una barra invertida literal |
+| `\n` | Newline (solo en PCRE y algunos ERE) |
 
-### Metacaracteres
+### Clases de caracteres
 
-| Carácter | Significado | Ejemplo |
-|---|---|---|
-| `.` | Cualquier carácter (excepto nueva línea) | `h.lla` → "hola", "hxlla", "h3lla" |
-| `*` | 0 o más del carácter anterior | `ab*c` → "ac", "abc", "abbc" |
-| `+` | 1 o más del carácter anterior (ERE) | `ab+c` → "abc", "abbc" (no "ac") |
-| `?` | 0 o 1 del carácter anterior (ERE) | `ab?c` → "ac", "abc" |
-| `^` | Inicio de línea | `^Error` → líneas que empiezan con "Error" |
-| `$` | Final de línea | `done$` → líneas que terminan en "done" |
-| `\` | Escapa el siguiente carácter | `\.` → un punto literal (no cualquier carácter) |
-
-### Clases de caracteres `[...]`
-
-| Patrón | Significado | Ejemplo |
-|---|---|---|
-| `[abc]` | Un carácter del conjunto | `gr[ae]y` → "gray" o "grey" |
-| `[a-z]` | Un carácter en el rango | `[0-9]` → cualquier dígito |
-| `[^abc]` | Un carácter NO del conjunto | `[^0-9]` → cualquier no dígito |
-| `[a-zA-Z]` | Cualquier letra mayúscula o minúscula | `[A-Z].*` → línea que empieza con mayúscula |
-
-### Clases abreviadas (PCRE)
-
-| Clase | Equivalente | Significado |
-|---|---|---|
-| `\d` | `[0-9]` | Dígito |
-| `\D` | `[^0-9]` | No dígito |
-| `\w` | `[a-zA-Z0-9_]` | Carácter de palabra (letra, dígito, guión bajo) |
-| `\W` | `[^a-zA-Z0-9_]` | No carácter de palabra |
-| `\s` | `[ \t\n\r\f]` | Espacio en blanco |
-| `\S` | `[^ \t\n\r\f]` | No espacio |
-| `\b` | — | Límite de palabra |
-| `\B` | — | No límite de palabra |
+| Patrón | Significado | ERE | PCRE |
+|---|---|---|---|
+| `[abc]` | Un carácter del conjunto | ✅ | ✅ |
+| `[^abc]` | Un carácter **no** del conjunto | ✅ | ✅ |
+| `[a-z]` | Rango: minúsculas | ✅ | ✅ |
+| `[0-9]` | Rango: dígitos | ✅ | ✅ |
+| `[a-zA-Z0-9_]` | Carácter de palabra | ✅ | ✅ |
+| `\d` | Dígito (`[0-9]`) | ❌ | ✅ |
+| `\w` | Carácter de palabra (`[a-zA-Z0-9_]`) | ❌ | ✅ |
+| `\s` | Espacio en blanco | ❌ | ✅ |
+| `\D` | No dígito | ❌ | ✅ |
+| `\W` | No carácter de palabra | ❌ | ✅ |
+| `\S` | No espacio | ❌ | ✅ |
 
 ### Cuantificadores
 
-| Patrón | Significado | Ejemplo |
-|---|---|---|
-| `{n}` | Exactamente n repeticiones | `\d{3}` → 3 dígitos |
-| `{n,}` | n o más repeticiones | `\d{3,}` → 3+ dígitos |
-| `{n,m}` | Entre n y m repeticiones | `\d{2,4}` → 2 a 4 dígitos |
-| `*` | 0 o más (= `{0,}`) | `ab*c` |
-| `+` | 1 o más (= `{1,}`) | `ab+c` |
-| `?` | 0 o 1 (= `{0,1}`) | `ab?c` |
-
-### Agrupación y alternancia
-
-| Patrón | Significado | Ejemplo |
-|---|---|---|
-| `(patrón)` | Grupo de captura | `(foo)+` → "foo", "foofoo" |
-| `(?:patrón)` | Grupo no capturador | `(?:foo|bar)` → agrupa sin guardar |
-| `a\|b` | Alternancia (OR) | `foo\|bar` → "foo" o "bar" |
-| `\1`, `\2`... | Referencia a grupo anterior (backreference) | `(a)b\1` → "aba" |
+| Patrón | Significado | BRE | ERE | PCRE |
+|---|---|---|---|---|
+| `*` | 0 o más | ✅ | ✅ | ✅ |
+| `\+` / `+` | 1 o más | `\+` | ✅ | ✅ |
+| `\?` / `?` | 0 o 1 (opcional) | `\?` | ✅ | ✅ |
+| `\{n\}` / `{n}` | Exactamente n | `\{n\}` | ✅ | ✅ |
+| `\{n,\}` / `{n,}` | n o más | `\{n,\}` | ✅ | ✅ |
+| `\{n,m\}` / `{n,m}` | Entre n y m | `\{n,m\}` | ✅ | ✅ |
+| `*?` | Non-greedy (mínima coincidencia) | ❌ | ❌ | ✅ |
+| `+?` | Non-greedy (1 o más mínimo) | ❌ | ❌ | ✅ |
 
 ### Anclas y límites
 
-| Patrón | Significado |
-|---|---|
-| `^` | Inicio de línea (o de cadena, según flags) |
-| `$` | Final de línea |
-| `\b` | Límite de palabra (`\berror\b` → "error" pero no "errors") |
-| `\B` | No límite de palabra (`\Berro\B` → dentro de "error" pero no al borde) |
-
-### Lookahead / Lookbehind (PCRE)
-
 | Patrón | Significado | Ejemplo |
 |---|---|---|
-| `(?=...)` | Lookahead positivo | `foo(?=bar)` → "foo" solo si sigue "bar" |
-| `(?!...)` | Lookahead negativo | `foo(?!bar)` → "foo" si NO sigue "bar" |
-| `(?<=...)` | Lookbehind positivo | `(?<=foo)bar` → "bar" solo si precede "foo" |
-| `(?<!...)` | Lookbehind negativo | `(?<!foo)bar` → "bar" si NO precede "foo" |
+| `^` | **Inicio** de línea | `^error` → líneas que empiezan con "error" |
+| `$` | **Final** de línea | `done$` → líneas que terminan con "done" |
+| `\b` | Límite de palabra (PCRE) | `\berror\b` → "error" pero no "errors" |
+| `\B` | No límite de palabra (PCRE) | `\Berro` → dentro de otra palabra |
 
-## BRE vs ERE vs PCRE
+### Alternancia y agrupación
 
-En Linux conviven **tres dialectos** de regex. Es crucial saber cuál usa cada herramienta:
+| Patrón | Significado | BRE | ERE/PCRE |
+|---|---|---|---|
+| `\|` | OR (alternancia) | `\|` con `-E` | ✅ |
+| `(patrón)` | Grupo de captura | `\(\)` | ✅ (`()`) |
+| `(?:patrón)` | Grupo no capturador | ❌ | PCRE |
+| `\1` a `\9` | Backreference (referencia a grupo) | ✅ | ✅ |
 
-| Dialecto | Herramientas | Diferencias clave |
+### Lookaround (solo PCRE)
+
+| Patrón | Nombre | Coincide cuando... |
 |---|---|---|
-| **BRE** (Basic) | `grep` (por defecto), `sed` (por defecto) | `()+`, `{}`, `|` deben escaparse: `\(\)`, `\{\}`, `\|` |
-| **ERE** (Extended) | `grep -E`, `sed -E`, `awk` | `()+`, `{}`, `|` sin escapar. `awk` tiene su propio sabor |
-| **PCRE** (Perl-compatible) | `grep -P`, lenguajes de programación | `\d`, `\w`, `\s`, lookahead, lookbehind. El más potente |
+| `(?=...)` | Positive lookahead | El patrón va **seguido** de `...` |
+| `(?!...)` | Negative lookahead | El patrón **no** va seguido de `...` |
+| `(?<=...)` | Positive lookbehind | El patrón va **precedido** de `...` |
+| `(?<!...)` | Negative lookbehind | El patrón **no** va precedido de `...` |
 
 ```bash
-# BRE: grupos y cuantificadores escapados
-grep '\(foo\|bar\)\{2,\}' archivo.txt
-
-# ERE: sin escape
-grep -E '(foo|bar){2,}' archivo.txt
-sed -E 's/(foo|bar)+/BAZ/g' archivo.txt
-
-# PCRE: clases abreviadas y lookahead
-grep -P '\d{3}-\d{3}-\d{4}(?=\s|$)' archivo.txt
+# Ejemplos de lookaround
+grep -oP '\d+(?=€)' precios.txt         # números seguidos de €
+grep -oP '(?<=user:)\w+' usuarios.txt    # palabra después de "user:"
+grep -P 'foo(?!bar)' archivo.txt         # "foo" no seguido de "bar"
 ```
 
-> ⚠️ **awk** no es exactamente ERE: usa un dialecto propio cercano a POSIX ERE pero con diferencias sutiles. Para awk, siempre escapar `\` dentro de `//` si no quieres expansión del shell.
+## Patrones prácticos comunes
 
-## Patrones comunes (cheatsheet)
+### IPs y redes
 
-| Qué buscar | Patrón (ERE) | Ejemplo de uso |
+```bash
+# IPv4 (básico, captura 999.999.999.999 también)
+grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' access.log
+
+# IPv4 (válido, solo 0-255) — PCRE
+grep -oP '(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)' access.log
+
+# Máscara CIDR
+grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}' archivo
+```
+
+### URLs y web
+
+```bash
+# URLs HTTP/HTTPS
+grep -oP 'https?://[^\s"<>]+' archivo.txt
+
+# Extraer dominios
+grep -oP '(?<=://)[^/]+' urls.txt
+
+# Emails (razonable, no RFC)
+grep -oP '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' datos.txt
+```
+
+### Fechas y horas
+
+```bash
+# Fecha ISO 8601: 2026-07-24
+grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' log.txt
+
+# Fecha DD/MM/AAAA
+grep -oE '[0-9]{2}/[0-9]{2}/[0-9]{4}' log.txt
+
+# Hora HH:MM:SS
+grep -oE '[0-9]{2}:[0-9]{2}:[0-9]{2}' log.txt
+
+# Timestamp ISO completo
+grep -oP '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}' archivo.json
+```
+
+### Logs y sistemas
+
+```bash
+# Líneas de error (case-insensitive)
+grep -iE 'error|fail|critical|fatal' /var/log/syslog
+
+# IDs numéricos entre corchetes [12345]
+grep -oP '\[\K[0-9]+(?=\])' log.txt
+
+# UUIDs
+grep -oP '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' archivo
+
+# Extraer valores entre comillas
+grep -oP '"\K[^"]+(?=")' archivo.csv
+```
+
+### Programación
+
+```bash
+# Definiciones de función en Python
+grep -P '^def \w+\(' *.py
+
+# Imports en Go
+grep -P '^\s*import\s+"[\w/]+"' *.go
+
+# Comentarios TODO/FIXME
+grep -rn --include='*.{py,js,ts,go,rs}' -E '(TODO|FIXME|HACK)' .
+```
+
+## Regex en cada herramienta
+
+### grep
+
+```bash
+# BRE (por defecto)
+grep 'error\.[a-z]\+' log.txt
+
+# ERE (recomendado)
+grep -E 'error\.[a-z]+' log.txt
+
+# PCRE (lookaround, \d, \w)
+grep -P '\d{3}-\d{3}-\d{4}' archivo.txt
+
+# Texto literal (no regex) — más rápido
+grep -F 'error: file not found' log.txt
+```
+
+### sed
+
+```bash
+# BRE por defecto
+sed 's/\(error\)/\1 CRITICAL/' log.txt
+
+# ERE con -E
+sed -E 's/(error)/\1 CRITICAL/' log.txt
+
+# Reemplazo con backreference
+sed -E 's/([0-9]{1,3}\.){3}[0-9]{1,3}/REDACTED/g' access.log
+```
+
+### awk
+
+```bash
+# awk usa ERE por defecto
+awk '/error|fail/ {print $1, $2, $NF}' /var/log/syslog
+
+# Match de campo con ~
+awk '$3 ~ /^5[0-9]{2}$/ {print $0}' access.log  # HTTP 5xx
+
+# Match negado
+awk '$3 !~ /^2[0-9]{2}$/ {print $0}' access.log  # NO 2xx
+```
+
+### vim
+
+```bash
+# Búsqueda (muy mágico con \v)
+/\verror|fail|critical                    # ERE-like
+/\<error\>                                # palabra completa
+
+# Reemplazo con backreference
+:%s/\v([a-z]+)_([a-z]+)/\u\1\U\2/g       # snake_case → CamelCase
+
+# Global: ejecutar comando en líneas que coinciden
+:g/^#/d                                   # borrar líneas de comentario
+:g/TODO/normal A <-- PENDIENTE            # añadir texto al final
+```
+
+## Cuantificadores greedy vs non-greedy
+
+```bash
+# GREEDY (por defecto) — coincide lo MÁXIMO posible
+# Sobre el texto: <div>hola</div><p>mundo</p>
+grep -oP '<.+>'            # → <div>hola</div><p>mundo</p>  (todo junto)
+
+# NON-GREEDY — coincide lo MÍNIMO posible
+grep -oP '<.+?>'           # → <div>  (solo la primera etiqueta)
+```
+
+## Catastrophic Backtracking
+
+Cuidado con patrones que pueden explotar el motor de regex:
+
+```bash
+# PELIGRO — si el texto NO coincide, el motor prueba TODAS las combinaciones
+grep -P '(a|b)+$' texto.txt      # con cadenas largas, puede colgarse
+
+# SEGURO — acotar el backtracking
+grep -P '(a|b)+$' texto.txt      # mismo patrón, pero con entrada corta
+
+# Usar possessive quantifiers (PCRE) cuando sea posible
+grep -P '[a-z]++'               # ++ = possessive, no backtrackea
+```
+
+> **Regla**: si ves `(.*)*` o `(.+)+` o `(.|..)+`, sospecha. El motor de regex puede tardar exponencialmente más en fallar que en acertar.
+
+## Buenas prácticas
+
+1. **Siempre usar `-E` en grep/sed** a menos que necesites PCRE — BRE es confuso con los escapes
+2. **Citar el patrón con comillas simples** para evitar que el shell expanda `$`, `\`, `*`
+3. **Probar en [regex101.com](https://regex101.com/)** antes de usarlo en producción
+4. **Usar `-o` en grep** para ver solo la parte coincidente (no toda la línea)
+5. **Prefijar comandos lentos con `LC_ALL=C`** cuando busques solo ASCII (hasta 5× más rápido)
+6. **Comentar regex complejas** en scripts — nadie entiende `(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.)` a primera vista
+7. **No validar emails con regex** contra RFC 5322 — usa una librería. Una regex básica para sanity check basta
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
 |---|---|---|
-| **Dirección IP** | `\b[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\b` | Extraer IPs de logs |
-| **Email** | `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b` | Validar/extraer correos |
-| **URL** | `https?://[^\s<>"]+` | Extraer enlaces de texto |
-| **Fecha ISO** | `\b\d{4}-\d{2}-\d{2}\b` | "2026-07-24" |
-| **Hora** | `\b([01]\d\|2[0-3]):[0-5]\d\b` | "14:30" |
-| **Número de teléfono** | `\+?\d{1,3}[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{4}` | "+34 612 345 678" |
-| **Código postal** | `\b\d{5}\b` | "28001" |
-| **Sangría (indent)** | `^[ \t]+` | Líneas con espacios/tabs al inicio |
-| **Líneas vacías** | `^$` | Filtrar líneas en blanco |
-| **Comentarios #** | `^\s*#` | Líneas de comentario |
-| **Palabra completa** | `\berror\b` | "error" pero no "errors" ni "error404" |
-| **Extensiones de archivo** | `\.(jpg\|png\|gif)$` | Archivos de imagen |
-| **UUID** | `\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b` | Identificadores únicos |
-| **Etiquetas HTML** | `<[^>]+>` | Tags HTML (básico) |
-| **Cadenas entre comillas** | `"[^"]*"` | `"texto entre comillas"` |
+| `grep -P` no funciona | PCRE no compilado en grep | Usar `grep -E` o `pcregrep` |
+| El patrón no encuentra nada | Escape incorrecto (BRE vs ERE) | Probar con `-E` primero |
+| `*` encuentra demasiado | Greedy por defecto | Usar `*?` non-greedy (PCRE) |
+| Shell expande `$` o `*` | Sin comillas en el patrón | Siempre usar `'comillas simples'` |
+| Regex es lentísima o se cuelga | Catastrophic backtracking | Simplificar, evitar `(.*)*` |
+| `^` y `$` no funcionan como esperas | Están en medio de un patrón | `^` solo al inicio del patrón, `$` al final |
 
 ## Comandos asociados
 
-| Comando | Cómo usa regex | Dialecto |
-|---|---|---|
-| [[grep]] | `grep "patrón" archivo` — busca líneas | BRE (default), ERE con `-E`, PCRE con `-P` |
-| [[sed]] | `sed 's/patrón/reemplazo/'` — busca y reemplaza | BRE (default), ERE con `-E` |
-| [[awk]] | `awk '/patrón/ {acción}'` — filtra y procesa | ~ERE (dialecto propio) |
-| [[Vim Neovim]] | `/patrón` — busca en editor | BRE con algunas extensiones |
-| [[less]] | `/patrón` — busca en visor de archivos | BRE (como grep) |
-| `find -regex` | `find . -regex '.*\.\(py\|js\)'` — busca archivos | Emacs-style (con opciones) |
-
-## Casos prácticos
-
-### Buscar errores en logs entre dos fechas
-
-```bash
-grep -E '^2026-07-2[0-9].*(ERROR|FATAL|CRITICAL)' /var/log/syslog
-```
-
-### Extraer todas las IPs de un log de acceso
-
-```bash
-grep -oE '\b[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\b' access.log | sort | uniq -c | sort -rn | head -10
-```
-
-### Validar formato de email en un script
-
-```bash
-#!/bin/bash
-email="usuario@ejemplo.com"
-if [[ "$email" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$ ]]; then
-    echo "Email válido"
-else
-    echo "Email inválido"
-fi
-```
-
-### Limpiar un archivo: quitar comentarios y líneas vacías
-
-```bash
-sed -E '/^\s*#/d; /^$/d' config.conf > config-limpio.conf
-```
-
-### Renombrar archivos masivamente con regex
-
-```bash
-# Cambiar .JPG a .jpg en todos los archivos
-for f in *.JPG; do mv "$f" "$(echo "$f" | sed 's/\.JPG$/.jpg/')"; done
-```
-
-### Buscar TODOs, FIXMEs y HACKs en un proyecto
-
-```bash
-grep -rn --include='*.{py,js,ts,go,rs}' -E '(TODO|FIXME|HACK|XXX)\b' .
-```
-
-## Diagrama / Esquema
-
-```
-Componentes de una expresión regular:
-
-  ^(?=.{8,})(?=.*[A-Z])(?=.*[0-9]).*$
-  │└──┬───┘└──────┬──────┘└──┬──┘│
-  │   │           │          │   └── $ = final de cadena
-  │   │           │          └── .* = cualquier contenido
-  │   │           └── (?=.*[0-9]) = debe tener un dígito (lookahead)
-  │   └── (?=.*[A-Z]) = debe tener una mayúscula (lookahead)
-  └── ^ = inicio de cadena
-      (?=.{8,}) = debe tener 8+ caracteres (lookahead)
-
-  Patrón completo: validación de contraseña segura
-```
-
-## Troubleshooting / Problemas comunes
-
-| Problema | Causa probable | Solución |
-|---|---|---|
-| El patrón no encuentra nada | BRE vs ERE incorrecto | Usar `-E` en grep/sed para ERE, o escapar `()+` en BRE |
-| `*` no funciona como esperas | En regex, `*` = "0+ del anterior" | `.*` = cualquier cosa, `[0-9]*` = cualquier número de dígitos |
-| El `.` encuentra demasiado | `.` coincide con CUALQUIER carácter | Escapar como `\.` para un punto literal |
-| `grep -P` da error | PCRE no compilado en esta versión | Usar `grep -E` o instalar `ripgrep` |
-| Patrón con espacios falla | El shell expande el patrón | Usar **comillas simples** siempre: `grep -E 'mi patrón'` |
-| Backreference `\1` no funciona | BRE vs ERE: en ERE los grupos son `()` sin escapar | En BRE: `\(a\)\1`. En ERE: `(a)\1` (a veces requiere `-E`) |
-| Buscar IP pero encuentra falsos | `[0-9]{1,3}` permite 999 | Usar `(25[0-5]\|2[0-4][0-9]\|[01]?[0-9][0-9]?)` para IPs válidas |
-| Regex muy lenta (catastrophic backtracking) | Cuantificadores anidados como `(a+)+b` | Simplificar: evitar cuantificadores anidados, usar `.*?` en vez de `.*` |
-
-## Notas personales
-
-- `grep -P` es cómodo pero no siempre disponible (no es POSIX). Preferir `grep -E` para portabilidad
-- Para regex complejas, usar [regex101.com](https://regex101.com/) con el sabor correcto (PCRE, ECMAScript, etc.)
-- `ripgrep` (rg) usa PCRE por defecto y es más rápido que grep para proyectos grandes
-- Aprender regex en orden: primero BRE/ERE (grep, sed), luego PCRE (Perl, Python, JS)
-- El comodín `*` del shell NO es lo mismo que `*` en regex — es el error más común
-
-## Enlaces externos
-
-- [Wikipedia — Expresión regular](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular)
-- [Wikipedia — Regular expression](https://en.wikipedia.org/wiki/Regular_expression)
-- [Regex101](https://regex101.com/) — probar y depurar regex online
-- [Regular-Expressions.info](https://www.regular-expressions.info/) — tutorial completo
-- [RexEgg](https://www.rexegg.com/) — guía avanzada de regex
-- [Arch Wiki — Regular expression](https://wiki.archlinux.org/title/Regular_expression)
-- [GNU Grep manual — Regular expressions](https://www.gnu.org/software/grep/manual/grep.html#Regular-Expressions)
-- [Rust regex crate docs](https://docs.rs/regex/latest/regex/)
+| Comando | Para qué |
+|---|---|
+| `grep -E` | Buscar con ERE |
+| `grep -P` | Buscar con PCRE (lookaround, \d, \w) |
+| `sed -E` | Buscar y reemplazar con ERE |
+| `awk` | Procesar columnas con ERE |
+| `vim /patrón` | Buscar en editor |
+| `rg` (ripgrep) | Alternativa moderna a grep con ERE por defecto |
+| `regex101.com` | Probar y depurar regex online |
 
 ## Ver también
 
-- [[grep]] — busca texto con regex en archivos y pipes
-- [[sed y awk]] — transformación de texto con regex
-- [[awk]] — procesamiento por columnas con patrones regex
-- [[Vim Neovim]] — búsqueda y reemplazo con regex en el editor
-- [[bash-avanzado]] — regex con `[[ =~ ]]` en scripts bash
-- [[less]] — búsqueda con `/patrón` dentro de archivos
+- [[grep]] — filtrado de líneas con regex
+- [[sed y awk]] — transformación y procesamiento de texto
+- [[find]] — búsqueda de archivos por nombre (no regex, globs)
+- [[Vim Neovim]] — editor con búsqueda y reemplazo regex
+- [[Vim comandos avanzados]] — macros, registros y búsqueda avanzada
 
-#concepto #regex #texto
+## Enlaces externos
+
+- [Regex101 — probar regex online](https://regex101.com/)
+- [Regular-Expressions.info — tutorial completo](https://www.regular-expressions.info/)
+- [Wikipedia — Expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular)
+- [GNU Grep manual](https://www.gnu.org/software/grep/manual/grep.html)
+- [RexEgg — regex tutorial avanzado](https://www.rexegg.com/)
+- [Debuggex — visualizador de regex](https://www.debuggex.com/)
+
+#concepto

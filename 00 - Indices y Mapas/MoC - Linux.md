@@ -19,7 +19,7 @@ categoria: indice
 
 ## Fundamentos
 - [[Que es Linux]] · [[GNU y Linux]] · [[Kernel Linux]]
-- [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk)
+- [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
 - [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilacion desde Codigo Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
 - [[Personalización en Linux]] · [[Contenedores]] · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers
 - [[Docker]] — contenedores, build, ship, run
@@ -37,7 +37,7 @@ categoria: indice
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] · [[Bootloaders (GRUB Limine systemd-boot)]] · [[Logging del sistema (rsyslog journald logrotate)]]
 - [[RAID (mdadm)]] · [[Módulos del kernel (lsmod modprobe blacklist)]]
 - [[cgroups (control de recursos)]]
-- [[systemd]] · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
+- [[systemd]] · [[systemd unidades personalizadas]] — templates, timers, sockets, paths, drop-ins · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
 - [[Audio en Linux]] · [[Firewall]] · [[LVM]] · [[ACLs]] · [[SELinux y AppArmor]] · [[D-Bus]]
 - [[systemd-networkd]] · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]]
 - [[systemd-nspawn]] — contenedores ligeros nativos de systemd
@@ -102,6 +102,7 @@ categoria: indice
 ## Terminal y comandos
 - [[La Shell]] · [[Shells (bash zsh fish)]] · [[tmux]] · [[screen]]
 - [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[sed y awk]] · [[awk]] · [[grep]] · [[find]]
+- [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua
 - [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[ps]] · [[kill]] · [[top]]
 - [[ping]] · [[curl]] · [[cat]] · [[less]] · [[journalctl]]
