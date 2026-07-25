@@ -374,5 +374,13 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - Programa: 83→93. Comando: 68→83. 08 - Programas: 83→92. 07 - Comandos: 68→82.
 - **Archivos nuevos en esta sesión**: ripgrep, tree, procs, doggo (07), bandwhich, fx (08).
 - **TODO.md y Log.md actualizados** con todo el progreso.
+## 2026-07-25 (auditoría v3 — nueva estructura)
+- **Confirmado con git status**: el bug de encoding (`#U00f3`/`#U00ed`) NO viene del pipeline de generación de notas — git tenía las 11 versiones correctas ya commiteadas, y el zip subido contenía en su lugar las versiones rotas sin trackear. El problema está específicamente en el paso de zip/exportación previo a la subida, no en el proceso de creación de notas. Restauradas las 11 con `git checkout`.
+- **Corregido**: 2 notas huérfanas (Motif, xh) enlazadas desde el MoC.
+- **Eliminada** carpeta vacía residual `02 - Instalacion y Configuracion/Distribuciones/` (ya migrada a `11 - Distribuciones/`).
+- **Corregidas** cifras del README con `vault-stats.sh --resumen` (317→358 notas, comando 68→83, programa 70→94, distribucion 40→41).
+- **Observación**: `fecha_modificacion` se deriva de `mtime` del archivo — 354/358 notas comparten la misma fecha (2026-07-24), casi seguro por un `git checkout`/clone que resetea mtimes, no por edición real el mismo día. Recomendado: derivar `fecha_modificacion` de `git log -1 --format=%ad -- <archivo>` en vez de mtime, para que sobreviva a clones/checkouts/zips.
+- **Observación**: `core.hooksPath` en `.git/config` usa una ruta absoluta (`/home/carlos/Documentos/...`) — es config local no versionada así que no rompe para otros, pero se rompe si mueves/renombras la carpeta del vault en tu propia máquina. Considera `git config core.hooksPath .githooks` (relativo) para portabilidad.
+- Verificado: `check-frontmatter.sh` → 358/358 OK. `find-orphans.sh` → 0 huérfanas reales tras el fix.
 
 #log

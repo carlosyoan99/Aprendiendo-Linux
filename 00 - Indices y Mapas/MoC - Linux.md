@@ -67,7 +67,7 @@ categoria: indice
 - [[GNOME]] · [[KDE Plasma]] · [[XFCE]] · [[Cinnamon]]
 - [[MATE]] · [[Budgie]] · [[LXDE]] · [[LXQt]] · [[Deepin]] · [[Pantheon]] · [[Enlightenment]]
 - [[Sugar]] · [[Trinity]]
-- [[Common Desktop Environment (CDE)]] — escritorio Unix clásico
+- [[Common Desktop Environment (CDE)]] — escritorio Unix clásico · [[Motif]] — toolkit gráfico usado por CDE
 - [[Desktop Shells (Noctalia Caelestia)]]
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
 - [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Niri]] · [[River]]
@@ -110,7 +110,7 @@ categoria: indice
 - [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua
 - [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]]
-- [[ping]] · [[curl]] · [[httpie]] — cliente HTTP amigable · [[cat]] · [[less]] · [[journalctl]]
+- [[ping]] · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
 - [[jq]] — procesador JSON de terminal
 - [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]

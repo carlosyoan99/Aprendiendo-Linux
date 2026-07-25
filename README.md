@@ -13,24 +13,24 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `04 - Entornos de Escritorio` | GNOME, KDE Plasma, XFCE, Cinnamon, MATE, Budgie, Deepin, CDE, Sugar, Trinity, Pantheon, LXQt, Enlightenment + Desktop Shells | 15 |
 | `05 - Gestores de Ventanas` | i3, Hyprland, DWM, Awesome WM, Sway, bspwm, qtile, River, Openbox, Fluxbox, herbstluftwm, Niri + tiling WMs | 14 |
 | `06 - La Terminal` | Shell, shells (bash/zsh/fish), tmux, screen, atajos, tuberías y redirecciones | 4 |
-| `07 - Comandos Esenciales` | **67 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, pacman, df, free, uname, date, sed+awk) + cheat sheet | 67 |
-| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio | 69 |
+| `07 - Comandos Esenciales` | **82 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, pacman, df, free, uname, date, sed+awk, ripgrep, fzf, bat, xh...) + cheat sheet | 83 |
+| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools | 94 |
 | `09 - Solucion de Problemas` | Recursos + **16 problemas resueltos** (WiFi, sonido, permisos, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB) | 16 |
 | `10 - Automatizacion y Scripts` | Scripts propios (6: stats, logs, validación, huérfanas), cron, git hooks, Log.md, docs | 5 (+1 doc nueva) |
-| `11 - Distribuciones` | Catálogo completo de 40 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, etc.) | 40 |
+| `11 - Distribuciones` | Catálogo completo de 41 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, etc.) | 41 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |
 
-## 📊 Estado actual (2026-07-24)
+## 📊 Estado actual (2026-07-25)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **317** (+ 7 templates) |
-| **Estado resuelto** | 311 |
+| **Notas totales** | **358** (+ 7 templates) |
+| **Estado resuelto** | 353 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
 | **Estado borrador** | 2 (README, CLAUDE — sin frontmatter deliberadamente) |
-| **Prioridad alta** | 155 |
-| **Prioridad media** | 105 |
-| **Prioridad baja** | 51 |
+| **Prioridad alta** | 168 |
+| **Prioridad media** | 119 |
+| **Prioridad baja** | 68 |
 | **Categorías** | 12 |
 | **Scripts de automatización** | 6 (stats, logs, validación, huérfanas, fechas) |
 | **Git hooks** | 3 (pre-commit, commit-msg, pre-push) |
@@ -40,12 +40,12 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 70 | **Comando** | 68 |
+| **Programa** | 94 | **Comando** | 83 |
 | **Concepto** | 38 | **Distribución** | 41 |
-| **Sistema** | 29 | **Entorno / WM** | 28 |
+| **Sistema** | 30 | **Entorno / WM** | 29 |
 | **Troubleshooting** | 17 | **Índice** | 12 |
 | **Instalación** | 9 | **Terminal** | 4 |
-| **Automatización** | 3 | **Log** | 2 |
+| **Automatización** | 4 | **Log** | 2 |
 
 ## 🚀 Primeros pasos en Obsidian
 
