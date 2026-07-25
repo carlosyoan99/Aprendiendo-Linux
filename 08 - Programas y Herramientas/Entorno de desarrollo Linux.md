@@ -8,324 +8,524 @@ prioridad: alta
 
 # Entorno de desarrollo Linux
 
-> Guía práctica para montar un entorno de desarrollo completo en Linux. Cubre desde el toolchain básico hasta stacks específicos por lenguaje.
+> Linux es el hábitat natural del desarrollo de software. Esta nota es una guía práctica para montar un entorno de desarrollo completo: desde el toolchain de cada lenguaje hasta contenedores, editores, bases de datos y buenas prácticas.
 
-## Qué es
+## Filosofía general
 
-Linux es el sistema operativo por excelencia para desarrollo de software. La mayoría de herramientas clave — compiladores, servidores, bases de datos, contenedores — se crearon primero en Linux y funcionan de forma nativa sin capas de emulación. Un entorno de desarrollo en Linux incluye:
+Antes de instalar nada, conviene entender cómo se organiza el desarrollo en Linux:
 
-- **Editor o IDE** — el programa donde escribes código (ver [[Comparativa editores Linux]])
-- **Toolchain** — compiladores, intérpretes, linters
-- **Gestor de paquetes del lenguaje** — dependencias del proyecto
-- **Sistema de control de versiones** — Git
-- **Contenedores** — entornos aislados y reproducibles
-- **Terminal** — la interfaz principal para todo lo anterior
-
-```bash
-# Un entorno típico de desarrollo podría incluir:
-# Editor:      Neovim o VS Code
-# Terminal:    kitty/alacritty + tmux + zsh
-# Toolchain:   gcc, make, cmake, python3, node, cargo
-# VCS:         git + gh (GitHub CLI)
-# Contenedor:  Docker o Podman
-# Debug:       gdb, strace, lsof
+```
+┌─────────────────────────────────────────────────────┐
+│                   CAPA 1: SISTEMA                    │
+│  gcc/clang, make, cmake, system headers, glibc      │
+├─────────────────────────────────────────────────────┤
+│                   CAPA 2: LENGUAJES                  │
+│  Python, Node.js, Rust, Go, Java, Ruby              │
+│  Gestores: pyenv/nvm/rustup/gvm/rbenv               │
+├─────────────────────────────────────────────────────┤
+│                   CAPA 3: PROYECTOS                  │
+│  Editores (VSCode, Zed, Helix, Vim)                 │
+│  Git, Docker, bases de datos locales                │
+│  Task runners, linters, formatters                  │
+├─────────────────────────────────────────────────────┤
+│                   CAPA 4: AISLAMIENTO                │
+│  Entornos virtuales (venv, .node_modules)           │
+│  Contenedores (Docker, Podman, Dev Containers)       │
+│  Múltiples versiones (pyenv, nvm, rustup)           │
+└─────────────────────────────────────────────────────┘
 ```
 
-## Toolchain base: instalar todo de una vez
+**Regla de oro**: No instales herramientas de desarrollo globalmente con `sudo` si existe una alternativa aislada. Usa gestores de versiones (`nvm`, `pyenv`, `rustup`) y entornos virtuales (`venv`, `node_modules/`, contenedores).
+
+---
+
+## 1. Toolchain base del sistema
+
+El toolchain C/C++ es la base sobre la que se construyen casi todos los demás lenguajes:
 
 ```bash
-# ── Debian/Ubuntu ──
-sudo apt update
+# ── Debian / Ubuntu ──
 sudo apt install build-essential         # gcc, g++, make, libc-dev
-sudo apt install git curl wget           # esenciales
-sudo apt install python3 python3-pip     # Python
-sudo apt install nodejs npm              # Node.js (version del repo, suele ser antigua)
-sudo apt install gdb strace ltrace       # depuración
-sudo apt install manpages-dev            # documentación
+sudo apt install manpages-dev            # documentación (man 3 printf, etc.)
+sudo apt install linux-headers-$(uname -r)  # headers del kernel
 
 # ── Arch Linux ──
-sudo pacman -S base-devel                # gcc, make, autoconf, pkg-config
-sudo pacman -S git curl wget
-sudo pacman -S python python-pip
-sudo pacman -S nodejs npm
-sudo pacman -S gdb strace ltrace
+sudo pacman -S base-devel                # gcc, make, autoconf, pkg-config...
 
 # ── Fedora ──
 sudo dnf groupinstall "Development Tools"
-sudo dnf install git curl wget
-sudo dnf install python3 python3-pip
-sudo dnf install nodejs npm
-sudo dnf install gdb strace ltrace
+sudo dnf install gcc gcc-c++ make
 ```
 
-## Stack por lenguaje
+| Herramienta | Propósito | Alternativa moderna |
+|---|---|---|
+| **gcc/g++** | Compilador C/C++ | **clang** (LLVM) — errores más claros |
+| **make** | Automatización de builds | **CMake** + **Ninja** (más portable y rápido) |
+| **gdb** | Depurador | **lldb** (LLVM), **rr** (grabación/reproducción) |
+| **strace** | Traza de llamadas al sistema | **bpftrace** (eBPF) |
+| **valgrind** | Detección de fugas de memoria | **AddressSanitizer** (`-fsanitize=address`) |
+| **ldd** | Dependencias de librerías dinámicas | **(misma)** |
 
-### Python
+> ⚡ Detalle importante: `build-essential` en Debian/Ubuntu instala la **versión del sistema** de estos tools. Si necesitas una versión más reciente de gcc o clang, instálala aparte (ver sección C/C++ abajo).
+
+---
+
+## 2. Stacks por lenguaje
+
+### 🐍 Python
+
+Python viene **preinstalado** en prácticamente todas las distribuciones, pero **NO uses el Python del sistema para desarrollo** (el sistema lo usa para apt, GNOME Software, etc.).
 
 ```bash
-# Python 3 ya viene instalado en la mayoría de distros
-python3 --version
-pip3 --version
+# Gestor de versiones
+curl https://pyenv.run | bash
+pyenv install 3.12.5                   # instalar Python específico
+pyenv global 3.12.5                    # establecer versión global
 
-# Entornos virtuales (siempre usarlos, nunca pip global)
-python3 -m venv .venv                    # crear entorno virtual
-source .venv/bin/activate                # activar
-pip install requests flask django        # instalar en el entorno
-deactivate                               # salir del entorno
-
-# Gestor moderno: uv (ultrarrápido, Rust)
+# Gestor de paquetes moderno (uv — escrito en Rust, 10-100x más rápido que pip)
 curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv                                  # crear entorno (más rápido)
-uv pip install requests                  # instalar (10-100x más rápido)
+uv venv                                # crear entorno virtual (instantáneo)
+uv pip install flask                   # instalar dependencia
 
-# Poetry: gestor de dependencias + empaquetado
-pip install poetry
+# O con poetry (gestor de proyectos completo)
+pipx install poetry
 poetry new mi-proyecto
-poetry add requests
+cd mi-proyecto && poetry add flask
+
+# Herramientas de desarrollo Python
+pipx install black                     # formateador
+pipx install ruff                      # linter + formateador (Rust)
+pipx install mypy                      # type checker
+pipx install pytest                    # test runner
+pipx install pre-commit                # hooks de git
 ```
 
-**Herramientas clave**: `flake8` (linter), `black` (formateador), `mypy` (tipos), `pytest` (tests), `ipython` (REPL mejorado). Ver [[Python en Linux]].
+**Estructura típica de proyecto Python**:
+```
+mi-proyecto/
+├── .venv/                 # Entorno virtual (no se commitea)
+├── src/
+│   └── mi_proyecto/
+│       ├── __init__.py
+│       └── main.py
+├── tests/
+│   └── test_main.py
+├── pyproject.toml         # Configuración del proyecto
+├── requirements.txt       # Dependencias (alternativa a pyproject.toml)
+├── .gitignore
+└── README.md
+```
 
-### Node.js / JavaScript
+### 🟩 Node.js / JavaScript
 
 ```bash
-# ⚠️ No instalar nodejs del repo del sistema (versiones muy antiguas)
-# Usar nvm (Node Version Manager):
+# Gestor de versiones (recomendado sobre el paquete del sistema)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-nvm install --lts                        # última LTS
+nvm install --lts                      # instalar última LTS
 nvm use --lts
-node --version                           # v22.x
-npm --version                            # 10.x
 
-# Gestores alternativos
-npm install -g yarn                      # yarn (más rápido, determinista)
-npm install -g pnpm                      # pnpm (hard links, ocupa menos)
+# Gestores de paquetes
+npm init                               # crear package.json
+npm install express                    # instalar dependencia
+
+# pnpm (más rápido, usa hard links — ahorra espacio en disco)
+npm install -g pnpm
+pnpm install
+pnpm add express
+
+# Herramientas globales
+npm install -g typescript              # compilador TS
+npm install -g eslint                  # linter
+npm install -g prettier                # formateador
 ```
 
-**Herramientas clave**: `typescript` (tipado), `eslint` (linter), `prettier` (formato), `vitest` (tests), `vercel/pkg` (compilar a binario). Ver [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]].
+**Estructura típica de proyecto Node.js**:
+```
+mi-proyecto/
+├── node_modules/          # Dependencias (no se commitea)
+├── src/
+│   ├── index.ts
+│   └── app.ts
+├── tests/
+├── package.json
+├── tsconfig.json
+├── .gitignore
+└── README.md
+```
 
-### Rust
+### 🦀 Rust
 
 ```bash
-# Instalación oficial con rustup
+# Gestor de versiones (recomendado)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.cargo/env
 rustup update
-rustc --version
-cargo --version
+rustup component add rust-analyzer      # LSP
+rustup component add clippy             # linter
+rustup component add rustfmt            # formateador
 
-# Componentes útiles
-rustup component add rust-analyzer       # LSP (para el editor)
-rustup component add clippy              # linter
-rustup component add rustfmt             # formateador
-rustup target add wasm32-unknown-unknown # compilar a WebAssembly
-
-# Proyecto nuevo
+# Comandos de Cargo
 cargo new mi-proyecto
-cd mi-proyecto
-cargo build
-cargo run
-cargo test
-cargo doc --open                         # documentación
+cd mi-proyecto && cargo run             # compilar y ejecutar
+cargo add serde --features derive       # añadir dependencia
+cargo test                              # ejecutar tests
+cargo clippy                            # lintear
+cargo fmt                               # formatear
 ```
 
-**Herramientas clave**: `cargo-edit` (gestionar dependencias), `cargo-watch` (auto-ejecutar al cambiar), `cargo-expand` (expandir macros), `just` (make alternativo para Rust). Ver [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]].
+**Estructura típica de proyecto Rust**:
+```
+mi-proyecto/
+├── src/
+│   └── main.rs
+├── tests/
+├── Cargo.toml
+├── Cargo.lock              # Lockfile (SI se commitea)
+├── .gitignore
+└── README.md
+```
 
-### Go
+### 🔵 Go
+
+```bash
+# Instalación
+wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
+# Añadir /usr/local/go/bin al PATH
+
+# Comandos
+go mod init mi-proyecto                 # iniciar módulo
+go mod tidy                             # limpiar dependencias
+go build -o ./bin/app .                 # compilar
+go run .                                # compilar y ejecutar
+go test ./...                           # ejecutar todos los tests
+go vet ./...                            # analizar código
+```
+
+### ☕ Java
+
+```bash
+# Instalar JDK (OpenJDK recomendado)
+sudo apt install openjdk-21-jdk         # Debian/Ubuntu
+sudo pacman -S jdk21-openjdk            # Arch
+
+# O con SDKMAN (gestor de versiones para JDKs)
+curl -s "https://get.sdkman.io" | bash
+sdk install java 21-open                # instalar JDK 21
+sdk install maven                       # gestor de builds
+sdk install gradle                      # alternativa a Maven
+sdk install springboot                  # Spring Boot CLI
+
+# Maven
+mvn archetype:generate -DgroupId=com.ejemplo -DartifactId=mi-app -DarchetypeArtifactId=maven-archetype-quickstart
+mvn clean compile test package
+
+# Gradle
+gradle init --type java-application
+gradle build
+```
+
+### 💎 Ruby
+
+```bash
+# Gestor de versiones
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+rbenv install 3.3.5
+rbenv global 3.3.5
+
+# Gestor de paquetes
+gem install bundler
+# Crear Gemfile:
+#   source 'https://rubygems.org'
+#   gem 'rails'
+bundle install
+bundle exec rails new mi-app
+```
+
+---
+
+## 3. Contenedores para desarrollo
+
+### Docker
+
+Instalar Docker y usarlo como entorno de desarrollo aislado:
 
 ```bash
 # Instalación oficial
-wget https://go.dev/dl/go1.23.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.23.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-source ~/.bashrc
-go version
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER          # añadir usuario al grupo docker
 
-# O desde repos (puede estar desactualizado)
-sudo apt install golang-go               # Debian/Ubuntu
-sudo pacman -S go                        # Arch
+# Docker Compose (plugin)
+sudo apt install docker-compose-plugin  # Debian/Ubuntu 22.04+
 
-# Proyecto nuevo
-mkdir mi-proyecto && cd mi-proyecto
-go mod init github.com/usuario/mi-proyecto
-go get github.com/gin-gonic/gin
-go run main.go
+# Ejemplo de docker-compose.yml para desarrollo:
+# services:
+#   app:
+#     build: .
+#     volumes:
+#       - .:/app          # montar código local
+#     ports:
+#       - "3000:3000"
+#   db:
+#     image: postgres:16
+#     environment:
+#       POSTGRES_PASSWORD: devpassword
 ```
 
-**Herramientas clave**: `gopls` (LSP oficial), `golint` / `staticcheck` (linter), `go vet` (análisis), `delve` (depurador).
+### Dev Containers (VS Code + GitHub Codespaces)
 
-### C / C++
+Los Dev Containers definen entornos completos (lenguaje, herramientas, extensiones) en un archivo `.devcontainer/devcontainer.json`:
 
-```bash
-# El toolchain ya está instalado con build-essential/base-devel
-gcc --version
-g++ --version
-make --version
-cmake --version                          # si no está: sudo apt install cmake
-
-# Compilar un proyecto típico con CMake
-mkdir build && cd build
-cmake ..                                 # genera Makefile
-make -j$(nproc)                          # compila en paralelo
-./app                                    # ejecutar
-```
-
-**Herramientas clave**: `clang` (alternativa a gcc), `clangd` (LSP), `gdb` (depurador), `valgrind` / `-fsanitize=address` (fugas de memoria). Ver [[Desarrollo en Linux (gcc make gdb strace)]].
-
-## Gestión de versiones múltiples
-
-Para lenguajes que evolucionan rápido, tener varias versiones instaladas es esencial:
-
-| Lenguaje | Gestor de versiones | Comando básico |
-|---|---|---|
-| **Node.js** | nvm | `nvm install --lts`, `nvm use 18` |
-| **Python** | pyenv | `pyenv install 3.12`, `pyenv global 3.12` |
-| **Rust** | rustup | `rustup install nightly`, `rustup default stable` |
-| **Go** | g (binario) | `go install` (múltiples versiones con go.mod) |
-| **Java** | sdkman | `sdk install java 21`, `sdk use java 17` |
-| **Ruby** | rbenv / rvm | `rbenv install 3.3`, `rbenv global 3.3` |
-
-```bash
-# pyenv — Python
-curl https://pyenv.run | bash
-pyenv install 3.12.5
-pyenv install 3.10.14
-pyenv global 3.12.5                     # versión por defecto
-
-# sdkman — Java, Scala, Kotlin, Maven
-curl -s "https://get.sdkman.io" | bash
-sdk list java                           # ver versiones disponibles
-sdk install java 21-temurin             # Eclipse Temurin JDK 21
-sdk use java 17-temurin                 # cambiar versión
-```
-
-## Contenedores para desarrollo
-
-Usar contenedores como entorno de desarrollo garantiza que el equipo completo (y CI/CD) use las mismas versiones:
-
-### Docker para desarrollo local
-
-```bash
-# Base de datos sin instalar en el sistema
-docker run -d --name pg-dev -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:16
-
-# Entorno de desarrollo completo con Docker Compose
-cat > docker-compose.yml << 'EOF'
-services:
-  app:
-    image: node:22
-    working_dir: /app
-    volumes:
-      - .:/app
-    ports:
-      - "3000:3000"
-    command: npm run dev
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_PASSWORD: dev
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-volumes:
-  pgdata:
-EOF
-docker compose up -d
-```
-
-### Dev Containers (VS Code)
-
-VS Code soporta abrir proyectos dentro de contenedores:
-
-```bash
-# Requiere: Docker + extensión "Dev Containers"
-# Crear .devcontainer/devcontainer.json
+```json
 {
-  "name": "Python Dev",
+  "name": "Python 3.12",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "extensions": ["ms-python.python"],
-  "postCreateCommand": "pip install -r requirements.txt"
+  "extensions": ["ms-python.python", "charliermarsh.ruff"],
+  "postCreateCommand": "pip install --upgrade pip"
 }
 ```
 
-### Podman (alternativa sin daemon)
+Ventajas:
+- Entorno **reproducible** para todo el equipo
+- Sin contaminar el sistema anfitrión
+- Funciona en local y en la nube (Codespaces)
+- Cada proyecto puede tener su propio toolchain
+
+### Podman — alternativa a Docker sin daemon
 
 ```bash
-# Podman es compatible con Docker CLI pero no requiere daemon
-podman run -d --name pg-dev -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:16
-podman ps
+sudo apt install podman                 # Debian/Ubuntu
+sudo pacman -S podman                   # Arch
 
-# Podman Compose (alternativa a docker-compose)
-podman-compose up -d
+# Uso idéntico a Docker:
+podman run -it --rm ubuntu:22.04 bash
+podman compose up -d                    # con docker-compose
 ```
 
-Ver [[Docker]] y [[Virtualización (KVM QEMU libvirt)]].
+---
 
-## Terminal y productividad
+## 4. Editores e IDEs
 
-Un buen entorno de desarrollo no es solo el editor — la terminal es igual de importante:
+| Editor | Ideal para | Rendimiento | LSP | Depurador |
+|---|---|---|---|---|
+| **[[Editores de código (VSCode Codium Zed Helix Antigravity)\|VS Code]]** | Cualquier lenguaje, Dev Containers | Medio (Electron) | ✅ | ✅ |
+| **[[Editores de código (VSCode Codium Zed Helix Antigravity)\|Zed]]** | Proyectos grandes, GPU-accelerado | Alto (Rust+GPU) | ✅ | ✅ |
+| **[[Editores de código (VSCode Codium Zed Helix Antigravity)\|Helix]]** | Programación modal, Rust | Alto (Rust) | ✅ Nativo | ❌ (GDB externo) |
+| **[[Vim Neovim]]** | Usuarios avanzados, terminal | Máximo | ✅ (plugins) | ✅ (vimspector) |
+| **IntelliJ IDEA** | Java/Kotlin, Android | Medio (JVM) | Nativo | ✅ |
 
-| Herramienta | Para qué | Alternativas |
+**Configuración básica post-instalación** para cualquier editor:
+1. Instalar LSP para los lenguajes que uses (rust-analyzer, pyright, typescript-language-server, clangd, gopls)
+2. Configurar formateo automático al guardar
+3. Activar linting en tiempo real
+4. Configurar terminal integrada (bash/fish + tmux)
+
+---
+
+## 5. Terminal y multiplexores
+
+```bash
+# Terminal moderna con GPU-acceleración
+# Alacritty, Kitty, WezTerm o Foot (Wayland)
+
+# Shell moderna (alternativa a bash)
+sudo apt install fish                   # autosugerencias + completado
+sudo pacman -S fish
+chsh -s /usr/bin/fish                   # cambiar shell por defecto
+
+# Multiplexor (esencial para desarrollo)
+sudo apt install tmux                   # múltiples sesiones en una terminal
+# O alternativas modernas:
+# - zellij (Rust, más amigable que tmux)
+# - screen (clásico, viene instalado)
+```
+
+---
+
+## 6. Bases de datos locales para desarrollo
+
+```bash
+# Usar contenedores para bases de datos (no instalar en el sistema):
+
+# PostgreSQL
+docker run -d --name pg-dev \
+  -e POSTGRES_PASSWORD=dev \
+  -p 5432:5432 \
+  postgres:16
+
+# MySQL / MariaDB
+docker run -d --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD=dev \
+  -p 3306:3306 \
+  mysql:8
+
+# Redis (caché / colas)
+docker run -d --name redis-dev \
+  -p 6379:6379 \
+  redis:7
+
+# SQLite (embebida, no necesita servidor)
+sudo apt install sqlite3                # cliente CLI
+```
+
+**Alternativa**: Usar **Podman** en vez de Docker para ejecución sin root de los contenedores.
+
+---
+
+## 7. Git y control de versiones
+
+```bash
+# Configuración inicial
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"
+git config --global init.defaultBranch main
+git config --global pull.rebase true    # rebase por defecto al hacer pull
+
+# Herramientas Git avanzadas
+sudo apt install git-lfs                # archivos grandes (modelos ML, assets)
+sudo apt install tig                    # explorador de Git en terminal
+sudo apt install gh                     # GitHub CLI (PRs, issues, codespaces)
+```
+
+**Flujo de trabajo recomendado para desarrollo**:
+```
+1. git checkout -b feature/nombre      # rama por feature
+2. git add -p                          # añadir cambios interactivamente
+3. git commit -m "feat: descripción"   # commits atómicos
+4. git push -u origin feature/nombre   # subir rama
+5. Crear PR en GitHub / GitLab         # revisión de código
+6. git checkout main && git pull       # actualizar main
+7. git branch -d feature/nombre        # limpiar rama local
+```
+
+---
+
+## 8. Dockerfile de desarrollo multi-etapa (ejemplo completo)
+
+```dockerfile
+# Dockerfile de desarrollo para Python + Node.js
+FROM python:3.12-slim AS base
+
+RUN apt-get update && apt-get install -y \
+    curl git make gcc g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Node.js (instalado dentro del contenedor)
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g pnpm
+
+# Usuario no-root
+RUN useradd -m dev
+USER dev
+WORKDIR /workspace
+
+# Herramientas de desarrollo
+RUN pip install --user --upgrade pip \
+    && pip install --user black ruff mypy pytest
+
+COPY --chown=dev:dev . .
+RUN pip install --user -r requirements.txt
+
+CMD ["bash"]
+```
+
+---
+
+## 9. Checklist: entorno de desarrollo completo
+
+Al instalar Linux para desarrollo, este es el orden recomendado:
+
+- [ ] **Toolchain base**: `build-essential`, `manpages-dev`
+- [ ] **Git**: instalar, configurar nombre/email, generar clave SSH
+- [ ] **Shell**: instalar fish/zsh, configurar prompt + aliases
+- [ ] **Terminal**: Alacritty/Kitty/WezTerm
+- [ ] **Multiplexor**: tmux o zellij
+- [ ] **Gestores de versiones**: nvm, pyenv, rustup, sdkman (según lenguajes)
+- [ ] **Editor**: VS Code / Zed / Helix + LSPs + extensiones
+- [ ] **Docker**: instalar, grupo docker, Docker Compose
+- [ ] **Bases de datos locales**: contenedores PostgreSQL, Redis, etc.
+- [ ] **Herramientas auxiliares**: `httpie`, `jq`, `ripgrep`, `fd`, `bat`, `htop`
+- [ ] **Pre-commit hooks**: `pipx install pre-commit` + configuración
+- [ ] **.dotfiles**: gestionar con Git + stow (ver [[XDG Base Directory y dotfiles modernos]])
+
+---
+
+## 10. Troubleshooting común
+
+| Problema | Causa | Solución |
 |---|---|---|
-| [[tmux]] | Multiplexor de terminal (sesiones, paneles, ventanas) | [[screen]] |
-| [[Shells (bash zsh fish)|zsh]] | Shell moderna con autocompletado, temas | bash, fish |
-| `fzf` | Búsqueda fuzzy en terminal (historial, archivos) | — |
-| `ripgrep` / `fd` | grep/find ultrarrápidos en proyectos grandes | grep, find |
-| `lazygit` | TUI para Git | git CLI, `tig` |
-| `bat` | cat con resaltado de sintaxis | cat, `less` |
-| `htop` | Monitor de procesos interactivo | top, btop |
+| `gcc: command not found` | build-essential no instalado | `sudo apt install build-essential` |
+| `node: command not found` | NVM no activado | `nvm use --lts` o cargar nvm en `.bashrc` |
+| `Permission denied` al instalar con pip | Usando `pip` sin `--user` | Usar `--user`, `venv`, o `pipx` |
+| Docker: `permission denied` | Usuario no en grupo docker | `sudo usermod -aG docker $USER && newgrp docker` |
+| `command not found: cargo` | Rust no en PATH | `source ~/.cargo/env` o añadir a `.bashrc` |
+| `ModuleNotFoundError` al importar | Entorno virtual no activado | Activar `.venv/bin/activate` |
+| `EACCES` al hacer `npm install -g` | Permisos de npm global | Usar `nvm` (instala en home) o configurar prefix |
+| LSP no funciona en editor | LSP no instalado para el lenguaje | Instalar con gestor del lenguaje (rust-analyzer, pyright, etc.) |
+
+---
+
+## 11. Flujo completo: de cero a proyecto funcionando
 
 ```bash
-# Instalación rápida del set recomendado
-# Debian/Ubuntu
-sudo apt install tmux zsh fzf ripgrep fd-find bat htop
+# ── 1. Instalar toolchain ──
+sudo apt update && sudo apt install build-essential curl git docker.io
 
-# Arch
-sudo pacman -S tmux zsh fzf ripgrep fd bat htop
+# ── 2. Gestor de versiones + lenguaje ──
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+
+# ── 3. Crear proyecto ──
+cargo new mi-api
+cd mi-api
+
+# ── 4. Añadir dependencias ──
+cargo add actix-web
+cargo add serde --features derive
+cargo add tokio --features full
+
+# ── 5. Desarrollar ──
+cargo run                                 # en una terminal
+# En otra terminal:
+curl http://localhost:8080/health          # probar endpoint
+
+# ── 6. Testear ──
+cargo test
+cargo clippy                              # lintear
+cargo fmt                                 # formatear
+
+# ── 7. Contenerizar ──
+# Crear Dockerfile + .dockerignore
+docker build -t mi-api .
+docker run -d -p 8080:8080 mi-api
 ```
 
-## Flujo de trabajo típico
-
-```
-1.  terminal                # abrir terminal
-2.  tmux                    # crear sesión con paneles
-3.  cd ~/proyecto           # ir al proyecto
-4.  nvm use --lts           # activar versión Node
-5.  source .venv/bin/activate  # activar entorno Python
-6.  code .                  # o: nvim .
-7.  npm run dev             # en otro panel de tmux
-8.  git checkout -b feature # empezar una rama
-9.  (editar, probar, commit)
-10. gh pr create             # crear pull request
-```
+---
 
 ## Ver también
 
-- [[Desarrollo en Linux (gcc make gdb strace)]] — toolchain C/C++, depuración
-- [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — gestores de paquetes por lenguaje
-- [[Python en Linux]] — Python específicamente
-- [[Compilacion desde Codigo Fuente]] — compilar programas desde fuente
-- [[Editores de código (VSCode Codium Zed Helix Antigravity)]] — IDEs y editores
-- [[Comparativa editores Linux]] — cómo elegir editor según perfil
+- [[Desarrollo en Linux (gcc make gdb strace)]] — toolchain C/C++ en profundidad
+- [[Python en Linux]] — gestión de Python, entornos virtuales, pip, poetry, uv
+- [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — comparativa de gestores por lenguaje
+- [[Editores de código (VSCode Codium Zed Helix Antigravity)]] — elegir editor según perfil
+- [[La Shell]] — fundamentos de la terminal para desarrollo
 - [[Git]] — control de versiones
-- [[GitHub CLI (gh)]] — GitHub desde terminal
-- [[Docker]] — contenedores para desarrollo
-- [[tmux]] — multiplexor de terminal
-- [[Shells (bash zsh fish)]] — elegir shell
-- [[Automatizacion y Scripts]] — automatizar builds, tests, deploys
+- [[Contenedores]] — Docker, Podman, LXC
+- [[Docker]] — build, ship, run
+- [[Compilacion desde Codigo Fuente]] — compilar programas manualmente
+- [[Variables de Entorno y PATH]] — gestionar rutas de herramientas
 
 ## Enlaces externos
 
-- [Wikipedia — Software development](https://en.wikipedia.org/wiki/Software_development)
-- [Arch Wiki — Development environment](https://wiki.archlinux.org/title/Developer_workspace)
-- [The Missing Semester of CS Education (MIT)](https://missing.csail.mit.edu/) — curso de herramientas de desarrollo
-- [Dev Containers specification](https://containers.dev/)
-- [nvm — Node Version Manager](https://github.com/nvm-sh/nvm)
-- [rustup — Rust toolchain installer](https://rustup.rs/)
-- [pyenv — Python version manager](https://github.com/pyenv/pyenv)
-- [sdkman — SDK manager](https://sdkman.io/)
+- [GitHub — nvm](https://github.com/nvm-sh/nvm)
+- [GitHub — pyenv](https://github.com/pyenv/pyenv)
+- [rustup.rs](https://rustup.rs/)
+- [SDKMAN](https://sdkman.io/)
+- [Dev Containers](https://containers.dev/)
+- [Docker Dev Environments](https://docs.docker.com/desktop/dev-environments/)
+- [The Twelve-Factor App](https://12factor.net/) — buenas prácticas para apps
 
-#programa #desarrollo #entorno
+#programa #desarrollo

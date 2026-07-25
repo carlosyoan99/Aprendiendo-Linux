@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-20
+fecha_modificacion: 2026-07-24
 estado: resuelto
 categoria: concepto
 prioridad: baja

@@ -246,4 +246,11 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Dashboard.md actualizado**: stats corregidas (316 notas, 311 resuelto, 4 en progreso), categorías actualizadas (Comando 67, Programa 70, Concepto 36, Índice 12, Entorno/WM 29), hardcoded counts de prioridades corregidos (153/105/53).
 - **Nota**: Las queries Dataview se actualizan automáticamente en Obsidian; las cifras manuales ahora coinciden con el escaneo real.
 
+## 2026-07-24 — Entorno de desarrollo Linux.md creado
+- **Creada [[Entorno de desarrollo Linux.md]]** (08 - Programas): guía completa para montar un entorno de desarrollo en Linux desde cero.
+- **Contenido**: toolchain base (build-essential, gcc, make), 6 stacks por lenguaje (Python, Node.js, Rust, Go, Java, Ruby) con gestores de versiones, contenedores para desarrollo (Docker, Dev Containers, Podman), editores e IDEs recomendados, terminal y multiplexores, bases de datos locales en contenedores, Git + flujo de trabajo, Dockerfile multi-etapa de ejemplo, checklist post-instalación, troubleshooting común, flujo completo de cero a proyecto funcionando.
+- **Enlaces relacionados**: [[Desarrollo en Linux (gcc make gdb strace)]], [[Python en Linux]], [[Lenguajes y gestores]], [[Editores de código]], [[Git]], [[Docker]], [[Contenedores]].
+- **TODO.md actualizado**: tarea movida a ✅ completado, próximos pasos reordenados.
+- **Commit**: Entorno de desarrollo Linux creado.
+
 #log
