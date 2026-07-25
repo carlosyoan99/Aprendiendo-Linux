@@ -97,6 +97,11 @@ comando | grep "algo"             # filtrar salida de otro comando
 |---|---|---|
 | Ver procesos | `ps aux` | — |
 | Monitor en vivo | `top` o `htop` | — |
+| Gestión Git visual | `lazygit` | — |
+| Explorar disco | `ncdu` | — |
+| Ver Markdown bonito | `glow README.md` | — |
+
+> Ver [[TUI tools]] para la guía completa de herramientas TUI (monitores, git, docker, editores, etc.).
 | Terminar proceso | `kill <PID>` | SIGTERM (15) — permite limpieza |
 | Forzar terminación | `kill -9 <PID>` | SIGKILL (9) — mata inmediato |
 | Matar por nombre | `pkill firefox` | — |

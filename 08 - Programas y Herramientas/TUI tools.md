@@ -52,7 +52,7 @@ glances -c servidor-remoto           # cliente remoto
 ### Referencias existentes
 
 - [[htop btop]] — nota completa en el vault
-- [[nvtop]] — monitor de GPU (mencionado en htop btop)
+- nvtop — monitor de GPU (mencionado en [[htop btop]])
 - [[top]] — monitor clásico, abuelo de todos
 
 ---
