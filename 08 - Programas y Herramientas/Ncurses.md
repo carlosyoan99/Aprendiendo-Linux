@@ -158,9 +158,12 @@ int main() {
 ```
 
 ```bash
-# Compilar
-gcc programa.c -lncursesw -o programa
+# Compilar (el ejemplo mínimo no usa Unicode, -lncurses basta)
+gcc programa.c -lncurses -o programa
 ./programa
+
+# Para apps modernas con UTF-8, usar -lncursesw
+# gcc programa.c -lncursesw -o programa
 ```
 
 ### Ejemplo completo: ventana centrada con colores

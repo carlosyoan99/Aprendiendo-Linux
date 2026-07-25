@@ -225,4 +225,12 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Hallazgos clave**: 0 notas en estado borrador real (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto). `Comparativa editores Linux.md` ya existe. Dashboard Dataview funcional.
 - **Vault: 314 notas (+ 7 templates).**
 
+## 2026-07-24 — Expansión de 5 notas prioritarias
+- **Daemon.md** expandido: señales para daemons (SIGHUP, SIGTERM, SIGUSR1, SIGUSR2), hardening systemd (ProtectSystem, PrivateTmp, CapabilityBoundingSet), buenas prácticas de logging con logrotate + journald.
+- **Busybox.md** expandido: ash vs bash (tabla de diferencias clave), BusyBox init vs systemd vs SysV, compilación desde fuente con applets personalizados (make menuconfig, CROSS_COMPILE).
+- **Ncurses.md** expandido: estructura terminfo, consultas con tput, ejemplo TUI completo con ventanas/colores/bucle de eventos, distinción ncurses vs ncursesw.
+- **Ubuntu.md** expandido: Netplan (IP estática, WiFi YAML), Ubuntu Pro gratuito (ESM, Livepatch), cloud-init para automatización cloud.
+- **Debian.md** expandido: apt pinning con tabla de prioridades, Debian packaging (dh_make, dpkg-buildpackage), evolución non-free-firmware en Bookworm.
+- **Commit**: `3f0fc97` — 526 líneas añadidas en 5 archivos.
+
 #log
