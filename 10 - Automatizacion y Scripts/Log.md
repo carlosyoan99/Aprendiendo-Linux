@@ -253,4 +253,9 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **TODO.md actualizado**: tarea movida a ✅ completado, próximos pasos reordenados.
 - **Commit**: Entorno de desarrollo Linux creado.
 
+## 2026-07-24 — Contenedores orquestación.md creado
+- **Creada [[Contenedores orquestación.md]]** (01 - Conceptos): guía completa sobre Docker Compose (perfiles, watch, variables de entorno), Docker Swarm (stack, servicios, rolling updates), Kubernetes (resumen conceptual + kubectl básico), comparativa Compose vs Swarm vs K8s, árbol de decisión, alternativas (Nomad, ECS), servicios cloud gestionados (EKS, AKS, GKE, DOKS), flujo de desarrollo de Compose a producción con K8s, troubleshooting.
+- **TODO.md actualizado**: duplicados corregidos, tarea marcada completada.
+- **Enlaces relacionados**: [[Contenedores]], [[Docker]], [[Kubernetes]], [[kubectl]], [[Namespaces (Linux)]], [[cgroups]], [[Contenedores - Comparativa]].
+
 #log

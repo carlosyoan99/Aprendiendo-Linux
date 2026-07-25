@@ -108,9 +108,7 @@ prioridad: alta
 | Tarea | Detalle | Estado |
 |---|---|---|
 | `Entorno de desarrollo Linux.md` | 08 - Programas — guía práctica de stacks (Python, Node, C/C++, Rust), toolchain por lenguaje, contenedores para desarrollo | ✅ completado |
-| `Contenedores orquestación.md` | concepto — Docker Compose, Kubernetes, swarm | ⚪ pendiente |
-| `Optimización de rendimiento.md` | concepto — tuning de kernel, sysctl, límites de recursos | ⚪ pendiente |
-| `Contenedores orquestación.md` | concepto — Docker Compose, Kubernetes, swarm | ⚪ pendiente |
+| `Contenedores orquestación.md` | concepto — Docker Compose, Swarm, K8s, árbol de decisión, troubleshooting | ✅ completado |
 | `Optimización de rendimiento.md` | concepto — tuning de kernel, sysctl, límites de recursos | ⚪ pendiente |
 
 ### 🟡 Prioridad media
