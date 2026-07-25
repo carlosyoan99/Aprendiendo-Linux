@@ -47,6 +47,6 @@ LVS implementa balanceo de carga a nivel de **kernel** (IPVS - IP Virtual Server
 
 - [[Heartbeat (Linux-HA)]] — HA clustering básico
 - [[Firewall]] — seguridad de red
-- [[nginx]] — balanceo a nivel de aplicación
+- [[Nginx]] — balanceo a nivel de aplicación
 
 #programa #balanceo #red

@@ -247,19 +247,19 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Nota**: Las queries Dataview se actualizan automáticamente en Obsidian; las cifras manuales ahora coinciden con el escaneo real.
 
 ## 2026-07-24 — Entorno de desarrollo Linux.md creado
-- **Creada [[Entorno de desarrollo Linux.md]]** (08 - Programas): guía completa para montar un entorno de desarrollo en Linux desde cero.
+- **Creada [[Entorno de desarrollo Linux]]** (08 - Programas): guía completa para montar un entorno de desarrollo en Linux desde cero.
 - **Contenido**: toolchain base (build-essential, gcc, make), 6 stacks por lenguaje (Python, Node.js, Rust, Go, Java, Ruby) con gestores de versiones, contenedores para desarrollo (Docker, Dev Containers, Podman), editores e IDEs recomendados, terminal y multiplexores, bases de datos locales en contenedores, Git + flujo de trabajo, Dockerfile multi-etapa de ejemplo, checklist post-instalación, troubleshooting común, flujo completo de cero a proyecto funcionando.
 - **Enlaces relacionados**: [[Desarrollo en Linux (gcc make gdb strace)]], [[Python en Linux]], [[Lenguajes y gestores]], [[Editores de código]], [[Git]], [[Docker]], [[Contenedores]].
 - **TODO.md actualizado**: tarea movida a ✅ completado, próximos pasos reordenados.
 - **Commit**: Entorno de desarrollo Linux creado.
 
 ## 2026-07-24 — Contenedores orquestación.md creado
-- **Creada [[Contenedores orquestación.md]]** (01 - Conceptos): guía completa sobre Docker Compose (perfiles, watch, variables de entorno), Docker Swarm (stack, servicios, rolling updates), Kubernetes (resumen conceptual + kubectl básico), comparativa Compose vs Swarm vs K8s, árbol de decisión, alternativas (Nomad, ECS), servicios cloud gestionados (EKS, AKS, GKE, DOKS), flujo de desarrollo de Compose a producción con K8s, troubleshooting.
+- **Creada [[Contenedores orquestación]]** (01 - Conceptos): guía completa sobre Docker Compose (perfiles, watch, variables de entorno), Docker Swarm (stack, servicios, rolling updates), Kubernetes (resumen conceptual + kubectl básico), comparativa Compose vs Swarm vs K8s, árbol de decisión, alternativas (Nomad, ECS), servicios cloud gestionados (EKS, AKS, GKE, DOKS), flujo de desarrollo de Compose a producción con K8s, troubleshooting.
 - **TODO.md actualizado**: duplicados corregidos, tarea marcada completada.
 - **Enlaces relacionados**: [[Contenedores]], [[Docker]], [[Kubernetes]], [[kubectl]], [[Namespaces (Linux)]], [[cgroups]], [[Contenedores - Comparativa]].
 
 ## 2026-07-24 — Optimización de rendimiento.md creado + expansiones finales
-- **Creada [[Optimización de rendimiento.md]]** (01 - Conceptos): última tarea de alta prioridad del TODO completada.
+- **Creada [[Optimización de rendimiento]]** (01 - Conceptos): última tarea de alta prioridad del TODO completada.
 - **Contenido**: ciclo de diagnóstico (medir→identificar→ajustar→verificar), kernel tuning por subsistema (memoria, red, FS), límites de recursos (ulimit, limits.conf, systemd), CPU governors y nice/renice, I/O schedulers y opciones de montaje, zram, perfiles por uso (escritorio, servidor web, BD, desarrollo), troubleshooting.
 - **Enlaces relacionados**: [[sysctl]], [[cgroups]], [[perf]], [[Procesos y Senales]], [[zram]].
 - **MoC actualizado**: entrada añadida en sección Terminal y comandos.

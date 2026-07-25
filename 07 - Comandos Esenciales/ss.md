@@ -201,7 +201,7 @@ sudo ss -tulpn | tail -n +2 | awk '{print $7}' | sort | uniq -c | sort -rn
 - [[ip]] — configurar interfaces de red
 - [[ping]] — probar conectividad básica
 - [[curl]] — probar servicios HTTP
-- [[nmap]] — escaneo de puertos remoto
+- [[Nmap]] — escaneo de puertos remoto
 - [[netstat]] — comando legacy (instalar `net-tools` si lo necesitas)
 - [[Redes Basicas]] — conceptos de red
 - [[Cheat Sheet - Comandos Esenciales]]
