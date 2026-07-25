@@ -14,24 +14,24 @@ categoria: indice
 
 | Métrica | Total |
 |---|---|
-| Notas totales | **316** |
-| Estado **resuelto** | 311 |
+| Notas totales | **314** |
+| Estado **resuelto** | 309 |
 | Estado **en progreso** | 4 (TODO, MoC, Dashboard, Log) |
 | Estado **borrador** | 0 (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto) |
 | Prioridad **alta** | 153 |
 | Prioridad **media** | 105 |
-| Prioridad **baja** | 53 |
+| Prioridad **baja** | 51 |
 
 ### Por categoría
 
 | Categoría | Notas |
 |---|---|
-| Comando | 67 |
+| Comando | 68 |
 | Programa | 70 |
 | Concepto | 36 |
 | Distribución | 40 |
-| Sistema | 28 |
-| Entorno / WM | 29 |
+| Sistema | 29 |
+| Entorno / WM | 27 |
 | Troubleshooting | 16 |
 | Índice | 12 |
 | Instalación | 9 |
@@ -180,7 +180,7 @@ WHERE prioridad = "media"
 SORT estado ASC, categoria ASC
 ```
 
-### Baja (53 notas)
+### Baja (51 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"
