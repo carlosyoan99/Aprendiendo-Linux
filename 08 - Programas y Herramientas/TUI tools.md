@@ -283,6 +283,7 @@ posting                             # HTTP client TUI
 ### Referencias existentes
 
 - [[Redes Basicas]] — conceptos de red
+- [[trippy]] — traceroute + ping visual TUI
 - [[ping]] | [[traceroute]] | [[ss]] | [[ip]] — notas de comandos
 
 ---

@@ -85,7 +85,10 @@ categoria: indice
 - [[Samba]] — compartición de archivos con Windows (SMB/CIFS)
 - [[PostgreSQL y MySQL]] — bases de datos relacionales en Linux · [[PostgreSQL vs MongoDB]] — SQL vs NoSQL, cuándo usar cada uno, migraciones · [[SQLite]] — la base de datos embebida más usada del mundo · [[Redis]] — estructura de datos en memoria, caching, colas, pub/sub · [[MongoDB y NoSQL]] — documentos, clave-valor, columnar y grafos
 - [[GitHub CLI (gh)]] — terminal para GitHub (PRs, issues, Actions, codespaces) · [[Backups (borg restic duplicity rsync)]] · [[Desarrollo en Linux (gcc make gdb strace)]] · [[Monitorización (Prometheus node_exporter)]]
-- [[lazygit]] — Git TUI interactivo · [[lazydocker]] — Docker TUI interactivo · [[k9s]] — Kubernetes TUI | [[zellij]] — multiplexor de terminal moderno · [[yazi]] — gestor de archivos TUI rápido | [[bat]] — cat con syntax highlighting
+- [[lazygit]] — Git TUI interactivo · [[gitui]] — Git TUI en Rust · [[tig]] — visor de commits Git
+- [[lazydocker]] — Docker TUI interactivo · [[dive]] — explorador capas Docker · [[ctop]] — top para contenedores
+- [[k9s]] — Kubernetes TUI | [[zellij]] — multiplexor de terminal moderno · [[yazi]] — gestor de archivos TUI rápido
+- [[bat]] — cat con syntax highlighting · [[glow]] — visor Markdown bonito | [[trippy]] — traceroute + ping visual
 - [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]]
 - [[Busybox]] · [[Ncurses]] · [[Stratis]]
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
