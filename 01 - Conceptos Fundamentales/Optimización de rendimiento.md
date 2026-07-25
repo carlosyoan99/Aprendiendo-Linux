@@ -500,7 +500,92 @@ sudo apt install ccache
 
 ---
 
-## 7. Herramientas de monitoreo continuo
+## 7. tuned — Perfiles de rendimiento automáticos
+
+`tuned` es un servicio que aplica perfiles de rendimiento preconfigurados. Es la forma más rápida y segura de optimizar un sistema sin tocar sysctl manualmente.
+
+```bash
+# Instalación
+sudo apt install tuned                    # Debian/Ubuntu
+sudo pacman -S tuned                      # Arch
+sudo dnf install tuned                    # Fedora/RHEL
+
+# Ver perfil activo
+tuned-adm active
+
+# Listar perfiles disponibles
+tuned-adm list
+
+# Perfiles comunes:
+# - throughput-performance  → máximo throughput (servidores, default en RHEL)
+# - latency-performance     → baja latencia (BD, trading, audio)
+# - virtual-guest           → para VMs invitadas
+# - powersave               → ahorro de energía (laptops)
+# - desktop                 → balance para escritorio
+# - balanced                → perfil neutral (default en Fedora)
+
+# Aplicar perfil
+tuned-adm profile latency-performance
+
+# Recomendar perfil automáticamente según hardware
+tuned-adm recommend
+
+# Ver recomendaciones de tuning aplicadas
+tuned-adm off                              # desactivar (restaurar valores por defecto)
+```
+
+`tuned` ajusta automáticamente: CPU governors, I/O schedulers, swappiness, dirty_ratio, virtual memory, kernel scheduler, y más. Es la alternativa moderna a tocar sysctl a mano.
+
+## 8. Transparent HugePages (THP)
+
+Las **HugePages** permiten al kernel usar páginas de memoria más grandes (2MB en vez de 4KB), reduciendo la cantidad de entradas en la TLB y mejorando el rendimiento en cargas de trabajo con uso intensivo de memoria. Linux tiene dos modos:
+
+| Modo | Descripción |
+|---|---|
+| **HugePages tradicionales** | Reserva estática de páginas grandes al arrancar. Requiere configuración manual |
+| **Transparent HugePages (THP)** | El kernel asigna páginas grandes automáticamente. Activado por defecto en la mayoría de distros |
+
+```bash
+# Ver estado de THP
+cat /sys/kernel/mm/transparent_hugepage/enabled
+# always [madvise] never
+# always → activado por defecto
+tal modo
+
+# Ver qué procesos usan HugePages
+cat /proc/meminfo | grep -i huge
+# AnonHugePages:    204800 kB    → páginas THP en uso
+# HugePages_Total:  0
+# HugePages_Free:   0
+```
+
+### ⚠️ Bases de datos y THP
+
+**PostgreSQL, MongoDB y MySQL recomiendan deshabilitar THP** (pero no las HugePages tradicionales). THP puede causar fragmentación de memoria y latencia impredecible en bases de datos.
+
+```bash
+# Deshabilitar THP temporalmente
+echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+
+# Deshabilitar permanentemente
+sudo tee /etc/systemd/system/disable-thp.service << 'EOF'
+[Unit]
+Description=Disable Transparent Huge Pages
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo never > /sys/kernel/mm/transparent_hugepage/enabled'
+ExecStart=/bin/sh -c 'echo never > /sys/kernel/mm/transparent_hugepage/defrag'
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl enable --now disable-thp
+```
+
+## 9. Herramientas de monitoreo continuo
 
 ```bash
 # Serie temporal (sysstat — el estándar)
