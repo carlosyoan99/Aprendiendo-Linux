@@ -3,7 +3,7 @@ fecha_creacion: 2026-07-24
 fecha_modificacion: 2026-07-24
 estado: resuelto
 categoria: programa
-prioridad: media
+prioridad: baja
 ---
 
 # fd (fd-find)

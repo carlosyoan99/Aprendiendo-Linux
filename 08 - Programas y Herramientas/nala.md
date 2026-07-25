@@ -110,8 +110,7 @@ sudo nala upgrade --full              # actualizar todo (incluye kernel)
 
 | Problema | Causa | Solución |
 |---|---|---|
-| `nala: command not found` | No instalado | Instalar con `sudo apt install nala` |
-| `sudo: nala: command not found` | nala no en PATH | Verificar instalación: `which nala` |
+| `nala: command not found` | No instalado o no en PATH | Instalar con `sudo apt install nala`; verificar `which nala` |
 | nala no se conecta | Mirrors incorrectos | `sudo nala fetch --auto` |
 | Historial muy grande | Muchas transacciones | `nala history` + `sudo nala history undo N` para limpiar |
 

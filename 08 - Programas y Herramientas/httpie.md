@@ -142,7 +142,7 @@ http https://api.github.com/users/octocat/repos | jq length
 - [[curl]] — cliente HTTP clásico (mejor para scripts)
 - [[jq]] — procesador JSON de terminal
 - [[fx]] — visor JSON interactivo
-- [[xh]] — alternativa Rust a httpie
+- xh — alternativa Rust a httpie (sin nota propia)
 
 ## Enlaces externos
 
