@@ -103,14 +103,14 @@ categoria: indice
 - [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[sed y awk]] · [[awk]] · [[grep]] · [[find]]
 - [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua
 - [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
-- [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[ps]] · [[kill]] · [[top]]
+- [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]]
 - [[ping]] · [[curl]] · [[cat]] · [[less]] · [[journalctl]]
-- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]]
-- [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
-- [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
+- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
+- [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
+- [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
-- [[apt]] · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[bash-avanzado]]
+- [[pwd]] — mostrar directorio actual · [[apt]] · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df y du]] — espacio en disco · [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[date y timedatectl]] — fecha, hora, zona horaria
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
