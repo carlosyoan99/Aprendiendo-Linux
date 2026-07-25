@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-25
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-24 (sesión TUI tools + 12 notas nuevas)
+> Última actualización: 2026-07-25 (sesión expansiones + enlaces externos)
 
 ---
 
@@ -56,7 +56,6 @@ prioridad: alta
 | ✅ | Hashtags `#DE-WM` → `#entorno-escritorio` (28 notas) | 2026-07-23 |
 | ✅ | README.md, CLAUDE.md, TODO.md, Dashboard.md actualizados | 2026-07-23 |
 | ✅ | Git hooks creados y activados (`.githooks/`) | 2026-07-23 |
-| ✅ | Enlaces externos completados al 100% en notas de contenido | 2026-07-24 |
 | ✅ | Repositorio Git inicializado (commit inicial) | 2026-07-24 |
 | ✅ | Scripts de automatización (5) + cron semanal vault-stats | 2026-07-24 |
 | ✅ | `check-frontmatter.sh` optimizado ~0.15s (de >30s a 0.15s) | 2026-07-24 |
@@ -97,7 +96,7 @@ prioridad: alta
 | ✅ | `fecha_modificacion` añadido a **312 notas** | Script `add-modification-date.sh` creado |
 | ✅ | 7 templates actualizados con `fecha_modificacion` | Campo añadido tras `fecha_creacion` |
 | ✅ | CLAUDE.md actualizado | Nueva regla de frontmatter documentada |
-| ✅ | Dashboard.md actualizado | Stats corregidas (314 notas, 27 Entorno/WM, etc.) |
+| ✅ | Dashboard.md actualizado | Stats corregidas |
 | ✅ | MoC - Linux.md corregido | Eliminadas entradas duplicadas y huérfanas |
 | ✅ | `check-frontmatter.sh` optimizado a ~0.15s | De >30s con awk + single-pass |
 
@@ -105,47 +104,62 @@ prioridad: alta
 
 | Completado | Cambio | Detalle |
 |---|---|---|
-| ✅ | [[TUI tools]] creada | Nota comprehensive con 12 categorías de TUIs, basada en awesome-tuis |
-| ✅ | [[bat]] creada | cat moderno con syntax highlighting, integración Git, 200+ lenguajes |
-| ✅ | [[lazygit]] creada | Git TUI interactivo: stage, commit, branch, merge, stash, rebase |
+| ✅ | [[TUI tools]] creada | Nota comprehensive con 12 categorías de TUIs |
+| ✅ | [[bat]] creada | cat moderno con syntax highlighting, integración Git |
+| ✅ | [[lazygit]] creada | Git TUI interactivo: stage, commit, branch, merge, stash |
 | ✅ | [[lazydocker]] creada | Docker TUI: contenedores, imágenes, logs, exec, Compose |
 | ✅ | [[k9s]] creada | Kubernetes TUI: pods, deployments, services, logs, shell |
-| ✅ | [[yazi]] creada | Gestor de archivos TUI en Rust, previsualización de imágenes |
-| ✅ | [[zellij]] creada | Multiplexor de terminal moderno, layouts, plugins, menú visual |
-| ✅ | [[ripgrep]] documentado en Buscadores y filtros | rg: grep moderno, .gitignore-aware, 10× más rápido |
-| ✅ | Sección instalación masiva (5 scripts bash) | essentials / full / all / containers / todo-en-uno menú |
+| ✅ | [[yazi]] creada | Gestor de archivos TUI en Rust |
+| ✅ | [[zellij]] creada | Multiplexor de terminal moderno, layouts, plugins |
+| ✅ | Sección instalación masiva (5 scripts bash) | essentials / full / all / containers / todo-en-uno |
 
 ### 🖥️ TUI tools — Sesión 2026-07-24 (ronda 2: faltantes)
 
 | Completado | Cambio | Detalle |
 |---|---|---|
-| ✅ | [[dive]] creada | Explorador de capas Docker: análisis de eficiencia, optimización de Dockerfiles |
+| ✅ | [[dive]] creada | Explorador de capas Docker: análisis de eficiencia |
 | ✅ | [[ctop]] creada | top-like para contenedores: CPU/RAM/IO/Red en vivo |
-| ✅ | [[gitui]] creada | Git TUI en Rust: rápido, temas Nord/Dracula/Gruvbox integrados |
-| ✅ | [[tig]] creada | Visor de commits y log Git: blame, diff, stash, ~1 MB |
-| ✅ | [[trippy]] creada | traceroute + ping visual: gráficos históricos por hop, modo JSON |
-| ✅ | [[glow]] creada | Visor Markdown bonito: explorador TUI, 30+ temas, modo presentación |
-| ✅ | MoC actualizado | dive, ctop, gitui, tig, trippy, glow añadidos en Programas comunes |
-| ✅ | TUI tools.md enlazado | [[trippy]] en Red, [[dive]]/[[ctop]] en Docker, [[gitui]]/[[tig]] en Git, [[glow]] en Lectura |
+| ✅ | [[gitui]] creada | Git TUI en Rust: rápido, temas integrados |
+| ✅ | [[tig]] creada | Visor de commits y log Git: blame, diff, stash |
+| ✅ | [[trippy]] creada | traceroute + ping visual: gráficos históricos |
+| ✅ | [[glow]] creada | Visor Markdown bonito: explorador TUI, 30+ temas |
 
-### 📌 Índices actualizados — Sesión 2026-07-24
+### 🆕 Notas nuevas — Sesión 2026-07-25 (alta prioridad)
 
-| Completado | Cambio |
-|---|---|
-| ✅ | MoC - Linux.md: añadidas [[TUI tools]] + 6 notas nuevas |
-| ✅ | Arsenal Power User.md: nueva sección 0 TUIs con tabla |
-| ✅ | Dia a Dia en CLI.md: lazygit, ncdu, glow + enlace a TUI tools |
-| ✅ | TUI tools.md: enlaces a notas existentes actualizados |
+| Completado | Nota | Archivo | Contenido |
+|---|---|---|---|
+| ✅ | [[ripgrep]] | 07 - Comandos Esenciales | grep moderno en Rust, 10x más rápido, .gitignore-aware, ~170 líneas |
+| ✅ | [[tree]] | 07 - Comandos Esenciales | mostrar árbol de directorios, profundidad, patrones, ~110 líneas |
+| ✅ | [[procs]] | 07 - Comandos Esenciales | ps moderno con colores, árbol, filtros, temas, ~110 líneas |
+| ✅ | [[doggo]] | 07 - Comandos Esenciales | dig moderno con colores, JSON, todos los tipos de registro, ~120 líneas |
+| ✅ | [[bandwhich]] | 08 - Programas y Herramientas | monitor de ancho de banda TUI por proceso/IP, ~120 líneas |
+| ✅ | [[fx]] | 08 - Programas y Herramientas | visor JSON interactivo TUI, path del nodo, búsqueda, ~120 líneas |
 
-### 🐛 Bugs corregidos — Sesión 2026-07-24
+### 📝 Expansión de notas — Sesión 2026-07-25
+
+| Completado | Nota | Antes | Después | Mejoras clave |
+|---|---|---|---|---|
+| ✅ | [[ctop]] | ~60 líneas | **131** | Comparativa con lazydocker, troubleshooting completo |
+| ✅ | [[httpie]] | ~40 líneas | **153** | Sintaxis completa, pipes con jq, vs curl detallado |
+| ✅ | [[fd-find]] | ~40 líneas | **157** | 20+ opciones, integración fzf, comparativa find/locate/fzf |
+| ✅ | [[fzf]] | ~50 líneas | **189** | Key bindings, config avanzada (FZF_DEFAULT_OPTS), temas |
+| ✅ | [[nala]] | ~40 líneas | **129** | nala fetch mirrors, historial transacciones, vs apt |
+
+### 🔗 Enlaces externos — Sesión 2026-07-25
+
+| Completado | Notas | Enlaces añadidos |
+|---|---|---|
+| ✅ | Fedora, CentOS, Rocky, EndeavourOS, Manjaro, Arch | Sitios oficiales, Wikipedia, Arch Wiki, foros, GitHub |
+| ✅ | jq, Nextcloud, Podman, Motif | Sitios oficiales, GitHub, Wikipedia, documentación |
+
+### 🐛 Bugs corregidos — Sesión 2026-07-25
 
 | Completado | Fix | Archivo |
 |---|---|---|
-| ✅ | `[[xh]]` → texto plano (xh) | httpie.md |
-| ✅ | `[[api]]` → texto plano (APIs REST) | jq.md |
-| ✅ | `[[nvtop]]` → texto plano (en htop btop) | TUI tools.md |
-| ✅ | `|| true` en apt install del script todo-en-uno | TUI tools.md |
-| ✅ | `duf` duplicado eliminado de recomendados/todo | TUI tools.md |
+| ✅ | `[[xh]]` → texto plano (xh sin nota propia) | httpie.md |
+| ✅ | `prioridad: media` → `baja` (consistencia con otras TUI) | fd-find.md |
+| ✅ | Troubleshooting duplicado fusionado (`command not found` x2) | nala.md |
+| ✅ | Orden de secciones invertido (Enlaces externos antes de Ver también) | jq.md |
 
 ---
 
@@ -155,9 +169,9 @@ prioridad: alta
 
 | Tarea | Detalle | Estado |
 |---|---|---|
-| `Entorno de desarrollo Linux.md` | 08 - Programas — guía práctica de stacks (Python, Node, C/C++, Rust), toolchain por lenguaje, contenedores para desarrollo | ✅ completado |
-| `Contenedores orquestación.md` | concepto — Docker Compose, Swarm, K8s, árbol de decisión, troubleshooting | ✅ completado |
-| `Optimización de rendimiento.md` | concepto — tuning de kernel, sysctl, límites de recursos, plan de diagnóstico, perfiles por uso | ✅ completado |
+| `Entorno de desarrollo Linux.md` | 08 - Programas — guía práctica de stacks (Python, Node, C/C++, Rust) | ✅ completado |
+| `Contenedores orquestación.md` | concepto — Docker Compose, Swarm, K8s, árbol de decisión | ✅ completado |
+| `Optimización de rendimiento.md` | concepto — tuning de kernel, sysctl, límites de recursos | ✅ completado |
 
 ### 🟡 Prioridad media
 
@@ -171,31 +185,31 @@ prioridad: alta
 
 | Tarea | Detalle | Estado |
 |---|---|---|
-| Unificar bloques de código sueltos | Agrupar en un solo bloque por sección (estilo plantilla) | ⚪ pendiente |
-| Expandir notas nuevas con `fecha_modificacion` antigua | Identificar y priorizar según antigüedad | ⚪ pendiente |
-| Crea notas TUI faltantes | dive, ctop, gitui, tig, trippy, glow | ✅ completado 2026-07-24 |
+| Crea nota xh.md | Alternativa Rust a httpie (resolver wikilink roto) | ⚪ pendiente |
+| Unificar bloques de código sueltos | Agrupar en un solo bloque por sección | ⚪ pendiente |
+| Expandir Motif.md | ~50 → ~100 líneas | ⚪ pendiente |
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (reales — 2026-07-24)
+## 📊 ESTADÍSTICAS DEL VAULT (reales — 2026-07-25)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **327** (+ 7 templates) |
-| **Estado resuelto** | 322 |
+| **Notas totales** | **357** (+ 7 templates) |
+| **Estado resuelto** | 352 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
 | **Estado borrador** | 1 (Log.md contiene la palabra en su texto) |
-| **Prioridad alta** | 158 |
-| **Prioridad media** | 106 |
-| **Prioridad baja** | 57 |
+| **Prioridad alta** | 168 |
+| **Prioridad media** | 117 |
+| **Prioridad baja** | 67 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 83 | **Comando** | 68 |
-| **Concepto** | 36 | **Distribución** | 40 |
-| **Sistema** | 29 | **Entorno / WM** | 27 |
+| **Programa** | 93 | **Comando** | 83 |
+| **Concepto** | 38 | **Distribución** | 41 |
+| **Sistema** | 30 | **Entorno / WM** | 29 |
 | **Troubleshooting** | 16 | **Índice** | 12 |
 | **Instalación** | 9 | **Terminal** | 4 |
 | **Automatización** | 3 | **Log** | 1 |
@@ -204,12 +218,12 @@ prioridad: alta
 
 | Carpeta | Notas | Carpeta | Notas |
 |---|---|---|---|
-| 00 - Indices y Mapas | 12 | 01 - Conceptos Fundamentales | 36 |
-| 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 28 |
-| 04 - Entornos de Escritorio | 14 | 05 - Gestores de Ventanas | 13 |
-| 06 - La Terminal | 4 | 07 - Comandos Esenciales | 68 |
-| 08 - Programas y Herramientas | 83 | 09 - Solucion de Problemas | 16 |
-| 10 - Automatizacion y Scripts | 4 | 11 - Distribuciones | 40 |
+| 00 - Indices y Mapas | 12 | 01 - Conceptos Fundamentales | 37 |
+| 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 30 |
+| 04 - Entornos de Escritorio | 15 | 05 - Gestores de Ventanas | 13 |
+| 06 - La Terminal | 4 | 07 - Comandos Esenciales | 82 |
+| 08 - Programas y Herramientas | 92 | 09 - Solucion de Problemas | 16 |
+| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 42 |
 
 ---
 
@@ -218,10 +232,8 @@ prioridad: alta
 - Las plantillas se actualizaron el 2026-07-23 y se volvieron a actualizar el 2026-07-24 con `fecha_modificacion`.
 - Las notas existentes NO se migraron automáticamente a las nuevas plantillas — se expandirán progresivamente según prioridad.
 - **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro histórico detallado de todas las sesiones.
-- El script `add-modification-date.sh` permite re-ejecutar la actualización de `fecha_modificacion` en cualquier momento.
-- Se eliminaron 2 archivos resumen redundantes (`DEs adicionales` y `WMs adicionales`) — todos los DEs y WMs tienen nota individual completa.
-- Sesión 2026-07-24 (ronda 1): Se crearon 7 notas nuevas (TUI tools + bat, lazygit, lazydocker, k9s, yazi, zellij), se documentó ripgrep, y se añadió sección de instalación masiva con 5 scripts bash.
-- Sesión 2026-07-24 (ronda 2): Se crearon 6 notas TUI faltantes (dive, ctop, gitui, tig, trippy, glow). Total TUI: 14 notas (1 guía + 13 específicas).
+- Sesión 2026-07-24: 14 notas TUI (1 guía + 13 específicas) + 3 notas planificadas (Regex, Vim, systemd).
+- Sesión 2026-07-25: 6 notas alta prioridad (ripgrep, tree, procs, doggo, bandwhich, fx), 5 expandidas (ctop, httpie, fd-find, fzf, nala), enlaces externos a 10 notas.
 
 ---
 

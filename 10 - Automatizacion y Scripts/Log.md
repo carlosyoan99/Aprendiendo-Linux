@@ -342,4 +342,37 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Nuevos archivos**: dive.md, ctop.md, gitui.md, tig.md, trippy.md, glow.md.
 - **Total TUI esta sesión**: 14 notas (1 guía + 13 herramientas específicas).
 
+## 2026-07-25 — Expansiones y enlaces externos
+
+### 🆕 6 notas de alta prioridad (auditoría)
+- **Creadas**: [[ripgrep]] (~170 líneas, 07), [[tree]] (~110, 07), [[procs]] (~110, 07), [[doggo]] (~120, 07), [[bandwhich]] (~120, 08), [[fx]] (~120, 08).
+- **MoC actualizado**: 4 comandos en Terminal, 2 programas en Programas comunes.
+- **Commits**: `4202c1e` feat + MoC update.
+
+### 📝 5 notas TUI expandidas
+- **[[ctop]]**: ~60 → 131 líneas. Comparativa con lazydocker, troubleshooting.
+- **[[httpie]]**: ~40 → 153 líneas. Sintaxis completa, pipes con jq, vs curl.
+- **[[fd-find]]**: ~40 → 157 líneas. 20+ opciones, integración fzf, comparativa.
+- **[[fzf]]**: ~50 → 189 líneas. Key bindings, config avanzada, temas.
+- **[[nala]]**: ~40 → 129 líneas. nala fetch mirrors, historial transacciones, vs apt.
+- **Commit**: `85592bf` feat: expandir 5 notas TUI cortas.
+
+### 🔗 Enlaces externos a 10 notas
+- **6 distros**: Fedora, CentOS, Rocky Linux, EndeavourOS, Manjaro, Arch Linux.
+- **4 programas**: jq, Nextcloud, Podman, Motif.
+- **Commit**: `c14d547` feat: enlaces externos.
+
+### 🐛 Bugs corregidos
+- `[[xh]]` → texto plano en httpie.md (xh sin nota propia).
+- `prioridad: media` → `baja` en fd-find.md (consistencia).
+- Troubleshooting duplicado fusionado en nala.md.
+- Secciones invertidas corregidas en jq.md (Enlaces externos antes de Ver también).
+- **Commits**: `6bdfc74`, `312d147`.
+
+### 📊 Stats finales
+- **Vault: 357 notas (+30 desde última actualización).**
+- Programa: 83→93. Comando: 68→83. 08 - Programas: 83→92. 07 - Comandos: 68→82.
+- **6 archivos nuevos** desde última stats (ripgrep, tree, procs, doggo, bandwhich, fx).
+- **TODO.md y Log.md actualizados** con todo el progreso.
+
 #log
