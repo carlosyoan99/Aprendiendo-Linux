@@ -18,7 +18,7 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 | `06 - La Terminal` | Shell, tmux, screen, filosofía de la terminal |
 | `07 - Comandos Esenciales` | Una nota por comando + cheat sheet general |
 | `08 - Programas y Herramientas` | Apps y utilidades (editores, navegadores, lenguajes, suites, Ansible) |
-| `09 - Solucion de Problemas` | Recursos generales + notas de problemas resueltos (15+) |
+| `09 - Solucion de Problemas` | Recursos generales + **16 problemas resueltos** (WiFi, permisos, SSH, Docker, Bluetooth, GRUB, NVIDIA, pantalla negra, etc.) |
 | `10 - Automatizacion y Scripts` | Scripts propios, cron, systemd timers, git hooks + `Log.md` |
 | `11 - Distribuciones` | Catálogo de distribuciones Linux (40 notas: Ubuntu, Debian, Arch, Fedora, etc.) |
 | `Templates` | Plantillas — no editar su estructura sin avisar al usuario |
