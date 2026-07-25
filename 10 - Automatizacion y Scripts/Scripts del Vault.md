@@ -66,6 +66,75 @@ categoria_comando,68
 
 **Ubicación:** `scripts/vault-stats-weekly.sh`
 
+---
+
+## 7. setup.sh
+
+**Ubicación:** `setup.sh` (raíz de `10 - Automatizacion y Scripts/`)
+
+Script de instalación que configura git hooks y cron jobs automáticamente. Es la puerta de entrada para nuevos colaboradores del vault.
+
+### Uso
+
+```bash
+# Configurar todo (hooks + cron, interactivo)
+bash setup.sh
+
+# Solo git hooks (no interactivo)
+bash setup.sh --hooks-only --yes
+
+# Solo cron jobs
+bash setup.sh --cron-only
+
+# Eliminar cron jobs instalados
+bash setup.sh --cron-remove
+
+# Verificar estado actual
+bash setup.sh --check
+```
+
+### Modos
+
+| Modo | Qué hace |
+|---|---|
+| `completo` (default) | Configura hooks + pregunta si instalar cron |
+| `--hooks-only` | Activa git hooks (`core.hooksPath`, permisos) |
+| `--cron-only` | Instala solo los cron jobs semanales |
+| `--cron-remove` | Elimina los cron jobs del vault del crontab |
+| `--check` | Muestra estado: hooks, cron, scripts disponibles |
+| `--yes` | No interactivo (asume sí a todo) |
+
+### Funcionamiento
+
+1. **Git hooks**:
+   - Hace ejecutables los hooks en `.githooks/`
+   - Ejecuta `git config core.hooksPath .githooks`
+   - Muestra resumen de cada hook instalado
+
+2. **Cron jobs**:
+   - Añade entradas al crontab del usuario con un tag identificador: `# VAULT:AprendiendoLinux:tipo:id`
+   - `add-modification-date.sh` → Domingos 08:00
+   - `vault-stats-weekly.sh` → Domingos 09:00
+   - Es **idempotente**: detecta entradas existentes y no las duplica
+   - `--cron-remove` busca el tag y elimina solo las entradas del vault
+
+3. **Identificador único**: Cada instalación genera un `CRON_ID` basado en el hash del path del vault, permitiendo múltiples clones sin conflicto.
+
+### Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `crontab: command not found` | cron no instalado en el sistema | `sudo apt install cron` (Debian) o `sudo pacman -S cronie` (Arch) |
+| `md5sum: command not found` | md5sum no disponible (macOS) | El script fallback a "default" — sigue funcionando |
+| Los hooks no se ejecutan | `core.hooksPath` no configurado | Ejecutar `bash setup.sh --hooks-only` |
+| Los cron jobs no se ejecutan | El servicio cron no está activo | `sudo systemctl enable --now cronie` o `cron` según la distro |
+
+### Ver también
+
+- [[Git hooks para el vault]] — hooks en detalle
+- [[Cron y Systemd Timers]] — automatización programada
+- [[Scripts del Vault]] — documentación de todos los scripts
+
 Wrapper para ejecutar `vault-stats.sh --resumen` semanalmente vía cron y guardar el resultado en `vault-stats-weekly.log`.
 
 ### Uso
