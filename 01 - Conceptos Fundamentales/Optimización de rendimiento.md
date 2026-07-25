@@ -549,8 +549,9 @@ Las **HugePages** permiten al kernel usar páginas de memoria más grandes (2MB 
 # Ver estado de THP
 cat /sys/kernel/mm/transparent_hugepage/enabled
 # always [madvise] never
-# always → activado por defecto
-tal modo
+# always → activado por defecto (el kernel asigna HugePages automáticamente)
+# madvise → solo si la app lo solicita explícitamente con madvise()
+# never → deshabilitado (recomendado para bases de datos)
 
 # Ver qué procesos usan HugePages
 cat /proc/meminfo | grep -i huge
@@ -612,7 +613,7 @@ perf report                               # analizar (ver [[perf]])
 
 ---
 
-## 8. Troubleshooting
+## 10. Troubleshooting
 
 | Problema | Causa probable | Solución |
 |---|---|---|
