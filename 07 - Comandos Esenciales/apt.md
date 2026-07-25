@@ -200,7 +200,6 @@ apt download nginx           # descarga nginx_version_arch.deb
 
 # Opción 2: apt install --download-only
 sudo apt install --download-only nginx
-sudo apt install --download-only nginx
 # Los .deb quedan en /var/cache/apt/archives/
 
 # Opción 3: instalar .deb descargado manualmente
