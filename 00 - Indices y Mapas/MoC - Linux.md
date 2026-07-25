@@ -22,7 +22,7 @@ categoria: indice
 - [[Que es Linux]] · [[GNU y Linux]] · [[Kernel Linux]]
 - [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
 - [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilacion desde Codigo Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
-- [[Personalización en Linux]] · [[Contenedores]] · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers
+- [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers
 - [[Docker]] — contenedores, build, ship, run
 - [[Exec Shield]] — protección NX · [[Graphics Execution Manager (GEM)]] — memoria GPU · [[Int 80h]] — syscalls x86 · [[RTAI (Tiempo Real)]] — tiempo real en Linux
 - [[Namespaces (Linux)]] — aislamiento de recursos, base de contenedores
