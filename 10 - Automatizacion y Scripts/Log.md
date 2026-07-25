@@ -274,4 +274,50 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **MoC actualizado**: [[Scripts del Vault]] añadido en sección Operativa.
 - **Pendiente**: check-frontmatter.sh (>30s para 316 notas — aceptable para el tamaño actual).
 
+## 2026-07-24 — TUI tools + 7 notas nuevas + wikilinks corregidos
+
+### 🖥️ TUI tools: nota principal + 6 específicas
+- **Creada [[TUI tools]]** (08 - Programas): nota comprehensive con 12 categorías de Terminal User Interfaces, basada en awesome-tuis (~585 líneas). Monitores, disco, gestores archivos, git, Docker/K8s, red, multimedia, editores, mensajería, productividad, seguridad y otros. Tabla 🟢🟡🔴 de prioridades.
+- **Creada [[bat]]** (08): cat moderno con syntax highlighting (~150 líneas). Integración Git, temas, alias, integración con man y help.
+- **Creada [[lazygit]]** (08): Git TUI interactivo (~180 líneas). 30+ atajos (stage, commit, branch, merge, rebase, stash), flujo start→push, config.yml.
+- **Creada [[lazydocker]]** (08): Docker TUI (~110 líneas). Logs en vivo, exec en contenedor, Docker Compose integrado.
+- **Creada [[k9s]]** (08): Kubernetes TUI (~150 líneas). Vistas `:pods`, `:deployments`, `:services`, skins, port-forward, shell.
+- **Creada [[yazi]]** (08): Gestor de archivos TUI en Rust (~130 líneas). Previsualización de imágenes, async I/O, vs lf/ranger/nnn.
+- **Creada [[zellij]]** (08): Multiplexor de terminal moderno (~160 líneas). Modo editor `Ctrl+o`, layouts YAML, temas, vs tmux/screen.
+- **Documentado [[ripgrep]]** en Buscadores y filtros de TUI tools.md. Sección de instalación y ejemplos de uso.
+
+### 📦 Instalación masiva
+- **Añadida sección** al final de TUI tools.md con 5 scripts bash para instalar TUIs:
+  - `install-tuis-essential.sh` 🟢 — htop, bottom, ncdu, bat, lazygit, fzf, ripgrep, tmux, glow...
+  - `install-tuis-full.sh` 🟡 — + btop, glances, gdu, broot, trippy, cmus, chafa...
+  - `install-tuis-all.sh` 🔴 — todo lo disponible en apt
+  - `install-tuis-containers.sh` 🐳 — lazydocker, dive, ctop
+  - `install-tuis.sh` 🐚 — todo-en-uno con menú interactivo y `|| true` en apt install
+
+### 📌 Índices actualizados
+- **MoC - Linux.md**: añadidas [[TUI tools]] + 6 notas nuevas en Programas comunes.
+- **Arsenal Power User.md**: nueva sección 0 TUIs con tabla de 10 herramientas.
+- **Dia a Dia en CLI.md**: filas lazygit, ncdu, glow + enlace a TUI tools.
+- **TUI tools.md**: enlaces a notas existentes ya no dicen "pendientes de crear".
+- **TODO.md**: stats actualizadas (321 notas, 77 programas), nuevas secciones para sesión.
+
+### 🐛 Bugs corregidos
+- `[[xh]]` → texto plano en httpie.md (wikilink a nota inexistente).
+- `[[api]]` → texto plano en jq.md (wikilink a nota inexistente).
+- `[[nvtop]]` → texto plano en TUI tools.md (no es nota separada, está en [[htop btop]]).
+- `|| true` añadido en todos los `sudo apt install` del script todo-en-uno (evita que `set -e` mate el menú).
+- `duf` duplicado eliminado de los scripts recomendados/todo (ya está en essentials).
+
+### Commits de la sesión
+- `a15e353` feat: crear TUI tools.md — guía completa de Terminal User Interfaces
+- `ad534c0` fix: añadir TUI tools en Dia a Dia CLI + arreglar wikilink nvtop
+- `6b9c709` feat: añadir sección de instalación masiva de TUIs a TUI tools.md
+- `0b833de` fix: añadir || true en scripts containers del menú
+- `fbd824a` feat: 6 notas TUI nuevas - bat, lazygit, lazydocker, k9s, yazi, zellij
+- `f97d5ec` docs: actualizar TODO.md con sesión TUI tools + 7 notas nuevas
+
+### Stats
+- **Vault: 321 notas (+7).** Programa: 70→77. 08 - Programas: 69→77.
+- **Nuevos archivos**: TUI tools.md, bat.md, lazygit.md, lazydocker.md, k9s.md, yazi.md, zellij.md.
+
 #log
