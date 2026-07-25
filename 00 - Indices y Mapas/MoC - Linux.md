@@ -89,8 +89,8 @@ categoria: indice
 - [[Busybox]] · [[Ncurses]] · [[Stratis]]
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
 - [[PipeWire]] · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]]
-- [[auditd]] · [[fail2ban]]
-- [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Multimedia (GStreamer HandBrake VLC MPV)]]
+- [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]]
+- [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Multimedia (GStreamer HandBrake VLC MPV)]]
 - [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
 - [[Parted Magic]] — Live CD de particionado y rescate
 - [[GNUstep]] — framework Cocoa libre
@@ -100,23 +100,25 @@ categoria: indice
 
 ## Terminal y comandos
 - [[La Shell]] · [[Shells (bash zsh fish)]] · [[tmux]] · [[screen]]
-- [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[sed y awk]] · [[awk]] · [[grep]] · [[find]]
+- [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[sed y awk]] · [[awk]] · [[grep]] · [[find]] · [[fd-find]] — búsqueda rápida · [[fzf]] — filtro difuso interactivo
 - [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua
 - [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]]
-- [[ping]] · [[curl]] · [[cat]] · [[less]] · [[journalctl]]
+- [[ping]] · [[curl]] · [[httpie]] — cliente HTTP amigable · [[cat]] · [[less]] · [[journalctl]]
+- [[jq]] — procesador JSON de terminal
 - [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
-- [[apt]] · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
+- [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df y du]] — espacio en disco · [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[date y timedatectl]] — fecha, hora, zona horaria
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
 
 ## Operativa
 - [[Solucion de Problemas - Recursos]]
+- [[netstat]] — estadísticas de red (legacy) · [[nmcli]] — gestión con NetworkManager · [[nftables]] — firewall moderno
 - [[WiFi no conecta]] · [[Error de permisos]] · [[Sin sonido]]
 - [[Paquete roto]] · [[GRUB no arranca]] · [[NVIDIA no detecta]]
 - [[Pantalla en negro tras actualizar drivers]] — fallo de arranque tras update de GPU
