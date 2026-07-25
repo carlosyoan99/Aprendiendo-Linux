@@ -370,9 +370,9 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Commits**: `6bdfc74`, `312d147`.
 
 ### 📊 Stats finales
-- **Vault: 357 notas (+30 desde última actualización).**
+- **Vault: 357 notas (+30 acumulados, +6 en esta sesión).**
 - Programa: 83→93. Comando: 68→83. 08 - Programas: 83→92. 07 - Comandos: 68→82.
-- **6 archivos nuevos** desde última stats (ripgrep, tree, procs, doggo, bandwhich, fx).
+- **Archivos nuevos en esta sesión**: ripgrep, tree, procs, doggo (07), bandwhich, fx (08).
 - **TODO.md y Log.md actualizados** con todo el progreso.
 
 #log
