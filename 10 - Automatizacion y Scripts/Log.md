@@ -258,4 +258,11 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **TODO.md actualizado**: duplicados corregidos, tarea marcada completada.
 - **Enlaces relacionados**: [[Contenedores]], [[Docker]], [[Kubernetes]], [[kubectl]], [[Namespaces (Linux)]], [[cgroups]], [[Contenedores - Comparativa]].
 
+## 2026-07-24 — Optimización de rendimiento.md creado + expansiones finales
+- **Creada [[Optimización de rendimiento.md]]** (01 - Conceptos): última tarea de alta prioridad del TODO completada.
+- **Contenido**: ciclo de diagnóstico (medir→identificar→ajustar→verificar), kernel tuning por subsistema (memoria, red, FS), límites de recursos (ulimit, limits.conf, systemd), CPU governors y nice/renice, I/O schedulers y opciones de montaje, zram, perfiles por uso (escritorio, servidor web, BD, desarrollo), troubleshooting.
+- **Enlaces relacionados**: [[sysctl]], [[cgroups]], [[perf]], [[Procesos y Senales]], [[zram]].
+- **MoC actualizado**: entrada añadida en sección Terminal y comandos.
+- **TODO.md**: última tarea de alta prioridad marcada completada. TODO vacío de alta prioridad por primera vez.
+
 #log

@@ -110,6 +110,7 @@ categoria: indice
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[apt]] · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[bash-avanzado]]
+- [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df y du]] — espacio en disco · [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[date y timedatectl]] — fecha, hora, zona horaria
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
 
