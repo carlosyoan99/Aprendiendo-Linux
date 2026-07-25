@@ -16,7 +16,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `07 - Comandos Esenciales` | **67 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, pacman, df, free, uname, date, sed+awk) + cheat sheet | 67 |
 | `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio | 69 |
 | `09 - Solucion de Problemas` | Recursos + **16 problemas resueltos** (WiFi, sonido, permisos, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB) | 16 |
-| `10 - Automatizacion y Scripts` | Scripts propios (6: stats, logs, validación, huérfanas), cron, git hooks, Log.md, docs | 5 |
+| `10 - Automatizacion y Scripts` | Scripts propios (6: stats, logs, validación, huérfanas), cron, git hooks, Log.md, docs | 5 (+1 doc nueva) |
 | `11 - Distribuciones` | Catálogo completo de 40 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, etc.) | 40 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |
 
@@ -24,7 +24,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **316** (+ 7 templates) |
+| **Notas totales** | **317** (+ 7 templates) |
 | **Estado resuelto** | 311 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
 | **Estado borrador** | 2 (README, CLAUDE — sin frontmatter deliberadamente) |
