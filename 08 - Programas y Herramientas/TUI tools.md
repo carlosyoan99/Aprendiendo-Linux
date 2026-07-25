@@ -540,6 +540,222 @@ curl api.example.com | fx           # pipe de API
 
 ---
 
+## 📦 Instalación masiva
+
+Scripts para instalar todas las TUIs de esta guía de una sola vez, organizados por prioridad.
+
+### 🟢 Instalación esencial (día a día)
+
+```bash
+#!/bin/bash
+# install-tuis-essential.sh — TUIs que todo Linux user debería tener
+
+echo "📦 Instalando TUIs esenciales..."
+
+sudo apt update
+
+# Monitores y sistema
+sudo apt install -y \
+    htop \
+    bottom \
+    ncdu \
+    duf \
+    bat
+
+# Git
+sudo apt install -y \
+    lazygit \
+    tig \
+    git-delta
+
+# Buscadores y filtros
+sudo apt install -y \
+    fzf \
+    fd-find \
+    ripgrep \
+    tree \
+    jq
+
+# Terminal
+sudo apt install -y \
+    tmux \
+    zellij
+
+# Productividad
+sudo apt install -y \
+    glow
+
+echo "✅ TUIs esenciales instalados."
+echo "ℹ️  Algunos binarios usan nombres distintos:"
+echo "   - bat  → usa 'batcat' en Debian/Ubuntu (o alias bat='batcat')"
+echo "   - fd   → usa 'fdfind' en Debian/Ubuntu (o alias fd='fdfind')"
+```
+
+### 🟡 Instalación completa (esencial + recomendado)
+
+```bash
+#!/bin/bash
+# install-tuis-full.sh — TUIs esenciales + muy recomendados
+
+# Primero ejecutar la instalación esencial (script anterior)
+# o instalar los paquetes extra:
+
+echo "📦 Instalando TUIs recomendadas..."
+
+sudo apt install -y \
+    btop \
+    glances \
+    gdu \
+    broot \
+    gitui \
+    trippy \
+    bmon \
+    nethogs \
+    cmus \
+    chafa \
+    timg \
+    newsboat \
+    doggo \
+    httpie
+
+echo "✅ TUIs recomendadas instaladas."
+```
+
+### 🔴 Instalación completa (todo)
+
+```bash
+#!/bin/bash
+# install-tuis-all.sh — TODO el arsenal TUI
+
+echo "📦 Instalando TODAS las TUIs..."
+
+# Esenciales + recomendados + opcionales
+sudo apt install -y \
+    # Monitores
+    htop btop bottom glances nvtop \
+    # Disco
+    ncdu gdu duf \
+    # Git
+    lazygit gitui tig git-delta \
+    # Docker (si tienes el repo de Docker añadido)
+    lazydocker dive ctop \
+    # Red
+    trippy bmon nethogs bandwhich termshark oha \
+    # Multimedia
+    cmus chafa timg cava \
+    # Editores
+    micro \
+    # Mensajería
+    weechat irssi aerc neomutt \
+    # Productividad
+    glow newsboat slides \
+    # Buscadores y filtros
+    fzf fd-find ripgrep bat broot tree jq httpie doggo \
+    # Terminal
+    tmux zellij screen
+
+echo "✅ Todas las TUIs instaladas."
+echo "⚠️  Algunas herramientas requieren instalación manual:"
+echo "   - yazi, nnn, lf, ranger — gestores de archivos"
+echo "   - k9s, kdash — Kubernetes"
+echo "   - ncspot, spotify-player — Spotify"
+echo "   - fx, visidata, posting — vía npm/pip"
+echo "   - gpg-tui, flawz — vía cargo/binario"
+```
+
+### 🐳 Docker + K8s stack
+
+Para instalar las TUIs de contenedores se necesita tener los repositorios de Docker y Kubernetes configurados:
+
+```bash
+#!/bin/bash
+# install-tuis-containers.sh
+
+echo "📦 Instalando TUIs de contenedores..."
+
+# Añadir repositorio Docker (si no está)
+if ! dpkg -l | grep -q docker-ce; then
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+        sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] \
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+fi
+
+sudo apt install -y lazydocker dive
+sudo snap install ctop
+
+echo "✅ TUIs de contenedores instaladas."
+echo "ℹ️  k9s se descarga manualmente desde https://github.com/derailed/k9s/releases"
+```
+
+### 🐚 Script único todo-en-uno
+
+```bash
+#!/bin/bash
+# install-tuis.sh — Instalación masiva de TUIs con menú interactivo
+# Uso: bash install-tuis.sh [essentials|full|all|containers]
+
+set -euo pipefail
+
+MODE="${1:-menu}"
+
+instalar_essentials() {
+    echo "🟢 Instalando esenciales..."
+    sudo apt install -y htop bottom ncdu duf bat lazygit tig \
+        git-delta fzf fd-find ripgrep tree jq tmux zellij glow
+    echo "✅ Esenciales listos"
+}
+
+instalar_recomendados() {
+    echo "🟡 Instalando recomendados..."
+    sudo apt install -y btop glances gdu broot gitui trippy \
+        bmon nethogs cmus chafa timg newsboat doggo httpie
+    echo "✅ Recomendados listos"
+}
+
+instalar_todo() {
+    instalar_essentials
+    instalar_recomendados
+    echo "🔴 Instalando opcionales..."
+    sudo apt install -y nvtop duf micro weechat irssi aerc \
+        neomutt slides screen bandwhich termshark oha cava
+    echo "✅ Todo listo"
+}
+
+case "$MODE" in
+    essentials)  instalar_essentials ;;
+    full)        instalar_essentials; instalar_recomendados ;;
+    all)         instalar_todo ;;
+    containers)  echo "🐳 Instalando TUIs de contenedores...";
+                 sudo apt install -y lazydocker dive;;
+    menu|*)
+        echo "╔══════════════════════════════╗"
+        echo "║   🚀 Instalador Masivo TUI   ║"
+        echo "╠══════════════════════════════╣"
+        echo "║  1) 🟢 Esenciales            ║"
+        echo "║  2) 🟡 Esenciales + Recomen. ║"
+        echo "║  3) 🔴 Todo                  ║"
+        echo "║  4) 🐳 Solo contenedores     ║"
+        echo "║  5) 🚪 Salir                 ║"
+        echo "╚══════════════════════════════╝"
+        read -p "Selecciona una opción: " opt
+        case "$opt" in
+            1) instalar_essentials ;;
+            2) instalar_essentials; instalar_recomendados ;;
+            3) instalar_todo ;;
+            4) sudo apt install -y lazydocker dive;;
+            *) echo "Hasta luego! 👋"; exit 0;;
+        esac
+        ;;
+esac
+```
+
+> 💡 **Tip**: Guarda el script como `install-tuis.sh` en `~/scripts/` o en la carpeta `10 - Automatizacion y Scripts/scripts/` del vault y hazlo ejecutable con `chmod +x install-tuis.sh`.
+
+---
+
 ## 🔗 Ver también
 
 - [[Ncurses]] — la biblioteca que hace posibles muchas TUIs
