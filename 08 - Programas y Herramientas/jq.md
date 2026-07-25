@@ -51,6 +51,6 @@ curl -s https://api.github.com/users/octocat/repos | jq '.[] | select(.fork == f
 - [[curl]] — cliente HTTP (a menudo pipeado a jq)
 - [[httpie]] — cliente HTTP alternativo
 - [[grep]] — búsqueda clásica en texto
-- [[api]] — APIs REST
+- APIs REST
 
 #programa #herramientas #json

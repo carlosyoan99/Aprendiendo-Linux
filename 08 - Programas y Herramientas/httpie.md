@@ -34,6 +34,6 @@ pip install httpie
 
 - [[curl]] — cliente HTTP clásico
 - [[jq]] — procesador JSON
-- [[xh]] — alternativa Rust a httpie
+- xh — alternativa Rust a httpie
 
 #programa #herramientas #red
