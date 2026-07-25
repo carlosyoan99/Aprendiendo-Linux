@@ -35,11 +35,13 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
    ```yaml
    ---
    fecha_creacion: YYYY-MM-DD
+   fecha_modificacion: YYYY-MM-DD
    estado: borrador | en progreso | resuelto
    categoria: concepto | comando | programa | sistema | entorno-escritorio | distribucion | instalacion | terminal | troubleshooting | automatizacion | indice | log
    prioridad: alta | media | baja
    ---
    ```
+   `fecha_modificacion` se actualiza automáticamente vía script (`add-modification-date.sh`) o al editar la nota manualmente. Sirve para identificar notas desactualizadas que necesitan revisión.
    `prioridad` es opcional en notas de índice/log, pero obligatorio en cualquier nota de contenido — indica cuánto conviene profundizar en ese tema antes que en otros de la misma categoría. Ver criterio completo en `00 - Indices y Mapas/Rutas de Aprendizaje.md`.
 
    **Categorías disponibles** (12):

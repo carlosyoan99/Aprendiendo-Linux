@@ -1,5 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
+fecha_modificacion: 2026-07-20
 estado: resuelto
 categoria: distribucion
 prioridad: alta

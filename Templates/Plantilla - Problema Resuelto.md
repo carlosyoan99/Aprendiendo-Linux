@@ -1,5 +1,6 @@
 ---
 fecha_creacion: {{date}}
+fecha_modificacion: {{date}}
 estado: resuelto
 categoria: troubleshooting
 prioridad: alta

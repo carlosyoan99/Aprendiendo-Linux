@@ -1,5 +1,6 @@
 ---
 fecha_creacion: {{date}}
+fecha_modificacion: {{date}}
 estado: en progreso
 categoria: log
 prioridad: baja

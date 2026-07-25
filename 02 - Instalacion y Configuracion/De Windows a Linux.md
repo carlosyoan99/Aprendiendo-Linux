@@ -1,5 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
+fecha_modificacion: 2026-07-19
 estado: resuelto
 categoria: instalacion
 prioridad: alta
