@@ -141,6 +141,116 @@ Debian no tiene PPAs al estilo Ubuntu. Las opciones son:
 - **Debian Multimedia**: códecs y software multimedia no incluidos en main
 - **Repositorios de terceros**: Docker, VirtualBox, etc. (añadir con cuidado)
 
+### APT Pinning — priorizar versiones
+
+APT pinning permite forzar qué versión de un paquete instalar cuando hay múltiples repositorios:
+
+```bash
+# /etc/apt/preferences.d/stable-priority.pref
+Package: *
+Pin: release a=stable
+Pin-Priority: 900
+```
+
+**Prioridades clave:**
+| Prioridad | Efecto |
+|---|---|
+| 1000+ | Forzar instalación incluso si es downgrade |
+| 990 | Preferir versión del target release (`apt -t`) |
+| 500 | Prioridad por defecto de los repos |
+| 100 | Prioridad por defecto de paquetes instalados |
+| 1-99 | Solo instalar si no hay otra versión instalada |
+| -1 | Bloquear instalación |
+
+**Ejemplo práctico: instalar Firefox desde backports sin mezclar el resto:**
+
+```bash
+# /etc/apt/preferences.d/firefox-backport.pref
+Package: firefox*
+Pin: release a=bookworm-backports
+Pin-Priority: 1001
+
+Package: *
+Pin: release a=bookworm-backports
+Pin-Priority: 100  # el resto de backports solo si no está instalado
+```
+
+```bash
+# Ver prioridades actuales
+apt-cache policy firefox
+```
+
+## Debian packaging — construir un .deb
+
+Empaquetar software para Debian es un proceso estandarizado:
+
+```bash
+# Estructura mínima de un paquete
+mi-app/
+├── debian/
+│   ├── control        # metadatos (nombre, versión, dependencias)
+│   ├── rules          # makefile de compilación
+│   ├── changelog      # historial de versiones
+│   └── compat         # nivel de compatibilidad de debhelper
+└── ... (código fuente)
+```
+
+### genera la estructura con dh_make
+
+```bash
+# 1. Preparar fuente
+mkdir mi-app-1.0
+tar czf mi-app_1.0.orig.tar.gz mi-app-1.0/
+cd mi-app-1.0
+
+# 2. Generar esqueleto debian/
+dh_make --single --packagename mi_app_1.0 --createorig
+
+# 3. Editar debian/control
+#    - Package: mi-app
+#    - Version: 1.0-1
+#    - Depends: libc6 (>= 2.31)
+#    - Description: Mi aplicación
+
+# 4. Construir
+dpkg-buildpackage -us -uc -b
+
+# 5. Resultado: ../mi-app_1.0-1_amd64.deb
+```
+
+```bash
+# Instalar herramientas de empaquetado
+sudo apt install build-essential dh-make devscripts debhelper
+
+# Ver contenido de un .deb sin instalarlo
+dpkg-deb --contents paquete.deb
+dpkg-deb --info paquete.deb
+```
+
+> 📖 **Referencia**: [Debian Policy Manual](https://www.debian.org/doc/debian-policy/) — la guía definitiva para empaquetar.
+
+## Evolución del firmware no-libre en Debian
+
+Debian 12 (Bookworm, 2023) introdujo un cambio histórico respecto al firmware privativo:
+
+| Debian ≤ 11 (Bullseye) | Debian 12+ (Bookworm) |
+|---|---|
+| Firmware no-libre separado en ISOs "unofficial" | Firmware incluido en ISOs oficiales |
+| Usuario debía buscar firmware manualmente | Instalador detecta y carga firmware automáticamente |
+| `contrib` y `non-free` separados | Nuevo componente: `non-free-firmware` |
+
+```bash
+# /etc/apt/sources.list para Debian 12+
+deb http://deb.debian.org/debian bookworm main contrib non-free-firmware
+deb http://deb.debian.org/debian-security bookworm-security main contrib non-free-firmware
+```
+
+Esto significa que:
+- ✅ Las ISOs oficiales ahora incluyen firmware WiFi, NVIDIA, Bluetooth, etc.
+- ✅ El instalador detecta hardware que necesita firmware y lo carga automáticamente
+- ✅ Ya no hace falta buscar ISOs "unofficial" no-libre
+- ✅ Las actualizaciones de firmware se reciben vía `non-free-firmware`
+
 ## Ciclo de lanzamiento
 
 Releases estables cada ~2 años con soporte de seguridad durante:

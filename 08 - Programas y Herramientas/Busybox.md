@@ -128,16 +128,100 @@ busybox --install -s /bin
 # Ahora /bin/ls, /bin/cp, etc. apuntan a /bin/busybox
 ```
 
-## Usos principales
+## Shell ash vs Bash — diferencias clave
 
-| Escenario | Por qué BusyBox |
-|---|---|
-| **Contenedores Docker** | Alpine Linux (5 MB) usa BusyBox — imágenes ultra-ligeras |
-| **Routers (OpenWrt)** | OpenWrt usa BusyBox como base del sistema |
-| **Android (root)** | BusyBox añade comandos Linux estándar a Android |
-| **Sistemas embebidos** | Buildroot y Yocto incluyen BusyBox en el sistema |
-| **Rescate/Recuperación** | Discos de rescate con BusyBox (SystemRescue) |
-| **Initramfs** | BusyBox init proporciona un sistema mínimo en initramfs |
+BusyBox incluye **ash** (Almquist Shell) como shell por defecto, no Bash. ash es POSIX-compliant pero carece de muchas extensiones de Bash:
+
+| Característica | ash (BusyBox) | Bash |
+|---|---|---|
+| `[[ ... ]]` condicional | ❌ Usar `[ ... ]` POSIX | ✅ |
+| Arrays indexados | ❌ | ✅ |
+| Arrays asociativos | ❌ | ✅ |
+| `${var/patrón/reemplazo}` | ❌ | ✅ |
+| Process substitution `<(...)` | ❌ | ✅ |
+| `echo {1..10}` brace expansion | ❌ | ✅ |
+| `=~` regex matching | ❌ | ✅ |
+| `source` alias | ❌ (usar `.` POSIX) | ✅ |
+| **Rendimiento** | Más rápido y ligero | Más lento (más features) |
+| **Uso en RAM** | ~100 KB | ~1 MB |
+
+```bash
+# Script compatible ash y bash (POSIX)
+if [ "$var" = "valor" ]; then  # NO usar [[ ]] 
+    echo "ok"
+fi
+
+# Evitar funciones Bash-only
+# for i in {1..10}; do ... done  ← no funciona en ash
+# Usar en su lugar:
+i=1
+while [ "$i" -le 10 ]; do
+    ...
+    i=$((i + 1))
+done
+```
+
+> 📝 **Regla práctica**: si escribes scripts para Alpine/embebido, asume ash. Prueba con `busybox sh script.sh`.
+
+## BusyBox init vs systemd vs SysV
+
+BusyBox incluye un **init mínimo** (PID 1) para sistemas embebidos, sin dependencias ni paralelismo:
+
+| Aspecto | BusyBox init | SysVinit | systemd |
+|---|---|---|---|
+| **Configuración** | `/etc/inittab` | `/etc/inittab` + scripts | `.service` units |
+| **Paralelismo** | ❌ No | ❌ No | ✅ Sí |
+| **Dependencias** | ❌ No | ❌ No | ✅ Sí |
+| **Socket activation** | ❌ No | ❌ No | ✅ Sí |
+| **Respawn** | ✅ Sí (`respawn`) | ✅ Sí | ✅ Sí (`Restart=`) |
+| **Logging** | ❌ No integrado | ❌ No integrado | ✅ journald |
+| **Tamaño** | ~20 KB | ~200 KB | ~2 MB+ |
+| **Complejidad** | Mínima | Baja | Alta |
+| **Usado en** | OpenWrt, Alpine, embebido | Distros legacy | Distros modernas |
+
+```bash
+# /etc/inittab típico para BusyBox init
+::sysinit:/etc/init.d/rcS          # Scripts de arranque
+::respawn:/sbin/getty 115200 tty1  # Consola interactiva
+::ctrlaltdel:/sbin/reboot          # Ctrl+Alt+Supr
+::shutdown:/bin/umount -a -r       # Apagado
+```
+
+## Compilar BusyBox desde fuente
+
+Para sistemas embebidos o contenedores personalizados, puedes compilar BusyBox solo con los comandos que necesitas:
+
+```bash
+# 1. Descargar fuente
+git clone https://git.busybox.net/busybox
+cd busybox
+
+# 2. Configurar applets (similar al kernel Linux)
+make defconfig                     # configuración por defecto (~300 applets)
+# O mejor: empezar de cero
+make allnoconfig                   # deshabilitar todo
+make menuconfig                    # seleccionar SOLO los applets necesarios
+
+# 3. Compilar
+make -j$(nproc)
+
+# 4. Instalar en un directorio destino
+make CONFIG_PREFIX=./rootfs install
+# Esto crea ./rootfs/bin/busybox + enlaces simbólicos
+
+# 5. Verificar tamaño
+ls -lh busybox                      # ~800 KB - 1.5 MB
+du -sh rootfs/                       # ~2 MB con enlaces
+```
+
+**Cross-compilación** (para ARM, RISC-V, etc.):
+
+```bash
+make CROSS_COMPILE=arm-linux-gnueabihf- defconfig
+make CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
+```
+
+## Usos principales
 
 ### BusyBox en contenedores
 

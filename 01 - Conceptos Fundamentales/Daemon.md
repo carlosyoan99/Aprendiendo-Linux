@@ -203,6 +203,113 @@ Group=nogroup
 WantedBy=multi-user.target
 ```
 
+## Señales comunes para daemons
+
+Los daemons responden a señales específicas para recargar configuraciones, rotar logs o terminar gracefulmente:
+
+| Señal | Número | Uso típico en daemons |
+|---|---|---|
+| **SIGHUP** | 1 | Recargar configuración sin reiniciar (nginx -s reload, sshd, cron) |
+| **SIGTERM** | 15 | Terminación graceful — el daemon limpia recursos y sale |
+| **SIGKILL** | 9 | Terminación forzada — no se puede capturar ni ignorar |
+| **SIGUSR1** | 10 | Señal definida por la app — ej. rotar logs, dump stats |
+| **SIGUSR2** | 12 | Señal definida por la app — ej. activar/desactivar debug |
+| **SIGINT** | 2 | Interrupción manual (Ctrl+C) — algunos daemons la capturan |
+| **SIGCHLD** | 17 | Hijo terminó — útil para daemons que lanzan procesos hijos |
+| **SIGPIPE** | 13 | Escritura en pipe roto — daemons de red la capturan para no caerse |
+
+```bash
+# Enviar SIGHUP para recargar configuración
+sudo kill -HUP $(cat /var/run/sshd.pid)
+
+# Enviar SIGUSR1 para rotar logs (ej. rsyslog)
+sudo kill -USR1 $(pidof rsyslogd)
+
+# Ver qué señales captura un proceso
+kill -l               # lista de señales disponibles
+```
+
+> Ver [[Procesos y Senales]] para la referencia completa de señales en Linux.
+
+## Hardening de servicios systemd
+
+systemd permite restringir qué puede hacer un daemon mediante opciones de hardening en el `.service`. Esto reduce drásticamente la superficie de ataque:
+
+```ini
+# /etc/systemd/system/mi-daemon-hardened.service
+[Unit]
+Description=Daemon con hardening
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mi-daemon
+
+# === Hardening ===
+ProtectSystem=strict          # Solo lectura en /usr y /etc (excepto /etc writable)
+ProtectHome=true              # /home, /root y /run/user no accesibles
+PrivateTmp=true               # /tmp aislado (no comparte con otros procesos)
+NoNewPrivileges=true          # Impide escalar privilegios (su, sudo)
+CapabilityBoundingSet=        # Vacío = sin capacidades especiales
+RestrictAddressFamilies=      # Solo ciertas familias de red (~AF_UNIX AF_INET)
+MemoryMax=100M                # Límite de memoria
+TasksMax=10                   # Límite de tareas/procesos
+ReadWritePaths=/var/lib/mi-app # Solo estas rutas son editables
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# Ver qué nivel de hardening tiene un servicio
+systemd-analyze security sshd
+systemd-analyze security nginx
+```
+
+**Niveles de exposición** (según `systemd-analyze security`):
+- ✅ 0.0-3.0 SAFE — excelente hardening
+- 🟡 3.0-7.0 MEDIUM — moderado
+- 🔴 7.0-10.0 UNSAFE — expuesto, necesita revisión
+
+## Buenas prácticas de logging
+
+Los daemons no deben escribir a stdout/stderr (no hay terminal). En su lugar:
+
+| Método | Mecanismo | Ejemplo |
+|---|---|---|
+| **syslog()** | Llamada a syslog del sistema | `openlog("mi-daemon", LOG_PID, LOG_DAEMON)` |
+| **journald** | Logging nativo systemd | `systemd-cat echo "mensaje"` |
+| **Archivo propio** | Escribir a `/var/log/` | `echo "error" >> /var/log/mi-daemon.log` |
+
+```bash
+# Ver logs de un daemon específico con journald
+journalctl -u mi-daemon -f                        # seguir en tiempo real
+journalctl -u mi-daemon --since "2 hours ago"       # últimas 2 horas
+journalctl -u mi-daemon -p err                     # solo errores
+journalctl -u mi-daemon -o json-pretty             # en formato JSON
+```
+
+**Recomendaciones:**
+- Usar `journald` cuando el servicio es gestionado por systemd (es automático con `journalctl -u`)
+- Usar `syslog()` para daemons tradicionales o portables entre inits
+- Nunca escribir a `/tmp/` — usar `/var/log/mi-app/` con logrotate configurado
+- Rotar logs con `logrotate`:
+
+```bash
+# /etc/logrotate.d/mi-daemon
+/var/log/mi-daemon/*.log {
+    daily
+    rotate 30
+    compress
+    delaycompress
+    missingok
+    notifempty
+    postrotate
+        systemctl kill -s USR1 mi-daemon
+    endscript
+}
+```
+
 ## Daemons en diferentes sistemas
 
 | Sistema | Cómo llama a los daemons |

@@ -177,6 +177,124 @@ sudo do-release-upgrade                # herramienta oficial de Canonical
 | **Ubuntu Cinnamon** | [[Cinnamon]] | Usuarios de Linux Mint |
 | **Ubuntu Studio** | KDE + multimedia | Producción AV |
 
+## Netplan — configuración de red
+
+Desde Ubuntu 18.04, el sistema de red por defecto es **Netplan** (reemplazó a `/etc/network/interfaces`). Usa YAML en `/etc/netplan/`:
+
+```bash
+# Ver configuración actual
+ls /etc/netplan/
+cat /etc/netplan/00-installer-config.yaml
+sudo netplan status              # estado actual
+```
+
+### Ejemplos comunes
+
+**IP estática:**
+
+```yaml
+# /etc/netplan/01-static.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      addresses:
+        - 192.168.1.100/24
+      routes:
+        - to: default
+          via: 192.168.1.1
+      nameservers:
+        addresses:
+          - 1.1.1.1
+          - 8.8.8.8
+```
+
+**WiFi con NetworkManager:**
+
+```yaml
+network:
+  version: 2
+  renderer: NetworkManager
+  wifis:
+    wlan0:
+      access-points:
+        "MiRed":
+          password: "mi-contraseña"
+      dhcp4: true
+```
+
+```bash
+# Aplicar cambios
+sudo netplan apply
+
+# Probar antes de aplicar (si hay error, revierte en 120s)
+sudo netplan try
+
+# Debug
+sudo netplan --debug apply
+```
+
+> ⚠️ Sangrado: Netplan usa YAML estricto — 2 espacios por nivel, nada de tabs.
+
+## Ubuntu Pro
+
+Ubuntu Pro es el programa de suscripción de Canonical. Es **gratuito para uso personal** en hasta 5 máquinas:
+
+```bash
+# 1. Obtener token en https://ubuntu.com/pro (cuenta Ubuntu One)
+# 2. Adjuntar al sistema
+sudo pro attach <TU_TOKEN>
+
+# 3. Verificar estado
+pro status
+```
+
+**Beneficios del tier gratuito:**
+| Característica | Descripción |
+|---|---|
+| **ESM (Extended Security Maintenance)** | Parches de seguridad para paquetes base durante 5 años extra (total 10 años) |
+| **Livepatch** | Parches del kernel en caliente sin reiniciar |
+| **Landscape** | Gestión centralizada de equipos (hasta 5 máquinas) |
+| **FIPS / Common Criteria** | Módulos criptográficos certificados |
+
+```bash
+# ESM para apps (extends el soporte de paquetes universe)
+sudo pro enable esm-apps
+
+# Livepatch activado automáticamente tras attach
+# Verificar:
+sudo canonical-livepatch status
+```
+
+## Cloud-init — automatización de instancias
+
+Ubuntu es el SO más usado en la nube gracias a `cloud-init`, que permite configurar una instancia automáticamente al primer arranque:
+
+```yaml
+# cloud-init.yaml — configuración de ejemplo
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+  - git
+  - curl
+users:
+  - name: admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC...
+```
+
+```bash
+# Usar cloud-init en una VM local (con Multipass)
+multipass launch --cloud-init cloud-init.yaml
+
+# Ver logs de cloud-init tras arranque
+sudo journalctl -u cloud-init
+cat /var/log/cloud-init-output.log
+```
+
 ## Post-instalación recomendada
 
 - [ ] `sudo apt update && sudo apt upgrade` — actualizar sistema
@@ -184,9 +302,22 @@ sudo do-release-upgrade                # herramienta oficial de Canonical
 - [ ] Instalar drivers NVIDIA si aplica (desde "Software & Updates" → Drivers adicionales)
 - [ ] Configurar firewall: `sudo ufw enable`
 - [ ] Activar `systemd-timesyncd` para sincronización de hora
+- [ ] Adjuntar Ubuntu Pro: `sudo pro attach <TOKEN>` (gratis para 5 máquinas)
 - [ ] Instalar Flatpak si prefieres apps en sandbox: `sudo apt install flatpak`
+- [ ] Verificar Netplan: `sudo netplan status`
 
 ## Comandos asociados
+
+| Comando | Para qué |
+|---|---|
+| `lsb_release -a` | Ver versión y nombre en clave de Ubuntu |
+| `do-release-upgrade` | Actualizar a la siguiente versión LTS |
+| `snap list` | Ver aplicaciones Snap instaladas |
+| `add-apt-repository` | Añadir PPA |
+| `dpkg -l` | Listar paquetes instalados |
+| `sudo netplan apply` | Aplicar configuración de red |
+| `sudo pro attach <TOKEN>` | Activar Ubuntu Pro gratuito |
+| `pro status` | Ver estado de suscripción Ubuntu Pro |
 
 | Comando | Para qué |
 |---|---|
