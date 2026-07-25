@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-24
+> Última actualización: 2026-07-24 (sesión TUI tools + 6 notas nuevas)
 
 ---
 
@@ -59,6 +59,7 @@ prioridad: alta
 | ✅ | Enlaces externos completados al 100% en notas de contenido | 2026-07-24 |
 | ✅ | Repositorio Git inicializado (commit inicial) | 2026-07-24 |
 | ✅ | Scripts de automatización (5) + cron semanal vault-stats | 2026-07-24 |
+| ✅ | `check-frontmatter.sh` optimizado ~0.15s (de >30s a 0.15s) | 2026-07-24 |
 
 ### 📝 Expansión de notas — Sesión 2026-07-24
 
@@ -98,6 +99,40 @@ prioridad: alta
 | ✅ | CLAUDE.md actualizado | Nueva regla de frontmatter documentada |
 | ✅ | Dashboard.md actualizado | Stats corregidas (314 notas, 27 Entorno/WM, etc.) |
 | ✅ | MoC - Linux.md corregido | Eliminadas entradas duplicadas y huérfanas |
+| ✅ | `check-frontmatter.sh` optimizado a ~0.15s | De >30s con awk + single-pass |
+
+### 🖥️ TUI tools — Sesión 2026-07-24
+
+| Completado | Cambio | Detalle |
+|---|---|---|
+| ✅ | [[TUI tools]] creada | Nota comprehensive con 12 categorías de TUIs, basada en awesome-tuis |
+| ✅ | [[bat]] creada | cat moderno con syntax highlighting, integración Git, 200+ lenguajes |
+| ✅ | [[lazygit]] creada | Git TUI interactivo: stage, commit, branch, merge, stash, rebase |
+| ✅ | [[lazydocker]] creada | Docker TUI: contenedores, imágenes, logs, exec, Compose |
+| ✅ | [[k9s]] creada | Kubernetes TUI: pods, deployments, services, logs, shell |
+| ✅ | [[yazi]] creada | Gestor de archivos TUI en Rust, previsualización de imágenes |
+| ✅ | [[zellij]] creada | Multiplexor de terminal moderno, layouts, plugins, menú visual |
+| ✅ | [[ripgrep]] documentado en Buscadores y filtros | rg: grep moderno, .gitignore-aware, 10× más rápido |
+| ✅ | Sección instalación masiva (5 scripts bash) | essentials / full / all / containers / todo-en-uno menú |
+
+### 📌 Índices actualizados — Sesión 2026-07-24
+
+| Completado | Cambio |
+|---|---|
+| ✅ | MoC - Linux.md: añadidas [[TUI tools]] + 6 notas nuevas |
+| ✅ | Arsenal Power User.md: nueva sección 0 TUIs con tabla |
+| ✅ | Dia a Dia en CLI.md: lazygit, ncdu, glow + enlace a TUI tools |
+| ✅ | TUI tools.md: enlaces a notas existentes actualizados |
+
+### 🐛 Bugs corregidos — Sesión 2026-07-24
+
+| Completado | Fix | Archivo |
+|---|---|---|
+| ✅ | `[[xh]]` → texto plano (xh) | httpie.md |
+| ✅ | `[[api]]` → texto plano (APIs REST) | jq.md |
+| ✅ | `[[nvtop]]` → texto plano (en htop btop) | TUI tools.md |
+| ✅ | `|| true` en apt install del script todo-en-uno | TUI tools.md |
+| ✅ | `duf` duplicado eliminado de recomendados/todo | TUI tools.md |
 
 ---
 
@@ -125,6 +160,7 @@ prioridad: alta
 |---|---|---|
 | Unificar bloques de código sueltos | Agrupar en un solo bloque por sección (estilo plantilla) | ⚪ pendiente |
 | Expandir notas nuevas con `fecha_modificacion` antigua | Identificar y priorizar según antigüedad | ⚪ pendiente |
+| Crea notas TUI faltantes | dive, ctop, gitui, tig, trippy, glow | ⚪ pendiente |
 
 ---
 
@@ -132,19 +168,19 @@ prioridad: alta
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **314** (+ 7 templates) |
-| **Estado resuelto** | 309 |
+| **Notas totales** | **321** (+ 7 templates) |
+| **Estado resuelto** | 316 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
-| **Estado borrador** | 0 (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto) |
-| **Prioridad alta** | 153 |
-| **Prioridad media** | 103 |
+| **Estado borrador** | 1 (Log.md contiene la palabra en su texto) |
+| **Prioridad alta** | 158 |
+| **Prioridad media** | 106 |
 | **Prioridad baja** | 51 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 70 | **Comando** | 68 |
+| **Programa** | 77 | **Comando** | 68 |
 | **Concepto** | 36 | **Distribución** | 40 |
 | **Sistema** | 29 | **Entorno / WM** | 27 |
 | **Troubleshooting** | 16 | **Índice** | 12 |
@@ -158,8 +194,8 @@ prioridad: alta
 | 00 - Indices y Mapas | 12 | 01 - Conceptos Fundamentales | 36 |
 | 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 28 |
 | 04 - Entornos de Escritorio | 14 | 05 - Gestores de Ventanas | 13 |
-| 06 - La Terminal | 4 | 07 - Comandos Esenciales | 67 |
-| 08 - Programas y Herramientas | 69 | 09 - Solucion de Problemas | 16 |
+| 06 - La Terminal | 4 | 07 - Comandos Esenciales | 68 |
+| 08 - Programas y Herramientas | 77 | 09 - Solucion de Problemas | 16 |
 | 10 - Automatizacion y Scripts | 4 | 11 - Distribuciones | 40 |
 
 ---
@@ -171,6 +207,7 @@ prioridad: alta
 - **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro histórico detallado de todas las sesiones.
 - El script `add-modification-date.sh` permite re-ejecutar la actualización de `fecha_modificacion` en cualquier momento.
 - Se eliminaron 2 archivos resumen redundantes (`DEs adicionales` y `WMs adicionales`) — todos los DEs y WMs tienen nota individual completa.
+- Sesión 2026-07-24: Se crearon 7 notas nuevas (TUI tools + 6 TUI específicas), se documentó ripgrep, y se añadió sección de instalación masiva con 5 scripts bash.
 
 ---
 
