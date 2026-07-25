@@ -69,11 +69,9 @@ categoria: indice
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico
 - [[Desktop Shells (Noctalia Caelestia)]]
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
-- [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
 - [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Niri]] · [[River]]
 - [[bspwm]] · [[Sway]] · [[qtile]] · [[Openbox]] · [[Fluxbox]] · [[spectrwm]]
 - [[herbstluftwm]]
-- [[WMs adicionales (bspwm qtile sway river herbstluftwm spectrwm openbox fluxbox dwm i3 awesome hyprland niri)]] — índice rápido con resúmenes y tabla comparativa
 - [[Comparativa gestores de ventanas]] — guía para elegir WM según perfil y caso de uso
 
 ## Programas comunes
