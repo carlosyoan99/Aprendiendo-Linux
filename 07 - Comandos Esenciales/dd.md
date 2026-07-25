@@ -61,7 +61,7 @@ Muestra: bytes copiados, tiempo transcurrido, velocidad media.
 sudo dd if=ubuntu.iso of=/dev/sdb bs=4M status=progress conv=fsync
 
 # 2. Clonar disco completo
-dd if=/dev/sda of=/dev/sdb bs=4M status=progress
+sudo dd if=/dev/sda of=/dev/sdb bs=4M status=progress conv=fsync
 
 # 3. Hacer imagen de un disco parted
 sudo dd if=/dev/sda of=backup_disco.img bs=4M status=progress
