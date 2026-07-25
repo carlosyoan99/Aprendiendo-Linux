@@ -8,7 +8,7 @@ prioridad: alta
 
 # Scripts del Vault
 
-> Herramientas de automatización para mantener el vault organizado, validado y con estadísticas actualizadas. Todos los scripts están en `10 - Automatizacion y Scripts/scripts/`.
+> Herramientas de automatización para mantener el vault organizado, validado y con estadísticas actualizadas. Todos los scripts están en `scripts/`.
 
 ## Vista rápida
 
@@ -144,7 +144,7 @@ Wrapper para ejecutar `vault-stats.sh --resumen` semanalmente vía cron y guarda
 bash scripts/vault-stats-weekly.sh
 
 # Configuración cron (domingos 9:00)
-# 0 9 * * 0 /ruta/completa/10 - Automatizacion y Scripts/scripts/vault-stats-weekly.sh
+# 0 9 * * 0 /ruta/completa/scripts/vault-stats-weekly.sh
 ```
 
 ### Funcionamiento

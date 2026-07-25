@@ -257,7 +257,7 @@ fi
 
 ## Integración con scripts existentes
 
-El vault ya tiene scripts en `10 - Automatizacion y Scripts/scripts/`:
+El vault ya tiene scripts en `scripts/`:
 
 | Script existente | Integración con hooks |
 |---|---|

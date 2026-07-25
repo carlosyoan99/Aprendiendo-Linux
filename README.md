@@ -61,7 +61,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 ## 🧰 Scripts de automatización
 
-Todos en `10 - Automatizacion y Scripts/scripts/`. Documentación completa en [[Scripts del Vault]].
+Todos en `scripts/`. Documentación completa en [[Scripts del Vault]].
 
 | Script | Función |
 |---|---|

@@ -19,7 +19,8 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 | `07 - Comandos Esenciales` | Una nota por comando + cheat sheet general |
 | `08 - Programas y Herramientas` | Apps y utilidades (editores, navegadores, lenguajes, suites, Ansible) |
 | `09 - Solucion de Problemas` | Recursos generales + **16 problemas resueltos** (WiFi, permisos, SSH, Docker, Bluetooth, GRUB, NVIDIA, pantalla negra, etc.) |
-| `10 - Automatizacion y Scripts` | Scripts propios, cron, systemd timers, git hooks + `Log.md` |
+| `10 - Automatizacion y Scripts` | Notas de automatización, Log.md, cron logs |
+| `scripts/` | Scripts del vault (bash + Python): automatización, stats, descargas |
 | `11 - Distribuciones` | Catálogo de distribuciones Linux (40 notas: Ubuntu, Debian, Arch, Fedora, etc.) |
 | `Templates` | Plantillas — no editar su estructura sin avisar al usuario |
 
@@ -27,6 +28,28 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 
 - Se pueden incluir **imágenes públicas de Wikipedia** (`https://upload.wikimedia.org/...`) cuando aporten valor visual (diagramas, capturas de interfaz, logotipos).
 - **Enlaces externos**: incluir enlaces a GitHub, Wikipedia y wikis oficiales de distribuciones cuando sea relevante para que el usuario pueda profundizar.
+
+### Assets locales (`assets/`)
+
+Las imágenes descargadas se almacenan localmente en `assets/` para acceso sin conexión:
+
+```
+assets/
+├── logos/          # Logos de distribuciones, DEs, WMs, programas
+├── screenshots/    # Capturas de pantalla de entornos y aplicaciones
+└── diagrams/       # Diagramas técnicos (kernel, FHS, boot process, etc.)
+```
+
+Para insertar una imagen en una nota, usar sintaxis Markdown:
+```markdown
+![Ubuntu](assets/logos/ubuntu.svg)
+```
+O wikilink de Obsidian (permite redimensionar):
+```markdown
+![[assets/logos/ubuntu.svg|200]]
+```
+
+Las imágenes deben ser de **uso libre** (Wikimedia Commons, sitios oficiales, dominio público, CC BY-SA, GPL). Se aceptan formatos SVG (logos, diagramas vectoriales) y PNG (capturas de pantalla).
 
 ## 3. Reglas al crear una nota nueva
 1. Elegir la carpeta correcta según la tabla anterior.
@@ -110,5 +133,5 @@ Si se construye un script propio (Python/Node) que use la API de Claude para gen
 - Leer este archivo (`CLAUDE.md`) como system prompt / contexto de reglas.
 - Escribir únicamente dentro de la estructura de carpetas definida arriba.
 - Registrar su propia ejecución en `Log.md`.
-- Documentarse a sí mismo en `10 - Automatizacion y Scripts/`.
+- Documentarse a sí mismo en `scripts/` o `10 - Automatizacion y Scripts/`.
 - Revisar `00 - Indices y Mapas/TODO.md` para conocer el estado actual del proyecto.

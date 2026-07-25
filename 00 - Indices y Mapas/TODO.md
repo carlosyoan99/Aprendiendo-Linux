@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-25 (sesión revisión TODO.md post-auditoría)
+> Última actualización: 2026-07-25 (v4 — assets, wikipedia-dl, scripts reorganizados)
 
 ---
 
@@ -195,6 +195,24 @@ prioridad: alta
 | Unificar bloques de código sueltos | Fedora, NixOS, GitHub CLI, FHS, DNS, Sistemas de Archivos, Permisos | ✅ completado |
 | Expandir Motif.md | ~50 → ~100 líneas | ✅ completado |
 
+### 🆕 Sesión 2026-07-25 (v4) — Assets, wikipedia-dl, scripts reorganizados
+
+| Completado | Cambio |
+|---|---|
+| ✅ | Carpeta `assets/` creada con `logos/`, `screenshots/`, `diagrams/` |
+| ✅ | 4 logos descargados e insertados (Ubuntu, Debian, Gentoo, Kali) |
+| ✅ | `download-assets.sh` para descargar logos restantes |
+| ✅ | `wikipedia-dl.py` — bot Python con UAs rotativos y pausas anti-429 |
+| ✅ | `urls.txt` con 39 URLs de Wikipedia categorizadas |
+| ✅ | Scripts movidos de `10 - Automatizacion y Scripts/scripts/` a `scripts/` raíz |
+| ✅ | Rutas internas, documentación y CLAUDE.md actualizados |
+
+| Pendiente | Detalle | Prioridad |
+|---|---|---|
+| Descargar logos restantes | Fedora, Arch, Mint, openSUSE, Manjaro, NixOS, Alpine, etc. (~12) | baja |
+| Descargar capturas DE/WM | GNOME, KDE, XFCE, i3, Hyprland, etc. (7 capturas) | baja |
+| Descargar diagramas técnicos | Kernel, FHS, boot process (3 diagramas) | baja |
+
 ---
 
 ### 📝 Expansión de notas — Sesión 2026-07-25 (v3)
@@ -229,26 +247,26 @@ prioridad: alta
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (reales — vault-stats.sh 2026-07-25)
+## 📊 ESTADÍSTICAS DEL VAULT (reales — vault-stats.sh 2026-07-25 v4)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **360** (+ 7 templates) |
+| **Notas totales** | **361** (+ 7 templates) |
 | **Estado resuelto** | 355 |
-| **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
+| **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
-| **Prioridad alta** | 168 |
-| **Prioridad media** | 119 |
-| **Prioridad baja** | 70 |
+| **Prioridad alta** | 169 |
+| **Prioridad media** | 121 |
+| **Prioridad baja** | 68 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
 | **Programa** | 96 | **Comando** | 83 |
-| **Concepto** | 38 | **Distribución** | 42 |
+| **Concepto** | 38 | **Distribución** | 41 |
 | **Sistema** | 30 | **Entorno / WM** | 29 |
-| **Troubleshooting** | 17 | **Índice** | 12 |
+| **Troubleshooting** | 17 | **Índice** | 13 |
 | **Instalación** | 9 | **Terminal** | 4 |
 | **Automatización** | 4 | **Log** | 2 |
 
@@ -256,12 +274,12 @@ prioridad: alta
 
 | Carpeta | Notas | Carpeta | Notas |
 |---|---|---|---|
-| 00 - Indices y Mapas | 12 | 01 - Conceptos Fundamentales | 37 |
+| 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 37 |
 | 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 30 |
 | 04 - Entornos de Escritorio | 15 | 05 - Gestores de Ventanas | 13 |
 | 06 - La Terminal | 4 | 07 - Comandos Esenciales | 82 |
 | 08 - Programas y Herramientas | 94 | 09 - Solucion de Problemas | 16 |
-| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 43 |
+| 10 - Automatizacion y Scripts | 7 | 11 - Distribuciones | 43 |
 
 ---
 

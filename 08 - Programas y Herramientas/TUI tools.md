@@ -757,7 +757,7 @@ case "$MODE" in
 esac
 ```
 
-> 💡 **Tip**: Guarda el script como `install-tuis.sh` en `~/scripts/` o en la carpeta `10 - Automatizacion y Scripts/scripts/` del vault y hazlo ejecutable con `chmod +x install-tuis.sh`.
+> 💡 **Tip**: Guarda el script como `install-tuis.sh` en `~/scripts/` o en la carpeta `scripts/` del vault y hazlo ejecutable con `chmod +x install-tuis.sh`.
 
 ---
 

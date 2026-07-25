@@ -1,0 +1,59 @@
+# URLs de Wikipedia para descargar contenido del vault AprendiendoLinux
+# Formato: una URL por línea. Líneas que empiezan con # son ignoradas.
+#
+# Categoría: Conceptos Fundamentales
+https://es.wikipedia.org/wiki/Linux
+https://es.wikipedia.org/wiki/N%C3%BAcleo_Linux
+https://es.wikipedia.org/wiki/GNU/Linux
+https://es.wikipedia.org/wiki/Richard_Stallman
+https://es.wikipedia.org/wiki/Debate_Tanenbaum%E2%80%93Torvalds
+
+# Categoría: Entornos de Escritorio
+https://es.wikipedia.org/wiki/GNOME
+https://es.wikipedia.org/wiki/KDE_Plasma
+https://es.wikipedia.org/wiki/Xfce
+https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)
+
+# Categoría: Gestores de Ventanas
+https://en.wikipedia.org/wiki/I3_(window_manager)
+https://en.wikipedia.org/wiki/Hyprland
+https://en.wikipedia.org/wiki/Dwm
+https://en.wikipedia.org/wiki/Openbox
+
+# Categoría: Distribuciones
+https://es.wikipedia.org/wiki/Ubuntu
+https://es.wikipedia.org/wiki/Debian
+https://es.wikipedia.org/wiki/Fedora_GNU/Linux
+https://es.wikipedia.org/wiki/Arch_Linux
+https://es.wikipedia.org/wiki/Gentoo_Linux
+https://es.wikipedia.org/wiki/Kali_Linux
+https://es.wikipedia.org/wiki/Linux_Mint
+https://es.wikipedia.org/wiki/openSUSE
+https://en.wikipedia.org/wiki/NixOS
+https://en.wikipedia.org/wiki/Alpine_Linux
+https://en.wikipedia.org/wiki/Void_Linux
+https://en.wikipedia.org/wiki/Slackware
+https://es.wikipedia.org/wiki/CentOS
+https://es.wikipedia.org/wiki/Pop!_OS
+https://es.wikipedia.org/wiki/Elementary_OS
+
+# Categoría: Comandos Esenciales
+https://es.wikipedia.org/wiki/Grep
+https://es.wikipedia.org/wiki/Awk
+https://es.wikipedia.org/wiki/Sed
+https://es.wikipedia.org/wiki/Curl
+https://es.wikipedia.org/wiki/Wget
+
+# Categoría: Programas
+https://en.wikipedia.org/wiki/Docker_(software)
+https://en.wikipedia.org/wiki/Git
+https://en.wikipedia.org/wiki/Vim_(text_editor)
+https://en.wikipedia.org/wiki/Neovim
+
+# Categoría: Sistema y Kernel
+https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+https://en.wikipedia.org/wiki/Systemd
+https://en.wikipedia.org/wiki/Wayland_(protocol)
+https://en.wikipedia.org/wiki/Btrfs
+https://en.wikipedia.org/wiki/D-Bus
+https://en.wikipedia.org/wiki/Cgroups

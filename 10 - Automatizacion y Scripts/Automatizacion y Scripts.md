@@ -183,7 +183,7 @@ Ver [[Cron y Systemd Timers]] para más detalle.
 
 ## Mis propios scripts
 
-Todos en `10 - Automatizacion y Scripts/scripts/`. Ejecutables con `chmod +x`.
+Todos en `scripts/`. Ejecutables con `chmod +x`.
 
 ### daily-log.sh
 

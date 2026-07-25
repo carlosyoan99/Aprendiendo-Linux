@@ -414,4 +414,11 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Nuevos archivos**: GTK.md, Qt.md.
 - **Bloques bash totales reducidos**: ~100 bloques sueltos eliminados.
 
+## 2026-07-25 (v4) — Assets, wikipedia-dl y reorganización de scripts
+
+- **Assets**: creada carpeta `assets/` con subcarpetas `logos/`, `screenshots/`, `diagrams/`. Descargados 4 logos (Ubuntu, Debian, Gentoo, Kali) e insertados en sus notas. Creado `download-assets.sh` para completar el resto.
+- **wikipedia-dl.py**: script Python con 12 UAs rotativos, pausas anti-429, descarga HTML+imágenes desde Wikipedia. Testeado con 2 artículos, 22 imágenes extraídas en 43s.
+- **Reorganización**: scripts movidos de `10 - Automatizacion y Scripts/scripts/` a `scripts/` raíz. Rutas internas actualizadas (`../../` → `../`). Documentación y CLAUDE.md actualizados.
+- **Pendiente**: descargar logos restantes (~12), capturas DE/WM y diagramas vía `download-assets.sh` o `wikipedia-dl.py`.
+
 #log

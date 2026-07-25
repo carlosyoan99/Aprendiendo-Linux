@@ -15,30 +15,30 @@ categoria: indice
 
 | Métrica | Total |
 |---|---|
-| Notas totales | **314** |
-| Estado **resuelto** | 309 |
-| Estado **en progreso** | 4 (TODO, MoC, Dashboard, Log) |
-| Estado **borrador** | 0 (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto) |
-| Prioridad **alta** | 153 |
-| Prioridad **media** | 105 |
-| Prioridad **baja** | 51 |
+| Notas totales | **361** |
+| Estado **resuelto** | 355 |
+| Estado **en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
+| Estado **borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
+| Prioridad **alta** | 169 |
+| Prioridad **media** | 121 |
+| Prioridad **baja** | 68 |
 
 ### Por categoría
 
 | Categoría | Notas |
 |---|---|
-| Comando | 68 |
-| Programa | 70 |
-| Concepto | 36 |
-| Distribución | 40 |
-| Sistema | 29 |
-| Entorno / WM | 27 |
-| Troubleshooting | 16 |
-| Índice | 12 |
+| Comando | 83 |
+| Programa | 96 |
+| Concepto | 38 |
+| Distribución | 41 |
+| Sistema | 30 |
+| Entorno / WM | 29 |
+| Troubleshooting | 17 |
+| Índice | 13 |
 | Instalación | 9 |
 | Terminal | 4 |
-| Automatización | 3 |
-| Log | 1 |
+| Automatización | 4 |
+| Log | 2 |
 
 ---
 
