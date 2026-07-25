@@ -110,7 +110,7 @@ categoria: indice
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
-- [[pwd]] — mostrar directorio actual · [[apt]] · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
+- [[apt]] · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df y du]] — espacio en disco · [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[date y timedatectl]] — fecha, hora, zona horaria
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
