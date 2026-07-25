@@ -265,4 +265,13 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **MoC actualizado**: entrada añadida en sección Terminal y comandos.
 - **TODO.md**: última tarea de alta prioridad marcada completada. TODO vacío de alta prioridad por primera vez.
 
+## 2026-07-24 — Scripts verificados y documentados
+- **Verificados los 6 scripts** del vault: vault-stats, vault-stats-weekly, daily-log, check-frontmatter, find-orphans, add-modification-date.
+- **Scripts OK**: daily-log, vault-stats (--resumen, --csv), vault-stats-weekly, find-orphans (1 huérfana: README.md), add-modification-date (314/316 actualizadas).
+- **Fix**: vault-stats.sh --resumen movido antes de "Últimas modificaciones" para salida más rápida y evitar SIGPIPE.
+- **Creada [[Scripts del Vault]]** (10 - Automatizacion): documentación completa de los 6 scripts con uso, funcionamiento, troubleshooting y config cron.
+- **README.md actualizado**: stats corregidas (316 notas, 6 scripts), tabla de scripts con descripciones.
+- **MoC actualizado**: [[Scripts del Vault]] añadido en sección Operativa.
+- **Pendiente**: check-frontmatter.sh (>30s para 316 notas — aceptable para el tamaño actual).
+
 #log

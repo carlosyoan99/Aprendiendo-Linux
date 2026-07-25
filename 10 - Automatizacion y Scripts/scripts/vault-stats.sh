@@ -66,17 +66,7 @@ while IFS= read -r archivo; do
     fi
 done < <(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" 2>/dev/null)
 
-# --- Últimas modificaciones ---
-if find . -maxdepth 0 -printf '' 2>/dev/null; then
-    # GNU find (Linux)
-    ULTIMOS=$(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -10)
-else
-    # BSD find (macOS) — fallback simple
-    ULTIMOS=$(ls -lt $(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*") 2>/dev/null | head -10 | awk '{print $6, $7, $8, $9}')
-fi
-
-# --- Output ---
-
+# --- Salida temprana para --csv ---
 if [[ "${1:-}" == "--csv" ]]; then
     echo "metrico,valor"
     echo "total,$TOTAL"
@@ -119,26 +109,32 @@ for cat in "${!CAT_COUNTS[@]}"; do
 done
 echo ""
 
+# Salida temprana para --resumen (ahorra procesar el resto)
+if [[ "${1:-}" == "--resumen" ]]; then
+    exit 0
+fi
+
 echo -e "${AZUL}📁 Por carpeta:${SIN_COLOR}"
 for dir in "${!DIR_COUNTS[@]}"; do
     printf "  %-30s %s notas\n" "${dir}:" "${DIR_COUNTS[$dir]}"
 done | sort
 echo ""
 
+# --- Últimas modificaciones ---
 echo -e "${CIAN}🕐 Últimas modificaciones:${SIN_COLOR}"
-echo "$ULTIMOS" | while IFS= read -r line; do
-    if [[ -n "$line" ]]; then
+if find . -maxdepth 0 -printf '' 2>/dev/null; then
+    # GNU find (Linux)
+    find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -10 | while IFS= read -r line; do
         timestamp=$(echo "$line" | awk '{print $1}')
         archivo=$(echo "$line" | cut -d' ' -f2-)
         fecha=$(date -d "@$timestamp" "+%Y-%m-%d %H:%M" 2>/dev/null || echo "desconocida")
         printf "  %s  %s\n" "$fecha" "$archivo"
-    fi
-done
-echo ""
-
-if [[ "${1:-}" == "--resumen" ]]; then
-    exit 0
+    done
+else
+    # BSD find (macOS) — fallback simple
+    ls -lt $(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*") 2>/dev/null | head -10 | awk '{print $6, $7, $8, $9}'
 fi
+echo ""
 
 echo -e "${NEGRITA}${AZUL}══════════════════════════════════════${SIN_COLOR}"
 echo -e "💡 Sugerencia: usa ${AMARILLO}--csv${SIN_COLOR} para salida pipeable"

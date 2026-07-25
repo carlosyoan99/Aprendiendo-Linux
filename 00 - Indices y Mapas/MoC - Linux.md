@@ -127,7 +127,7 @@ categoria: indice
 - [[SSH no conecta]] — conexión SSH rechazada, troubleshooting detallado
 - [[Docker permiso denegado]] — grupo docker, socket, rootless
 - [[Fuentes rotas o faltantes (fontconfig)]] — fuentes rotas, emojis, fontconfig, caché
-- [[Automatizacion y Scripts]] · [[Cron y Systemd Timers]] · [[Git hooks para el vault]]
+- [[Automatizacion y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron y Systemd Timers]] · [[Git hooks para el vault]]
 
 ## Enlaces externos
 

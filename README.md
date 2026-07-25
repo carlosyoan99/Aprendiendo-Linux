@@ -16,7 +16,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `07 - Comandos Esenciales` | **67 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, pacman, df, free, uname, date, sed+awk) + cheat sheet | 67 |
 | `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio | 69 |
 | `09 - Solucion de Problemas` | Recursos + **16 problemas resueltos** (WiFi, sonido, permisos, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB) | 16 |
-| `10 - Automatizacion y Scripts` | Scripts propios (5), cron, systemd timers, git hooks, Log.md de aprendizaje | 4 |
+| `10 - Automatizacion y Scripts` | Scripts propios (6: stats, logs, validación, huérfanas), cron, git hooks, Log.md, docs | 5 |
 | `11 - Distribuciones` | Catálogo completo de 40 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, etc.) | 40 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |
 
@@ -24,15 +24,15 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **314** (+ 7 templates) |
-| **Estado resuelto** | 309 |
+| **Notas totales** | **316** (+ 7 templates) |
+| **Estado resuelto** | 311 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
-| **Estado borrador** | 0 |
-| **Prioridad alta** | 153 |
-| **Prioridad media** | 103 |
-| **Prioridad baja** | 53 |
+| **Estado borrador** | 2 (README, CLAUDE — sin frontmatter deliberadamente) |
+| **Prioridad alta** | 155 |
+| **Prioridad media** | 105 |
+| **Prioridad baja** | 51 |
 | **Categorías** | 12 |
-| **Scripts de automatización** | 5 |
+| **Scripts de automatización** | 6 (stats, logs, validación, huérfanas, fechas) |
 | **Git hooks** | 3 (pre-commit, commit-msg, pre-push) |
 | **Repositorio Git** | ✅ Inicializado (local) |
 
@@ -40,12 +40,12 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 70 | **Comando** | 67 |
-| **Concepto** | 36 | **Distribución** | 40 |
-| **Sistema** | 28 | **Entorno / WM** | 29 |
-| **Troubleshooting** | 16 | **Índice** | 12 |
+| **Programa** | 70 | **Comando** | 68 |
+| **Concepto** | 38 | **Distribución** | 41 |
+| **Sistema** | 29 | **Entorno / WM** | 28 |
+| **Troubleshooting** | 17 | **Índice** | 12 |
 | **Instalación** | 9 | **Terminal** | 4 |
-| **Automatización** | 3 | **Log** | 1 |
+| **Automatización** | 3 | **Log** | 2 |
 
 ## 🚀 Primeros pasos en Obsidian
 
@@ -61,14 +61,21 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 ## 🧰 Scripts de automatización
 
-Todos en `10 - Automatizacion y Scripts/scripts/` y documentados en la nota de Automatización.
+Todos en `10 - Automatizacion y Scripts/scripts/`. Documentación completa en [[Scripts del Vault]].
+
+| Script | Función |
+|---|---|
+| `daily-log.sh` | Crea nota de log diaria individual |
+| `vault-stats.sh` | Estadísticas completas (--csv, --resumen) |
+| `vault-stats-weekly.sh` | Wrapper cron para stats semanales |
+| `check-frontmatter.sh` | Valida frontmatter de todas las notas |
+| `find-orphans.sh` | Encuentra notas no enlazadas del MoC |
+| `add-modification-date.sh` | Sincroniza fecha_modificacion con mtime |
 
 ```bash
-./scripts/daily-log.sh "Texto del día"      # crear log diario
-./scripts/vault-stats.sh                    # estadísticas completas
-./scripts/check-frontmatter.sh              # validar frontmatter
-./scripts/find-orphans.sh                   # notas no enlazadas
-./scripts/vault-stats-weekly.sh             # estadísticas semanales (cron domingo 9AM)
+# Configuración cron recomendada (domingos)
+# 0 8 * * 0 /path/scripts/add-modification-date.sh   # fechas
+# 0 9 * * 0 /path/scripts/vault-stats-weekly.sh      # stats
 ```
 
 ## 🗺️ TODO y Roadmap
