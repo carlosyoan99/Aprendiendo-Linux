@@ -264,7 +264,7 @@ StandardInput=socket                   # recibe el fd del socket por stdin
 [Socket]
 ListenStream=8080
 Accept=true                            # systemd hace fork+exec por cada conexión
-MaxConnectionsPerSource=10             # límite por IP
+MaxConnectionsPerSocket=10            # límite por socket
 ```
 
 ```bash

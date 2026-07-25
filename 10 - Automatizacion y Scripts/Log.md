@@ -233,4 +233,12 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Debian.md** expandido: apt pinning con tabla de prioridades, Debian packaging (dh_make, dpkg-buildpackage), evolución non-free-firmware en Bookworm.
 - **Commit**: `3f0fc97` — 526 líneas añadidas en 5 archivos.
 
+## 2026-07-24 — 3 notas nuevas planificadas
+- **Regular Expressions.md** creada (01 - Conceptos): referencia central de regex — BRE, ERE, PCRE, lookaround, patrones prácticos (IPs, URLs, emails, logs), greedy vs non-greedy, catastrophic backtracking.
+- **Vim comandos avanzados.md** creada (07 - Comandos): macros (recursivas, append), registros (9 tipos con ejemplos prácticos), quickfix/location list, marks locales+globales, plegados, sesiones, vimdiff, :global, dot repeat, personalización Lua.
+- **systemd unidades personalizadas.md** creada (03 - Sistema): service types detallados (simple, exec, forking, oneshot, notify, dbus), template units con %i, timers calendar+monotonic, path units, socket activation (Accept=true/false), drop-in overrides, verificación con systemd-analyze.
+- **MoC actualizado**: las 3 notas enlazadas con descripciones.
+- **Commit**: `22ac5a2` + `fix`: 1136 líneas añadidas, 4 archivos modificados.
+- **Vault: 317 notas (+ 7 templates).**
+
 #log

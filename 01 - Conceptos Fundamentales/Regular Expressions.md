@@ -259,11 +259,13 @@ Cuidado con patrones que pueden explotar el motor de regex:
 # PELIGRO — si el texto NO coincide, el motor prueba TODAS las combinaciones
 grep -P '(a|b)+$' texto.txt      # con cadenas largas, puede colgarse
 
-# SEGURO — acotar el backtracking
-grep -P '(a|b)+$' texto.txt      # mismo patrón, pero con entrada corta
+# SEGURO — possessive quantifier (++) o atomic group (?>)
+grep -P '(a|b)++$' texto.txt     # ++ = possessive, no backtrackea
+grep -P '(?>(a|b)+)$' texto.txt  # (?>...) = atomic group, mismo efecto
 
-# Usar possessive quantifiers (PCRE) cuando sea posible
-grep -P '[a-z]++'               # ++ = possessive, no backtrackea
+# El possessive quantifier existe en otros cuantificadores
+grep -P '[a-z]++'               # ++ = possessive en +
+grep -P 'pattern*+'              # *+ = possessive en *
 ```
 
 > **Regla**: si ves `(.*)*` o `(.+)+` o `(.|..)+`, sospecha. El motor de regex puede tardar exponencialmente más en fallar que en acertar.
