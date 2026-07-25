@@ -2,3 +2,6 @@
 
 # Docker: fichero de variables de entorno local (contiene contraseñas)
 .env
+
+# Logs generados por scripts de automatización
+vault-stats-weekly.log
