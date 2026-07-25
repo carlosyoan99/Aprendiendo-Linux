@@ -320,4 +320,26 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Vault: 321 notas (+7).** Programa: 70→77. 08 - Programas: 69→77.
 - **Nuevos archivos**: TUI tools.md, bat.md, lazygit.md, lazydocker.md, k9s.md, yazi.md, zellij.md.
 
+## 2026-07-24 — Segunda ronda TUI: 6 notas faltantes (dive, ctop, gitui, tig, trippy, glow)
+
+### 🆕 Notas creadas
+- **[[dive]]** (08): Explorador de capas Docker. Eficiencia de imágenes, optimización de Dockerfiles (~120 líneas).
+- **[[ctop]]** (08): top-like para contenedores. CPU/RAM/IO/Red en vivo (~60 líneas).
+- **[[gitui]]** (08): Git TUI en Rust. Rápido, ~5 MB, temas Nord/Dracula/Gruvbox integrados (~100 líneas).
+- **[[tig]]** (08): Visor de commits y log Git. Blame, diff, stash, ~1 MB (~120 líneas).
+- **[[trippy]]** (08): traceroute + ping visual. Gráficos históricos por hop, modo JSON (~130 líneas).
+- **[[glow]]** (08): Visor Markdown bonito. Explorador TUI, 30+ temas, modo presentación (~110 líneas).
+
+### 📌 Índices actualizados
+- **MoC - Linux.md**: dive, ctop, gitui, tig, trippy, glow añadidos en Programas comunes (4 líneas).
+- **TUI tools.md**: enlaces a [[trippy]] en Red, [[dive]]/[[ctop]] en Docker.
+
+### Commits de la sub-sesión
+- `46668c7` feat: 6 notas TUI faltantes - dive, ctop, gitui, tig, trippy, glow
+
+### Stats
+- **Vault: 327 notas (+6).** Programa: 77→83. 08 - Programas: 77→83.
+- **Nuevos archivos**: dive.md, ctop.md, gitui.md, tig.md, trippy.md, glow.md.
+- **Total TUI esta sesión**: 14 notas (1 guía + 13 herramientas específicas).
+
 #log

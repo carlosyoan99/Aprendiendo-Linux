@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-24 (sesión TUI tools + 6 notas nuevas)
+> Última actualización: 2026-07-24 (sesión TUI tools + 12 notas nuevas)
 
 ---
 
@@ -101,7 +101,7 @@ prioridad: alta
 | ✅ | MoC - Linux.md corregido | Eliminadas entradas duplicadas y huérfanas |
 | ✅ | `check-frontmatter.sh` optimizado a ~0.15s | De >30s con awk + single-pass |
 
-### 🖥️ TUI tools — Sesión 2026-07-24
+### 🖥️ TUI tools — Sesión 2026-07-24 (ronda 1)
 
 | Completado | Cambio | Detalle |
 |---|---|---|
@@ -114,6 +114,19 @@ prioridad: alta
 | ✅ | [[zellij]] creada | Multiplexor de terminal moderno, layouts, plugins, menú visual |
 | ✅ | [[ripgrep]] documentado en Buscadores y filtros | rg: grep moderno, .gitignore-aware, 10× más rápido |
 | ✅ | Sección instalación masiva (5 scripts bash) | essentials / full / all / containers / todo-en-uno menú |
+
+### 🖥️ TUI tools — Sesión 2026-07-24 (ronda 2: faltantes)
+
+| Completado | Cambio | Detalle |
+|---|---|---|
+| ✅ | [[dive]] creada | Explorador de capas Docker: análisis de eficiencia, optimización de Dockerfiles |
+| ✅ | [[ctop]] creada | top-like para contenedores: CPU/RAM/IO/Red en vivo |
+| ✅ | [[gitui]] creada | Git TUI en Rust: rápido, temas Nord/Dracula/Gruvbox integrados |
+| ✅ | [[tig]] creada | Visor de commits y log Git: blame, diff, stash, ~1 MB |
+| ✅ | [[trippy]] creada | traceroute + ping visual: gráficos históricos por hop, modo JSON |
+| ✅ | [[glow]] creada | Visor Markdown bonito: explorador TUI, 30+ temas, modo presentación |
+| ✅ | MoC actualizado | dive, ctop, gitui, tig, trippy, glow añadidos en Programas comunes |
+| ✅ | TUI tools.md enlazado | [[trippy]] en Red, [[dive]]/[[ctop]] en Docker, [[gitui]]/[[tig]] en Git, [[glow]] en Lectura |
 
 ### 📌 Índices actualizados — Sesión 2026-07-24
 
@@ -160,7 +173,7 @@ prioridad: alta
 |---|---|---|
 | Unificar bloques de código sueltos | Agrupar en un solo bloque por sección (estilo plantilla) | ⚪ pendiente |
 | Expandir notas nuevas con `fecha_modificacion` antigua | Identificar y priorizar según antigüedad | ⚪ pendiente |
-| Crea notas TUI faltantes | dive, ctop, gitui, tig, trippy, glow | ⚪ pendiente |
+| Crea notas TUI faltantes | dive, ctop, gitui, tig, trippy, glow | ✅ completado 2026-07-24 |
 
 ---
 
@@ -168,19 +181,19 @@ prioridad: alta
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **321** (+ 7 templates) |
-| **Estado resuelto** | 316 |
+| **Notas totales** | **327** (+ 7 templates) |
+| **Estado resuelto** | 322 |
 | **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
 | **Estado borrador** | 1 (Log.md contiene la palabra en su texto) |
 | **Prioridad alta** | 158 |
 | **Prioridad media** | 106 |
-| **Prioridad baja** | 51 |
+| **Prioridad baja** | 57 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 77 | **Comando** | 68 |
+| **Programa** | 83 | **Comando** | 68 |
 | **Concepto** | 36 | **Distribución** | 40 |
 | **Sistema** | 29 | **Entorno / WM** | 27 |
 | **Troubleshooting** | 16 | **Índice** | 12 |
@@ -195,7 +208,7 @@ prioridad: alta
 | 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 28 |
 | 04 - Entornos de Escritorio | 14 | 05 - Gestores de Ventanas | 13 |
 | 06 - La Terminal | 4 | 07 - Comandos Esenciales | 68 |
-| 08 - Programas y Herramientas | 77 | 09 - Solucion de Problemas | 16 |
+| 08 - Programas y Herramientas | 83 | 09 - Solucion de Problemas | 16 |
 | 10 - Automatizacion y Scripts | 4 | 11 - Distribuciones | 40 |
 
 ---
@@ -207,7 +220,8 @@ prioridad: alta
 - **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro histórico detallado de todas las sesiones.
 - El script `add-modification-date.sh` permite re-ejecutar la actualización de `fecha_modificacion` en cualquier momento.
 - Se eliminaron 2 archivos resumen redundantes (`DEs adicionales` y `WMs adicionales`) — todos los DEs y WMs tienen nota individual completa.
-- Sesión 2026-07-24: Se crearon 7 notas nuevas (TUI tools + 6 TUI específicas), se documentó ripgrep, y se añadió sección de instalación masiva con 5 scripts bash.
+- Sesión 2026-07-24 (ronda 1): Se crearon 7 notas nuevas (TUI tools + bat, lazygit, lazydocker, k9s, yazi, zellij), se documentó ripgrep, y se añadió sección de instalación masiva con 5 scripts bash.
+- Sesión 2026-07-24 (ronda 2): Se crearon 6 notas TUI faltantes (dive, ctop, gitui, tig, trippy, glow). Total TUI: 14 notas (1 guía + 13 específicas).
 
 ---
 
