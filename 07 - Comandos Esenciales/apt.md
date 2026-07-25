@@ -184,18 +184,22 @@ También se puede fijar versión directamente al instalar:
 ```bash
 apt install postgresql=15.1-1              # instalar versión específica
 apt install postgresql/testing             # instalar desde repositorio específico
-apt install postgresql=15.1-1 --no-upgrade # no actualizar este paquete después
+
+# Para evitar que un paquete se actualice en el futuro:
+sudo apt-mark hold postgresql              # retener versión actual
+sudo apt-mark showhold                     # ver paquetes retenidos
+sudo apt-mark unhold postgresql            # liberar para actualizar
 ```
 
 ## Descargar .deb sin instalar
 
 ```bash
-# Opción 1: apt download (descarga al directorio actual)
+# Opción 1: apt download (descarga .deb al directorio actual)
 cd ~/deb-packages
-apt download nginx           # descarga nginx_VERSION_ARCH.deb
-apt download nginx           # solo el paquete, no dependencias
+apt download nginx           # descarga nginx_version_arch.deb
 
-# Opción 2: apt -d (download only)
+# Opción 2: apt install --download-only
+sudo apt install --download-only nginx
 sudo apt install --download-only nginx
 # Los .deb quedan en /var/cache/apt/archives/
 

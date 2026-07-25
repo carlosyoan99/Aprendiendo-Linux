@@ -145,7 +145,7 @@ ip route list                    # lista detallada
 ip route show table all          # todas las tablas de rutas
 ip route get 8.8.8.8             # qué ruta se usaría para llegar a 8.8.8.8
 ip route get 192.168.1.100 from 10.0.0.1 iif eth1  # ruta desde IP origen
-ip route show cache              # caché de rutas (FIB)
+# ip route show cache         # obsoleto en kernels modernos (5.x+)
 # ===== Añadir/eliminar rutas estáticas =====
 sudo ip route add 10.0.0.0/8 via 192.168.1.1       # ruta estática
 sudo ip route add 10.0.0.0/8 via 192.168.1.1 dev eth0  # con interfaz específica
