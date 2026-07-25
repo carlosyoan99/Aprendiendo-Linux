@@ -141,7 +141,7 @@ broot /ruta                          # navegar árbol de directorios
 ### Referencias existentes
 
 - [[Gestores de Archivos]] — nota general sobre gestores de archivos en Linux
-- [[lf]] | [[ranger]] | [[nnn]] — notas individuales pendientes de crear
+- [[yazi]] — gestor de archivos TUI rápido (Rust) · [[lf]] — gestor minimalista en Go · [[ranger]] — el clásico en Python
 
 ---
 
@@ -248,7 +248,7 @@ k9s                                  # lanzar (necesita kubeconfig)
 - [[Docker]] — notas sobre Docker en el vault
 - [[Kubernetes]] — orquestación de contenedores
 - [[Contenedores orquestación]] — Docker Compose, Swarm, K8s
-- [[lazydocker]] | [[k9s]] | [[dive]] — notas pendientes de crear
+- [[lazydocker]] — Docker TUI interactivo · [[k9s]] — Kubernetes TUI · [[dive]] — explorar capas de imágenes Docker
 
 ---
 
@@ -340,6 +340,7 @@ chafa --animate gif.gif              # GIF animados
 |---|---|---|
 | **micro** | Editor moderno intuitivo (como nano++) | ✅ [[Micro]] |
 | **helix** | Editor modal con LSP built-in | ✅ Mencionado en editores |
+| **zellij** | Multiplexor moderno con menú visual | ✅ [[zellij]] |
 | **kakoune** | Editor modal, múltiples selecciones | ❌ Pendiente |
 | **vis** | Editor modal basado en Plan 9 regex | ❌ Pendiente |
 | **amp** | Editor terminal Rust | ❌ Pendiente |
@@ -426,21 +427,9 @@ newsboat                             # lanzar
 
 ### Multiplexores de terminal
 
-```bash
-tmux                                 # el moderno ✅ nota existente
-screen                               # el clásico ✅ nota existente
-zellij                              # el nuevo, con layout por pestañas
-```
-
-**zellij** — Multiplexor moderno con layout automatizado, paneles redimensionables y plugins:
-
-```bash
-sudo apt install zellij              # instalación
-zellij                               # lanzar
-# Atajos: Ctrl+p = menú, Ctrl+t = nueva pestaña
-# Ctrl+n = nuevo panel, Ctrl+q = cerrar panel
-# Escape = modo editor (pasar teclas a la terminal)
-```
+- [[tmux]] — el multiplexor clásico ✅ nota existente
+- [[screen]] — el abuelo, preinstalado en distros mínimas ✅ nota existente
+- [[zellij]] — multiplexor moderno con layout automatizado y menú visual ✅ nota nueva
 
 ### Buscadores y filtros
 
