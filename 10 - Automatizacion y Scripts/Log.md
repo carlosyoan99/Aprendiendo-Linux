@@ -217,4 +217,12 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **07 completo**: 67/67 notas de comando con Enlaces externos.
 - **Pendiente**: 0 comandos restantes en 07. ✅
 
+## 2026-07-24 — Auditoría, actualización de índices y commit inicial
+- **Auditoría completa del vault**: escaneados 314 archivos .md (real), verificadas stats vs disco.
+- **TODO.md actualizado**: estadísticas corregidas (314 notas, 309 resueltas), próximos pasos re-priorizados con tabla expandible, carpeta 11 - Distribuciones añadida.
+- **README.md actualizado**: tabla de estructura con conteo real por carpeta, estadísticas corregidas, scripts listados.
+- **Repositorio Git inicializado**: commit inicial con 326 archivos, hooks activados.
+- **Hallazgos clave**: 0 notas en estado borrador real (falsos positivos en CLAUDE.md y Log.md que contienen la palabra en su texto). `Comparativa editores Linux.md` ya existe. Dashboard Dataview funcional.
+- **Vault: 314 notas (+ 7 templates).**
+
 #log
