@@ -93,6 +93,7 @@ categoria: indice
 - [[Busybox]] · [[Ncurses]] · [[Stratis]]
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
 - [[PipeWire]] · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]]
+- [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
 - [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]]
 - [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Multimedia (GStreamer HandBrake VLC MPV)]]
 - [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
@@ -114,6 +115,7 @@ categoria: indice
 - [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
+- [[tree]] — mostrar árbol de directorios · [[procs]] — ps moderno con colores · [[ripgrep]] — grep moderno en Rust · [[doggo]] — dig moderno con colores
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
 - [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
