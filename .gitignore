@@ -10,3 +10,7 @@ fecha-modificacion-weekly.log
 
 # Descargas automáticas de Wikipedia (wikipedia-dl.py)
 raw/
+
+# Python cache
+__pycache__/
+*.pyc
