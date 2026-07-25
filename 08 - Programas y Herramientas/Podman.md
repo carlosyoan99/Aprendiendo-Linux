@@ -33,6 +33,14 @@ sudo pacman -S podman
 sudo dnf install podman
 ```
 
+## Enlaces externos
+
+- [Sitio oficial de Podman](https://podman.io/)
+- [GitHub — containers/podman](https://github.com/containers/podman)
+- [Documentación](https://docs.podman.io/)
+- [Arch Wiki — Podman](https://wiki.archlinux.org/title/Podman)
+- [Podman Desktop (GUI)](https://podman-desktop.io/)
+
 ## Ver también
 
 - [[Docker]] — motor de contenedores con daemon

@@ -22,6 +22,12 @@ prioridad: baja
 | **Mrm (Motif Resource Manager)** | Carga de interfaces desde archivos UID |
 | **UIL (User Interface Language)** | Lenguaje para definir interfaces |
 
+## Enlaces externos
+
+- [Wikipedia — Motif (widget toolkit)](https://en.wikipedia.org/wiki/Motif_(software))
+- [SourceForge — Open Motif](https://sourceforge.net/projects/motif/)
+- [Wikipedia — LessTif](https://en.wikipedia.org/wiki/LessTif)
+
 ## Ver también
 
 - [[Common Desktop Environment (CDE)]] — DE que usa Motif

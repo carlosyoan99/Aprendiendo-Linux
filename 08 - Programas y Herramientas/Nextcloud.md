@@ -21,6 +21,14 @@ docker run -d -p 8080:80 nextcloud
 # Acceder en http://localhost:8080
 ```
 
+## Enlaces externos
+
+- [Sitio oficial de Nextcloud](https://nextcloud.com/)
+- [GitHub — nextcloud/server](https://github.com/nextcloud/server)
+- [Nextcloud Apps Store](https://apps.nextcloud.com/)
+- [Documentación de administración](https://docs.nextcloud.com/)
+- [Nextcloud All-in-One (Docker)](https://github.com/nextcloud/all-in-one)
+
 ## Ver también
 
 - [[Open-Xchange]] — suite colaborativa alternativa
