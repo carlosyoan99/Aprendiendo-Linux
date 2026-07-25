@@ -14,6 +14,27 @@ prioridad: alta
 
 ---
 
+## 0. 🖥️ Terminal User Interfaces (TUIs)
+
+Las herramientas TUI son esenciales para el power user:
+
+| Herramienta | Para qué | Instalación |
+|---|---|---|
+| **lazygit** | Git visual (stage, commit, branch, merge) | `sudo apt install lazygit` |
+| **gitui** | Git TUI alternativo en Rust | `sudo apt install gitui` |
+| **ncdu** / **gdu** | Explorador de disco interactivo | `sudo apt install ncdu gdu` |
+| **bottom** (btm) | Monitor de sistema moderno (gráficos) | `sudo apt install bottom` |
+| **bat** | cat con syntax highlighting | `sudo apt install bat` |
+| **procs** | ps moderno con árbol y colores | `sudo snap install procs` |
+| **glances** | Dashboard sistema + web | `sudo apt install glances` |
+| **trippy** | traceroute + ping visual | `sudo apt install trippy` |
+| **zellij** | Multiplexor de terminal moderno | `sudo apt install zellij` |
+| **glow** | Visor Markdown bonito | `sudo apt install glow` |
+
+> Ver [[TUI tools]] para la guía completa con ejemplos de uso y comparativas.
+
+---
+
 ## 1. 🐚 Shell Scripting Avanzado
 
 ### Bash scripts profesionales

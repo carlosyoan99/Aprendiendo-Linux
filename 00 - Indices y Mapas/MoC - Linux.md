@@ -97,6 +97,7 @@ categoria: indice
 - [[Heartbeat (Linux-HA)]] — alta disponibilidad · [[Linux Virtual Server]] — balanceo de carga · [[Open-Xchange]] — suite colaborativa · [[SONiC]] — SO redes Microsoft
 - [[Ansible]] — gestión de configuración, playbooks, roles
 - [[Entorno de desarrollo Linux]] — toolchain completo por lenguaje, contenedores para desarrollo
+- [[TUI tools]] — guía de Terminal User Interfaces (monitores, editores, git, docker, multimedia, redes)
 
 ## Terminal y comandos
 - [[La Shell]] · [[Shells (bash zsh fish)]] · [[tmux]] · [[screen]]
