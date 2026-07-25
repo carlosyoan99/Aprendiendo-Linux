@@ -177,12 +177,13 @@ configurar_cron() {
     CRONTAB_ACTUAL=$(crontab -l 2>/dev/null || true)
 
     # Generar nuevas entradas (con tag para poder identificarlas después)
+    # NOTA: usar $'\n' para newlines reales — crontab no entiende \n literal
     NUEVAS_ENTRADAS=""
     if [[ -n "$SCRIPT_FECHAS" ]]; then
-        NUEVAS_ENTRADAS+="0 8 * * 0 cd $VAULT_DIR && bash $SCRIPT_FECHAS$CRON_TAG:fechas:$CRON_ID\n"
+        NUEVAS_ENTRADAS+="0 8 * * 0 cd $VAULT_DIR && bash $SCRIPT_FECHAS$CRON_TAG:fechas:$CRON_ID"$'\n'
     fi
     if [[ -n "$SCRIPT_STATS_WEEKLY" ]]; then
-        NUEVAS_ENTRADAS+="0 9 * * 0 cd $VAULT_DIR && bash $SCRIPT_STATS_WEEKLY$CRON_TAG:stats:$CRON_ID\n"
+        NUEVAS_ENTRADAS+="0 9 * * 0 cd $VAULT_DIR && bash $SCRIPT_STATS_WEEKLY$CRON_TAG:stats:$CRON_ID"$'\n'
     fi
 
     # Verificar si ya existen (por tag)
