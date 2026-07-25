@@ -1,0 +1,51 @@
+#!/bin/bash
+# pre-push — Busca wikilinks rotos antes de hacer push
+# Ubicación: .githooks/pre-push
+
+set -euo pipefail
+
+echo "🔍 Verificando wikilinks antes del push..."
+
+cd "$(git rev-parse --show-toplevel)"
+
+# Recolectar todos los wikilinks [[Nota]] de todas las notas .md
+WIKILINKS=$(grep -roP '\[\[([^\]]+)\]\]' --include="*.md" . | \
+            grep -v '^./Templates/' | \
+            grep -v '^./.obsidian/' | \
+            sed 's/.*\[\[//;s/\]\].*//' | \
+            sed 's/|.*//' | \
+            sort -u)
+
+# Recolectar nombres reales de archivos (sin extensión, sin ruta)
+NOTAS_EXISTENTES=$(find . -name '*.md' -not -path './Templates/*' -not -path './.obsidian/*' -not -path './.git/*' | \
+                   xargs -I{} basename '{}' .md | sort -u)
+
+ERRORES=0
+while IFS= read -r link; do
+    # Saltar enlaces que no son wikilinks de notas (urls, etc.)
+    if [[ "$link" == http* ]] || [[ "$link" == *"://"* ]]; then
+        continue
+    fi
+
+    # Normalizar: el enlace puede tener el formato [[Nota|alias]] → ya extrajimos antes del |
+    LINK_NORMALIZADO=$(echo "$link" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+    if [[ -z "$LINK_NORMALIZADO" ]]; then
+        continue
+    fi
+
+    # Verificar si existe una nota con ese nombre
+    if ! echo "$NOTAS_EXISTENTES" | grep -qi "^${LINK_NORMALIZADO}$"; then
+        echo "  ⚠️  Wikilink roto: [[${LINK_NORMALIZADO}]]"
+        ((ERRORES++)) || true
+    fi
+done <<< "$WIKILINKS"
+
+if [[ $ERRORES -gt 0 ]]; then
+    echo ""
+    echo "❌ Se encontraron $ERRORES wikilink(s) roto(s). Corrige antes de hacer push."
+    exit 1
+fi
+
+echo "  ✅ Todos los wikilinks son válidos."
+exit 0

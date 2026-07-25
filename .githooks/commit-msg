@@ -1,0 +1,35 @@
+#!/bin/bash
+# commit-msg — Valida el formato del mensaje de commit
+# Ubicación: .githooks/commit-msg
+# Formatos válidos: feat|fix|docs|expand|refactor|chore
+
+set -euo pipefail
+
+COMMIT_MSG=$(cat "$1")
+
+# Patrón: tipo: mensaje (máx 72 chars)
+if ! echo "$COMMIT_MSG" | grep -qE '^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: .{1,72}$'; then
+    cat <<EOF
+❌ Formato de commit inválido.
+
+Formatos válidos:
+  feat:     Nueva nota o sección
+  fix:      Corrección de error o typo
+  docs:     Cambios en documentación (README, CLAUDE.md, plantillas)
+  expand:   Expandir nota existente con nuevo contenido
+  refactor: Reorganización sin cambios de contenido
+  chore:    Infraestructura del vault (git hooks, scripts, .gitignore)
+
+Ejemplos:
+  feat: Añadir nota sobre systemd-resolved
+  fix: Corregir typo en Nota.md
+  expand: Expandir top.md con formato de salida
+  refactor: Mover Docker.md de 08 a 01
+  chore: Crear git hooks de validación
+
+Máximo 72 caracteres en la primera línea.
+EOF
+    exit 1
+fi
+
+exit 0

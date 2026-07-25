@@ -1,0 +1,59 @@
+#!/bin/bash
+# pre-commit — Verifica frontmatter en archivos .md nuevos/modificados
+# Ubicación: .githooks/pre-commit
+
+set -euo pipefail
+
+echo "🔍 Validando frontmatter en archivos staged..."
+
+# Obtener archivos .md staged (excluyendo Templates/, CLAUDE.md, README.md)
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | grep -v '^Templates/' | grep -v '^CLAUDE\.md$' | grep -v '^README\.md$' || true)
+
+if [[ -z "$STAGED" ]]; then
+    exit 0
+fi
+
+ERRORES=0
+
+while IFS= read -r archivo; do
+    if [[ ! -f "$archivo" ]]; then
+        continue
+    fi
+
+    PRIMERA_LINEA=$(head -1 "$archivo")
+    if [[ "$PRIMERA_LINEA" != "---" ]]; then
+        echo "  ❌ $archivo — Sin frontmatter (no empieza con ---)"
+        ((ERRORES++)) || true
+        continue
+    fi
+
+    FRONT=$(awk '/^---/{c++; next} c==1{print}' "$archivo")
+    if [[ -z "$FRONT" ]]; then
+        echo "  ❌ $archivo — Frontmatter sin cerrar (falta --- final)"
+        ((ERRORES++)) || true
+        continue
+    fi
+
+    if ! echo "$FRONT" | grep -q "^fecha_creacion:"; then
+        echo "  ⚠️  $archivo — Sin fecha_creacion"
+        ((ERRORES++)) || true
+    fi
+
+    if ! echo "$FRONT" | grep -q "^estado:"; then
+        echo "  ⚠️  $archivo — Sin estado"
+        ((ERRORES++)) || true
+    fi
+
+    if ! echo "$FRONT" | grep -q "^categoria:"; then
+        echo "  ⚠️  $archivo — Sin categoria"
+        ((ERRORES++)) || true
+    fi
+done <<< "$STAGED"
+
+if [[ $ERRORES -gt 0 ]]; then
+    echo "  ❌ $ERRORES error(es) de frontmatter. Corrige antes de commitear."
+    exit 1
+fi
+
+echo "  ✅ Frontmatter válido en todos los archivos staged."
+exit 0

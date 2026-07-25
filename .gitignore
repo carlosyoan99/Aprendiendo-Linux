@@ -1,0 +1,4 @@
+.obsidian/
+
+# Docker: fichero de variables de entorno local (contiene contraseñas)
+.env

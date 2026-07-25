@@ -1,0 +1,220 @@
+---
+fecha_creacion: 2026-07-18
+estado: en progreso
+categoria: log
+---
+
+# Log de Aprendizaje
+
+Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final, nunca se reescribe el historial.
+
+---
+
+## 2026-07-18
+- Vault creado: estructura de carpetas, plantillas base y notas iniciales. Múltiples rondas de expansión. **Total: ~153 notas de contenido.**
+- **CLAUDE.md actualizado**: Nueva subsección sobre uso de imágenes de Wikipedia y enlaces externos.
+- **README.md actualizado**: Tabla de estructura refleja cambios; cifras actualizadas (~126 notas).
+- **Plan de trabajo**: Presentado al usuario y aceptado.
+- **Creada nota XDG Base Directory y dotfiles modernos.md** en 01 - Conceptos Fundamentales/. Cubre las 7 variables XDG, apps que cumplen/no cumplen el estándar, script de forzado, y gestores de dotfiles. MoC actualizado. **Vault: 127 notas.**
+- **Fase 1: Notas críticas que faltaban**: Creadas 9 notas: Kernel Linux, GNU y Linux, Personalización en Linux (conceptos), sudo, Nano, Vim Neovim, Man (comandos), Touch y History (combinada), Neofetch Fastfetch. **Vault: ~136 notas.**
+
+### Correcciones
+- **Encoding roto**: `Virtualización (KVM QEMU libvirt).md` corregido (wikilink del MoC apuntaba a archivo inexistente).
+- **Typo**: `categoria: comandos` → `comando` en Cheat Sheet. `categoria: recursos` → `troubleshooting` en Solucion de Problemas - Recursos.md.
+- **4 notas huérfanas** (Git, htop btop, tmux, screen) enlazadas desde el MoC.
+- **Categorías**: Ampliado el esquema en CLAUDE.md con `instalacion` y `terminal`.
+- **README.md**: Cifras corregidas (77→107 notas, 18→35 comandos).
+- **Verificado**: check-frontmatter.sh: 111/111 notas de contenido pasan sin errores.
+
+## 2026-07-19
+### Fase 2: Expandir y reestructurar
+- **Notas independientes creadas (7)**: Firefox, LibreOffice, Suite de Oficina, Bootloaders (GRUB Limine systemd-boot), PipeWire, Multimedia (GStreamer HandBrake VLC MPV), Coreutils y util-linux.
+- Navegadores Web reescrito como nota general con tabla de motores; Firefox extraído a nota propia.
+- Editores de Texto expandido con tabla comparativa de 10 editores.
+- Proceso de Arranque simplificado (bootloaders ahora es nota propia).
+- Audio en Linux simplificado (PipeWire ahora es nota propia).
+- Suite de Oficina renombrada; LibreOffice movido a nota propia.
+- **Vault: ~143 notas.**
+
+### Fase 3: Programas y herramientas
+- **Creadas 6 notas**: Editores de código (VSCode Codium Zed Helix Antigravity), Lenguajes y gestores (Node.js Cargo PIP Go Gem), Linux en servidores cloud IoT, Cava, Desktop Shells (Noctalia Caelestia), Python en Linux.
+- **Vault: ~149 notas.**
+
+### Fase 4: Entornos, WMs y distros faltantes
+- **Creadas**: DEs adicionales (tabla 8 DEs), WMs adicionales (tabla 8 WMs), Distros adicionales.
+- **Vault: ~152 notas.**
+
+### Correcciones y notas individuales
+- **Corregido**: Vim Neovim (+clipboard), Man (sección 0). Creada Micro.md.
+- **Vault: ~153 notas.**
+- **Creada D-Bus.md** — system/session bus, busctl, MPRIS.
+- **Vault: ~154 notas.**
+- **Creada Snap y Flatpak.md** — historia, comandos, permisos, tabla comparativa.
+- **Vault: ~155 notas.**
+
+### Expansión de contenido
+- Expandido Gestores de Paquetes.md (AUR, helpers).
+- Expandido Sistemas de Archivos.md (ReiserFS, SquashFS, CephFS).
+- Creadas 3 distros: CentOS, SteamOS, EndeavourOS.
+- **Vault: ~158 notas.**
+
+### Continuación 2026-07-19
+- Creada LXC y Contenedores del Sistema.md.
+- Creada Wine.md como nota independiente.
+- Expandida SteamOS.md a nota completa de distribución.
+- Creada AppImage.md — funcionamiento interno, ecosistema.
+- **Creadas 16 notas individuales**: Gentoo, Kali, Void, Tails, MX Linux, Zorin OS, elementary OS, MATE, Budgie, LXQt, Deepin, Pantheon, bspwm, Sway, qtile, Openbox.
+- Creada Incus.md — gestor de contenedores, fork de LXD.
+- Creada Proxmox VE.md — plataforma de virtualización.
+- Creada Bottles.md — frontend gráfico para Wine.
+- Expandida Videojuegos en Linux.md con nuevos launchers y emuladores.
+- Creada Gamescope.md — micro-compositor de Valve.
+- Creada Bazzite.md — distro gaming inmutable.
+- Expandida Distros adicionales.md con ChimeraOS y HoloISO.
+- Expandido Gestores de Paquetes.md con sección de formatos portables.
+- Creada linuxdeploy y AppImageKit.md.
+- **Creadas 6 notas individuales**: Slackware, Solus, Parrot OS, River, Fluxbox, Enlightenment.
+- **Dashboard.md actualizado**: Dataview queries agrupando 191 notas.
+- **Creada Contenedores - Comparativa.md** en 00 - Indices y Mapas.
+- **Creada Canonical y su ecosistema.md** en 01 - Conceptos.
+- **Expandida CachyOS.md** de ~80 a ~400 líneas con kernel BORE/EEVDF.
+- **Templates actualizados**: 7 plantillas con mejoras estructurales (prioridad, enlaces externos, troubleshooting).
+- **Creadas 3 notas**: Sugar, Trinity, herbstluftwm.
+- **Expandidas 6 notas cortas**: Post-Instalacion Checklist, Wayland vs X11, Variables de Entorno, Linux Mint, find, grep.
+- **Creadas 7 notas**: Busybox, coreboot, zram, Ncurses, Stratis, Daemon, Rust for Linux.
+- **Creadas 5 notas**: Android (sistema basado en Linux), Linux embebido, Malware en Linux, s6 init, Debate Tanenbaum-Torvalds.
+- **Creadas 5 notas**: AlmaLinux, Raspberry Pi OS, Puppy Linux, Historia de Linux, Linux Standard Base (LSB).
+- **Auditoría completa**: 213 notas, 207 resueltas, 4 en progreso. 10 wikilinks rotos corregidos.
+- **Expandida Permisos y Propietarios** (~8KB): sticky bit, SUID/SGID, umask, ACLs, atributos.
+- **Expandida Proceso de Instalacion General** (~12KB): requisitos, FS, swap, cifrado, esquemas.
+- **Expandida Procesos y Senales** (~7KB): estados /proc, nice, cgroups, señales.
+- **Expandida Creacion de USB Booteable** (~9KB): BIOS/MBR vs UEFI/GPT, persistencia, Secure Boot.
+- **Expandidos 4 comandos cortos**: wc, tail, uniq, sort.
+- **Expandida Compilacion desde Codigo Fuente** (~7KB): Autotools, CMake, Meson, checkinstall.
+- **Expandida Dual Boot con Windows** (~6KB): reparación boot, reloj, BitLocker, NTFS.
+- **Expandida Pop OS** (~8KB, prioridad alta): COSMIC Desktop, Pop!_Shop, System76 hardware.
+- **Expandida NixOS** (~9KB): flakes, home-manager, containers, caché binaria.
+- **Creadas 2 notas de comando**: head, awk.
+- **Movida De Windows a Linux** a 02 - Instalacion.
+- **Creada Btrfs.md** como nota independiente.
+- **Expandidos**: Gestores de Paquetes (dpkg, RPM, AUR), Sistemas de Archivos (ext*, F2FS, XFS, JFS, FAT).
+- **Expandido**: Symlinks y Dotfiles, Dual Boot (ReFS).
+- **Creadas**: Video4Linux (V4L2).md, Historial de versiones del kernel.md, Sabores de Ubuntu.md, Formatos de Paquetes en GNU Linux.md, Linux en Moviles.md.
+- **Prioridad 1**: creado MoC Dia a Dia en CLI con 8 categorías. Creadas 8 notas de comando: ls, cd, mkdir, locate, wget, ss, ip, apt.
+- **Prioridad 2**: creado MoC Administracion y Diagnostico. Creadas 4 notas: mount, dig, traceroute, fail2ban.
+- **Prioridad 3**: creado MoC Arsenal Power User. Creado MoC Mis Dotfiles. Creadas 4 notas: bash-avanzado, sysctl, auditd, perf.
+
+## 2026-07-20
+- **10 notas nuevas de alta prioridad**: kubectl, Xrdp, ADB, adduser, Parted Magic, Ubuntu (tipo de letra), Nouveau, Genkernel, Versiones de Debian, NTFS-3G.
+- **4 notas expandidas**: Proceso de Arranque, Linux Mint, Linux en Moviles (Mer), LVM.
+- **7 distros nuevas**: Vanilla OS, Xero Linux, LXLE Linux, Peppermint OS, Linux Lite, EU OS, Zentyal.
+- **6 programas/herramientas nuevas**: GNUstep, CDE, Heartbeat (Linux-HA), LVS, Open-Xchange, SONiC.
+- **5 conceptos técnicos nuevos**: GNOME VFS, Exec Shield, GEM, Int 80h, RTAI.
+- **6 troubleshooting entries** en 09 - Solucion de Problemas/: WiFi, permisos, sonido, paquete roto, GRUB, NVIDIA.
+- **Fix bug en check-frontmatter.sh**: off-by-one reemplazado con awk.
+- **Expandidas 6 notas**: Navegadores Web, Solucion de Problemas - Recursos, systemd, Redes Basicas, SSH, sed y awk.
+- **97 notas marcadas como resuelto** vía batch sed. Quedan 4 en progreso: Dashboard, MoC, Log, Cheat Sheet.
+- **Creada Audio en Linux.md** — ALSA, PulseAudio, PipeWire, JACK.
+- **Creada Sistemas de Archivos.md** — ext4, Btrfs, XFS, ZFS.
+- **Creada Virtualización (KVM QEMU libvirt).md** — instalación, virsh, snapshots, GPU passthrough.
+- **Creada Firewall.md** — nftables, iptables, ufw, firewalld.
+- **Creada Cifrado (LUKS dm-crypt GPG).md** — cifrado de bloque y archivos.
+- **Creada Proceso de Arranque.md** — POST→login completo.
+- **Creada Backups.md** — borg, restic, duplicity, rsync + 3-2-1.
+- **Creada SELinux y AppArmor.md** — MAC, contextos, perfiles.
+- **Creada Logging del sistema.md** — journald, rsyslog, logrotate.
+- **Creada WireGuard VPN.md** — configuración, AllowedIPs, NAT.
+- **Creada Impresión (CUPS).md** — instalación, drivers, troubleshooting.
+- **Creada RAID (mdadm).md** — niveles, creación, fallos.
+- **Creada Monitorización.md** — Prometheus, node_exporter, Grafana.
+- **Creada Gestión de usuarios avanzada.md** — PAM, chage, skel, chsh.
+- **Creada Módulos del kernel.md** — lsmod, modprobe, blacklist.
+- **Creada Diagnóstico de hardware.md** — lspci, lsusb, smartctl.
+- **Creada cgroups.md** — v1 vs v2, systemd, límites.
+- **Correcciones en systemd-networkd.md**.
+- **Creada Linux From Scratch (LFS).md**.
+- **Expandida Git.md** de ~200 a ~700 líneas (ramas, merge, rebase, bisect, hooks).
+- **Creada Kubernetes.md** — arquitectura, pods, deployments, services.
+- **Expandida PostgreSQL y MySQL.md** de ~400 a ~900 líneas.
+- **Creada GitHub CLI (gh).md** — ~450 líneas, PRs, issues, Actions.
+- **Integrado ebook "Linux a prueba de balas"** como Seguridad en Linux (Guía completa).md.
+- **Creada SQLite.md** — ~400 líneas.
+- **Creada MongoDB y NoSQL.md** — ~400 líneas.
+- **Creada PostgreSQL vs MongoDB.md** — ~350 líneas.
+- **Creado docker-compose.yml** con MongoDB, Redis, Cassandra, Neo4j.
+- **Creada Redis.md** — ~700 líneas.
+- **Auditoría**: wikilinks añadidos a NVIDIA y GRUB; expandidas Exec Shield, SONiC, GNUstep, GNOME VFS, GEM, EU OS; nuevas Pacman, Lubuntu, Firefox OS; expandido Gentoo.
+
+## 2026-07-21 (Auditoría v2)
+- **Corregido**: 9 archivos con encoding roto (`#U00f3`, `#U00ed` en vez de ó/í) reintroducido por pipeline de generación.
+- **Corregido**: 26 notas huérfanas (apt, cd, ls, mkdir, ip, ss, wget + auditd, fail2ban).
+- **Corregido**: hashtag faltante en Log.md.
+- **Detectado**: check-frontmatter.sh reporta falsos positivos al escanear vault completo (fuga de estado entre iteraciones).
+- **README.md**: cifras corregidas (272→286 notas, 12+→40 distribuciones).
+- **Verificado**: find-orphans.sh: 0 huérfanas reales (288 notas).
+
+## 2026-07-23 — Fase 1: Prioridad alta
+- **Creadas 6 troubleshooting** en 09: Pantalla en negro, Disco lleno, Teclado layout, Bluetooth, Resolución multi-monitor, Reloj dual boot.
+- **Creados 4 comandos**: df y du, free, uname, date y timedatectl.
+- **MoC actualizado** con wikilinks. **Vault: ~298 notas.**
+
+## 2026-07-23 — Fase 2: Prioridad media
+- **Creadas 5 notas**: Namespaces (Linux), Locale y configuración de idioma, NTP y chrony, Actualización entre versiones mayores, Ansible.
+- **Expandidas 2 notas**: Symlinks y Dotfiles (inodos, link count), Backups (automatización + systemd timers).
+- **MoC actualizado**. **Vault: ~303 notas.**
+
+## 2026-07-23 — Fase 3: Prioridad baja
+- **Creadas 4 notas**: SSH no conecta, Docker permiso denegado, Fuentes rotas o faltantes, Git hooks para el vault.
+- **Nombres corregidos**: 3 archivos renombrados a español (SSH connection refused → SSH no conecta, etc.).
+- **MoC actualizado**. **Vault: ~307 notas.**
+
+## 2026-07-23 — Segunda ronda de reubicaciones
+- **3 notas** de `01` → `03 Estructura del Sistema/`: systemd-networkd, systemd-resolved, Wayland vs X11.
+- **5 notas** de `01` → `08 Programas y Herramientas/`: NTFS-3G, Nouveau, WireGuard VPN, Genkernel, GNOME VFS.
+- **Docker.md** movido de `08` → `01 Conceptos Fundamentales/` (categoria: programa → concepto).
+- **Gestores de Paquetes.md** movido de `08` → `02 Instalacion y Configuracion/` (categoria: programa → instalacion).
+- **Coreutils y util-linux.md** movido de `08` → `07 Comandos Esenciales/` (categoria: programa → comando).
+- **systemd-nspawn.md** movido de `08` → `03 Estructura del Sistema/` (categoria: programa → sistema).
+- **MoC actualizado**: todas las entradas movidas a sus nuevas secciones.
+- **Frontmatter y hashtags actualizados** en las 12 notas reubicadas.
+
+## 2026-07-23 — Auditoría general y mejoras
+- **7 templates actualizados**: Problema Resuelto (Escenarios, eliminados campos obsoletos), Comando (Formato salida, Combinaciones pipe, Alternativas modernas), Concepto (Comandos asociados, Casos prácticos, Diagrama), Programa (Comparativa con alternativas estructurada), Entorno/WM (Requisitos, Comparativa), Distro (Upgrade, Comandos asociados), Log Diario (tiempo_invertido, tema).
+- **README.md actualizado** con cifras ~307 notas y nueva estructura.
+- **CLAUDE.md actualizado**: 12 categorías documentadas, nuevas reglas de estilo por tipo de nota, sección de Git hooks.
+- **TODO.md creado** en 00 - Indices y Mapas con roadmap completo, fases 1-3, próximas expansiones.
+- **Log.md ordenado cronológicamente**.
+- **Expandidas 5 notas cortas**: top (Formato salida, Casos de uso, Alternativas modernas), ps (Casos de uso, Combinaciones pipe, procs), kill (Escenarios kill, kill -0, Troubleshooting), Contenedores (Comandos Docker, Casos prácticos), La Shell (Globbing, Redirecciones, Expansión variables).
+- **Dashboard.md actualizado**: cifras corregidas (~307 notas, 0 borrador real).
+- **Verificado**: no existen notas con `estado: borrador` fuera de las plantillas. Las ~28 que mostraba el Dashboard eran un remanente de stats desactualizadas.
+
+## 2026-07-23 — Enlaces externos + hashtags + cierre
+- **Enlaces externos añadidos** (Wikipedia + GitHub) a **48 notas**: 06-Terminal (3: tmux, screen, La Shell), 04-Entornos (3: XFCE, GNOME, Cinnamon), 05-Gestores (3: Awesome WM, i3, Hyprland), 01-Conceptos (4: Linux, PAM, GEM, Contenedores), 02-Instalacion (6: Proceso, Dual Boot, Particionado, Cifrado, openSUSE, Alpine), 03-Sistema (17), 07-Comandos (12: cat, cd, mv, cp, ls, tar, sudo, ps, kill, top, rm, chown).
+- **Hashtags corregidos**: `#DE-WM` → `#entorno-escritorio` en las **28 notas** de 04 y 05.
+- **README.md actualizado**: cifras exactas (307 notas), estructura mejorada con contenido real de cada carpeta.
+- **TODO.md actualizado**: estadísticas exactas del vault, tareas completadas registradas, próximos pasos actualizados con estados.
+- **Dashboard.md verificado**: todas las cifras coinciden con el escaneo real (307 notas, 66 comandos, 68 programas, etc.).
+- **Pendiente**: quedan ~40 comandos sin enlaces externos (encoding issue con str_replace — requiere batch `sed` por lotes).
+
+## 2026-07-23 — Enlaces externos: 03-Sistema (completado) + 08-Programas
+- **03 - Estructura del Sistema**: añadidos Enlaces externos a las 2 notas restantes: `Bootloaders` y `systemd`. ✅ Completo (26/26 notas).
+- **08 - Programas y Herramientas**: añadidos Enlaces externos (Wikipedia + GitHub + sitios oficiales) a **28 notas**: Ansible, auditd, Backups, Cava, Desarrollo (gcc/make/gdb/strace), Diagnóstico hardware, Editores código, Editores Texto, Emuladores Terminal, fail2ban, ffmpeg, Firefox, Gestores Archivos, GNUstep, htop/btop, Impresión CUPS, LibreOffice, Micro, Monitorización (Prometheus), Multimedia, Navegadores Web, PipeWire, scrcpy, Suite Oficina, timeshift, Utilidades Base, Virtualización KVM, WireGuard VPN.
+- **03 + 08 completados**: 30 notas procesadas en esta sesión.
+- **Pendiente**: ~40 comandos de 07 sin enlaces externos (requiere batch sed).
+
+## 2026-07-23 — Enlaces externos: 8 comandos (mkdir, chmod, mount, dd, rsync, head, tail, wc)
+- **07 - Comandos Esenciales**: añadidos Enlaces externos (Wikipedia + GNU Coreutils/man7) a 8 notas: mkdir, chmod, mount, dd, rsync, head, tail, wc.
+- **Total procesado en 07**: 20 comandos con Enlaces externos (cat, cd, mv, cp, ls, tar, sudo, ps, kill, top, rm, chown, mkdir, chmod, mount, dd, rsync, head, tail, wc).
+- **Pendiente**: ~45 comandos restantes sin Enlaces externos.
+
+## 2026-07-23 — Enlaces externos: 37 comandos restantes de 07
+- **07 - Comandos Esenciales**: completados los 37 comandos pendientes con Enlaces externos:
+  - sort, uniq, diff, tee, xargs, locate, which, type, alias, export, source
+  - ip, ss, ping, curl, wget, nc, dig, traceroute
+  - less, Man, journalctl
+  - sed y awk, perf, bash-avanzado, zip, apt, Touch y History, ln, watch
+  - sysctl, Cheat Sheet, Coreutils, SSH, pacman, Nano
+- **07 completo**: 67/67 notas de comando con Enlaces externos.
+- **Pendiente**: 0 comandos restantes en 07. ✅
+
+#log
