@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-25 (v4 — assets, wikipedia-dl, scripts reorganizados)
+> Última actualización: 2026-07-25 (v9 — limpieza de assets, raw, scripts descarga)
 
 ---
 
@@ -201,9 +201,9 @@ prioridad: alta
 |---|---|
 | ✅ | Carpeta `assets/` creada con `logos/`, `screenshots/`, `diagrams/` |
 | ✅ | 4 logos descargados e insertados (Ubuntu, Debian, Gentoo, Kali) |
-| ✅ | `download-assets.sh` para descargar logos restantes |
-| ✅ | `wikipedia-dl.py` — bot Python con UAs rotativos y pausas anti-429 |
-| ✅ | `urls.txt` con 39 URLs de Wikipedia categorizadas |
+| ~~✅~~ | ~~`download-assets.sh` para descargar logos~~ (eliminado) |
+| ~~✅~~ | ~~`wikipedia-dl.py` — bot Python~~ (eliminado) |
+| ~~✅~~ | ~~`urls.txt` con 39 URLs de Wikipedia~~ (eliminado) |
 | ✅ | Scripts movidos de `10 - Automatizacion y Scripts/scripts/` a `scripts/` raíz |
 | ✅ | Rutas internas, documentación y CLAUDE.md actualizados |
 

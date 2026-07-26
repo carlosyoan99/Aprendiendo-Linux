@@ -17,8 +17,6 @@ arquitecturas:
   - ppc64el
 ---
 
-![Debian](assets/logos/debian.svg)
-
 # Debian
 
 > La **Universal Operating System**: una de las distros más antiguas (1993) y respetadas. Conocida por su estabilidad extrema, su compromiso con el software libre, y por ser la base de Ubuntu, Linux Mint y muchas otras.

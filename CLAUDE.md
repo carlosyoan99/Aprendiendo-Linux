@@ -29,27 +29,10 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 - Se pueden incluir **imágenes públicas de Wikipedia** (`https://upload.wikimedia.org/...`) cuando aporten valor visual (diagramas, capturas de interfaz, logotipos).
 - **Enlaces externos**: incluir enlaces a GitHub, Wikipedia y wikis oficiales de distribuciones cuando sea relevante para que el usuario pueda profundizar.
 
-### Assets locales (`assets/`)
+### Imágenes externas
 
-Las imágenes descargadas se almacenan localmente en `assets/` para acceso sin conexión:
-
-```
-assets/
-├── logos/          # Logos de distribuciones, DEs, WMs, programas
-├── screenshots/    # Capturas de pantalla de entornos y aplicaciones
-└── diagrams/       # Diagramas técnicos (kernel, FHS, boot process, etc.)
-```
-
-Para insertar una imagen en una nota, usar sintaxis Markdown:
-```markdown
-![Ubuntu](assets/logos/ubuntu.svg)
-```
-O wikilink de Obsidian (permite redimensionar):
-```markdown
-![[assets/logos/ubuntu.svg|200]]
-```
-
-Las imágenes deben ser de **uso libre** (Wikimedia Commons, sitios oficiales, dominio público, CC BY-SA, GPL). Se aceptan formatos SVG (logos, diagramas vectoriales) y PNG (capturas de pantalla).
+- Se pueden enlazar imágenes públicas de **Wikimedia Commons** (`https://upload.wikimedia.org/...`) o de sitios oficiales cuando aporten valor visual.
+- No almacenar imágenes localmente en el vault — usar siempre enlaces externos.
 
 ## 3. Reglas al crear una nota nueva
 1. Elegir la carpeta correcta según la tabla anterior.

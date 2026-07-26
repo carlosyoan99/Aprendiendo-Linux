@@ -414,12 +414,9 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Nuevos archivos**: GTK.md, Qt.md.
 - **Bloques bash totales reducidos**: ~100 bloques sueltos eliminados.
 
-## 2026-07-25 (v4) — Assets, wikipedia-dl y reorganización de scripts
+## 2026-07-25 (v4) — Reorganización de scripts
 
-- **Assets**: creada carpeta `assets/` con subcarpetas `logos/`, `screenshots/`, `diagrams/`. Descargados 4 logos (Ubuntu, Debian, Gentoo, Kali) e insertados en sus notas. Creado `download-assets.sh` para completar el resto.
-- **wikipedia-dl.py**: script Python con 12 UAs rotativos, pausas anti-429, descarga HTML+imágenes desde Wikipedia. Testeado con 2 artículos, 22 imágenes extraídas en 43s.
 - **Reorganización**: scripts movidos de `10 - Automatizacion y Scripts/scripts/` a `scripts/` raíz. Rutas internas actualizadas (`../../` → `../`). Documentación y CLAUDE.md actualizados.
-- **Pendiente**: descargar logos restantes (~12), capturas DE/WM y diagramas vía `download-assets.sh` o `wikipedia-dl.py`.
 
 #log
 
@@ -442,3 +439,123 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 ### 📊 Stats
 - **Vault: 365 notas (+5).** Concepto: 38→43. 01 - Conceptos: 37→42.
 - **Nuevos archivos**: Windows.md, macOS.md, MS-DOS.md, UNIX.md, Distribuciones de Linux.md.
+
+## 2026-07-25 (v6) — 13 notas faltantes (wikilinks rotos)
+
+### 🆕 Notas creadas (03 - Sistema)
+- **[[ufw]]**: firewall simplificado (frontend nftables), comandos, profiles, troubleshooting.
+- **[[NetworkManager]]**: daemon de gestión de red, nmcli, nmtui, WiFi, IP estática, VPN.
+
+### 🆕 Notas creadas (07 - Comandos)
+- **[[gdb]]**: GNU Debugger, breakpoints, core dumps, segfault analysis.
+- **[[sha256sum]]**: hashes de integridad, verificar descargas, backups.
+- **[[ltrace]]**: trazador de llamadas a librerías, malloc tracking.
+- **[[groups]]**: gestión de grupos de usuarios, usermod -aG.
+
+### 🆕 Notas creadas (08 - Programas)
+- **[[ranger]]**: gestor de archivos TUI (Python), atajos, w3m preview.
+- **[[iftop]]**: monitor de bandwidth por conexión, filtros pcap.
+- **[[bmon]]**: monitor de bandwidth con gráficos ASCII.
+- **[[nethogs]]**: monitor de bandwidth por proceso.
+- **[[nvtop]]**: monitor de GPU TUI (NVIDIA/AMD/Intel).
+- **[[lf]]**: gestor de archivos TUI (Go), alternativa rápida a ranger.
+- **[[gdebi]]**: instalador de .deb con resolución de dependencias.
+
+### 📌 MoC actualizado
+- [[ufw]] añadido en sección Operativa.
+
+### 📊 Stats
+- **Vault: 378 notas (+13).**
+- **Wikilinks rotos eliminados**: ufw, gdb, ranger, sha256sum, NetworkManager, iftop, bmon, nethogs, nvtop, ltrace, lf, gdebi, groups.
+
+## 2026-07-25 (v7) — Expansiones nftables + Nextcloud + assets
+
+### 📝 Notas expandidas
+- **[[nftables]]** (03 - Sistema): 27 → ~180 líneas. Sets, maps, NAT (masquerade/SNAT/DNAT), rate limiting, logging, contadores, migración desde iptables, troubleshoot.
+- **[[Nextcloud]]** (08 - Programas): 39 → ~180 líneas. Apps principales, 4 métodos de instalación (AIO, Docker, Snap, manual), Redis/OPcache, Fail2Ban, backups, clientes, 14 comandos occ.
+
+
+
+### 📊 Stats finales de sesión
+- **Vault: ~378 notas.** Cambios en 20+ archivos.
+
+## 2026-07-25 (v8) — Auditoría completa + 22 notas nuevas
+
+### 🔍 Auditoría del vault
+- Ejecutadas todas las verificaciones: vault-stats.sh, find-orphans.sh, check-frontmatter.sh, wikilinks rotos.
+- **379 notas**, 373 resueltas, 5 en progreso, 2 borrador (README/CLAUDE por diseño).
+- **Frontmatter**: 379/379 OK, 0 errores.
+- **Huérfanas**: 2 (Prompts de Trabajo, README) — archivos de estructura, no reales.
+- **Corregido**: `[[iptables]]` y `[[md5sum]]` rotos → notas creadas.
+- **Corregido**: `[[Automatizacion y Scripts]]` path completo en Arsenal Power User.
+- **Eliminada**: carpeta vacía `02 - Instalacion y Configuracion/Distribuciones/`.
+
+### 🆕 8 notas de prioridad alta (nuevas)
+- **[[DevOps]]** (01 - Conceptos): definición, ecosistema de herramientas (Docker/K8s/Ansible/Terraform), pipeline CI/CD ejemplo.
+- **[[systemd timers]]** (03 - Sistema): alternativa moderna a cron, OnCalendar, Persistent, comparativa con cron.
+- **[[stat]]** (07 - Comandos): metadata de archivos, 3 timestamps (atime/mtime/ctime), formato personalizado.
+- **[[file]]** (07 - Comandos): magic numbers, identificar tipo real de archivo, MIME type.
+- **[[Docker Compose]]** (08 - Programas): archivos YAML multi-contenedor, profiles, watch, healthchecks.
+- **[[Red no conecta]]** (09 - Troubleshooting): flujo de decisión completo (DNS/DHCP/firewall/cable).
+- **[[Sistema no arranca]]** (09 - Troubleshooting): desde pantalla negra hasta kernel panic, live USB recovery.
+- **[[Cron]]** (10 - Automatizacion): crontab, anacron, comparativa con systemd timers.
+
+### 🆕 6 notas de prioridad media (nuevas)
+- **[[Tmpfs y ramfs]]** (03 - Sistema): filesystems en memoria, /dev/shm, relación con zram.
+- **[[initramfs]]** (03 - Sistema): qué es, generación (dracut/mkinitcpio/update-initramfs), cuándo regenerar.
+- **[[nohup, timeout, at]]** (07 - Comandos): control de ejecución de procesos.
+- **[[hyperfine]]** (08 - Programas): benchmarking CLI con análisis estadístico.
+- **[[duf]]** (08 - Programas): df moderno con colores y barras de progreso.
+- **[[seq, yes, sleep]]** (07 - Comandos): utilidades simples de secuencias y pausas.
+
+### 🆕 8 notas de prioridad baja (nuevas)
+- **[[atuin]]** (08 - Programas): shell history sync.
+- **[[mise]]** (08 - Programas): gestor de versiones universal.
+- **[[delta]]** (08 - Programas): git diff con syntax highlighting.
+- **[[Impresora no funciona]]** (09 - Troubleshooting): CUPS, drivers, red.
+- **[[Wayfire]]** (05 - Gestores): compositor Wayland tipo Compiz.
+- **[[CutefishOS]]** (04 - Entornos): DE Wayland estética macOS.
+- **[[Nushell]]** (06 - Terminal): shell estructurada con tablas tipadas.
+- **[[seq yes sleep]]** — utilidades básicas CLI.
+
+### 🔧 Scripts verificados
+- **check-frontmatter.sh** + **find-orphans.sh**: ejecutados, 0 errores.
+
+### 📌 MoC actualizado
+- Todas las notas nuevas enlazadas con wikilinks y descripciones.
+
+### 📊 Stats finales de sesión
+- **Vault: 401 notas (+22 notas v8, +2 audit-fix iptables/md5sum, +13 wikilinks fix, +2 expansiones).**
+- **Total archivos modificados hoy**: ~50+
+- **Sesión más productiva del proyecto**: 22 notas nuevas + auditoría completa + expansiones + fixes.
+
+## 2026-07-25 (v9) — 9 notas media nuevas + limpieza assets/raw/scripts
+
+### 🆕 9 notas de prioridad media nuevas (commit `e5716cf`)
+- **[[Fish]]** (06 - Terminal): shell con autocompletado predictivo, syntax highlighting, Fisher.
+- **[[systemd-boot]]** (03 - Sistema): bootloader UEFI-only, entradas .conf, vs GRUB.
+- **[[Ansible]]** (08 - Programas): playbooks YAML, roles, Galaxy, Vault, agentless.
+- **[[just]]** (08 - Programas): ejecutor de tareas tipo make, justfile, vs Make.
+- **[[btop]]** (08 - Programas): monitor de recursos TUI con gráficos.
+- **[[COSMIC Desktop]]** (04 - Entornos): DE Rust por System76, cosmic-comp.
+- **[[Garuda Linux]]** (11 - Distribuciones): Arch-based, Btrfs, Dracut.
+- **[[Labwc]]** (05 - Gestores): compositor Wayland tipo Openbox.
+- **[[Actualizacion rota]]** (09 - Troubleshooting): dpkg/apt/dnf/pacman repair.
+
+> **Nota**: Cron, Tmpfs y ramfs, initramfs, nohup/timeout/at, hyperfine, duf, seq/yes/sleep ya estaban listados en v8.
+
+### 🧹 Limpieza de assets, raw y scripts de descarga
+- **Eliminados**: `assets/` (61 archivos, ~23 MB), `raw/` (29 HTML, ~7.3 MB).
+- **Eliminados scripts**: `download-assets.sh`, `wikipedia-dl.py`, `urls.txt`.
+- **Referencias limpiadas en 9 archivos**:
+  - `CLAUDE.md`: sección "Assets locales" → "Imágenes externas" (solo enlaces).
+  - `NixOS.md`, `Gentoo.md`, `Debian.md`, `Ubuntu.md`: eliminadas líneas de imagen.
+  - `Log.md`: entradas v4, v7, v8 limpiadas de menciones a assets/scripts.
+  - `TODO.md`: items eliminados marcados con tachado, encabezado actualizado a v9.
+  - `.gitignore`: eliminadas entradas `.raw/` y `raw/`.
+  - `Scripts del Vault.md`: tabla actualizada (7 scripts, incluye setup.sh).
+
+### 📊 Stats
+- **Vault: ~410 notas** (401 + 9 media nuevas). Commits: `e5716cf` (15 notas, incluye 6 ya listadas en v8).
+- **Archivos eliminados**: ~93 (61 assets + 29 raw + 3 scripts).
+- **Referencias rotas**: 0 tras la limpieza.

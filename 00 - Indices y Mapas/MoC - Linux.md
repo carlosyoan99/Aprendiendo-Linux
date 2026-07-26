@@ -131,7 +131,7 @@ categoria: indice
 
 ## Operativa
 - [[Solucion de Problemas - Recursos]]
-- [[netstat]] — estadísticas de red (legacy) · [[nmcli]] — gestión con NetworkManager · [[nftables]] — firewall moderno
+- [[netstat]] — estadísticas de red (legacy) · [[nmcli]] — gestión con NetworkManager · [[nftables]] — firewall moderno · [[ufw]] — firewall simplificado (Ubuntu)
 - [[WiFi no conecta]] · [[Error de permisos]] · [[Sin sonido]]
 - [[Paquete roto]] · [[GRUB no arranca]] · [[NVIDIA no detecta]]
 - [[Pantalla en negro tras actualizar drivers]] — fallo de arranque tras update de GPU

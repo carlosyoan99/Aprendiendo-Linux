@@ -20,6 +20,7 @@ prioridad: alta
 | `check-frontmatter.sh` | Valida frontmatter de todas las notas | Al crear/editar notas | — |
 | `find-orphans.sh` | Encuentra notas no enlazadas desde el MoC | Semanal | MoC - Linux.md |
 | `add-modification-date.sh` | Sincroniza `fecha_modificacion` con mtime | Semanal (cron) | `sed`, `date`, `grep` |
+| `setup.sh` | Configura git hooks y cron jobs | Una vez (post-clon) | — |
 
 ---
 

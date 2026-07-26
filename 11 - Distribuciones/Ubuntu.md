@@ -14,8 +14,6 @@ arquitecturas:
   - RISC-V
 ---
 
-![Ubuntu](assets/logos/ubuntu.svg)
-
 # Ubuntu
 
 > La distro Linux más popular del mundo. Enfocada en facilidad de uso "out of the box", con el mayor volumen de documentación, foros y tutoriales. Mantenida por **Canonical**.

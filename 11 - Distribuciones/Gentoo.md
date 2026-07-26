@@ -8,8 +8,6 @@ gestor_paquetes: Portage (emerge)
 base: Independiente
 ---
 
-![Gentoo](assets/logos/gentoo.svg)
-
 # Gentoo
 
 ## Qué es
