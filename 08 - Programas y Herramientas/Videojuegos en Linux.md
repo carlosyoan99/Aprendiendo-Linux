@@ -476,7 +476,7 @@ sudo pacman -S gamemode                # Arch
 - Wine — capa de compatibilidad base (ver sección en esta nota)
 - [[Gestores de Paquetes]] — instalar Steam, Lutris, emuladores
 - [[PipeWire]] — audio de baja latencia para juegos
-- [[Multimedia (GStreamer HandBrake VLC MPV)]] — codecs y aceleración
+- [[Multimedia (GStreamer HandBrake VLC MPV)]] · [[gstreamer]] — codecs y aceleración
 - [[Personalización en Linux]] — temas gaming para el escritorio
 
 #programa #juegos

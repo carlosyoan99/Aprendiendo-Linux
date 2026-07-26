@@ -264,6 +264,6 @@ chmod +x app.AppImage
 - [[Gestores de Paquetes]] — visión general de apt, pacman, dnf
 - [[Contenedores]] — conceptos de sandboxing y aislamiento
 - [[Videojuegos en Linux]] — Flatpak para juegos (Steam, Heroic, Lutris)
-- [[Multimedia (GStreamer HandBrake VLC MPV)]] — apps multimedia vía Flatpak
+- [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice multimedia · [[vlc]] · [[mpv]] — apps multimedia vía Flatpak
 
 #programa #paquetes

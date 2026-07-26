@@ -47,6 +47,6 @@ ruby = "3.3"
 
 ## Ver también
 
-- [[Entorno de desarrollo Linux]], [[Lenguajes y gestores]]
+- [[Entorno de desarrollo Linux]], [[Node.js]], [[Cargo]], [[pip]], [[Go]], [[Gem]]
 
 #programa #devops

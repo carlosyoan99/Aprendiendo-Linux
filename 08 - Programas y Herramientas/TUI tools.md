@@ -331,7 +331,7 @@ chafa --animate gif.gif              # GIF animados
 
 - [[Cava]] — visualizador de audio
 - [[Audio en Linux]] — pila de audio (ALSA, PulseAudio, PipeWire)
-- [[Multimedia (GStreamer HandBrake VLC MPV)]] — herramientas multimedia
+- [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice multimedia · [[vlc]] · [[mpv]] · [[handbrake]]
 
 ---
 

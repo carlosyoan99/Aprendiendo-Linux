@@ -305,7 +305,7 @@ CMD ["python", "app.py"]
 
 ## Ver también
 
-- [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — comparativa con otros gestores
+- [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]] — gestores de paquetes por lenguaje
 - [[Desarrollo en Linux (gcc make gdb strace)]] — herramientas de desarrollo
 - [[Contenedores]] — Python en Docker
 

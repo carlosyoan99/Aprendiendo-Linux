@@ -192,7 +192,7 @@ sudo usermod -aG video $USER
 ## Ver también
 
 - [[ffmpeg]] — captura y procesamiento de video desde V4L2
-- [[Multimedia (GStreamer HandBrake VLC MPV)]] — reproductores que soportan V4L2
+- [[Multimedia (GStreamer HandBrake VLC MPV)]] · [[vlc]] · [[mpv]] — reproductores que soportan V4L2
 - [[Navegadores Web]] — videollamadas en el navegador
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — cómo cargar v4l2loopback
 - [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — detectar cámaras USB

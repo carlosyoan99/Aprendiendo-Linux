@@ -420,6 +420,64 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 
 #log
 
+## 2026-07-26 — Fragmentación: Lenguajes y gestores → 5 notas individuales
+- **Nota fragmentada**: `Lenguajes y gestores (Node.js Cargo PIP Go Gem).md` contenía 5 ecosistemas de lenguajes en una sola nota. Se extrajo cada uno a nota independiente.
+- **5 notas nuevas**: [[Node.js]], [[Cargo]], [[pip]], [[Go]], [[Gem]] — cada una con frontmatter, contenido propio y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice/comparativa ligera con tabla y buenas prácticas, enlazando a las 5 notas hijas.
+- **MoC actualizado**: reemplazado enlace único por `[[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]] — gestores de paquetes por lenguaje`.
+- **Wikilinks actualizados**: Python en Linux.md, Entorno de desarrollo Linux.md, mise.md — referencias corregidas.
+- **Validación**: check-frontmatter.sh → 420/420 OK. find-orphans.sh --backlinks → 1 huérfana (README.md, intencional).
+
+## 2026-07-26 — Fragmentación: Backups → 3 notas individuales
+- **Nota fragmentada**: `Backups (borg restic duplicity rsync).md` contenía 4 herramientas de backup en una sola nota. Se extrajeron borg, restic y duplicity a notas independientes.
+- **3 notas nuevas**: [[borg]], [[restic]], [[duplicity]] — cada una con frontmatter, contenido propio y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice/comparativa con tablas, estrategia 3-2-1 y alternativas, enlazando a las 3 notas hijas + rsync.
+- **MoC actualizado**: añadidos `[[borg]] · [[restic]] · [[duplicity]]` en Programas comunes, junto al índice existente.
+- **Validación**: check-frontmatter.sh → 423/423 OK. find-orphans.sh --backlinks → 1 huérfana (README.md, intencional).
+
+## 2026-07-26 — Fragmentación: Distros adicionales → ChimeraOS + HoloISO
+- **Nota fragmentada**: `Distros adicionales (...) .md` contenía 10+ distros. Se extrajeron ChimeraOS y HoloISO a notas independientes.
+- **2 notas nuevas**: [[ChimeraOS]] (prioridad media, ~140 líneas), [[HoloISO]] (prioridad baja, ~80 líneas) — cada una con frontmatter, contenido propio y enlaces cruzados.
+- **Nota original reducida**: ahora solo contiene Slackware, Solus y Parrot OS como mini-distros + tablas comparativas SteamOS. Enlaces a ChimeraOS y HoloISO añadidos en la sección de notas individuales.
+- **MoC actualizado**: reemplazado enlace único por `[[ChimeraOS]] · [[HoloISO]]` + el índice existente.
+- **Wikilinks actualizados**: Bazzite.md (referencia a ChimeraOS), SteamOS.md (a la sección Distros adicionales).
+- **Validación**: check-frontmatter.sh → 425/425 OK. find-orphans.sh --backlinks → 1 huérfana (README.md).
+
+## 2026-07-26 — Fragmentación: Multimedia → 4 notas individuales
+- **Nota fragmentada**: `Multimedia (GStreamer HandBrake VLC MPV).md` contenía 4 programas multimedia en una sola nota.
+- **4 notas nuevas**: [[gstreamer]], [[vlc]], [[mpv]], [[handbrake]] — cada una con frontmatter, instalación, comandos y atajos.
+- **Nota original reducida**: ahora es un índice con enlaces a las 4 notas hijas + sección de codecs y VAAPI.
+- **MoC actualizado**: añadidos `[[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]]` junto al índice existente.
+- **Wikilinks actualizados**: 4 archivos (Snap y Flatpak.md, Video4Linux.md, TUI tools.md, Videojuegos en Linux.md).
+- **Validación**: check-frontmatter.sh → 429/429 OK. find-orphans.sh --backlinks → 1 huérfana (README.md).
+
+## 2026-07-26 — Fragmentación: Desarrollo en Linux → 4 notas individuales
+- **Nota fragmentada**: `Desarrollo en Linux (gcc make gdb strace).md` contenía el toolchain completo de desarrollo C/C++.
+- **4 notas nuevas**: [[gcc]], [[make]], [[gdb]], [[strace]] — cada una con frontmatter, flags/uso, troubleshooting y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice con toolchain de instalación, flujo de troubleshooting y tabla de alternativas modernas.
+- **MoC actualizado**: añadidos `[[gcc]] · [[make]] · [[gdb]] · [[strace]]` junto al índice existente.
+- **Validación**: check-frontmatter.sh → 433/433 OK. find-orphans.sh --backlinks → 1 huérfana (README.md).
+
+## 2026-07-26 — Fragmentación: 6 comandos agrupados → 13 notas individuales
+- **Notas fragmentadas**: sed+yawk, Touch+History, seq+yes+sleep, date+timedatectl, df+du, nohup+timeout+at — 6 notas que agrupaban entre 2 y 3 comandos cada una.
+- **13 notas nuevas**: [[sed]], [[touch]], [[history]], [[seq]], [[yes]], [[sleep]], [[date]], [[timedatectl]], [[df]], [[du]], [[nohup]], [[timeout]], [[at]] — cada una con frontmatter, sintaxis, ejemplos y enlaces cruzados.
+- **6 notas originales reducidas**: ahora son índices ligeros con enlaces a las notas hijas.
+- **MoC actualizado**: 4 bloques del MoC reescritos para incluir los nuevos comandos.
+- **Validación**: check-frontmatter.sh → 446/446 OK. find-orphans.sh --backlinks → 1 huérfana (README.md).
+
+## 2026-07-26 — Fragmentación: Navegadores Web → 7 notas individuales
+- **Nota fragmentada**: `Navegadores Web.md` contenía 10 navegadores en una sola nota (Firefox ya tenía nota propia).
+- **7 notas nuevas**: [[Chromium]], [[Brave]], [[LibreWolf]], [[Vivaldi]], [[Ungoogled Chromium]], [[GNOME Web (Epiphany)]], [[Falkon]] — cada una con instalación, descripción y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice con tabla de motores, enlaces a las 8 notas (incluyendo Firefox) y gestión de perfiles.
+- **MoC actualizado**: añadidos los 7 nuevos navegadores en la línea de Navegadores Web.
+- **Validación**: check-frontmatter.sh → 453/453 OK. find-orphans.sh --backlinks → 1 huérfana (README.md).
+
+## 2026-07-26 — Auditoría completa + fixes
+- **Auditoría completa del vault**: 5 checks ejecutados (nombres de archivo, huérfanas, frontmatter, README vs realidad, estructura).
+- **Hallazgos**: 1 error real (README: carpeta 10 decía 6 notas, son 5), 2 mejoras (Prompts de Trabajo no enlazada del MoC, setup.sh faltaba en tabla de scripts), todo lo demás ok.
+- **Fixes**: README.md corregido (carpeta 10: 6→5, añadida fila setup.sh, fecha actualizada a 2026-07-26). MoC actualizado ([[Prompts de Trabajo]] añadido en Dashboard).
+- **Validación**: check-frontmatter.sh → 415/415 OK. find-orphans.sh --backlinks → 1 huérfana real (README.md, intencional).
+
 ## 2026-07-25 (v5) — 5 notas nuevas de conceptos (SOs)
 
 ### 🆕 Notas creadas (01 - Conceptos Fundamentales)
@@ -645,3 +703,97 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 
 ### 📊 Stats
 - **Vault: 415 notas.** Misma cantidad, todos los nombres ahora con tildes consistentes.
+
+## 2026-07-26 — Fragmentación: Editores de Texto → 7 notas individuales
+- **Nota fragmentada**: `Editores de Texto.md` contenía 10 editores en una sola nota (Nano, Vim, Micro ya tenían nota propia).
+- **7 notas nuevas**: [[Helix]], [[Zed]], [[Lapce]], [[Antigravity]], [[Geany]], [[Kate]], [[Gedit]] — cada una con frontmatter, instalación, características y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice con tabla comparativa (wikilinks a los 10 editores), criterios de elección y referencia a [[Editores de código (VSCode Codium Zed Helix Antigravity)]].
+- **MoC actualizado**: `[[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]]`.
+- **Validación**: check-frontmatter.sh → 460/460 OK. find-orphans.sh --backlinks → 2 huérfanas (GNOME Web.md de sesión anterior, README.md).
+
+## 2026-07-26 — Fragmentación: Diagnóstico de hardware → 5 notas individuales
+- **Nota fragmentada**: `Diagnóstico de hardware (lspci lsusb dmidecode smartctl).md` contenía 6+ herramientas de hardware en una sola nota.
+- **5 notas nuevas**: [[lspci]], [[lsusb]], [[dmidecode]], [[lshw]], [[smartctl]] — cada una con frontmatter, instalación, ejemplos y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice con diagrama ASCII, tabla de herramientas con wikilinks, buenas prácticas y referencias a notas existentes (hdparm, lscpu).
+- **MoC actualizado**: `[[Diagnóstico de hardware]] — índice + tools · [[lspci]] · [[lsusb]] · [[dmidecode]] · [[lshw]] · [[smartctl]]`.
+- **Validación**: check-frontmatter.sh → 465/465 OK. find-orphans.sh --backlinks → 2 huérfanas (GNOME Web.md, README.md).
+
+## 2026-07-26 — Fragmentación: Emuladores de Terminal → 8 notas individuales
+- **Nota fragmentada**: `Emuladores de Terminal.md` contenía 10+ emuladores en una sola nota entre DE defaults y alternativas populares.
+- **8 notas nuevas**: [[GNOME Terminal]], [[Konsole]], [[Xfce Terminal]], [[Alacritty]], [[Kitty]], [[Foot]], [[st]], [[wezterm]] — cada una con frontmatter, instalación, características y enlaces cruzados.
+- **Nota original reducida**: ahora es un índice con tabla comparativa de 8 wikilinks + características a considerar + transparencia.
+- **MoC actualizado**: `[[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Fragmentación: Gestores de Archivos → 8 notas individuales
+- **Nota fragmentada**: `Gestores de Archivos.md` contenía 8+ gestores entre GUI (DE-defaults) y TUI en una sola nota.
+- **8 notas nuevas**: [[Nautilus]], [[Dolphin]], [[Thunar]], [[Nemo]], [[PCManFM]], [[Double Commander]], [[SpaceFM]], [[nnn]] — con frontmatter, instalación, características y enlaces cruzados.
+- **Notas existentes referenciadas**: [[ranger]], [[yazi]], [[lf]] ya tenían nota propia, ahora enlazadas desde el índice.
+- **Nota original reducida**: ahora es un índice con tabla comparativa de 7 gestores gráficos + tabla de 4 gestores TUI.
+- **MoC actualizado**: `[[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Fragmentación: Virtualización (KVM/QEMU/libvirt) → 3 notas individuales
+- **Nota fragmentada**: `Virtualización (KVM QEMU libvirt).md` contenía KVM, QEMU y libvirt como stack completo en una sola nota (~400 líneas).
+- **3 notas nuevas**: [[KVM]], [[QEMU]], [[libvirt]] — cada una con frontmatter, instalación, arquitectura, comandos clave y enlaces cruzados entre sí.
+- **Nota original reducida**: ahora es un índice con diagrama ASCII del stack, tabla de componentes e instalación conjunta.
+- **MoC actualizado**: `[[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Fragmentación: Monitorización (Prometheus/node_exporter) → 2 notas individuales
+- **Nota fragmentada**: `Monitorización (Prometheus node_exporter).md` contenía Prometheus, node_exporter, Grafana y Alertmanager en una sola nota.
+- **3 notas nuevas**: [[Prometheus]] (servidor, PromQL, alertas), [[node_exporter]] (métricas, colectores, systemd), y [[Grafana]] (dashboards visuales).
+- **Nota original reducida**: ahora es un índice con tabla de componentes + arquitectura + tabla comparativa de opciones de monitorización.
+- **MoC actualizado**: `[[Monitorización (Prometheus node_exporter)]] — índice del stack · [[Prometheus]] · [[node_exporter]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Fragmentación: Suite de Oficina → 6 notas individuales
+- **Nota fragmentada**: `Suite de Oficina.md` contenía 8 suites/herramientas ofimáticas en una nota.
+- **6 notas nuevas**: [[OnlyOffice]], [[WPS Office]], [[FreeOffice]], [[Calligra Suite]], [[AbiWord]], [[Gnumeric]] — con frontmatter, instalación y enlaces cruzados.
+- **Nota existente**: [[LibreOffice]] ya tenía nota propia desde antes.
+- **Nota original reducida**: ahora es un índice con tabla comparativa de 8 suites + tabla de recomendación.
+- **MoC actualizado**: `[[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Fragmentación: Utilidades Base del Sistema → 2 notas individuales
+- **Nota reestructurada**: `Utilidades Base del Sistema.md` mapeaba paquetes preinstalados (coreutils, binutils, procps-ng, systemd, etc.). Coreutils/util-linux, systemd, NetworkManager, CUPS, PipeWire, GRUB ya tenían notas propias.
+- **2 notas nuevas**: [[binutils]] (strings, objdump, nm, strip, readelf) y [[procps-ng]] (ps, top, free, uptime, vmstat).
+- **Nota original reducida**: ahora es un índice con tabla de 10 paquetes base + enlaces a sus notas dedicadas.
+- **MoC actualizado**: `[[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]]`.
+- **Validación**: check-frontmatter.sh → ? | find-orphans.sh --backlinks → ?
+
+## 2026-07-26 — Completadas 10 notas en borrador → resuelto
+- **Notas completadas** (10): [[AbiWord]], [[Antigravity]], [[Calligra Suite]], [[Double Commander]], [[Gnumeric]], [[Grafana]], [[PCManFM]], [[SpaceFM]], [[st]], [[wezterm]] — todas extraídas durante fragmentaciones previas.
+- **Mejoras por nota**: secciones de atajos, tablas de formatos compatibles, ventajas/desventajas, ejemplos de uso, config examples y enlaces externos.
+- **Nota nueva**: [[suckless]] — para reparar wikilink roto en st.md (que referenciaba a esta nota inexistente).
+- **Estado**: las 10 notas pasaron de `borrador` → `resuelto`. Total: 489 resueltas + 5 templates en borrador.
+- **Validación**: check-frontmatter → ✅ 496/496 OK | find-orphans → ✅ 2 huérfanas esperadas (GNOME Web.md, README.md)
+
+## 2026-07-26 — Fragmentación completa: 8 notas agrupadas → ~20 notas individuales
+- **PostgreSQL y MySQL** → [[PostgreSQL]], [[MySQL]] + índice comparativo
+- **Vim Neovim** → [[Vim]], [[Neovim]] + índice comparativo
+- **Logging del sistema** → [[journald]], [[rsyslog]], [[logrotate]] + índice
+- **Bootloaders** → [[GRUB]], [[Limine]] ([[systemd-boot]] ya existía) + índice
+- **SELinux y AppArmor** → [[SELinux]], [[AppArmor]] + índice
+- **Gestión usuarios avanzada** → [[PAM]], [[chage]], [[chsh]], [[skel]] + índice
+- **Cifrado** → [[LUKS]], [[GPG]] + índice
+- **Gestores de Paquetes** → [[dnf]], [[Flatpak]], [[Snap]] ([[apt]], [[pacman]], [[AppImage]] ya existían) + índice
+- **MoC actualizado**: 7 líneas actualizadas con wikilinks inline + descripciones.
+- **Validación**: check-frontmatter → ✅ 516/516 OK | find-orphans → ✅ 2 huérfanas esperadas (GNOME Web.md, README.md)
+
+## 2026-07-26 — Sesión completa: borradores → resuelto + fragmentación total + auditoría
+- **10 notas en borrador completadas y puestas a resuelto**: AbiWord, Antigravity, Calligra Suite, Double Commander, Gnumeric, Grafana, PCManFM, SpaceFM, st, wezterm — todas con secciones de atajos, tablas de formatos, ventajas/desventajas, ejemplos de uso y enlaces externos.
+- **Nota nueva**: [[suckless]] creada para reparar wikilink roto en [[st]].
+- **Fragmentación final (8 notas → ~20 individuales)**:
+  - PostgreSQL y MySQL → [[PostgreSQL]], [[MySQL]]
+  - Vim Neovim → [[Vim]], [[Neovim]]
+  - Logging del sistema → [[journald]], [[rsyslog]], [[logrotate]]
+  - Bootloaders → [[GRUB]], [[Limine]]
+  - SELinux y AppArmor → [[SELinux]], [[AppArmor]]
+  - Gestión usuarios avanzada → [[PAM]], [[chage]], [[chsh]], [[skel]]
+  - Cifrado → [[LUKS]], [[GPG]]
+  - Gestores de Paquetes → [[dnf]], [[Flatpak]], [[Snap]]
+- **GNOME Web.md renombrado** a GNOME Web (Epiphany).md — wikilink corregido en MoC, 1 huérfana eliminada.
+- **MoC actualizado** con wikilinks inline en 7 líneas.
+- **Validación**: check-frontmatter → 516/516 OK | find-orphans → 1 (README.md, intencional).
+- **Vault**: ~516 notas. Sin notas agrupadas pendientes de fragmentar.

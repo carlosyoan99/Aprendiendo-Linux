@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-26
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -10,106 +10,42 @@ prioridad: baja
 
 ## Motores de renderizado
 
-Todos los navegadores modernos usan uno de tres motores de renderizado. Esta decisión determina la compatibilidad con estándares web, el rendimiento y las extensiones disponibles:
+Todos los navegadores modernos usan uno de tres motores:
 
-| Motor | Creado por | Lenguaje | JS Engine | Navegadores |
-|---|---|---|---|---|
-| **Gecko** | Mozilla | C++ | SpiderMonkey | [[Firefox]], LibreWolf, Tor Browser, Waterfox |
-| **Blink** | Google (fork de WebKit) | C++ | V8 | Chromium, Google Chrome, Brave, Edge, Vivaldi, Opera, Ungoogled Chromium |
-| **WebKit** | Apple (fork de KHTML) | C++ | JavaScriptCore | Safari, GNOME Web (Epiphany), Konqueror (KDE, legacy) |
+| Motor | Creado por | JS Engine | Navegadores |
+|---|---|---|---|
+| **Gecko** | Mozilla | SpiderMonkey | [[Firefox]], [[LibreWolf]], Tor Browser |
+| **Blink** | Google (fork de WebKit) | V8 | [[Chromium]], Brave, [[Vivaldi]], [[Ungoogled Chromium]], Google Chrome, [[Falkon]] |
+| **WebKit** | Apple | JavaScriptCore | Safari, [[GNOME Web (Epiphany)]] |
 
-**Situación actual**: Blink/Chromium domina ~85% del mercado. Gecko es la única alternativa independiente que queda. WebKit está limitado casi exclusivamente a Safari/macOS/iOS.
+## Notas individuales
 
-## Navegadores en orden de popularidad Linux
-
-| Navegador | Motor | Privacidad | RPM/DEB | Flatpak | AUR |
-|---|---|---|---|---|---|
-| **[[Firefox]]** | Gecko | ⭐⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Chromium** | Blink | ⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Brave** | Blink | ⭐⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Google Chrome** | Blink | ⭐⭐ | ✅ | ❌ | ✅ |
-| **LibreWolf** | Gecko | ⭐⭐⭐⭐⭐ | ❌ | ✅ | ✅ |
-| **Vivaldi** | Blink | ⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Ungoogled Chromium** | Blink | ⭐⭐⭐⭐⭐ | ❌ | ✅ | ✅ |
-| **GNOME Web (Epiphany)** | WebKit | ⭐⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Falkon** | Qt WebEngine | ⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Tor Browser** | Gecko (hardened) | ⭐⭐⭐⭐⭐ | ❌ | ❌ | ✅ |
-
-## Firefox (Gecko)
-
-El navegador por defecto en la mayoría de distros. Ver nota dedicada: [[Firefox]]
-
-## Navegadores basados en Chromium/Blink
-
-```bash
-# Chromium — el base open source (sin telemetría de Google)
-sudo apt install chromium               # Debian/Ubuntu
-sudo pacman -S chromium                 # Arch
-# ⚠️ En algunas distros, Chromium viene sin codecs propietarios (MP3, H.264)
-# Para añadirlos: sudo apt install chromium-codecs-ffmpeg-extra
-
-# Brave — bloqueo de anuncios integrado
-flatpak install flathub com.brave.Browser
-
-# Google Chrome — versión propietaria con más integración Google
-# Descargar .deb desde: https://www.google.com/chrome/
-
-# Vivaldi — muy personalizable
-flatpak install flathub com.vivaldi.Vivaldi
-
-# Ungoogled Chromium — Chromium sin ningún servicio de Google
-flatpak install flathub com.github.Eloston.UngoogledChromium
-```
-
-## LibreWolf (Gecko hardened)
-
-Firefox preconfigurado con privacidad máxima:
-
-```bash
-flatpak install flathub io.gitlab.librewolf-community
-# O descargar appimage desde: https://librewolf.net/
-```
-
-## GNOME Web / Epiphany (WebKit)
-
-Navegador nativo de GNOME, usa WebKit (el motor de Safari). Ligero e integrado con el escritorio GNOME:
-
-```bash
-sudo apt install epiphany-browser        # Debian/Ubuntu
-sudo pacman -S epiphany                  # Arch
-```
+- [[Firefox]] — navegador Gecko por defecto (nota dedicada)
+- [[Chromium]] — base open source de los navegadores Blink
+- [[Brave]] — Chromium con bloqueo de anuncios integrado
+- [[LibreWolf]] — Firefox hardened para privacidad máxima
+- [[Vivaldi]] — Chromium altamente personalizable
+- [[Ungoogled Chromium]] — Chromium sin servicios de Google
+- [[GNOME Web (Epiphany)]] — navegador WebKit nativo de GNOME
+- [[Falkon]] — navegador Qt WebEngine ligero
 
 ## Navegador por defecto
 
 ```bash
-# Ver navegador por defecto
 xdg-settings get default-web-browser
-
-# Cambiar
 xdg-settings set default-web-browser brave-browser.desktop
-
-# O desde la terminal con $BROWSER
 export BROWSER=brave-browser
 ```
 
 ## Gestión de perfiles
 
 ```bash
-# Firefox
-firefox -P trabajo                       # lanzar con perfil específico
-ls ~/.mozilla/firefox/                   # perfiles de Firefox
-
-# Chromium / Brave
-ls ~/.config/chromium/Default/
-ls ~/.config/BraveSoftware/
-
-# Perfiles separados para trabajo/personal
+firefox -P trabajo
 chromium --user-data-dir=~/.config/chromium-trabajo
 ```
 
 ## Ver también
 
-- [[Firefox]] — nota dedicada al navegador por defecto
 - [[Gestores de Paquetes]] — Flatpak, AUR y repos oficiales
 - [[Utilidades Base del Sistema]] — xdg-utils, xdg-settings
 

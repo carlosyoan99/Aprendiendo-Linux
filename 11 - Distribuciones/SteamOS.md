@@ -281,6 +281,8 @@ steam --reset
 - [[Wayland vs X11]] — Gamescope usa Wayland
 - [[PipeWire]] — audio de baja latencia para juegos
 - [[Distros adicionales (Gentoo Slackware Void Solus MX Linux Zorin elementary Kali Parrot Tails)]]
+- [[ChimeraOS]] — distro gaming inmutable para living room
+- [[HoloISO]] — fork abandonado de SteamOS para PC (no recomendado)
 - [[CachyOS]] — distro Arch optimizada para gaming (alternativa a SteamOS en PC)
 - Nobara — distro gaming basada en Fedora
 

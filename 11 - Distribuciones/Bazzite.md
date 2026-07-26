@@ -278,7 +278,7 @@ nvidia-smi
 ## Ver también
 
 - [[SteamOS]] — la distro gaming original de Valve
-- ChimeraOS — distro gaming minimalista para living room (ver sección en Distros adicionales)
+- [[ChimeraOS]] — distro gaming minimalista para living room
 - Nobara — distro gaming basada en Fedora (no inmutable)
 - [[Videojuegos en Linux]] — gaming en Linux en general
 - [[Gamescope]] — compositor micro-gráfico de Valve

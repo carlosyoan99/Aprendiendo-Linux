@@ -944,7 +944,7 @@ docker run -d -p 8080:8080 mi-api
 
 - [[Desarrollo en Linux (gcc make gdb strace)]] — toolchain C/C++ en profundidad
 - [[Python en Linux]] — gestión de Python, entornos virtuales, pip, poetry, uv
-- [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — comparativa de gestores por lenguaje
+- [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]] — gestores de paquetes por lenguaje
 - [[Editores de código (VSCode Codium Zed Helix Antigravity)]] — elegir editor según perfil
 - [[La Shell]] — fundamentos de la terminal para desarrollo
 - [[Git]] — control de versiones
