@@ -116,7 +116,7 @@ systemctl list-timers | grep timeshift
 
 ## Ver también
 
-- [[Cron y Systemd Timers]] — para programar snapshots automáticos
+- [[Cron]] · [[systemd timers]] — para programar snapshots automáticos
 - [[LVM]] — snapshots de volúmenes lógicos (alternativa a nivel de bloque)
 - [[Particionado y Esquemas de Disco]]
 - [[systemd]]

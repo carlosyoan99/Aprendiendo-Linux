@@ -119,7 +119,7 @@ sudo ntfsresize /dev/sda1 -s 100G   # redimensionar a 100GB
 
 ## Ver también
 
-- [[Creacion de USB Booteable]] — cómo crear USBs de rescate
+- [[Creación de USB Booteable]] — cómo crear USBs de rescate
 - [[Particionado y Esquemas de Disco]] — conceptos de particionado
 - [[Sistemas de Archivos]] — compatibilidad con diferentes FS
 - [[dd]] — clonado de discos a bajo nivel

@@ -352,7 +352,7 @@ journalctl -u mi-daemon -o json-pretty             # en formato JSON
 
 - [[Procesos y Senales]] — gestión de procesos en Linux
 - [[systemd]] — sistema de init y gestión de servicios
-- [[Cron y Systemd Timers]] — tareas programadas
+- [[Cron]] · [[systemd timers]] — tareas programadas
 - [[SSH]] — conexión remota con sshd
 - [[journalctl]] — ver logs de daemons
 

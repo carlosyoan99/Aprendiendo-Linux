@@ -33,7 +33,7 @@ Ubuntu busca ser Linux para **todos los públicos**: desde el usuario que migra 
 
 ## Instalación (resumen)
 
-> Para una guía detallada paso a paso, ver [[Proceso de Instalacion General]] y [[Creacion de USB Booteable]].
+> Para una guía detallada paso a paso, ver [[Proceso de Instalación General]] y [[Creación de USB Booteable]].
 
 Ubuntu es una de las distros más fáciles de instalar gracias a su instalador gráfico **Subiquity** (desde 20.04) / **Ubiquity** (versiones anteriores):
 
@@ -160,7 +160,7 @@ sudo apt autoremove --purge
 sudo do-release-upgrade                # herramienta oficial de Canonical
 
 # Esperar al primer point release (24.04.1) antes de actualizar producción
-# Ver [[Actualizacion entre versiones mayores]] para más detalles
+# Ver [[Actualización entre versiones mayores]] para más detalles
 ```
 
 ## Sabores oficiales (flavours)
@@ -370,7 +370,7 @@ cat /var/log/cloud-init-output.log
 - [[Linux Mint]] — basada en Ubuntu, orientada a Windows migrants
 - [[Sabores de Ubuntu]] — lista completa de flavours
 - [[Gestores de Paquetes]]
-- [[Proceso de Instalacion General]]
-- [[Actualizacion entre versiones mayores]]
+- [[Proceso de Instalación General]]
+- [[Actualización entre versiones mayores]]
 
 #distro

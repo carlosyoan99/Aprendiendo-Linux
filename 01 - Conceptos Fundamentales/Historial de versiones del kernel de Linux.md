@@ -157,7 +157,7 @@ Desde 2019, Linus Torvalds empezó a nombrar las versiones rc de forma cada vez 
 - [[Rust for Linux]] — Rust como segundo lenguaje del kernel
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — cómo el kernel toma el control
 - [[Linux embebido]] — kernels customizados para sistemas integrados
-- [[Compilacion desde Codigo Fuente]] — compilar tu propio kernel
+- [[Compilación desde Código Fuente]] — compilar tu propio kernel
 
 ## Enlaces externos
 

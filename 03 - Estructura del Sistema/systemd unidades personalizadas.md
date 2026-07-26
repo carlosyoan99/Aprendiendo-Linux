@@ -429,7 +429,7 @@ Los drop-in overrides en `/etc/systemd/system/<unidad>.d/*.conf` se aplican sobr
 ## Ver también
 
 - [[systemd]] — gestión básica de servicios systemd
-- [[Cron y Systemd Timers]] — comparativa cron vs timers
+- [[Cron]] · [[systemd timers]] — comparativa cron vs timers
 - [[Daemon]] — concepto de daemon y daemonización
 - [[cgroups (control de recursos)]] — límites de CPU/memoria con systemd
 

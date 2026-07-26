@@ -66,7 +66,7 @@ En sistemas de 64 bits, `int 80h` fue reemplazado por las instrucciones **`sysca
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — relación con el kernel
+- [[Compilación desde Código Fuente]] — relación con el kernel
 - [[Proc y Sys]] — interacción con el kernel
 - [[Procesos y Senales]] — gestión de procesos
 

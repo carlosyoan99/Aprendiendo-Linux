@@ -331,7 +331,7 @@ Ejemplo práctico (para un escritorio Linux):
 
 ## Automatización con systemd timers (flujo completo)
 
-Aquí tienes un ejemplo **completo y listo para usar** que integra un script de backup con borg, variables de entorno seguras, logging y un timer de systemd. Esto unifica los conceptos de [[Cron y Systemd Timers]] con las herramientas de backup.
+Aquí tienes un ejemplo **completo y listo para usar** que integra un script de backup con borg, variables de entorno seguras, logging y un timer de systemd. Esto unifica los conceptos de [[Cron]] y [[systemd timers]] con las herramientas de backup.
 
 ### 1. Script de backup
 
@@ -460,7 +460,7 @@ journalctl -u backup-borg.service -n 20
 | **Notificación de fallo** | Mail (si configurado) | `OnFailure=notificar.service` |
 | **Aleatorizar ejecución** | ❌ | ✅ `RandomizedDelaySec` |
 
-> Para más detalles sobre timers, ver [[Cron y Systemd Timers]].
+> Para más detalles sobre timers, ver [[systemd timers]].
 
 ---
 
@@ -478,9 +478,9 @@ journalctl -u backup-borg.service -n 20
 
 - [[timeshift]] — backups del sistema operativo (complementa a estas herramientas)
 - [[rsync]] — comando detallado
-- [[Cron y Systemd Timers]] — automatización de backups (timer completo)
+- [[Cron]] · [[systemd timers]] — automatización de backups (timer completo)
 - [[Cifrado (LUKS dm-crypt GPG)]] — GPG para cifrado de duplicity
-- [[Automatizacion y Scripts]] — scripts de backup
+- [[Automatización y Scripts]] — scripts de backup
 - [[SSH]] — claves para backups remotos automatizados
 
 ## Enlaces externos

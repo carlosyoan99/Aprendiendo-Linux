@@ -168,6 +168,6 @@ grep -E '^deb' /etc/apt/sources.list | head -1
 - [[Kali Linux]] — derivado Debian para seguridad
 - [[Proxmox VE]] — plataforma de virtualización sobre Debian
 - [[Gestores de Paquetes]] — apt, dpkg, APT pinning
-- [[Actualizacion entre versiones mayores]] — upgrade entre releases
+- [[Actualización entre versiones mayores]] — upgrade entre releases
 
 #distro #debian

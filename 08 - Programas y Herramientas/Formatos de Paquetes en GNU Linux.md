@@ -381,7 +381,7 @@ sudo cp -r * /
 - [[Slackware]] — formato .txz
 - [[Snap y Flatpak]] — formatos portables
 - [[AppImage]] — formato portable autónomo
-- [[Compilacion desde Codigo Fuente]] — cuando no hay paquete
+- [[Compilación desde Código Fuente]] — cuando no hay paquete
 
 ## Enlaces externos
 

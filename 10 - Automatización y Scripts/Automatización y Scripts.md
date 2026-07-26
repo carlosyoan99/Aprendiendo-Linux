@@ -173,7 +173,7 @@ crontab -e
 0 3 * * * /home/usuario/scripts/backup.sh >> /home/usuario/logs/backup.log 2>&1
 ```
 
-Ver [[Cron y Systemd Timers]] para más detalle.
+Ver [[Cron]] · [[systemd timers]] para más detalle.
 
 ## Por qué importa
 
@@ -241,7 +241,8 @@ Crea el archivo `10 - Automatizacion y Scripts/Log - YYYY-MM-DD.md`.
 
 ## Ver también
 
-- [[Cron y Systemd Timers]]
+- [[Cron]] — tareas programadas clásicas
+- [[systemd timers]] — alternativa moderna con journald
 - [[La Shell]]
 - [[Shells (bash zsh fish)]]
 - [[Cheat Sheet - Comandos Esenciales]]

@@ -159,7 +159,7 @@ s6 es muy similar en filosofía a **runit** (usado por Void Linux). De hecho, s6
 - [[systemd]] — el init por defecto en la mayoría de distros
 - [[Daemon]] — servicios en segundo plano
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — boot del sistema
-- [[Cron y Systemd Timers]] — tareas programadas
+- [[Cron]] · [[systemd timers]] — tareas programadas
 - [[Busybox]] — init mínimo para sistemas embebidos
 
 ## Enlaces externos

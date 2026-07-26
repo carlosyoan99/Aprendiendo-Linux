@@ -150,7 +150,7 @@ osc commit                               # subir cambios
 - [[Rocky Linux]] — distro empresarial RHEL-based (SLE alternative)
 - [[Gestores de Paquetes]] — comparativa zypper vs apt vs dnf vs pacman
 - [[Btrfs]] — sistema de archivos usado por Snapper
-- [[Cron y Systemd Timers]] — automatización con openSUSE
+- [[Cron]] · [[systemd timers]] — automatización con openSUSE
 - SUSE Linux Enterprise (SLE) — base empresarial de Leap
 
 #distro

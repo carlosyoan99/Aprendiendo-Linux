@@ -451,7 +451,7 @@ journalctl -k -p err --since "1 hour ago" --no-pager
 
 - [[journalctl]] — comando para consultar journald
 - [[systemd]] — configuración de journald y gestión de logs
-- [[Solucion de Problemas - Recursos]] — dónde mirar según el problema
+- [[Solución de Problemas - Recursos]] — dónde mirar según el problema
 - [[tail]] — seguir logs en tiempo real
 - [[grep]] — buscar en logs
 - [[less]] — navegar logs grandes

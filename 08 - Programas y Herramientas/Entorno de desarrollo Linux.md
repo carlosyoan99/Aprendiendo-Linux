@@ -950,7 +950,7 @@ docker run -d -p 8080:8080 mi-api
 - [[Git]] — control de versiones
 - [[Contenedores]] — Docker, Podman, LXC
 - [[Docker]] — build, ship, run
-- [[Compilacion desde Codigo Fuente]] — compilar programas manualmente
+- [[Compilación desde Código Fuente]] — compilar programas manualmente
 - [[Variables de Entorno y PATH]] — gestionar rutas de herramientas
 
 ## Enlaces externos

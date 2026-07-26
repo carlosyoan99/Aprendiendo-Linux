@@ -16,8 +16,8 @@ Cada nota tiene ahora `prioridad` en su frontmatter — la tabla de arriba en [[
 2. Media: [[Variables de Entorno y PATH]], [[Procesos y Senales]], [[Symlinks y Dotfiles]] — se vuelven relevantes en cuanto empiezas a configurar cosas a mano.
 
 ## Instalación
-1. **Alta**: [[Proceso de Instalacion General]], [[Creacion de USB Booteable]] — lo mínimo para poner cualquier distro a andar.
-2. Media: [[Particionado y Esquemas de Disco]], [[Post-Instalacion Checklist]].
+1. **Alta**: [[Proceso de Instalación General]], [[Creación de USB Booteable]] — lo mínimo para poner cualquier distro a andar.
+2. Media: [[Particionado y Esquemas de Disco]], [[Post-Instalación Checklist]].
 3. Baja: [[Dual Boot con Windows]] — solo si de verdad vas a compartir disco con Windows.
 
 ## Distribuciones
@@ -40,8 +40,8 @@ Cada nota tiene ahora `prioridad` en su frontmatter — la tabla de arriba en [[
 3. Baja: [[Navegadores Web]], [[LibreOffice]] — casi no requieren aprendizaje, son "instalar y usar".
 
 ## Sistema y Operativa
-- **Alta**: [[Filesystem Hierarchy Standard]], [[Solucion de Problemas - Recursos]] — se usan constantemente al depurar cualquier cosa.
-- Media: [[Automatizacion y Scripts]] — alto valor pero tiene sentido una vez ya te manejas con lo anterior.
+- **Alta**: [[Filesystem Hierarchy Standard]], [[Solución de Problemas - Recursos]] — se usan constantemente al depurar cualquier cosa.
+- Media: [[Automatización y Scripts]] — alto valor pero tiene sentido una vez ya te manejas con lo anterior.
 
 ## Enlaces externos
 

@@ -147,8 +147,8 @@ Elegir bien el particionado al instalar evita dolores de cabeza después:
 
 ## Ver también
 
-- [[Proceso de Instalacion General]]
+- [[Proceso de Instalación General]]
 - [[Dual Boot con Windows]]
-- [[Creacion de USB Booteable]]
+- [[Creación de USB Booteable]]
 
 #instalacion #particiones

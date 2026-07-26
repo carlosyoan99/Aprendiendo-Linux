@@ -155,6 +155,6 @@ private:
 - [[GTK]] — toolkit alternativo (GNOME, XFCE)
 - [[Motif]] — toolkit histórico (CDE)
 - [[LXQt]] — DE ligero basado en Qt
-- CMake — sistema de build requerido por Qt 6 (ver [[Compilacion desde Codigo Fuente]])
+- CMake — sistema de build requerido por Qt 6 (ver [[Compilación desde Código Fuente]])
 
 #programa #toolkit #gui #kde

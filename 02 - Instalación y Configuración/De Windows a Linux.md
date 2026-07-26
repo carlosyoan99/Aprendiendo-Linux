@@ -109,7 +109,7 @@ Una **imagen ISO** es un archivo que contiene todo el sistema operativo empaquet
 *   **Nota sobre el tamaño:** Las ISOs de escritorio actuales pesan entre 4 y 6.5 GB (más que hace unos años), así que asegúrate de tener espacio de sobra antes de descargar.
 
 ### Paso 2: Crear el "Live USB"
-> Para una guía detallada con todas las herramientas y troubleshooting, ver [[Creacion de USB Booteable]].
+> Para una guía detallada con todas las herramientas y troubleshooting, ver [[Creación de USB Booteable]].
 
 No puedes simplemente copiar la ISO a un pendrive. Necesitas una herramienta que lo convierta en un disco de arranque. El tamaño de la ISO varía según la distro (Ubuntu ronda los 6.5 GB, Linux Mint unos 3 GB, Fedora Workstation unos 2.5 GB), así que revisa el peso del archivo que descargaste; un pendrive de **8 GB** cubre prácticamente cualquier caso actual.
 *   **balenaEtcher:** La opción más sencilla si solo vas a grabar una ISO. Seleccionas el archivo, eliges tu USB y haces clic en "Flash".
@@ -144,7 +144,7 @@ Dos cosas que conviene saber de antemano para no llevarte sustos:
 
 **Para los curiosos: ¿qué hace la instalación "automática" por debajo?** No necesitas saber esto para instalar Linux, pero ayuda a entender el sistema. El instalador crea al menos dos particiones: una para `/` (la raíz, donde vive el sistema) y otra de "swap" (memoria de intercambio, un respaldo en disco por si se llena la RAM). Los usuarios más avanzados suelen separar también `/home` en su propia partición, para poder reinstalar el sistema desde cero sin perder sus archivos personales. Si es tu primera vez, deja que el instalador decida por ti — la opción automática ya hace esto de forma sensata.
 
-**¡No olvides marcar esta casilla!:** Durante la instalación, verás una opción que dice **"Instalar software de terceros para gráficos y WiFi" (ver [[Post-Instalacion Checklist]])**. Márcala siempre. Esto te ahorrará configurar drivers y códecs de video manualmente después.
+**¡No olvides marcar esta casilla!:** Durante la instalación, verás una opción que dice **"Instalar software de terceros para gráficos y WiFi" (ver [[Post-Instalación Checklist]])**. Márcala siempre. Esto te ahorrará configurar drivers y códecs de video manualmente después.
 
 ---
 
@@ -456,14 +456,14 @@ Tu vieja PC ya no está condenada a ser basura electrónica, y tu privacidad ya 
 
 ## Ver también
 
-- [[Proceso de Instalacion General]] — guía detallada con sistemas de archivos, swap, cifrado, kernels
-- [[Post-Instalacion Checklist]] — lista completa de tareas post-instalación
-- [[Creacion de USB Booteable]] — herramientas, persistencia, Secure Boot, troubleshooting
+- [[Proceso de Instalación General]] — guía detallada con sistemas de archivos, swap, cifrado, kernels
+- [[Post-Instalación Checklist]] — lista completa de tareas post-instalación
+- [[Creación de USB Booteable]] — herramientas, persistencia, Secure Boot, troubleshooting
 - [[Dual Boot con Windows]] — reparación de boot, BitLocker, NTFS nativo, reloj desincronizado
 - [[Particionado y Esquemas de Disco]] — esquemas de particionado, LUKS, LVM
 - [[Cifrado (LUKS dm-crypt GPG)]] — cifrado de disco completo y archivos
 - [[Cheat Sheet - Comandos Esenciales]] — referencia rápida de comandos
-- [[Solucion de Problemas - Recursos]] — metodología de troubleshooting
+- [[Solución de Problemas - Recursos]] — metodología de troubleshooting
 - [[GRUB no arranca]] — recuperación del gestor de arranque
 - [[WiFi no conecta]] — solución de problemas de red
 - [[Sin sonido]] — diagnóstico de audio

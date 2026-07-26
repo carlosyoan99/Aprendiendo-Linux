@@ -219,6 +219,6 @@ lsmod | grep nvidia                       # módulos cargados
 - [[Videojuegos en Linux]] — gaming con GPU NVIDIA
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — parámetro `nomodeset` para NVIDIA
 - [[Pantalla en negro tras actualizar drivers]] — cuando la pantalla queda negra tras instalar drivers
-- [[Resolucion de pantalla y multi-monitor]] — problemas de resolución y múltiples monitores
+- [[Resolución de pantalla y multi-monitor]] — problemas de resolución y múltiples monitores
 
 #troubleshooting

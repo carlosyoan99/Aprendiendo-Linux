@@ -289,8 +289,8 @@ bash scripts/vault-stats.sh --resumen >> /dev/null
 ## Ver también
 
 - [[Git]] — control de versiones
-- [[Automatizacion y Scripts]] — scripts del vault
-- [[Cron y Systemd Timers]] — automatización periódica
+- [[Automatización y Scripts]] — scripts del vault
+- [[Cron]] · [[systemd timers]] — automatización periódica
 - [[Mis Dotfiles]] — gestión de archivos de configuración
 
 #automatizacion #git

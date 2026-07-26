@@ -319,6 +319,6 @@ Sin AES-NI (CPUs muy antiguos o ARM sin aceleración), LUKS puede ralentizar ope
 - [[Particionado y Esquemas de Disco]]
 - [[LVM]]
 - [[Sistemas de Archivos]]
-- [[Automatizacion y Scripts]] — scripts para automatizar montaje/desmontaje cifrado
+- [[Automatización y Scripts]] — scripts para automatizar montaje/desmontaje cifrado
 
 #cifrado #seguridad

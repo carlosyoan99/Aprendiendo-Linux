@@ -193,6 +193,6 @@ setxkbmap es                               # cambio temporal (solo sesión actua
 - [[Variables de Entorno y PATH]] — cómo se propagan las variables de entorno
 - [[date y timedatectl]] — formato de fecha influenciado por LC_TIME
 - [[sort]] — el orden de sort depende de LC_COLLATE
-- [[Post-Instalacion Checklist]] — uno de los primeros pasos tras instalar
+- [[Post-Instalación Checklist]] — uno de los primeros pasos tras instalar
 
 #concepto #configuracion

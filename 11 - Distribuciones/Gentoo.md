@@ -161,7 +161,7 @@ En junio de 2018, el espejo GitHub del repositorio de Gentoo fue comprometido po
 ## Ver también
 
 - [[Arch Linux]] — alternativa rolling binaria
-- [[Compilacion desde Codigo Fuente]] — relevante para Gentoo
+- [[Compilación desde Código Fuente]] — relevante para Gentoo
 - [[CachyOS]] — Arch optimizado con CFLAGS
 - [[Distros adicionales (Gentoo Slackware Void Solus MX Linux Zorin elementary Kali Parrot Tails)]]
 - [[Genkernel]] — configuración automática del kernel para Gentoo

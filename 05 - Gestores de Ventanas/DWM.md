@@ -132,6 +132,6 @@ git clone https://github.com/torrinfail/dwmblocks
 - [[i3]] — más fácil de configurar, buena alternativa si DWM es demasiado minimalista
 - [[Awesome WM]] — igual de configurable pero en Lua (más amigable que C)
 - [[Hyprland]] — alternativa Wayland con efectos modernos
-- [[Compilacion desde Codigo Fuente]]
+- [[Compilación desde Código Fuente]]
 
 #entorno-escritorio

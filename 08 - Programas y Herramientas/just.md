@@ -211,7 +211,7 @@ install: build
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]]
+- [[Compilación desde Código Fuente]]
 - [[DevOps]]
 - [[git]]
 

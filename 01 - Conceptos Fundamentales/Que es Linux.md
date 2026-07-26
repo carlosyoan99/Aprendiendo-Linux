@@ -81,6 +81,6 @@ Ver [[Gestores de Paquetes]] y [[systemd]].
 
 - [[La Shell]]
 - [[Filesystem Hierarchy Standard]]
-- [[Proceso de Instalacion General]]
+- [[Proceso de Instalación General]]
 
 #concepto #linux

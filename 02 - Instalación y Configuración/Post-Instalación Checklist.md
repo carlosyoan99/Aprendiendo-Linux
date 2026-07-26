@@ -170,7 +170,7 @@ neofetch && df -h && free -h && echo "✅ Sistema listo"
 
 ## Ver también
 
-- [[Proceso de Instalacion General]]
+- [[Proceso de Instalación General]]
 - [[Particionado y Esquemas de Disco]]
 - [[Firewall]]
 - [[Backups (borg restic duplicity rsync)]]

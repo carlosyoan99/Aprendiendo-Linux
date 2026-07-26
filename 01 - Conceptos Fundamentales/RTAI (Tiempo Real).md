@@ -65,7 +65,7 @@ RTLinux fue el primer proyecto que implementó esta arquitectura, desarrollado p
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — compilación de kernel
+- [[Compilación desde Código Fuente]] — compilación de kernel
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — módulos del kernel
 
 #concepto #kernel #tiemporeal

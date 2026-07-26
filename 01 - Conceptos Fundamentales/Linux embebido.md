@@ -170,7 +170,7 @@ ssh root@192.168.1.100 /tmp/hola
 - [[Rust for Linux]] — Rust en el kernel (relevante para embedded)
 - [[coreboot]] — firmware libre para arranque
 - [[Alpine Linux]] — distro ligera para contenedores y embebido
-- [[Compilacion desde Codigo Fuente]] — cross-compilation
+- [[Compilación desde Código Fuente]] — cross-compilation
 
 ## Enlaces externos
 

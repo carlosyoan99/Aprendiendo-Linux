@@ -178,6 +178,6 @@ ausearch -m avc --just-one               # buscar denegaciones de SELinux
 
 - [[journalctl]] — comando para consultar logs de systemd
 - [[WiFi no conecta]] · [[Sin sonido]] · [[Error de permisos]] — troubleshooting específico
-- [[Automatizacion y Scripts]] — automatizar diagnósticos
+- [[Automatización y Scripts]] — automatizar diagnósticos
 
 #troubleshooting #recursos

@@ -487,7 +487,7 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Frontmatter**: 379/379 OK, 0 errores.
 - **Huérfanas**: 2 (Prompts de Trabajo, README) — archivos de estructura, no reales.
 - **Corregido**: `[[iptables]]` y `[[md5sum]]` rotos → notas creadas.
-- **Corregido**: `[[Automatizacion y Scripts]]` path completo en Arsenal Power User.
+- **Corregido**: `[[Automatización y Scripts]]` path completo en Arsenal Power User.
 - **Eliminada**: carpeta vacía `02 - Instalacion y Configuracion/Distribuciones/`.
 
 ### 🆕 8 notas de prioridad alta (nuevas)
@@ -540,7 +540,7 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **[[COSMIC Desktop]]** (04 - Entornos): DE Rust por System76, cosmic-comp.
 - **[[Garuda Linux]]** (11 - Distribuciones): Arch-based, Btrfs, Dracut.
 - **[[Labwc]]** (05 - Gestores): compositor Wayland tipo Openbox.
-- **[[Actualizacion rota]]** (09 - Troubleshooting): dpkg/apt/dnf/pacman repair.
+- **[[Actualización rota]]** (09 - Troubleshooting): dpkg/apt/dnf/pacman repair.
 
 > **Nota**: Cron, Tmpfs y ramfs, initramfs, nohup/timeout/at, hyperfine, duf, seq/yes/sleep ya estaban listados en v8.
 
@@ -559,3 +559,89 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Vault: ~410 notas** (401 + 9 media nuevas). Commits: `e5716cf` (15 notas, incluye 6 ya listadas en v8).
 - **Archivos eliminados**: ~93 (61 assets + 29 raw + 3 scripts).
 - **Referencias rotas**: 0 tras la limpieza.
+
+## 2026-07-25 (v10) — 6 notas baja + commits finales + rename
+
+### 🆕 6 notas de prioridad baja nuevas
+- **[[Firmware y BIOS-UEFI]]** (03 - Sistema): BIOS legacy vs UEFI, Secure Boot, ESP, fwupd.
+- **[[Device nodes y udev]]** (03 - Sistema): /dev, nodos carácter/bloque, reglas udev, sysfs.
+- **[[CI-CD]]** (01 - Conceptos): integración continua, despliegue continuo, GitHub Actions, GitLab CI, Jenkins.
+- **[[LUKS2 y Btrfs]]** (03 - Sistema): cifrado de bloque + Btrfs, snapshots cifrados, borg backup.
+- **[[Clear Linux]]** (11 - Distribuciones): distro Intel optimizada, swupd, bundles modulares.
+- **[[Drauger OS]]** (11 - Distribuciones): distro gaming, Steam/Proton/Lutris, kernel optimizado.
+
+### 🔧 Rename de archivo
+- `nohup timeout at.md` → `nohup-timeout-at.md` (eliminados espacios del nombre).
+- Commit: `596bf9b`.
+
+### 📌 Commits de la sesión
+- `cd43385` — 34 archivos nuevos (6 baja + 28 de sesiones anteriores), +4022 líneas.
+- `7ffb936` — limpieza assets/raw/scripts, -1035 líneas, 9 referencias limpiadas.
+- `596bf9b` — rename nohup-timeout-at.md.
+- `e5716cf` — 15 notas media (commit previo).
+
+### 📊 Stats finales de sesión 2026-07-25
+- **Vault: 416 notas** (410 + 6 baja nuevas).
+- **Commits hoy**: 4 commits (`e5716cf`, `cd43385`, `7ffb936`, `596bf9b`).
+- **Notas creadas hoy**: ~55 (8 alta + 15 media + 14 baja + 13 wikilinks + 5 SOs).
+- **Notas expandidas hoy**: 2 (nftables, Nextcloud).
+- **Archivos eliminados**: ~93 (assets/raw/scripts).
+- **Sesión más productiva del proyecto**: de ~357 a 416 notas (+59).
+
+## 2026-07-25 (v11) — Fix duplicidad Cron: notas independientes
+
+### 🔧 Cambio estructural
+- **Eliminada** `Cron y Systemd Timers.md` (nota combinada redundante, ~500 líneas).
+- **Expandida** `Cron.md` (10 - Automatizacion): de ~130 → **244 líneas**. Nuevas secciones: símbolos especiales, 7 ejemplos prácticos, redirigir salida, variables de entorno, system crontab, anacron detallado, tabla comparativa expandida, troubleshooting ampliado.
+- **Expandida** `systemd timers.md` (03 - Sistema): de ~220 → **317 líneas**. Nuevas secciones: directivas de temporización extendidas (OnCalendar, monotónicos), timers de usuario + linger, tabla comparativa detallada, ejemplo backup con notificación, prevención de duplicados, troubleshooting ampliado.
+- **Actualizados 14 archivos** que referenciaban `[[Cron y Systemd Timers]]`: MoC, Daemon, systemd, systemd unidades personalizadas, s6 init, timeshift, Monitorización, Administracion y Diagnostico, Automatizacion y Scripts, Git hooks, Scripts del Vault, openSUSE, Backups.
+- **Verificación**: `grep -rn 'Cron y Systemd Timers'` → 0 resultados. `check-frontmatter.sh` → 415/415 OK.
+
+### 📊 Stats
+- **Vault: 415 notas** (416 - 1 eliminada).
+- **Archivos modificados**: 16 (Cron.md, systemd timers.md, +14 wikilinks).
+- **Archivos eliminados**: 1 (Cron y Systemd Timers.md).
+
+## 2026-07-25 (v12) — Enlazar 49 notas huérfanas al MoC
+
+### 📌 MoC actualizado
+- **47 wikilinks añadidos** al MoC en 9 secciones:
+  - Fundamentos: [[DevOps]], [[CI-CD]]
+  - Sistema: [[initramfs]], [[Firmware y BIOS-UEFI]], [[systemd-boot]], [[LUKS2 y Btrfs]], [[iptables]], [[NetworkManager]], [[Device nodes y udev]], [[Tmpfs y ramfs]]
+  - Entornos gráficos: [[COSMIC Desktop]], [[CutefishOS]], [[Labwc]], [[Wayfire]]
+  - Terminal: [[Fish]], [[Nushell]]
+  - Comandos: [[stat]], [[file]], [[groups]], [[sha256sum]], [[md5sum]], [[nohup-timeout-at]], [[seq yes sleep]], [[gdb]], [[ltrace]]
+  - Programas: [[ranger]], [[lf]], [[Docker Compose]], [[delta]], [[duf]], [[btop]], [[iftop]], [[bmon]], [[nethogs]], [[nvtop]], [[gdebi]], [[just]], [[mise]], [[hyperfine]], [[atuin]]
+  - Troubleshooting: [[Red no conecta]], [[Actualización rota]], [[Sistema no arranca]], [[Impresora no funciona]]
+  - Distribuciones: [[Clear Linux]], [[Drauger OS]], [[Garuda Linux]]
+- **Verificación**: `find-orphans.sh`: de 49 → **2** (solo README.md + Prompts de Trabajo.md, intencionales).
+- **Frontmatter**: 415/415 OK.
+
+### 📊 Stats
+- **Vault: 415 notas.**
+- **Links en MoC**: 410 (de 363).
+
+## 2026-07-25 (v13) — Unificar tildes en nombres de archivos y carpetas
+
+### 🔧 Renombres masivos
+- **10 archivos renombrados** con tildes correctas:
+  - `Administracion y Diagnostico` → `Administración y Diagnóstico`
+  - `Compilacion desde Codigo Fuente` → `Compilación desde Código Fuente`
+  - `Actualizacion entre versiones mayores` → `Actualización entre versiones mayores`
+  - `Creacion de USB Booteable` → `Creación de USB Booteable`
+  - `Post-Instalacion Checklist` → `Post-Instalación Checklist`
+  - `Proceso de Instalacion General` → `Proceso de Instalación General`
+  - `Actualizacion rota` → `Actualización rota`
+  - `Resolucion de pantalla y multi-monitor` → `Resolución de pantalla y multi-monitor`
+  - `Solucion de Problemas - Recursos` → `Solución de Problemas - Recursos`
+  - `Automatizacion y Scripts` → `Automatización y Scripts`
+- **3 carpetas renombradas**:
+  - `02 - Instalacion y Configuracion` → `02 - Instalación y Configuración`
+  - `09 - Solucion de Problemas` → `09 - Solución de Problemas`
+  - `10 - Automatizacion y Scripts` → `10 - Automatización y Scripts`
+- **Wikilinks actualizados** en todas las notas del vault mediante sed batch (solo dentro de `[[...]]`).
+- **README.md y CLAUDE.md** actualizados con los nuevos nombres de carpeta.
+- **Verificación**: `check-frontmatter.sh` 415/415 OK. `find-orphans.sh` → 2 intencionales. `grep` de nombres antiguos → 0 resultados.
+
+### 📊 Stats
+- **Vault: 415 notas.** Misma cantidad, todos los nombres ahora con tildes consistentes.

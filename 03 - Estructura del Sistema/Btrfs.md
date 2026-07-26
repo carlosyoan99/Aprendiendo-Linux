@@ -286,7 +286,7 @@ UUID=xxxx  /  btrfs  defaults,noatime,compress=zstd:1,ssd,autodefrag  0  0
 - [[LVM]] — gestión de volúmenes (alternativa/complemento a Btrfs multi-disco)
 - [[RAID (mdadm)]] — RAID por software (alternativa al RAID integrado de Btrfs)
 - [[timeshift]] — snapshots del sistema basados en Btrfs
-- [[Proceso de Instalacion General]] — elección de FS durante la instalación
+- [[Proceso de Instalación General]] — elección de FS durante la instalación
 - [[Particionado y Esquemas de Disco]] — esquemas de particionado con Btrfs
 
 #sistema #almacenamiento #btrfs

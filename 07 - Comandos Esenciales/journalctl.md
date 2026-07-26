@@ -205,7 +205,7 @@ journalctl --disk-usage               # verificar que se redujo
 - [[systemd]] — gestión de servicios, unidades, targets
 - [[Logging del sistema (rsyslog journald logrotate)]] — rsyslog, logrotate, configuración completa de journald
 - [[less]] — navegación de logs largos
-- [[Solucion de Problemas - Recursos]] — dónde mirar según el problema
+- [[Solución de Problemas - Recursos]] — dónde mirar según el problema
 - [[grep]] — búsqueda de patrones en logs
 - [[journalctl]] — este mismo comando
 

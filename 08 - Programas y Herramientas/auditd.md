@@ -386,7 +386,7 @@ sudo ausearch -k shadow_read -ts today
 - [[Logging del sistema (rsyslog journald logrotate)]] — sistema de logs general
 - [[Procesos y Senales]] — strace/ltrace complementan auditd para debugging
 - [[Desarrollo en Linux (gcc make gdb strace)]] — strace para syscalls en desarrollo
-- [[Solucion de Problemas - Recursos]] — guía general de troubleshooting
+- [[Solución de Problemas - Recursos]] — guía general de troubleshooting
 
 ## Enlaces externos
 

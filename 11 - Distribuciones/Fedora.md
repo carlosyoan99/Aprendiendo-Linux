@@ -98,6 +98,6 @@ Releases cada ~6 meses (abril y octubre), con ~13 meses de soporte por versión.
 
 - [[Rocky Linux]] — clon de RHEL, derivado indirecto de Fedora
 - [[Gestores de Paquetes]]
-- [[Proceso de Instalacion General]]
+- [[Proceso de Instalación General]]
 
 #distro

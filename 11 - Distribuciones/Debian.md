@@ -65,7 +65,7 @@ cat /etc/debian_version
 
 ## Instalación (resumen)
 
-> Para una guía detallada paso a paso, ver [[Proceso de Instalacion General]] y [[Creacion de USB Booteable]].
+> Para una guía detallada paso a paso, ver [[Proceso de Instalación General]] y [[Creación de USB Booteable]].
 
 Debian tiene **dos caminos de instalación**: el clásico instalador de texto (Debian Installer) y el nuevo Calamares (desde Debian 12 en las ISOs con DE).
 
@@ -279,7 +279,7 @@ sudo apt full-upgrade -y
 # Verificar
 cat /etc/debian_version
 
-# Ver [[Actualizacion entre versiones mayores]] para guía detallada
+# Ver [[Actualización entre versiones mayores]] para guía detallada
 ```
 
 ## Sabores (Desktop environments)
@@ -357,7 +357,7 @@ sudo apt install task-cinnamon-desktop    # Cinnamon
 - [[Linux Mint]] — basada en Ubuntu (y por tanto en Debian)
 - [[Versiones de Debian]] — timeline de releases
 - [[Gestores de Paquetes]]
-- [[Proceso de Instalacion General]]
-- [[Actualizacion entre versiones mayores]]
+- [[Proceso de Instalación General]]
+- [[Actualización entre versiones mayores]]
 
 #distro

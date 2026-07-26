@@ -10,7 +10,7 @@ prioridad: alta
 
 > **Prioridad 3** — Especialización, automatización y alto rendimiento. Baja frecuencia, alto valor.
 >
-> Este MoC asume que ya dominas [[Dia a Dia en CLI]] (Prioridad 1) y [[Administracion y Diagnostico]] (Prioridad 2).
+> Este MoC asume que ya dominas [[Dia a Dia en CLI]] (Prioridad 1) y [[Administración y Diagnóstico]] (Prioridad 2).
 
 ---
 
@@ -66,7 +66,7 @@ Las herramientas TUI son esenciales para el power user:
 | `scripts/daily-log.sh` | Log diario automatizado |
 | `scripts/find-orphans.sh` | Detectar notas huérfanas |
 
-> [[Automatizacion y Scripts]]
+> [[Automatización y Scripts]]
 
 ---
 
@@ -283,7 +283,7 @@ stow -t $HOME bash    ; chezmoi add ~/.bashrc
 ## Ver también
 
 - [[Dia a Dia en CLI]] — Prioridad 1: fundamentos diarios
-- [[Administracion y Diagnostico]] — Prioridad 2: troubleshooting y administración
+- [[Administración y Diagnóstico]] — Prioridad 2: troubleshooting y administración
 - [[MoC - Linux]] — mapa de contenido completo del vault
 - [[Rutas de Aprendizaje]] — guía de priorización
 

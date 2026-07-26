@@ -150,7 +150,7 @@ sudo journalctl -u sshd | grep "Failed password" | wc -l
 - [[SSH]] — servicio a proteger primero (cambio de puerto, claves, desactivar root)
 - [[Firewall]] — iptables/nftables (donde fail2ban aplica los baneos)
 - [[Logging del sistema (rsyslog journald logrotate)]] — logs que fail2ban monitorea
-- [[Solucion de Problemas - Recursos]] — diagnóstico general
+- [[Solución de Problemas - Recursos]] — diagnóstico general
 
 ## Enlaces externos
 

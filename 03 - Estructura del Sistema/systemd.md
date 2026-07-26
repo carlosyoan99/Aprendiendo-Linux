@@ -271,7 +271,7 @@ systemctl list-timers --all
 sudo systemctl start mi-backup.service   # el timer ejecutará el servicio del mismo nombre
 ```
 
-Ver [[Cron y Systemd Timers]] para comparativa detallada.
+Ver [[Cron]] · [[systemd timers]] para comparativa detallada.
 
 ---
 
@@ -446,8 +446,8 @@ Casi cualquier interacción con el sistema moderna pasa por systemd: iniciar/det
 ## Ver también
 
 - [[journalctl]] — comando detallado
-- [[Cron y Systemd Timers]] — timers como reemplazo de cron
-- [[Solucion de Problemas - Recursos]] — diagnóstico general
+- [[Cron]] · [[systemd timers]] — cron vs systemd timers
+- [[Solución de Problemas - Recursos]] — diagnóstico general
 - [[Proc y Sys]] — /proc/sys para parámetros del kernel
 - [[Procesos y Senales]] — gestión de procesos
 

@@ -133,7 +133,7 @@ bash setup.sh --check
 ### Ver también
 
 - [[Git hooks para el vault]] — hooks en detalle
-- [[Cron y Systemd Timers]] — automatización programada
+- [[Cron]] · [[systemd timers]] — automatización programada
 - [[Scripts del Vault]] — documentación de todos los scripts
 
 Wrapper para ejecutar `vault-stats.sh --resumen` semanalmente vía cron y guardar el resultado en `vault-stats-weekly.log`.
@@ -350,6 +350,6 @@ crontab -e
 - [[Log]] — registro cronológico de sesiones del vault
 - [[CLAUDE.md]] — reglas y convenciones del vault
 - [[Git hooks]] — automatización pre-commit/commit-msg/pre-push
-- [[Cron y Systemd Timers]] — automatización programada
+- [[Cron]] · [[systemd timers]] — automatización programada
 
 #automatizacion #scripts

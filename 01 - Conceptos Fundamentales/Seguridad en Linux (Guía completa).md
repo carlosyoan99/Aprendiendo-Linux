@@ -115,7 +115,7 @@ passwd                                     # cambiar contraseña
 ls /etc/apt/sources.list.d/               # repositorios externos
 ```
 
-**Ver también:** [[Proceso de Instalacion General]], [[Post-Instalacion Checklist]], [[Firewall]]
+**Ver también:** [[Proceso de Instalación General]], [[Post-Instalación Checklist]], [[Firewall]]
 
 ---
 
@@ -649,8 +649,8 @@ ping -c 4 google.com
 - [[Backups (borg restic duplicity rsync)]] — estrategias de backup
 - [[Malware en Linux]] — virus, rootkits y cómo protegerse
 - [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — PAM, 2FA
-- [[Proceso de Instalacion General]] — particionado y elección de SO
-- [[Post-Instalacion Checklist]] — primeros pasos tras instalar
+- [[Proceso de Instalación General]] — particionado y elección de SO
+- [[Post-Instalación Checklist]] — primeros pasos tras instalar
 - [[Gestores de Paquetes]] — apt, snap, flatpak
 - [[Navegadores Web]] — privacidad y extensiones
 - [[timeshift]] — instantáneas del sistema

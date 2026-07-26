@@ -36,7 +36,7 @@ prioridad: alta
 | ✅ | [[Symlinks y Dotfiles]] | Expandida: anatomía de inodos, link count |
 | ✅ | [[Locale y configuracion de idioma]] | Nota nueva (01 - Conceptos) |
 | ✅ | [[NTP y chrony]] | Nota nueva (01 - Conceptos) |
-| ✅ | [[Actualizacion entre versiones mayores]] | Nota nueva (02 - Instalacion) |
+| ✅ | [[Actualización entre versiones mayores]] | Nota nueva (02 - Instalacion) |
 | ✅ | [[Ansible]] | Nota nueva (08 - Programas) |
 | ✅ | [[Backups (borg restic duplicity rsync)]] | Expandida: automatización + systemd timers |
 

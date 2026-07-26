@@ -89,6 +89,6 @@ sudo journalctl --vacuum-size=100M   # limpiar logs
 
 ## Ver también
 
-- [[Gestores de Paquetes]], [[apt]], [[pacman]], [[Post-Instalacion Checklist]]
+- [[Gestores de Paquetes]], [[apt]], [[pacman]], [[Post-Instalación Checklist]]
 
 #troubleshooting #paquetes

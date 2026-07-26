@@ -121,7 +121,7 @@ ls /boot/kernel-* /boot/initramfs-*
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — compilar software en Linux
+- [[Compilación desde Código Fuente]] — compilar software en Linux
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — qué hace el initramfs
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — gestión de módulos
 

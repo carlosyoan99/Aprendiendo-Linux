@@ -154,7 +154,7 @@ cat /proc/cmdline
 
 - [[GNU y Linux]] — diferencia entre el kernel GNU y el sistema completo
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — drivers y módulos cargables
-- [[Compilacion desde Codigo Fuente]] — compilar tu propio kernel
+- [[Compilación desde Código Fuente]] — compilar tu propio kernel
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — cómo arranca el kernel
 - [[Proc y Sys]] — interfaces /proc y /sys del kernel
 

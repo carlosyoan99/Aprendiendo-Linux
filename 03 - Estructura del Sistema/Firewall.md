@@ -335,7 +335,7 @@ sudo ufw enable                           # finalmente activar
 - [[SSH]] — servicio a proteger primero
 - nftables — profundización en la sección correspondiente
 - [[Gestores de Paquetes]] — instalar ufw, firewalld
-- [[Solucion de Problemas - Recursos]] — metodología de troubleshooting
+- [[Solución de Problemas - Recursos]] — metodología de troubleshooting
 
 ## Enlaces externos
 

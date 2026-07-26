@@ -342,7 +342,7 @@ sudo systemctl enable --now grafana-server
 - [[Logging del sistema (rsyslog journald logrotate)]] — logs vs métricas
 - [[Backups (borg restic duplicity rsync)]] — monitorizar backups
 - [[systemd]] — systemd puede exponer métricas a Prometheus
-- [[Cron y Systemd Timers]] — programar scripts de monitorización
+- [[Cron]] · [[systemd timers]] — programar scripts de monitorización
 - [[Firewall]] — puertos 9090 y 9100
 
 ## Enlaces externos

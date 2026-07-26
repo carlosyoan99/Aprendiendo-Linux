@@ -165,7 +165,7 @@ dd if=archivo.iso bs=4M status=progress | tee copia.iso | sha256sum > checksum.t
 - [[tar]] — empaquetado y compresión de archivos
 - [[cp]] — copia normal de archivos
 - [[pv]] — monitor de progreso en pipes
-- [[Creacion de USB Booteable]] — guía completa de USBs booteables
+- [[Creación de USB Booteable]] — guía completa de USBs booteables
 - [[df y du]] — diagnóstico de espacio en disco
 - [[Cheat Sheet - Comandos Esenciales]]
 

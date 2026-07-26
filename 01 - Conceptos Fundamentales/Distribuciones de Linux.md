@@ -103,7 +103,7 @@ sudo dd if=ubuntu-24.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress
 # O con Ventoy — copiar ISO directamente al USB
 ```
 
-Ver [[Creacion de USB Booteable]].
+Ver [[Creación de USB Booteable]].
 
 ### Cambiar de distro sin perder datos
 ```bash
@@ -147,7 +147,7 @@ hostnamectl                    # systemd way
 - [[Que es Linux]] — qué es el kernel Linux
 - [[GNU y Linux]] — la otra mitad del sistema operativo
 - [[Gestores de Paquetes]] — apt, pacman, dnf, zypper comparados
-- [[Proceso de Instalacion General]] — cómo instalar cualquier distro
+- [[Proceso de Instalación General]] — cómo instalar cualquier distro
 - [[De Windows a Linux]] — migración para usuarios de Windows
 - [[Ubuntu]], [[Debian]], [[Arch Linux]], [[Fedora]], [[Alpine Linux]] — notas individuales
 

@@ -143,7 +143,7 @@ Linus Torvalds y la mayoría de la comunidad llaman al sistema simplemente **Lin
 
 - [[Que es Linux]] — introducción general
 - [[Kernel Linux]] — el kernel en detalle
-- [[Compilacion desde Codigo Fuente]] — compilar GCC, glibc, etc.
+- [[Compilación desde Código Fuente]] — compilar GCC, glibc, etc.
 - [[Procesos y Senales]] — cómo glibc interactúa con el kernel (syscalls)
 - [[Shells (bash zsh fish)]] — bash es el shell GNU por excelencia
 

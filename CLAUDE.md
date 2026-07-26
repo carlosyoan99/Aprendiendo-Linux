@@ -11,17 +11,17 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 |---|---|
 | `00 - Indices y Mapas` | Notas MoC (Map of Content), Dashboard, Rutas de Aprendizaje, TODO |
 | `01 - Conceptos Fundamentales` | Qué es Linux, kernel, filosofía, namespaces, locale, NTP |
-| `02 - Instalacion y Configuracion` | Guías de instalación, particionado, dist-upgrade, checklists |
+| `02 - Instalación y Configuración` | Guías de instalación, particionado, dist-upgrade, checklists |
 | `03 - Estructura del Sistema` | FHS, permisos, procesos, cgroups, boot process |
 | `04 - Entornos de Escritorio` | GNOME, KDE, XFCE, etc. + Desktop Shells |
 | `05 - Gestores de Ventanas` | i3, Hyprland, DWM, etc. |
 | `06 - La Terminal` | Shell, tmux, screen, filosofía de la terminal |
 | `07 - Comandos Esenciales` | Una nota por comando + cheat sheet general |
 | `08 - Programas y Herramientas` | Apps y utilidades (editores, navegadores, lenguajes, suites, Ansible) |
-| `09 - Solucion de Problemas` | Recursos generales + **16 problemas resueltos** (WiFi, permisos, SSH, Docker, Bluetooth, GRUB, NVIDIA, pantalla negra, etc.) |
-| `10 - Automatizacion y Scripts` | Notas de automatización, Log.md, cron logs |
+| `09 - Solución de Problemas` | Recursos generales + **21 problemas resueltos** (WiFi, permisos, sonido, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB, red no conecta, sistema no arranca, actualización rota, impresora, etc.) |
+| `10 - Automatización y Scripts` | Notas de automatización, Log.md, cron logs |
 | `scripts/` | Scripts del vault (bash + Python): automatización, stats, descargas |
-| `11 - Distribuciones` | Catálogo de distribuciones Linux (40 notas: Ubuntu, Debian, Arch, Fedora, etc.) |
+| `11 - Distribuciones` | Catálogo de distribuciones Linux (43 notas: Ubuntu, Debian, Arch, Fedora, Clear Linux, Garuda, etc.) |
 | `Templates` | Plantillas — no editar su estructura sin avisar al usuario |
 
 ### Enlaces externos e imágenes
@@ -57,12 +57,12 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
    - `sistema` — componentes del sistema operativo (03 - Estructura del Sistema)
    - `entorno-escritorio` — DEs y WMs (04 - Entornos de Escritorio, 05 - Gestores de Ventanas)
    - `distribucion` — distros Linux (11 - Distribuciones)
-   - `instalacion` — guías de instalación, configuración, upgrade (02 - Instalacion y Configuracion)
+   - `instalacion` — guías de instalación, configuración, upgrade (02 - Instalación y Configuración)
    - `terminal` — la shell, multiplexores (06 - La Terminal)
-   - `troubleshooting` — problemas y soluciones (09 - Solucion de Problemas)
-   - `automatizacion` — scripts, cron, timers, hooks (10 - Automatizacion y Scripts)
+   - `troubleshooting` — problemas y soluciones (09 - Solución de Problemas)
+   - `automatizacion` — scripts, cron, timers, hooks (10 - Automatización y Scripts)
    - `indice` — MoC, Dashboard, mapas de contenido (00 - Indices y Mapas)
-   - `log` — registro de sesiones (10 - Automatizacion y Scripts/Log.md)
+   - `log` — registro de sesiones (10 - Automatización y Scripts/Log.md)
 
 4. Enlazar la nota nueva desde `00 - Indices y Mapas/MoC - Linux.md` (agregar bajo la sección correspondiente).
 5. Usar wikilinks (enlaces dobles `[[nota]]`) para conectar con notas relacionadas ya existentes — revisar el vault antes de crear una nota para no duplicar contenido.
@@ -74,7 +74,7 @@ Documentar el aprendizaje de Linux de forma incremental: conceptos, comandos, pr
 - Si tiene `estado: resuelto` o `en progreso` con contenido sustancial, confirmar antes de reescribir secciones enteras.
 
 ## 5. Registro de sesiones
-Cada vez que se trabaje en el vault (nuevas notas, cambios grandes), añadir una entrada al final de `10 - Automatizacion y Scripts/Log.md` con fecha y resumen de 1-3 líneas. Nunca reescribir entradas anteriores del log.
+Cada vez que se trabaje en el vault (nuevas notas, cambios grandes), añadir una entrada al final de `10 - Automatización y Scripts/Log.md` con fecha y resumen de 1-3 líneas. Nunca reescribir entradas anteriores del log.
 
 ## 6. Estilo
 - Español, tono directo, sin relleno.
@@ -116,5 +116,5 @@ Si se construye un script propio (Python/Node) que use la API de Claude para gen
 - Leer este archivo (`CLAUDE.md`) como system prompt / contexto de reglas.
 - Escribir únicamente dentro de la estructura de carpetas definida arriba.
 - Registrar su propia ejecución en `Log.md`.
-- Documentarse a sí mismo en `scripts/` o `10 - Automatizacion y Scripts/`.
+- Documentarse a sí mismo en `scripts/` o `10 - Automatización y Scripts/`.
 - Revisar `00 - Indices y Mapas/TODO.md` para conocer el estado actual del proyecto.

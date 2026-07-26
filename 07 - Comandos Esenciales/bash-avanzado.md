@@ -399,7 +399,7 @@ echo "${nombre^^}"                       # CARLOS
 - [[La Shell]] — fundamentos de la terminal
 - [[grep]] — búsqueda con regex
 - [[Procesos y Senales]] — señales del sistema (SIGTERM, SIGKILL)
-- [[Automatizacion y Scripts]] — scripts de automatización del vault
+- [[Automatización y Scripts]] — scripts de automatización del vault
 
 ## Enlaces externos
 

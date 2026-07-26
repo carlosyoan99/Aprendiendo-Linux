@@ -91,7 +91,7 @@ sudo update-grub
 - [[systemd]]
 - [[Redes Basicas]]
 - [[Cheat Sheet - Comandos Esenciales]]
-- [[Automatizacion y Scripts]]
+- [[Automatización y Scripts]]
 
 ## Enlaces externos
 

@@ -418,11 +418,11 @@ gprof ./app gmon.out                      # mostrar perfil de ejecución
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — compilar e instalar programas desde código
+- [[Compilación desde Código Fuente]] — compilar e instalar programas desde código
 - [[Editores de Texto]] — elegir editor para escribir código
 - [[Gestores de Paquetes]] — instalar dependencias de desarrollo
 - [[Shells (bash zsh fish)]] — entornos para desarrollo
-- [[Automatizacion y Scripts]] — automatizar builds y tests
+- [[Automatización y Scripts]] — automatizar builds y tests
 - [[Git]] — control de versiones para proyectos de desarrollo
 
 ## Enlaces externos

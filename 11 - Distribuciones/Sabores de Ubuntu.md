@@ -221,7 +221,7 @@ sudo apt install lubuntu-desktop            # añade LXQt a tu Ubuntu
 - [[KDE Plasma]] · [[XFCE]] · [[MATE]] · [[Budgie]] · [[Cinnamon]] — escritorios usados
 - [[Linux Mint]] — basado en Ubuntu, con Cinnamon
 - [[Pop OS]] — basado en Ubuntu, con COSMIC (Rust)
-- [[Proceso de Instalacion General]] — cómo instalar cualquier sabor
+- [[Proceso de Instalación General]] — cómo instalar cualquier sabor
 - [[Gestores de Paquetes]] — apt, dpkg, Snap
 
 ## Enlaces externos

@@ -347,7 +347,7 @@ flatpak install flathub org.mozilla.firefox
 - [[Ubuntu]] — base de Zorin, elementary
 - [[Debian]] — base de MX, Kali, Parrot, Tails
 - [[Arch Linux]] — alternativa rolling a Gentoo
-- [[Compilacion desde Codigo Fuente]] — relevante para Gentoo
+- [[Compilación desde Código Fuente]] — relevante para Gentoo
 - [[SteamOS]] — la distro gaming original de Valve
 - [[Bazzite]] — fork activo de SteamOS para PC con soporte NVIDIA
 - [[Videojuegos en Linux]] — gaming en Linux en general

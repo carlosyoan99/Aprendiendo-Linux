@@ -194,7 +194,7 @@ hostnamectl
 ## Instalación
 
 1. Descargar ISO desde [linuxmint.com](https://linuxmint.com/download.php)
-2. Crear USB booteable (ver [[Creacion de USB Booteable]])
+2. Crear USB booteable (ver [[Creación de USB Booteable]])
 3. Arrancar desde USB, elegir "Start Linux Mint"
 4. Probar el escritorio en vivo (Live session) antes de instalar
 5. Hacer doble clic en "Install Linux Mint"
@@ -205,7 +205,7 @@ hostnamectl
 
 ## Post-instalación recomendada
 
-Ver la guía completa en [[Post-Instalacion Checklist]]. Para Mint en particular:
+Ver la guía completa en [[Post-Instalación Checklist]]. Para Mint en particular:
 
 ```bash
 # 1. Actualizar sistema
@@ -285,7 +285,7 @@ Mint desarrolla sus propias herramientas que mejoran la experiencia de usuario:
 - [[Cinnamon]] — DE por defecto de Linux Mint
 - [[Ubuntu]] — distribución base
 - [[Debian]] — base de LMDE
-- [[Post-Instalacion Checklist]] — guía post-instalación
+- [[Post-Instalación Checklist]] — guía post-instalación
 - [[Snap y Flatpak]] — formatos portables en Mint
 - [[XFCE]] — edición ligera
 - [[MATE]] — edición clásica

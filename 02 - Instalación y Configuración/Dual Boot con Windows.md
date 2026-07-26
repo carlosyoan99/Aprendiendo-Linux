@@ -395,9 +395,9 @@ timedatectl
 
 ## Ver también
 
-- [[Proceso de Instalacion General]] — paso a paso de instalación de Linux
+- [[Proceso de Instalación General]] — paso a paso de instalación de Linux
 - [[Particionado y Esquemas de Disco]] — esquemas de particionado detallados
-- [[Creacion de USB Booteable]] — cómo preparar el medio de instalación
+- [[Creación de USB Booteable]] — cómo preparar el medio de instalación
 - [[GRUB no arranca]] — troubleshooting de GRUB
 - [[Gestores de Paquetes]] — instalar herramientas de reparación
 - [[Cifrado (LUKS dm-crypt GPG)]] — cifrado en Linux vs BitLocker

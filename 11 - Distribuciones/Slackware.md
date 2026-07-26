@@ -195,7 +195,7 @@ slackpkg install git curl wget vim htop
 - [[Arch Linux]] — enfoque minimalista pero con systemd y resol. de dependencias
 - [[Gentoo]] — source-based, máximo control (otro extremo)
 - [[Void Linux]] — otra distro sin systemd (runit)
-- [[Compilacion desde Codigo Fuente]] — común en Slackware y Gentoo
+- [[Compilación desde Código Fuente]] — común en Slackware y Gentoo
 - [[Gestores de Paquetes]] — comparativa de gestores
 - [[Gestores de Archivos]] — organización del sistema
 

@@ -303,6 +303,6 @@ pacman-mirrors --country Argentina    # mirrors por país
 - [[EndeavourOS]] — alternativa más cercana a Arch vanilla
 - [[CachyOS]] — alternativa optimizada para gaming
 - [[Gestores de Paquetes]] — pacman, pamac
-- [[Proceso de Instalacion General]] — instalación paso a paso
+- [[Proceso de Instalación General]] — instalación paso a paso
 
 #distro

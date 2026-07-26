@@ -10,7 +10,7 @@ categoria: indice
 ## Dashboard
 - [[Dashboard]] — vistas automáticas vía Dataview (pendientes, en progreso, todo por categoría)
 - [[Dia a Dia en CLI]] — guía priorizada de comandos esenciales para el día a día (Prioridad 1)
-- [[Administracion y Diagnostico]] — guía de administración del sistema y troubleshooting (Prioridad 2)
+- [[Administración y Diagnóstico]] — guía de administración del sistema y troubleshooting (Prioridad 2)
 - [[Arsenal Power User]] — especialización, automatización y alto rendimiento (Prioridad 3)
 - [[Mis Dotfiles]] — plantillas descargables y gestión de dotfiles
 - [[Rutas de Aprendizaje]] — qué priorizar en cada categoría y por qué
@@ -26,7 +26,7 @@ categoria: indice
 - [[macOS]] — basado en UNIX (Darwin/BSD), Homebrew, comparativa con Linux
 - [[Distribuciones de Linux]] — qué son, familias, modelos, tabla comparativa
 - [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
-- [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilacion desde Codigo Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
+- [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilación desde Código Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
 - [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers
 - [[Docker]] — contenedores, build, ship, run
 - [[Exec Shield]] — protección NX · [[Graphics Execution Manager (GEM)]] — memoria GPU · [[Int 80h]] — syscalls x86 · [[RTAI (Tiempo Real)]] — tiempo real en Linux
@@ -37,22 +37,25 @@ categoria: indice
 - [[Daemon]] · [[Rust for Linux]] · [[Malware en Linux]] · [[Debate Tanenbaum-Torvalds]] · [[Historia de Linux]] · [[Historial de versiones del kernel de Linux]]
 - [[Locale y configuracion de idioma]] — locale-gen, LC_*, teclado
 - [[NTP y chrony]] — sincronización de hora, NTP, timesyncd
+- [[DevOps]] — cultura DevOps, CI/CD, pipelines, infraestructura como código
+- [[CI-CD]] — integración continua, despliegue continuo, GitHub Actions, GitLab CI, Jenkins
 
 ## Sistema
-- [[Filesystem Hierarchy Standard]] · [[Proc y Sys]] · [[Sistemas de Archivos]] · [[Btrfs]]
-- [[Proceso de Arranque (GRUB initramfs kernel params)]] · [[Bootloaders (GRUB Limine systemd-boot)]] · [[Logging del sistema (rsyslog journald logrotate)]]
+- [[Filesystem Hierarchy Standard]] · [[Proc y Sys]] · [[Sistemas de Archivos]] · [[Btrfs]] · [[LUKS2 y Btrfs]] — cifrado de bloque + Btrfs
+- [[Proceso de Arranque (GRUB initramfs kernel params)]] · [[Bootloaders (GRUB Limine systemd-boot)]] · [[initramfs]] — sistema de archivos en RAM · [[Firmware y BIOS-UEFI]] — firmware, Secure Boot, ESP · [[systemd-boot]] — bootloader UEFI de systemd · [[Logging del sistema (rsyslog journald logrotate)]]
 - [[RAID (mdadm)]] · [[Módulos del kernel (lsmod modprobe blacklist)]]
 - [[cgroups (control de recursos)]]
 - [[systemd]] · [[systemd unidades personalizadas]] — templates, timers, sockets, paths, drop-ins · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
-- [[Audio en Linux]] · [[Firewall]] · [[LVM]] · [[ACLs]] · [[SELinux y AppArmor]] · [[D-Bus]]
-- [[systemd-networkd]] · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]]
+- [[Audio en Linux]] · [[Firewall]] · [[iptables]] — firewall clásico (legacy) · [[LVM]] · [[ACLs]] · [[SELinux y AppArmor]] · [[D-Bus]]
+- [[systemd-networkd]] · [[NetworkManager]] — gestión de redes gráfica y CLI · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]]
+- [[Device nodes y udev]] — nodos de dispositivo en /dev, reglas udev
 - [[systemd-nspawn]] — contenedores ligeros nativos de systemd
-- [[zram]] · [[coreboot]] · [[s6 init]] · [[Linux Standard Base (LSB)]]
+- [[zram]] · [[Tmpfs y ramfs]] — filesystems en memoria, /dev/shm · [[coreboot]] · [[s6 init]] · [[Linux Standard Base (LSB)]]
 
 ## Instalación
-- [[Creacion de USB Booteable]] · [[Proceso de Instalacion General]] · [[Particionado y Esquemas de Disco]] · [[Dual Boot con Windows]] · [[Post-Instalacion Checklist]]
+- [[Creación de USB Booteable]] · [[Proceso de Instalación General]] · [[Particionado y Esquemas de Disco]] · [[Dual Boot con Windows]] · [[Post-Instalación Checklist]]
 - [[Cifrado (LUKS dm-crypt GPG)]]
-- [[Actualizacion entre versiones mayores]] — dist-upgrade, release upgrade
+- [[Actualización entre versiones mayores]] — dist-upgrade, release upgrade
 - [[De Windows a Linux]] — guía completa de migración con instalación, post-instalación y troubleshooting
 - [[Gestores de Paquetes]] — apt, pacman, dnf, Flatpak, Snap, AppImage
 
@@ -66,6 +69,9 @@ categoria: indice
 - [[LXLE Linux]] — ligera (descontinuada) · [[EU OS]] — para sector público europeo · [[Zentyal]] — servidor tipo Windows
 - [[Lubuntu]] — sabor Ubuntu ligero con LXQt
 - [[Slackware]] · [[Solus]] · [[Parrot OS]]
+- [[Clear Linux]] — distro Intel optimizada para rendimiento
+- [[Drauger OS]] — distro gaming basada en Ubuntu
+- [[Garuda Linux]] — Arch-based, Btrfs, Dracut, gaming
 - [[Distros adicionales (Gentoo Slackware Void Solus MX Linux Zorin elementary Kali Parrot Tails)]] — incluye ChimeraOS y HoloISO como forks de SteamOS
 
 ## Entornos gráficos
@@ -74,10 +80,14 @@ categoria: indice
 - [[Sugar]] · [[Trinity]]
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico · [[Motif]] — toolkit gráfico usado por CDE
 - [[Desktop Shells (Noctalia Caelestia)]]
+- [[COSMIC Desktop]] — DE en Rust por System76, alpha
+- [[CutefishOS]] — DE Wayland con estética macOS (descontinuado)
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
 - [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Niri]] · [[River]]
 - [[bspwm]] · [[Sway]] · [[qtile]] · [[Openbox]] · [[Fluxbox]] · [[spectrwm]]
 - [[herbstluftwm]]
+- [[Labwc]] — compositor Wayland minimalista tipo Openbox
+- [[Wayfire]] — compositor Wayland con efectos 3D (tipo Compiz)
 - [[Comparativa gestores de ventanas]] — guía para elegir WM según perfil y caso de uso
 
 ## Programas comunes
@@ -90,16 +100,21 @@ categoria: indice
 - [[Samba]] — compartición de archivos con Windows (SMB/CIFS)
 - [[PostgreSQL y MySQL]] — bases de datos relacionales en Linux · [[PostgreSQL vs MongoDB]] — SQL vs NoSQL, cuándo usar cada uno, migraciones · [[SQLite]] — la base de datos embebida más usada del mundo · [[Redis]] — estructura de datos en memoria, caching, colas, pub/sub · [[MongoDB y NoSQL]] — documentos, clave-valor, columnar y grafos
 - [[GitHub CLI (gh)]] — terminal para GitHub (PRs, issues, Actions, codespaces) · [[Backups (borg restic duplicity rsync)]] · [[Desarrollo en Linux (gcc make gdb strace)]] · [[Monitorización (Prometheus node_exporter)]]
-- [[lazygit]] — Git TUI interactivo · [[gitui]] — Git TUI en Rust · [[tig]] — visor de commits Git
+- [[lazygit]] — Git TUI interactivo · [[gitui]] — Git TUI en Rust · [[tig]] — visor de commits Git · [[delta]] — visor de diff con syntax highlighting
+- [[Docker Compose]] — orquestación multi-contenedor (YAML, profiles, watch)
 - [[lazydocker]] — Docker TUI interactivo · [[dive]] — explorador capas Docker · [[ctop]] — top para contenedores
 - [[k9s]] — Kubernetes TUI | [[zellij]] — multiplexor de terminal moderno · [[yazi]] — gestor de archivos TUI rápido
 - [[bat]] — cat con syntax highlighting · [[glow]] — visor Markdown bonito | [[trippy]] — traceroute + ping visual
-- [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]]
+- [[duf]] — df moderno con colores · [[btop]] — monitor de recursos con gráficos · [[iftop]] — monitor de ancho de banda por conexión · [[bmon]] — monitor de ancho de banda · [[nethogs]] — monitor de ancho de banda por proceso · [[nvtop]] — monitor de GPU (NVIDIA/AMD)
+- [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] · [[gdebi]] — instalador de .deb con dependencias
 - [[Busybox]] · [[Ncurses]] · [[Stratis]]
+- [[ranger]] — gestor de archivos TUI (Python) · [[lf]] — gestor de archivos TUI rápido (Go)
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
 - [[PipeWire]] · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]]
+- [[just]] — ejecutor de tareas tipo make · [[mise]] — gestor de versiones universal · [[hyperfine]] — benchmark CLI con análisis estadístico
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
 - [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]]
+- [[atuin]] — historial de shell con sincronización
 - [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Multimedia (GStreamer HandBrake VLC MPV)]]
 - [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
 - [[Parted Magic]] — Live CD de particionado y rescate
@@ -111,26 +126,28 @@ categoria: indice
 - [[TUI tools]] — guía de Terminal User Interfaces (monitores, editores, git, docker, multimedia, redes)
 
 ## Terminal y comandos
-- [[La Shell]] · [[Shells (bash zsh fish)]] · [[tmux]] · [[screen]]
+- [[La Shell]] · [[Shells (bash zsh fish)]] · [[Fish]] — shell con autosugerencias y syntax highlighting · [[Nushell]] — shell estructurada con datos tipados · [[tmux]] · [[screen]]
 - [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[sed y awk]] · [[awk]] · [[grep]] · [[find]] · [[fd-find]] — búsqueda rápida · [[fzf]] — filtro difuso interactivo
 - [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua
-- [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
-- [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]]
+- [[stat]] — metadatos de archivos (atime/mtime/ctime) · [[file]] — identificar tipo real de archivo · [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] · [[Touch y History]]
+- [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]] · [[groups]] — mostrar grupos del usuario
 - [[ping]] · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
 - [[jq]] — procesador JSON de terminal
 - [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
+- [[sha256sum]] — verificar integridad con SHA-256 · [[md5sum]] — verificar integridad con MD5
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
+- [[nohup-timeout-at]] — ejecutar procesos en segundo plano · [[seq yes sleep]] — generar secuencias numéricas y pausas
 - [[tree]] — mostrar árbol de directorios · [[procs]] — ps moderno con colores · [[ripgrep]] — grep moderno en Rust · [[doggo]] — dig moderno con colores
 - [[pacman]] — gestor de paquetes de Arch Linux
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
-- [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[bash-avanzado]]
+- [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[gdb]] — depurador GNU, breakpoints, core dumps · [[ltrace]] — trazar llamadas a librerías · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df y du]] — espacio en disco · [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[date y timedatectl]] — fecha, hora, zona horaria
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
 
 ## Operativa
-- [[Solucion de Problemas - Recursos]]
+- [[Solución de Problemas - Recursos]]
 - [[netstat]] — estadísticas de red (legacy) · [[nmcli]] — gestión con NetworkManager · [[nftables]] — firewall moderno · [[ufw]] — firewall simplificado (Ubuntu)
 - [[WiFi no conecta]] · [[Error de permisos]] · [[Sin sonido]]
 - [[Paquete roto]] · [[GRUB no arranca]] · [[NVIDIA no detecta]]
@@ -138,12 +155,16 @@ categoria: indice
 - [[Disco lleno (No space left on device)]] — espacio en disco
 - [[Teclado con layout incorrecto]] — teclado escribe símbolos equivocados
 - [[Bluetooth no conecta]] — auriculares, ratón, teclado BT
-- [[Resolucion de pantalla y multi-monitor]] — pantalla incorrecta, monitor externo
+- [[Resolución de pantalla y multi-monitor]] — pantalla incorrecta, monitor externo
 - [[Reloj desincronizado en dual boot]] — hora incorrecta al cambiar de SO
 - [[SSH no conecta]] — conexión SSH rechazada, troubleshooting detallado
 - [[Docker permiso denegado]] — grupo docker, socket, rootless
 - [[Fuentes rotas o faltantes (fontconfig)]] — fuentes rotas, emojis, fontconfig, caché
-- [[Automatizacion y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron y Systemd Timers]] · [[Git hooks para el vault]]
+- [[Red no conecta]] — diagnóstico completo de conectividad (DNS/DHCP/firewall)
+- [[Actualización rota]] — reparar paquetes rotos (dpkg/apt/dnf/pacman)
+- [[Sistema no arranca]] — recuperación desde pantalla negra hasta kernel panic
+- [[Impresora no funciona]] — solucionar problemas de impresión (CUPS, drivers, red)
+- [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] [[Git hooks para el vault]]
 
 ## Enlaces externos
 

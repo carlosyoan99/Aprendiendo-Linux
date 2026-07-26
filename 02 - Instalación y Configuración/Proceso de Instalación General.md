@@ -18,7 +18,7 @@ Flujo típico, aplicable con variaciones a casi cualquier distro moderna con ins
 ☐ Elegir distro y verificar requisitos de hardware
 ☐ Hacer backup de datos importantes si hay datos existentes
 ☐ Comprobar espacio libre en disco (mínimo ~20 GB, recomendado 50+ GB)
-☐ Crear USB booteable (ver [[Creacion de USB Booteable]])
+☐ Crear USB booteable (ver [[Creación de USB Booteable]])
 ```
 
 ### Requisitos comunes por tipo de distro
@@ -253,7 +253,7 @@ Una vez completada la instalación:
 ☐ Configurar backups (ver [[Backups (borg restic duplicity rsync)]])
 ```
 
-Ver la guía completa en [[Post-Instalacion Checklist]].
+Ver la guía completa en [[Post-Instalación Checklist]].
 
 ---
 
@@ -274,8 +274,8 @@ Ver la guía completa en [[Post-Instalacion Checklist]].
 - [[Sistemas de Archivos]] — ext4, Btrfs, XFS, ZFS a fondo
 - [[Cifrado (LUKS dm-crypt GPG)]] — LUKS, GPG, buenas prácticas
 - [[Dual Boot con Windows]] — instalación junto a Windows
-- [[Creacion de USB Booteable]] — cómo preparar el medio de instalación
-- [[Post-Instalacion Checklist]] — qué hacer después de instalar
+- [[Creación de USB Booteable]] — cómo preparar el medio de instalación
+- [[Post-Instalación Checklist]] — qué hacer después de instalar
 - [[Bootloaders (GRUB Limine systemd-boot)]] — gestores de arranque
 - [[zram]] — swap comprimido en RAM
 

@@ -204,6 +204,6 @@ sudo apt check                            # sistema sano
 - [[apt]] — comandos avanzados de apt
 - [[pacman]] — comandos avanzados de pacman
 - [[df y du]] — diagnóstico de espacio en disco
-- [[Actualizacion entre versiones mayores]] — upgrade de distro
+- [[Actualización entre versiones mayores]] — upgrade de distro
 
 #troubleshooting

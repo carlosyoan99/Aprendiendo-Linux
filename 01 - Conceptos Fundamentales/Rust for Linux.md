@@ -167,7 +167,7 @@ use kernel::prelude::*;
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — compilar kernel desde fuente
+- [[Compilación desde Código Fuente]] — compilar kernel desde fuente
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — gestión de módulos
 - [[Desarrollo en Linux (gcc make gdb strace)]] — herramientas de desarrollo
 - [[Kernel Linux]] — historia y versiones del kernel

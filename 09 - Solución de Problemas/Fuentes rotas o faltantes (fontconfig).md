@@ -194,6 +194,6 @@ fc-cache -fv
 - [[Personalización en Linux]] — temas GTK/Qt, iconos, cursores, fuentes
 - [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — skel para fuentes por defecto
 - [[Locale y configuracion de idioma]] — charset UTF-8 necesario para caracteres especiales
-- [[Post-Instalacion Checklist]] — fuentes como parte de la instalación inicial
+- [[Post-Instalación Checklist]] — fuentes como parte de la instalación inicial
 
 #troubleshooting

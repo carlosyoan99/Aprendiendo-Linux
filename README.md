@@ -6,33 +6,33 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Carpeta | Contenido | Notas |
 |---|---|---|
-| `00 - Indices y Mapas` | MoC, Dashboard, Rutas de Aprendizaje, TODO, Arsenal Power User, Comparativas | 12 |
-| `01 - Conceptos Fundamentales` | Kernel, GNU, Docker, contenedores, LFS, namespaces, locale, NTP, historia | 35 |
-| `02 - Instalacion y Configuracion` | Particionado, USB booteable, dual boot, cifrado, dist-upgrade, gestores de paquetes | 9 |
-| `03 - Estructura del Sistema` | systemd, permisos, procesos, D-Bus, firewalls, ACLs, redes, audio, LVM, SELinux, FHS, /proc+/sys, boot, logging, RAID, cgroups | 28 |
-| `04 - Entornos de Escritorio` | GNOME, KDE Plasma, XFCE, Cinnamon, MATE, Budgie, Deepin, CDE, Sugar, Trinity, Pantheon, LXQt, Enlightenment + Desktop Shells | 15 |
-| `05 - Gestores de Ventanas` | i3, Hyprland, DWM, Awesome WM, Sway, bspwm, qtile, River, Openbox, Fluxbox, herbstluftwm, Niri + tiling WMs | 14 |
-| `06 - La Terminal` | Shell, shells (bash/zsh/fish), tmux, screen, atajos, tuberías y redirecciones | 4 |
-| `07 - Comandos Esenciales` | **82 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, pacman, df, free, uname, date, sed+awk, ripgrep, fzf, bat, xh...) + cheat sheet | 83 |
-| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools | 94 |
-| `09 - Solucion de Problemas` | Recursos + **16 problemas resueltos** (WiFi, sonido, permisos, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB) | 16 |
-| `10 - Automatizacion y Scripts` | Scripts propios (6: stats, logs, validación, huérfanas), cron, git hooks, Log.md, docs | 5 (+1 doc nueva) |
-| `11 - Distribuciones` | Catálogo completo de 41 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, etc.) | 41 |
+| `00 - Indices y Mapas` | MoC, Dashboard, Rutas de Aprendizaje, TODO, Arsenal Power User, Comparativas | 13 |
+| `01 - Conceptos Fundamentales` | Kernel, GNU, Docker, contenedores, LFS, namespaces, locale, NTP, historia, DevOps, CI/CD | 44 |
+| `02 - Instalación y Configuración` | Particionado, USB booteable, dual boot, cifrado, dist-upgrade, gestores de paquetes | 9 |
+| `03 - Estructura del Sistema` | systemd, permisos, procesos, D-Bus, firewalls, ACLs, redes, audio, LVM, SELinux, FHS, /proc+/sys, boot, logging, RAID, cgroups, udev, firmware, LUKS2+Btrfs | 40 |
+| `04 - Entornos de Escritorio` | GNOME, KDE Plasma, XFCE, Cinnamon, MATE, Budgie, Deepin, CDE, Sugar, Trinity, Pantheon, LXQt, Enlightenment, COSMIC Desktop, CutefishOS + Desktop Shells | 17 |
+| `05 - Gestores de Ventanas` | i3, Hyprland, DWM, Awesome WM, Sway, bspwm, qtile, River, Openbox, Fluxbox, herbstluftwm, Niri, Labwc, Wayfire + tiling WMs | 15 |
+| `06 - La Terminal` | Shell, shells (bash/zsh/fish), tmux, screen, Fish, Nushell, atajos, tuberías y redirecciones | 6 |
+| `07 - Comandos Esenciales` | **91 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, stat, file, gdb, sha256sum, groups, ltrace...) + cheat sheet | 91 |
+| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Docker Compose, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools, just, btop, hyperfine, duf | 110 |
+| `09 - Solución de Problemas` | Recursos + **21 problemas resueltos** (WiFi, permisos, sonido, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB, red no conecta, sistema no arranca, actualización rota, impresora, etc.) | 21 |
+| `10 - Automatización y Scripts` | Scripts propios (7: stats, logs, validación, huérfanas, fechas, setup), cron, git hooks, Log.md, docs | 6 |
+| `11 - Distribuciones` | Catálogo completo de 43 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, Clear Linux, Drauger OS, Garuda...) | 43 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |
 
 ## 📊 Estado actual (2026-07-25)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **358** (+ 7 templates) |
-| **Estado resuelto** | 353 |
-| **Estado en progreso** | 4 (TODO, MoC, Dashboard, Log) |
+| **Notas totales** | **415** (+ 7 templates) |
+| **Estado resuelto** | 409 |
+| **Estado en progreso** | 5 |
 | **Estado borrador** | 2 (README, CLAUDE — sin frontmatter deliberadamente) |
-| **Prioridad alta** | 168 |
-| **Prioridad media** | 119 |
-| **Prioridad baja** | 68 |
+| **Prioridad alta** | 179 |
+| **Prioridad media** | 139 |
+| **Prioridad baja** | 94 |
 | **Categorías** | 12 |
-| **Scripts de automatización** | 6 (stats, logs, validación, huérfanas, fechas) |
+| **Scripts de automatización** | 7 (stats, logs, validación, huérfanas, fechas, setup) |
 | **Git hooks** | 3 (pre-commit, commit-msg, pre-push) |
 | **Repositorio Git** | ✅ Inicializado (local) |
 
@@ -40,11 +40,11 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 94 | **Comando** | 83 |
-| **Concepto** | 38 | **Distribución** | 41 |
-| **Sistema** | 30 | **Entorno / WM** | 29 |
-| **Troubleshooting** | 17 | **Índice** | 12 |
-| **Instalación** | 9 | **Terminal** | 4 |
+| **Programa** | 112 | **Comando** | 92 |
+| **Concepto** | 45 | **Distribución** | 44 |
+| **Sistema** | 40 | **Entorno / WM** | 33 |
+| **Troubleshooting** | 21 | **Índice** | 13 |
+| **Instalación** | 9 | **Terminal** | 5 |
 | **Automatización** | 4 | **Log** | 2 |
 
 ## 🚀 Primeros pasos en Obsidian

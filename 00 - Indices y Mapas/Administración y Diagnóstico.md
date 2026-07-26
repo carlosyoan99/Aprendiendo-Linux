@@ -264,7 +264,7 @@ sudo systemctl enable --now mi-backup.timer
 systemctl list-timers               # ver todos los timers activos
 ```
 
-> Ver [[Cron y Systemd Timers]] para comparativa detallada y ejemplos.
+> Ver [[Cron]] · [[systemd timers]] para comparativa detallada y ejemplos.
 
 ---
 
@@ -379,7 +379,7 @@ Cuando algo no funciona, sigue esta secuencia:
 
 - [[Dia a Dia en CLI]] — Prioridad 1: comandos esenciales diarios
 - [[Cheat Sheet - Comandos Esenciales]] — referencia rápida
-- [[Solucion de Problemas - Recursos]] — metodología de troubleshooting
+- [[Solución de Problemas - Recursos]] — metodología de troubleshooting
 - [[Rutas de Aprendizaje]] — prioridades del vault
 - [[MoC - Linux]] — índice completo del vault
 

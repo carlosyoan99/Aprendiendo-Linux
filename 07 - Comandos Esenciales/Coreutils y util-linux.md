@@ -235,7 +235,7 @@ which kill                             # puede estar en /bin/kill (coreutils)
 - [[Proc y Sys]] — sistemas de archivos virtuales /proc y /sys
 - [[Módulos del kernel (lsmod modprobe blacklist)]] — utilidades lsmod, modprobe (kmod)
 - [[Gestores de Paquetes]] — cómo identificar a qué paquete pertenece un comando
-- [[Compilacion desde Codigo Fuente]] — compilar coreutils desde fuente
+- [[Compilación desde Código Fuente]] — compilar coreutils desde fuente
 
 ## Enlaces externos
 

@@ -433,7 +433,7 @@ blkid /dev/sdb*
 
 ## Ver también
 
-- [[Proceso de Instalacion General]] — qué hacer después de tener el USB listo
+- [[Proceso de Instalación General]] — qué hacer después de tener el USB listo
 - [[Particionado y Esquemas de Disco]] — cómo particionar durante la instalación
 - [[Dual Boot con Windows]] — consideraciones adicionales para dual boot
 - [[Bootloaders (GRUB Limine systemd-boot)]] — qué se instala en el disco después

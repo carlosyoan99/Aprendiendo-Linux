@@ -14,7 +14,7 @@ prioridad: media
 
 Fundado por **Gerard Beekmans** en 1999, el proyecto LFS nació como respuesta a la pregunta: _"¿Qué pasaría si construyéramos un sistema Linux desde cero, entendiendo cada pieza?"_ El libro se publica bajo licencia MIT y está disponible gratuitamente en [linuxfromscratch.org](https://www.linuxfromscratch.org/).
 
-A diferencia de [[Compilacion desde Codigo Fuente]], donde compilas **un programa** individual, LFS compila **todo el sistema operativo**: el kernel, las herramientas base, las bibliotecas, el init, y todo lo necesario para que el sistema arranque por sí mismo.
+A diferencia de [[Compilación desde Código Fuente]], donde compilas **un programa** individual, LFS compila **todo el sistema operativo**: el kernel, las herramientas base, las bibliotecas, el init, y todo lo necesario para que el sistema arranque por sí mismo.
 
 ```bash
 # Lo que consigues al final: un sistema que arranca, tiene shell,
@@ -348,7 +348,7 @@ LFS no es práctico para el día a día — nadie usa LFS como su distro princip
 
 ## Ver también
 
-- [[Compilacion desde Codigo Fuente]] — compilación de programas individuales, prerrequisito conceptual para LFS
+- [[Compilación desde Código Fuente]] — compilación de programas individuales, prerrequisito conceptual para LFS
 - [[Gentoo]] — distribución source-based menos radical que LFS (tiene gestor de paquetes)
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] — qué ocurre cuando arrancas el sistema que construiste
 - [[Kernel Linux]] — el componente más importante que configuras en LFS

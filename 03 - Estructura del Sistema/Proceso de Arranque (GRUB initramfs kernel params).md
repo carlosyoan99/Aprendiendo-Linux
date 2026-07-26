@@ -400,7 +400,7 @@ Síntoma: ingresas usuario y contraseña correctos y vuelve al prompt de login.
 - [[Filesystem Hierarchy Standard]]
 - [[Proc y Sys]]
 - [[systemd]]
-- [[Compilacion desde Codigo Fuente]]
+- [[Compilación desde Código Fuente]]
 - [[Dual Boot con Windows]] — gestión de bootloaders con múltiples SO
 
 ## Enlaces externos

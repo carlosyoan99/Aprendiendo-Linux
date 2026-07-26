@@ -69,7 +69,7 @@ _¿Cómo se actualiza de una versión mayor a otra? Enlace a la nota general si 
 # Comandos de upgrade
 ```
 
-Ver [[Actualizacion entre versiones mayores]].
+Ver [[Actualización entre versiones mayores]].
 
 ## Instalación (resumen)
 _Pasos principales si es relevante documentarlos._
@@ -119,7 +119,7 @@ _Pasos principales si es relevante documentarlos._
 
 ## Ver también
 - [[Familia/Base]] — distribución base
-- [[Proceso de Instalacion General]] — instalación desde cero
-- [[Actualizacion entre versiones mayores]] — upgrade de versión mayor
+- [[Proceso de Instalación General]] — instalación desde cero
+- [[Actualización entre versiones mayores]] — upgrade de versión mayor
 
 #distro

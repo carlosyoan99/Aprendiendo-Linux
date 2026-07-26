@@ -361,7 +361,7 @@ Saber qué va dónde te permite:
 - [[Symlinks y Dotfiles]] — enlaces simbólicos y archivos de configuración
 - [[Particionado y Esquemas de Disco]] — cómo particionar el disco siguiendo el FHS
 - [[Variables de Entorno y PATH]] — cómo el sistema encuentra binarios
-- [[Post-Instalacion Checklist]] — qué carpetas verificar tras instalar
+- [[Post-Instalación Checklist]] — qué carpetas verificar tras instalar
 - [[XDG Base Directory y dotfiles modernos]] — estándar moderno para directorios de usuario
 
 ## Enlaces externos

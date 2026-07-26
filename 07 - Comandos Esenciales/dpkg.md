@@ -261,7 +261,7 @@ ls -la /var/lib/dpkg/info/nginx.*
 - [[Gestores de Paquetes]] — comparativa entre distros
 - [[Snap y Flatpak]] — formatos portables alternativos
 - [[gdebi]] — instalador gráfico de .deb con dependencias
-- [[Proceso de Instalacion General]] — guía completa
+- [[Proceso de Instalación General]] — guía completa
 - [[Cheat Sheet - Comandos Esenciales]]
 
 #comando #dpkg #debian

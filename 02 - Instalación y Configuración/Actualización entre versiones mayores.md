@@ -175,7 +175,7 @@ mintupgrade                                     # asistente gráfico
 
 - [[Gestores de Paquetes]] — apt, pacman, dnf en detalle
 - [[Pantalla en negro tras actualizar drivers]] — troubleshooting post-upgrade gráfico
-- [[Proceso de Instalacion General]] — instalación desde cero vs actualización
+- [[Proceso de Instalación General]] — instalación desde cero vs actualización
 - [[Backups (borg restic duplicity rsync)]] — hacer backup antes del upgrade
 - [[Dual Boot con Windows]] — cuidado con GRUB tras actualizar Ubuntu
 
