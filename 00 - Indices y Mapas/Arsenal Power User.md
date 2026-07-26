@@ -66,7 +66,7 @@ Las herramientas TUI son esenciales para el power user:
 | `scripts/daily-log.sh` | Log diario automatizado |
 | `scripts/find-orphans.sh` | Detectar notas huérfanas |
 
-> [[10 - Automatizacion y Scripts/Automatizacion y Scripts.md]]
+> [[Automatizacion y Scripts]]
 
 ---
 

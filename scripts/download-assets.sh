@@ -11,68 +11,45 @@ UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrom
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$DIR/assets"
 
-download_logo() {
-    local name="$1" url="$2"
-    local file="$LOG_DIR/logos/$name"
+download_file() {
+    local name="$1" url="$2" subdir="$3"
+    local file="$LOG_DIR/$subdir/$name"
     if [ -f "$file" ] && [ -s "$file" ]; then
-        echo "  ✅ $name ya existe ($(stat -c%s "$file") bytes)"
-        return 0
-    fi
-    echo "  ⬇️  $name..."
-    if wget -q --user-agent="$UA" --timeout=15 -O "$file" "$url" 2>/dev/null && [ -s "$file" ]; then
         local type
         type=$(file -b "$file")
-        if echo "$type" | grep -qi "SVG\|PNG\|image"; then
-            echo "     ✅ OK ($(stat -c%s "$file") bytes - $type)"
+        if echo "$type" | grep -qi "SVG\|PNG\|JPEG\|image"; then
+            echo "  ✅ $name ya existe ($(stat -c%s "$file") bytes)"
             return 0
         fi
     fi
-    rm -f "$file"
-    echo "     ❌ Falló"
+    echo "  ⬇️  $name..."
+    sleep 8
+    local attempt=1
+    while [ $attempt -le 3 ]; do
+        curl -sL --max-time 20 --retry 0 -A "$UA" -o "$file" "$url" 2>/dev/null
+        if [ -s "$file" ]; then
+            local type
+            type=$(file -b "$file")
+            if echo "$type" | grep -qi "SVG\|PNG\|JPEG\|image"; then
+                echo "     ✅ OK ($(stat -c%s "$file") bytes)"
+                return 0
+            else
+                echo "     ⚠️  Descargado pero no es imagen (intento $attempt/3)"
+                rm -f "$file"
+            fi
+        else
+            echo "     ⚠️  Vacío (intento $attempt/3)"
+        fi
+        attempt=$((attempt + 1))
+        sleep 10
+    done
+    echo "     ❌ Falló tras 3 intentos"
     return 1
 }
 
-download_screenshot() {
-    local name="$1" url="$2"
-    local file="$LOG_DIR/screenshots/$name"
-    if [ -f "$file" ] && [ -s "$file" ]; then
-        echo "  ✅ $name ya existe ($(stat -c%s "$file") bytes)"
-        return 0
-    fi
-    echo "  ⬇️  $name..."
-    if wget -q --user-agent="$UA" --timeout=15 -O "$file" "$url" 2>/dev/null && [ -s "$file" ]; then
-        local type
-        type=$(file -b "$file")
-        if echo "$type" | grep -qi "PNG\|image\|SVG"; then
-            echo "     ✅ OK ($(stat -c%s "$file") bytes - $type)"
-            return 0
-        fi
-    fi
-    rm -f "$file"
-    echo "     ❌ Falló (prueba con: curl -sLA \"$UA\" -o \"$file\" \"$url\")"
-    return 1
-}
 
-download_diagram() {
-    local name="$1" url="$2"
-    local file="$LOG_DIR/diagrams/$name"
-    if [ -f "$file" ] && [ -s "$file" ]; then
-        echo "  ✅ $name ya existe ($(stat -c%s "$file") bytes)"
-        return 0
-    fi
-    echo "  ⬇️  $name..."
-    if wget -q --user-agent="$UA" --timeout=15 -O "$file" "$url" 2>/dev/null && [ -s "$file" ]; then
-        local type
-        type=$(file -b "$file")
-        if echo "$type" | grep -qi "SVG\|PNG\|image"; then
-            echo "     ✅ OK ($(stat -c%s "$file") bytes - $type)"
-            return 0
-        fi
-    fi
-    rm -f "$file"
-    echo "     ❌ Falló"
-    return 1
-}
+
+
 
 # ============================================================
 # LOGOS DE DISTRIBUCIONES
@@ -80,51 +57,23 @@ download_diagram() {
 logos_all() {
     echo "=== Logos de distribuciones ==="
     
-    # Desde Wikimedia Commons (Special:FilePath redirect + User-Agent)
-    download_logo "ubuntu.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Ubuntu-logo-no-wordmark-2022.svg"
-    download_logo "debian.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Debian-OpenLogo.svg"
-    download_logo "kalilinux.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Kali_Linux_2.0_wordmark.svg"
-    download_logo "gentoo.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Gentoo_Linux_logo_matte.svg"
-    
-    # Desde sitios oficiales
-    download_logo "ubuntu.svg" "https://assets.ubuntu.com/v1/ce518a18-CoF-2022_solid+O.svg"
-    download_logo "debian.svg" "https://www.debian.org/logos/openlogo-nd.svg"
-    
-    # Fedora (requiere buscar en Fedora wiki)
-    download_logo "fedora.svg" "https://fedoraproject.org/assets/images/fedora-logo.svg"
-    
-    # Arch Linux (desde GitHub artwork)
-    download_logo "archlinux.svg" "https://raw.githubusercontent.com/archlinux/archlinux-artwork/master/logo/archlinux-logo-dark.svg"
-    
-    # Linux Mint
-    download_logo "linuxmint.svg" "https://raw.githubusercontent.com/linuxmint/artwork/master/logo/logo-linux-mint.svg"
-    
-    # openSUSE
-    download_logo "opensuse.svg" "https://raw.githubusercontent.com/openSUSE/artwork/master/logo/opensuse-official-logo.svg"
-    
-    # Manjaro
-    download_logo "manjaro.svg" "https://raw.githubusercontent.com/manjaro/artwork/master/logo/Manjaro-logo.svg"
-    
-    # Alpine Linux
-    download_logo "alpinelinux.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Alpine_Linux_Logo.svg"
-    
-    # NixOS
-    download_logo "nixos.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/NixOS_logo.svg"
-    
-    # Void Linux
-    download_logo "voidlinux.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Void_Linux_logo.svg"
-    
-    # CentOS
-    download_logo "centos.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Centos-logo-2022.svg"
-    
-    # Slackware
-    download_logo "slackware.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Slackware_logo.svg"
-    
-    # Pop!_OS
-    download_logo "popos.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/POP!_OS_logo_silhouette.svg"
-    
-    # elementary OS
-    download_logo "elementaryos.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Elementary_OS_logo.svg"
+    # URLs verificadas via Wikimedia API (upload.wikimedia.org directo)
+    download_file "ubuntu.svg" "https://upload.wikimedia.org/wikipedia/commons/9/9e/Ubuntu-logo-no-wordmark-2022.svg" "logos"
+    download_file "debian.svg" "https://upload.wikimedia.org/wikipedia/commons/a/ad/Debian-OpenLogo.svg" "logos"
+    download_file "kalilinux.svg" "https://upload.wikimedia.org/wikipedia/commons/2/25/Kali-dragon-icon.svg" "logos"
+    download_file "gentoo.svg" "https://upload.wikimedia.org/wikipedia/commons/4/4d/Gentoo_Linux_logo_matte.svg" "logos"
+    download_file "fedora.svg" "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fedora_logo.svg" "logos"
+    download_file "archlinux.svg" "https://upload.wikimedia.org/wikipedia/commons/f/f9/Archlinux-logo-standard-version.svg" "logos"
+    download_file "linuxmint.svg" "https://upload.wikimedia.org/wikipedia/commons/4/45/The_Linux_Mint_Logo.svg" "logos"
+    download_file "opensuse.svg" "https://upload.wikimedia.org/wikipedia/commons/d/d0/OpenSUSE_Logo.svg" "logos"
+    download_file "manjaro.svg" "https://upload.wikimedia.org/wikipedia/commons/8/85/Manjaro_logo_text.svg" "logos"
+    download_file "alpinelinux.svg" "https://upload.wikimedia.org/wikipedia/commons/a/a6/Alpine_Linux_Logo.svg" "logos"
+    download_file "nixos.svg" "https://upload.wikimedia.org/wikipedia/commons/4/4e/NixOS_logo.svg" "logos"
+    download_file "voidlinux.svg" "https://upload.wikimedia.org/wikipedia/commons/0/02/Void_Linux_logo.svg" "logos"
+    download_file "centos.svg" "https://upload.wikimedia.org/wikipedia/commons/d/d8/Centos-logo-2022.svg" "logos"
+    download_file "slackware.svg" "https://upload.wikimedia.org/wikipedia/commons/3/34/Slackware_logo.svg" "logos"
+    download_file "popos.svg" "https://upload.wikimedia.org/wikipedia/commons/4/46/Pop%21_OS_Icon.svg" "logos"
+    download_file "elementaryos.svg" "https://upload.wikimedia.org/wikipedia/commons/a/ab/Elementary_logo.svg" "logos"
 }
 
 # ============================================================
@@ -133,13 +82,14 @@ logos_all() {
 screenshots_all() {
     echo "=== Capturas de entornos ==="
     
-    download_screenshot "gnome-shell.png" "https://commons.wikimedia.org/wiki/Special:FilePath/GNOME_Shell.png"
-    download_screenshot "kde-plasma6.png" "https://commons.wikimedia.org/wiki/Special:FilePath/KDE_Plasma_6_screenshot.png"
-    download_screenshot "xfce-desktop.png" "https://commons.wikimedia.org/wiki/Special:FilePath/XFCE-4.12-Desktop-standard.png"
-    download_screenshot "cinnamon-desktop.png" "https://commons.wikimedia.org/wiki/Special:FilePath/Cinnamon_4.2.3_screenshot.png"
-    download_screenshot "mate-desktop.png" "https://commons.wikimedia.org/wiki/Special:FilePath/Mate_Desktop_de.png"
-    download_screenshot "i3-screenshot.png" "https://commons.wikimedia.org/wiki/Special:FilePath/I3_window_manager_screenshot.png"
-    download_screenshot "hyprland-screenshot.png" "https://commons.wikimedia.org/wiki/Special:FilePath/Hyprland_screen.png"
+    # URLs verificadas via Wikimedia API
+    download_file "gnome-shell.png" "https://upload.wikimedia.org/wikipedia/commons/9/97/GNOME_Shell.png" "screenshots"
+    download_file "kde-plasma6.png" "https://upload.wikimedia.org/wikipedia/commons/e/e2/KDE_Plasma_6_screenshot.png" "screenshots"
+    download_file "xfce-desktop.png" "https://upload.wikimedia.org/wikipedia/commons/2/24/XFCE-4.12-Desktop-standard.png" "screenshots"
+    download_file "cinnamon-desktop.png" "https://upload.wikimedia.org/wikipedia/commons/c/cd/Cinnamon_4.2.3_screenshot.png" "screenshots"
+    download_file "mate-desktop.png" "https://upload.wikimedia.org/wikipedia/commons/5/55/Mate_Desktop_de.png" "screenshots"
+    download_file "i3-screenshot.png" "https://upload.wikimedia.org/wikipedia/commons/a/af/I3_window_manager_screenshot.png" "screenshots"
+    download_file "hyprland-screenshot.png" "https://upload.wikimedia.org/wikipedia/commons/2/2f/Hyprland_screen.png" "screenshots"
 }
 
 # ============================================================
@@ -148,9 +98,10 @@ screenshots_all() {
 diagrams_all() {
     echo "=== Diagramas técnicos ==="
     
-    download_diagram "kernel-structure.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Oversimplified_Structure_of_the_Linux_kernel.svg"
-    download_diagram "fhs-hierarchy.svg" "https://commons.wikimedia.org/wiki/Special:FilePath/Standard-unix-filesystem-hierarchy.svg"
-    download_diagram "boot-process.png" "https://commons.wikimedia.org/wiki/Special:FilePath/Linux_Boot_Schema.png"
+    # URLs verificadas via Wikimedia API
+    download_file "kernel-structure.svg" "https://upload.wikimedia.org/wikipedia/commons/a/ac/Oversimplified_Structure_of_the_Linux_kernel.svg" "diagrams"
+    download_file "fhs-hierarchy.svg" "https://upload.wikimedia.org/wikipedia/commons/f/f3/Standard-unix-filesystem-hierarchy.svg" "diagrams"
+    download_file "boot-process.png" "https://upload.wikimedia.org/wikipedia/commons/9/90/Linux_Boot_Schema.png" "diagrams"
 }
 
 # ============================================================
