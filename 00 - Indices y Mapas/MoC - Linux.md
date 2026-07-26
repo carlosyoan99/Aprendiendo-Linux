@@ -20,6 +20,11 @@ categoria: indice
 
 ## Fundamentos
 - [[Que es Linux]] · [[GNU y Linux]] · [[Kernel Linux]]
+- [[UNIX]] — ancestro de Linux, filosofía POSIX, System V vs BSD
+- [[MS-DOS]] — antecedente de Windows, origen de los comandos CMD
+- [[Windows]] — SO dominante en escritorio, NT vs 9x, comparativa con Linux
+- [[macOS]] — basado en UNIX (Darwin/BSD), Homebrew, comparativa con Linux
+- [[Distribuciones de Linux]] — qué son, familias, modelos, tabla comparativa
 - [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
 - [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilacion desde Codigo Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
 - [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers

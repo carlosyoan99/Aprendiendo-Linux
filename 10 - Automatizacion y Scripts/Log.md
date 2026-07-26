@@ -422,3 +422,23 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **Pendiente**: descargar logos restantes (~12), capturas DE/WM y diagramas vía `download-assets.sh` o `wikipedia-dl.py`.
 
 #log
+
+## 2026-07-25 (v5) — 5 notas nuevas de conceptos (SOs)
+
+### 🆕 Notas creadas (01 - Conceptos Fundamentales)
+- **[[Windows]]**: SO de Microsoft, NT vs 9x, comparativa con Linux (filesystem, permisos, comandos), WSL2.
+- **[[macOS]]**: basado en UNIX (Darwin/Mach+BSD), Homebrew, launchd vs systemd, comparativa con Linux.
+- **[[MS-DOS]]**: sistema operativo de línea de comandos (1981-1993), tabla comparativa de comandos DOS vs Bash, FAT32, herencia en Windows CMD.
+- **[[UNIX]]**: historia completa (Bell Labs → System V → BSD → POSIX → Linux), filosofía UNIX, tabla de derivados.
+- **[[Distribuciones de Linux]]**: qué son, 6 familias, tabla comparativa amplia, árbol de decisión, modelo de lanzamiento.
+
+### 📌 MoC actualizado
+- 5 notas añadidas en sección Fundamentos con descripciones y wikilinks.
+
+### 🔍 Verificación
+- `check-frontmatter.sh`: 5/5 OK. Frontmatter completo, hashtags correctos.
+- Code reviewer: contenido preciso, wikilinks válidos, estilo consistente.
+
+### 📊 Stats
+- **Vault: 365 notas (+5).** Concepto: 38→43. 01 - Conceptos: 37→42.
+- **Nuevos archivos**: Windows.md, macOS.md, MS-DOS.md, UNIX.md, Distribuciones de Linux.md.
