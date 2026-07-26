@@ -15,7 +15,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `06 - La Terminal` | Shell, shells (bash/zsh/fish), tmux, screen, Fish, Nushell, atajos, tuberías y redirecciones | 6 |
 | `07 - Comandos Esenciales` | **91 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, stat, file, gdb, sha256sum, groups, ltrace...) + cheat sheet | 91 |
 | `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Docker Compose, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools, just, btop, hyperfine, duf | 110 |
-| `09 - Solución de Problemas` | Recursos + **21 problemas resueltos** (WiFi, permisos, sonido, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB, red no conecta, sistema no arranca, actualización rota, impresora, etc.) | 21 |
+| `09 - Solución de Problemas` | Recursos + **20 problemas resueltos** (WiFi, permisos, sonido, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB, red no conecta, sistema no arranca, actualización rota, impresora) | 20 |
 | `10 - Automatización y Scripts` | Scripts propios (7: stats, logs, validación, huérfanas, fechas, setup), cron, git hooks, Log.md, docs | 6 |
 | `11 - Distribuciones` | Catálogo completo de 43 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, Clear Linux, Drauger OS, Garuda...) | 43 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |

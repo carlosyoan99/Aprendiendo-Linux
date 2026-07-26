@@ -91,7 +91,7 @@ Instalar desde *Settings → Community plugins → Browse*:
 |---|---|
 | **Dataview** | Motor de consultas — alimenta `00 - Indices y Mapas/Dashboard.md`. Requiere activar "Enable JavaScript Queries" solo si se usan `dataviewjs` (no es necesario para las queries actuales). |
 | **Templater** | Reemplaza el motor de plantillas nativo de Obsidian con soporte para `{{date}}`, prompts y scripts al insertar una plantilla nueva. Configurar la carpeta de plantillas en `Settings → Templater → Template folder location` apuntando a `Templates/`. |
-| **Tasks** | Checkboxes con metadatos (fecha límite, prioridad, recurrencia) — útil para `Post-Instalacion Checklist.md` y para trackear pendientes dentro de cualquier nota con `- [ ]`. |
+| **Tasks** | Checkboxes con metadatos (fecha límite, prioridad, recurrencia) — útil para `Post-Instalación Checklist.md` y para trackear pendientes dentro de cualquier nota con `- [ ]`. |
 | **QuickAdd** (opcional) | Atajo de teclado para crear una nota nueva desde una plantilla sin navegar manualmente a la carpeta correcta. |
 | **Tag Wrangler** (opcional) | Gestionar (renombrar/fusionar) etiquetas masivamente cuando el vault crece. |
 
