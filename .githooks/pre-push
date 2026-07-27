@@ -29,6 +29,7 @@ WIKILINKS=$(find . -name '*.md' \
     grep -oP '\[\[([^\]]+)\]\]' | \
     sed 's/\[\[//;s/\]\]//' | \
     sed 's/|.*//' | \
+    sed 's/\\$//' | \
     grep -v '#' | \
     grep -v '\.\.\.' | \
     grep -v '^:' | \
