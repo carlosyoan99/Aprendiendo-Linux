@@ -63,7 +63,7 @@ bus            número   vendor:product   descripción
 ## Ver también
 
 - [[lspci]] — dispositivos PCIe
-- [[Diagnóstico de hardware]] — índice + comparativa
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + comparativa
 - [[Video4Linux (V4L2)]] — cámaras y video
 
 ## Enlaces externos

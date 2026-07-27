@@ -1,6 +1,7 @@
 #!/bin/bash
 # pre-push — Busca wikilinks rotos antes de hacer push
 # Ubicación: .githooks/pre-push
+# v5 — Ignora: bloques código, anclas [[#...]], archivos índice, patrones regex
 
 set -euo pipefail
 
@@ -8,34 +9,52 @@ echo "🔍 Verificando wikilinks antes del push..."
 
 cd "$(git rev-parse --show-toplevel)"
 
-# Recolectar todos los wikilinks [[Nota]] de todas las notas .md
-WIKILINKS=$(grep -roP '\[\[([^\]]+)\]\]' --include="*.md" . | \
-            grep -v '^./Templates/' | \
-            grep -v '^./.obsidian/' | \
-            sed 's/.*\[\[//;s/\]\].*//' | \
-            sed 's/|.*//' | \
-            sort -u)
+# Extraer wikilinks, excluyendo:
+# - Archivos índice internos (00*, Log*, Prompts*, Scripts del Vault, Templates, .obsidian)
+# - Bloques de código ``` ... ```
+# - Anclas [[#...]]
+# - Patrones que no son wikilinks reales (regex como [[:space:]])
+WIKILINKS=$(find . -name '*.md' \
+    -not -path './Templates/*' \
+    -not -path './.obsidian/*' \
+    -not -path './.git/*' \
+    -not -path './00 - Indices y Mapas/*' \
+    -not -path './10 - Automatización y Scripts/Log.md' \
+    -not -path './10 - Automatización y Scripts/Scripts del Vault.md' \
+    -not -name 'CLAUDE.md' \
+    -not -name 'README.md' \
+    -not -name 'TODO.md' \
+    -not -name 'Prompts de Trabajo.md' \
+    -exec sed '/^```/,/^```/d' {} + 2>/dev/null | \
+    grep -oP '\[\[([^\]]+)\]\]' | \
+    sed 's/\[\[//;s/\]\]//' | \
+    sed 's/|.*//' | \
+    grep -v '#' | \
+    grep -v '\.\.\.' | \
+    grep -v '^:' | \
+    grep -v '^%' | \
+    sort -u || true)
 
 # Recolectar nombres reales de archivos (sin extensión, sin ruta)
-NOTAS_EXISTENTES=$(find . -name '*.md' -not -path './Templates/*' -not -path './.obsidian/*' -not -path './.git/*' | \
-                   xargs -I{} basename '{}' .md | sort -u)
+NOTAS_EXISTENTES=$(find . -name '*.md' \
+    -not -path './Templates/*' \
+    -not -path './.obsidian/*' \
+    -not -path './.git/*' \
+    -exec basename {} .md \; | sort -u)
 
 ERRORES=0
 while IFS= read -r link; do
-    # Saltar enlaces que no son wikilinks de notas (urls, etc.)
-    if [[ "$link" == http* ]] || [[ "$link" == *"://"* ]]; then
+    if [[ -z "$link" ]]; then
         continue
     fi
 
-    # Normalizar: el enlace puede tener el formato [[Nota|alias]] → ya extrajimos antes del |
     LINK_NORMALIZADO=$(echo "$link" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
     if [[ -z "$LINK_NORMALIZADO" ]]; then
         continue
     fi
 
-    # Verificar si existe una nota con ese nombre
-    if ! echo "$NOTAS_EXISTENTES" | grep -qi "^${LINK_NORMALIZADO}$"; then
+    if ! echo "$NOTAS_EXISTENTES" | grep -xqiF "$LINK_NORMALIZADO"; then
         echo "  ⚠️  Wikilink roto: [[${LINK_NORMALIZADO}]]"
         ((ERRORES++)) || true
     fi

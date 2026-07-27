@@ -39,6 +39,6 @@ binding_super_f = toggle-maximize
 
 ## Ver también
 
-- [[Hyprland]], [[Sway]], [[Compuestos Wayland]]
+- [[Hyprland]], [[Sway]], [[Wayland vs X11]]
 
 #entorno-escritorio #wayland

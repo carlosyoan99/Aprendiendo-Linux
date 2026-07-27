@@ -169,7 +169,7 @@ dnf module reset nodejs                # resetear (para cambiar de stream)
 
 - [[apt]] — gestor de Debian/Ubuntu
 - [[pacman]] — gestor de Arch
-- [[rpm]] — bajo nivel de RPM
+- rpm — bajo nivel de RPM
 - [[Gestores de Paquetes]] — índice + comparativa
 
 ## Enlaces externos

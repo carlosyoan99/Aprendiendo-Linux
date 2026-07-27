@@ -68,7 +68,7 @@ sudo dmidecode -t memory | grep -E "Size:|Type:|Speed:|Manufacturer:|Part Number
 ## Ver también
 
 - [[lspci]] — dispositivos PCIe
-- [[Diagnóstico de hardware]] — índice + comparativa
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + comparativa
 - [[Firmware y BIOS-UEFI]]
 
 ## Enlaces externos

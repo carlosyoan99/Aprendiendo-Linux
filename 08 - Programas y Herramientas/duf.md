@@ -50,7 +50,7 @@ duf --json | jq                           # procesar con jq
 ## Ver también
 
 - [[df y du]] — comandos clásicos de espacio en disco
-- [[ncdu]] — explorador interactivo de uso de disco
+- ncdu — explorador interactivo de uso de disco
 - [[lsblk]] — listar dispositivos de bloque
 
 ## Enlaces externos

@@ -58,7 +58,7 @@ yay <paquete>     # buscar e instalar desde AUR
 
 - [[Snap y Flatpak]] — historia, comandos avanzados, permisos
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de paquetes
-- [[AUR]] — repositorio comunitario de Arch
+- AUR — repositorio comunitario de Arch
 
 ## Enlaces externos
 

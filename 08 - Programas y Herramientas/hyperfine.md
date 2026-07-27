@@ -65,7 +65,7 @@ Summary
 ## Ver también
 
 - [[perf]] — profiling de bajo nivel
-- [[time]] — timing básico de comandos
+- time — timing básico de comandos
 - [[strace]] — trazar syscalls
 - [[Optimización de rendimiento]] — kernel tuning
 

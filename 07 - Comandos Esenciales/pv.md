@@ -153,7 +153,7 @@ cat /dev/zero | pv | dd of=/dev/null     # prueba de velocidad de CPU/memoria
 - [[dd]] — copia de bloques (a menudo combinado con pv)
 - [[tar]] — empaquetado (combinado con pv para progreso)
 - [[rsync]] — copia remota con progreso nativo
-- [[pipe]] — tuberías en Linux
+- pipe — tuberías en Linux
 - [[Cheat Sheet - Comandos Esenciales]]
 
 #comando #util

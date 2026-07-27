@@ -294,7 +294,7 @@ apt-mark showauto | grep python3
 - [[dpkg]] — bajo nivel (instalar .deb directamente)
 - [[Snap y Flatpak]] — formatos portables alternativos
 - [[Proceso de Instalación General]] — guía de instalación desde cero
-- [[post-instalacion-checklist]] — qué hacer tras instalar
+- [[Post-Instalación Checklist]] — qué hacer tras instalar
 - [[nala]] — frontend moderno para APT
 - [[Cheat Sheet - Comandos Esenciales]]
 

@@ -45,7 +45,7 @@ btop -t                               # vista de árbol
 
 ## Ver también
 
-- [[htop btop]], [[glances]], [[nvtop]], [[free]]
+- [[htop btop]], glances, [[nvtop]], [[free]]
 
 ## Enlaces externos
 

@@ -355,8 +355,8 @@ crontab -e
 ## Ver también
 
 - [[Log]] — registro cronológico de sesiones del vault
-- [[CLAUDE.md]] — reglas y convenciones del vault
-- [[Git hooks]] — automatización pre-commit/commit-msg/pre-push
+- CLAUDE.md — reglas y convenciones del vault
+- [[Git hooks para el vault]] — automatización pre-commit/commit-msg/pre-push
 - [[Cron]] · [[systemd timers]] — automatización programada
 
 #automatizacion #scripts

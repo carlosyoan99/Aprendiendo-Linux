@@ -73,7 +73,7 @@ slot.func
 
 - [[lsusb]] — dispositivos USB
 - [[dmidecode]] — BIOS, placa base, RAM
-- [[Diagnóstico de hardware]] — índice + comparativa
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + comparativa
 - [[Módulos del kernel (lsmod modprobe blacklist)]]
 
 ## Enlaces externos

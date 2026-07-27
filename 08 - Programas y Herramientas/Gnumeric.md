@@ -8,7 +8,7 @@ prioridad: baja
 
 # Gnumeric
 
-Hoja de cálculo ligera y rápida, parte del proyecto GNOME. Se complementa con [[AbiWord]] como alternativa ultraligera a [[LibreOffice Calc]].
+Hoja de cálculo ligera y rápida, parte del proyecto GNOME. Se complementa con [[AbiWord]] como alternativa ultraligera a LibreOffice Calc.
 
 ## Instalación
 

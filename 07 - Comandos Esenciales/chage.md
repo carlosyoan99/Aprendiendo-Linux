@@ -118,7 +118,7 @@ PASS_WARN_AGE   7        # días de aviso
 ## Ver también
 
 - [[PAM]] — módulos de autenticación (pam_pwquality, pam_faillock)
-- [[passwd]] — cambiar contraseña
+- passwd — cambiar contraseña
 - [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — índice
 
 ## Enlaces externos

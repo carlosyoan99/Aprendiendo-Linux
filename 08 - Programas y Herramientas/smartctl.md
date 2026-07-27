@@ -78,7 +78,7 @@ sudo nvme smart-log /dev/nvme0n1         # temperatura, desgaste, errores
 
 ## Ver también
 
-- [[Diagnóstico de hardware]] — índice + comparativa
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + comparativa
 - [[RAID (mdadm)]] — monitoreo de discos en RAID
 - [[Monitorización (Prometheus node_exporter)]] — métricas SMART exportadas
 - [[Particionado y Esquemas de Disco]]

@@ -50,7 +50,7 @@ sudo lshw -xml > hardware-report.xml     # formato XML (para parsear)
 - [[lspci]] — dispositivos PCIe
 - [[lsusb]] — dispositivos USB
 - [[dmidecode]] — BIOS, placa base, RAM
-- [[Diagnóstico de hardware]] — índice + comparativa
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + comparativa
 
 ## Enlaces externos
 

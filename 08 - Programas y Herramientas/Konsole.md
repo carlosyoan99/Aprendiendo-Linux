@@ -37,7 +37,7 @@ Se configura desde la interfaz: **Settings → Edit Current Profile**. Los perfi
 - [[KDE Plasma]] — entorno de escritorio asociado
 - [[Emuladores de Terminal]] — índice + comparativa
 - [[GNOME Terminal]] — alternativa en GNOME
-- [[Yakuake]] — terminal desplegable tipo Quake del proyecto KDE
+- Yakuake — terminal desplegable tipo Quake del proyecto KDE
 
 ## Enlaces externos
 

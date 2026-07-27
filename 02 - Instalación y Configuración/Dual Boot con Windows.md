@@ -19,7 +19,7 @@ Tener Windows y Linux instalados en el mismo disco (o discos separados), eligien
 1. **Instalar Windows primero.** Su instalador sobrescribe el bootloader sin preguntar; instalar Linux después evita tener que reparar el arranque.
 2. En Windows: reducir la partición existente desde el "Administrador de discos" para dejar **espacio libre sin asignar** (no crear una partición desde Windows — deja que el instalador de Linux lo haga).
 3. **Desactivar Fast Startup** en Windows (hiberna el disco de forma que Linux no puede montarlo con seguridad si no se apaga limpio).
-4. Desactivar **Secure Boot** en BIOS/UEFI si la distro no lo soporta (consultar [[Creacion de USB Booteable#Secure Boot y USB booteable]]).
+4. Desactivar **Secure Boot** en BIOS/UEFI si la distro no lo soporta (consultar [[Creación de USB Booteable#Secure Boot y USB booteable]]).
 5. Instalar Linux apuntando al espacio libre — la mayoría de instaladores detectan Windows automáticamente y ofrecen "instalar junto a".
 6. GRUB debería detectar ambos sistemas y mostrarlos en el menú de arranque.
 

@@ -70,7 +70,7 @@ sudo ubuntu-drivers autoinstall
 
 - [[Videojuegos en Linux]]
 - [[Bazzite]]
-- [[Proton]]
+- [[Videojuegos en Linux]]
 - [[Wine]]
 
 #distro #gaming #steam #kde #ubuntu

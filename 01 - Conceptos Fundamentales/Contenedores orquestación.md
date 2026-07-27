@@ -553,7 +553,7 @@ kubectl autoscale deployment app --min=3 --max=10 --cpu-percent=70
 - [[kubectl]] — comando kubectl (atajos, contexto, recursos)
 - [[Namespaces (Linux)]] — los namespaces de Linux: base técnica de los contenedores
 - [[cgroups (control de recursos)]] — cgroups limitan CPU/RAM que usa cada contenedor
-- [[Contenedores - Comparativa]] — LXC, LXD, Incus, Docker, Podman, systemd-nspawn
+- [[Contenedores - Comparativa LXC LXD Incus Docker Podman systemd-nspawn]] — LXC, LXD, Incus, Docker, Podman, systemd-nspawn
 - [[Entorno de desarrollo Linux]] — contenedores para desarrollo (Dev Containers, Docker)
 - [[systemd-nspawn]] — contenedores ligeros nativos de systemd
 

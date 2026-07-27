@@ -49,6 +49,6 @@ Actúa como infraestructura base para gestores de recursos como **Pacemaker** (e
 
 - [[systemd]] — init moderno, también gestiona servicios
 - [[Firewall]] — seguridad en HA
-- [[RAID]] — redundancia a nivel de disco
+- [[RAID (mdadm)]] — redundancia a nivel de disco
 
 #programa #alta-disponibilidad

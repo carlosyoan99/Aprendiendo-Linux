@@ -96,7 +96,7 @@ cat /sys/bus/usb/devices/1-1/idVendor
 
 - [[lsblk]]
 - [[Módulos del kernel (lsmod modprobe blacklist)]]
-- [[Diagnóstico de hardware]]
+- [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]]
 - [[Filesystem Hierarchy Standard]]
 
 #sistema #udev #dev #hardware #dispositivos
