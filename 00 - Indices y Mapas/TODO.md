@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-07-27
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-25 (v9 — limpieza de assets, raw, scripts descarga)
+> Última actualización: 2026-07-27 (v11 — expansión de 8 notas fragmentadas, verificación notas antiguas, dashboard actualizado)
 
 ---
 
@@ -177,41 +177,90 @@ prioridad: alta
 
 ---
 
+### 🗒️ Sesión 2026-07-26 — Fragmentación total + borradores + expansiones + fixes
+
+#### 🧩 Fragmentación final (8 notas agrupadas → ~20 individuales)
+
+| Grupo | Notas nuevas | Original → Índice |
+|---|---|---|
+| **PostgreSQL y MySQL** | [[PostgreSQL]], [[MySQL]] | [[PostgreSQL y MySQL]] → índice |
+| **Vim Neovim** | [[Vim]], [[Neovim]] | [[Vim Neovim]] → índice |
+| **Logging del sistema** | [[journald]], [[rsyslog]], [[logrotate]] | [[Logging del sistema]] → índice |
+| **Bootloaders** | [[GRUB]], [[Limine]] | [[Bootloaders]] → índice |
+| **SELinux y AppArmor** | [[SELinux]], [[AppArmor]] | [[SELinux y AppArmor]] → índice |
+| **Gestión usuarios avanzada** | [[PAM]], [[chage]], [[chsh]], [[skel]] | [[Gestión de usuarios avanzada]] → índice |
+| **Cifrado** | [[LUKS]], [[GPG]] | [[Cifrado]] → índice |
+| **Gestores de Paquetes** | [[dnf]], [[Flatpak]], [[Snap]] | [[Gestores de Paquetes]] → índice |
+
+#### ✅ Borradores completados (10 → resuelto)
+
+| Nota | Mejoras añadidas |
+|---|---|
+| [[AbiWord]] | Ejemplos de uso, tabla de formatos, ventajas/desventajas |
+| [[Antigravity]] | Atajos, ventajas/desventajas, más características |
+| [[Calligra Suite]] | Tabla de componentes, ejemplos |
+| [[Double Commander]] | Atajos F-key, plugins, conexiones de red |
+| [[Gnumeric]] | Importación CSV, tabla de formatos, rendimiento |
+| [[Grafana]] | Datasource config (manual + provisioning), sistema de alertas |
+| [[PCManFM]] | Atajos, gestión de escritorio, montaje |
+| [[SpaceFM]] | Vista dividida, plugins, gestión sin GVfs |
+| [[st]] | Tabla de parches, wikilink [[suckless]] reparado |
+| [[wezterm]] | Atajos completo, config multi-font, workspaces |
+
+#### ✨ Nota nueva: [[suckless]]
+
+Creada para reparar el wikilink roto en [[st]] (referenciaba a [[suckless]] inexistente).
+
+#### 🔧 Fix: GNOME Web rename
+
+`GNOME Web.md` → **`GNOME Web (Epiphany).md`** para que coincida con el wikilink `[[GNOME Web (Epiphany)]]` en MoC y Navegadores Web.md.
+
+#### 📈 Expansión de notas fragmentadas (5)
+
+| Nota | Antes | Después | Secciones nuevas |
+|---|---|---|---|
+| [[PostgreSQL]] | ~170 | **~300** | pg_hba.conf, Streaming Replication, PgBouncer, Autovacuum tuning, Locks troubleshooting, Docker |
+| [[Neovim]] | ~130 | **~310** | Características exclusivas, LSP Mason+lspconfig, blink.cmp, Telescope keymaps, DAP, init.lua modular, troubleshooting |
+| [[GRUB]] | ~100 | **~230** | Parámetros kernel avanzados, contraseña PBKDF2, entradas custom /etc/grub.d/, LUKS2 cryptodisk, shell avanzado, troubleshooting |
+| [[Flatpak]] | ~70 | **~190** | Remotes, permisos detallados + Flatseal, runtimes, xdg-desktop-portal, flatpak-builder, troubleshooting |
+| [[SELinux]] | ~110 | **~240** | semanage fcontext/port/login, booleanos por servidor, audit2allow workflow, udica contenedores, troubleshooting scenarios |
+
+#### 🐛 Fix: vault-stats.sh (discrepancias de conteo)
+
+| Bug | Causa | Fix |
+|---|---|---|
+| Estados off by 1 | `grep -rl "estado:"` sin ancla `^` → CLAUDE.md y Log.md como falsos positivos | `^estado:` anclado a inicio de línea |
+| Categorías off by 5 | `grep -v "./Templates/"` no filtraba por `-h` (no-op) | `--exclude-dir=Templates` |
+| Script moría sin output | `set -eo pipefail` con grep que devuelve exit 1 (sin matches) | `|| true` en pipelines de grep |
+| Dashboard stats desactualizadas | 361 estático vs 516 reales | Tabla estática actualizada con vault-stats.sh |
+
+#### ✅ Frontmatter sweep
+
+Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. Sin inconsistencias.
+
+---
+
 ## 🎯 PRÓXIMOS PASOS
 
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
 |---|---|---|
-| Verificar wikilinks rotos | Ejecutar `git push` con hook pre-push o script find-orphans | ⚪ pendiente |
-| Verificar notas con `fecha_modificacion` antigua (>30 días) | Identificar candidatas a revisión/expansión | ⚪ pendiente |
+| ~~Verificar wikilinks rotos~~ | `find-orphans.sh` confirma solo README.md intencional | ✅ completado |
+| ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 0 notas encontradas (vault empezó el 18 jul) | ✅ completado |
 | Automatizar `add-modification-date.sh` | Ejecutar periódicamente para mantener fechas al día | ⚪ pendiente |
+| ~~Expandir resto de fragmentadas~~ | MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel — las 13 ya completas (AppArmor, Snap, Limine, PAM, journald ya estaban expandidas) | ✅ completado |
 
 ### 🟢 Prioridad baja — Mejoras continuas
 
 | Tarea | Detalle | Estado |
 |---|---|---|
-| ~~Crea nota xh.md~~ | Alternativa Rust a httpie (resolver wikilink roto) | ✅ ya creada (sesión auditoría) |
+| ~~Crea nota xh.md~~ | Alternativa Rust a httpie (resolver wikilink roto) | ✅ ya creada |
 | Unificar bloques de código sueltos | Fedora, NixOS, GitHub CLI, FHS, DNS, Sistemas de Archivos, Permisos | ✅ completado |
 | Expandir Motif.md | ~50 → ~100 líneas | ✅ completado |
-
-### 🆕 Sesión 2026-07-25 (v4) — Assets, wikipedia-dl, scripts reorganizados
-
-| Completado | Cambio |
-|---|---|
-| ✅ | Carpeta `assets/` creada con `logos/`, `screenshots/`, `diagrams/` |
-| ✅ | 4 logos descargados e insertados (Ubuntu, Debian, Gentoo, Kali) |
-| ~~✅~~ | ~~`download-assets.sh` para descargar logos~~ (eliminado) |
-| ~~✅~~ | ~~`wikipedia-dl.py` — bot Python~~ (eliminado) |
-| ~~✅~~ | ~~`urls.txt` con 39 URLs de Wikipedia~~ (eliminado) |
-| ✅ | Scripts movidos de `10 - Automatizacion y Scripts/scripts/` a `scripts/` raíz |
-| ✅ | Rutas internas, documentación y CLAUDE.md actualizados |
-
-| Pendiente | Detalle | Prioridad |
-|---|---|---|
-| Descargar logos restantes | Fedora, Arch, Mint, openSUSE, Manjaro, NixOS, Alpine, etc. (~12) | baja |
-| Descargar capturas DE/WM | GNOME, KDE, XFCE, i3, Hyprland, etc. (7 capturas) | baja |
-| Descargar diagramas técnicos | Kernel, FHS, boot process (3 diagramas) | baja |
+| Descargar logos restantes | Fedora, Arch, Mint, openSUSE, Manjaro, NixOS, Alpine, etc. (~12) | ⚪ pendiente |
+| Descargar capturas DE/WM | GNOME, KDE, XFCE, i3, Hyprland, etc. (7 capturas) | ⚪ pendiente |
+| Descargar diagramas técnicos | Kernel, FHS, boot process (3 diagramas) | ⚪ pendiente |
 
 ---
 
@@ -247,39 +296,39 @@ prioridad: alta
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (reales — vault-stats.sh 2026-07-25 v4)
+## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-07-27)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **361** (+ 7 templates) |
-| **Estado resuelto** | 355 |
+| **Notas totales** | **516** (+ 7 templates) |
+| **Estado resuelto** | 509 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
-| **Estado borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
-| **Prioridad alta** | 169 |
-| **Prioridad media** | 121 |
-| **Prioridad baja** | 68 |
+| **Estado borrador** | 0 (todos los drafts completados) |
+| **Prioridad alta** | 215 |
+| **Prioridad media** | 162 |
+| **Prioridad baja** | 133 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 96 | **Comando** | 83 |
-| **Concepto** | 38 | **Distribución** | 41 |
-| **Sistema** | 30 | **Entorno / WM** | 29 |
-| **Troubleshooting** | 17 | **Índice** | 13 |
-| **Instalación** | 9 | **Terminal** | 4 |
-| **Automatización** | 4 | **Log** | 2 |
+| **Programa** | 178 | **Comando** | 109 |
+| **Concepto** | 47 | **Distribución** | 45 |
+| **Sistema** | 47 | **Entorno / WM** | 32 |
+| **Troubleshooting** | 20 | **Índice** | 13 |
+| **Instalación** | 13 | **Terminal** | 5 |
+| **Automatización** | 4 | **Log** | 1 |
 
 ### Por carpeta (real)
 
 | Carpeta | Notas | Carpeta | Notas |
 |---|---|---|---|
-| 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 37 |
-| 02 - Instalacion y Configuracion | 9 | 03 - Estructura del Sistema | 30 |
-| 04 - Entornos de Escritorio | 15 | 05 - Gestores de Ventanas | 13 |
-| 06 - La Terminal | 4 | 07 - Comandos Esenciales | 82 |
-| 08 - Programas y Herramientas | 94 | 09 - Solucion de Problemas | 16 |
-| 10 - Automatizacion y Scripts | 7 | 11 - Distribuciones | 43 |
+| 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 47 |
+| 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 47 |
+| 04 - Entornos de Escritorio | 17 | 05 - Gestores de Ventanas | 15 |
+| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 109 |
+| 08 - Programas y Herramientas | 178 | 09 - Solucion de Problemas | 20 |
+| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 45 |
 
 ---
 
@@ -291,6 +340,9 @@ prioridad: alta
 - Sesión 2026-07-24: 14 notas TUI (1 guía + 13 específicas) + 3 notas planificadas (Regex, Vim, systemd).
 - Sesión 2026-07-25 (v2): 6 notas alta prioridad, 5 expandidas, enlaces externos, +3 alta prioridad completada, +xh.md creada, TODO.md actualizado con stats correctas (vault-stats.sh)
 - Sesión 2026-07-25 (v3): 6 distros expandidas (Motif, Alpine, Linux Lite, openSUSE, Versiones Debian, Peppermint OS), 2 notas nuevas (GTK, Qt), 7 notas con bloques de código unificados (Fedora, NixOS, gh CLI, FHS, DNS, Sistemas Archivos, Permisos), MoC actualizado
+- Sesión 2026-07-26 (v10): Fragmentación total de 8 notas agrupadas (~20 individuales), 10 drafts → resuelto, 5 notas expandidas (PostgreSQL, Neovim, GRUB, Flatpak, SELinux), fix vault-stats.sh (^estado: + --exclude-dir + || true), Dashboard stats actualizadas, frontmatter sweep limpio
+- Sesión 2026-07-27 (v11): 8 notas fragmentadas expandidas (MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel), verificación notas antiguas (0 >30 días), Dashboard y TODO actualizados con stats reales (516 notas, 509 resuelto, 215 alta, 162 media, 133 baja)
+- Sesión 2026-07-27 (v12): 3 scripts optimizados (vault-stats ~68x, find-orphans ~5x, add-modification-date ~2x), [[suckless]] enlazada al MoC (0 huérfanas), README.md y Scripts del Vault.md actualizados con docs de rendimiento
 
 ---
 

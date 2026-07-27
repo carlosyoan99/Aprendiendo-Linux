@@ -20,17 +20,17 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `11 - Distribuciones` | Catálogo completo de 43 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, Clear Linux, Drauger OS, Garuda...) | 43 |
 | `Templates` | 7 plantillas reutilizables (comando, concepto, programa, distro, entorno/WM, problema, log) | 7 |
 
-## 📊 Estado actual (2026-07-26)
+## 📊 Estado actual (2026-07-27)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **415** (+ 7 templates) |
-| **Estado resuelto** | 409 |
-| **Estado en progreso** | 5 |
+| **Notas totales** | **516** (+ 7 templates) |
+| **Estado resuelto** | 509 |
+| **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 2 (README, CLAUDE — sin frontmatter deliberadamente) |
-| **Prioridad alta** | 179 |
-| **Prioridad media** | 139 |
-| **Prioridad baja** | 94 |
+| **Prioridad alta** | 215 |
+| **Prioridad media** | 162 |
+| **Prioridad baja** | 133 |
 | **Categorías** | 12 |
 | **Scripts de automatización** | 7 (stats, logs, validación, huérfanas, fechas, setup) |
 | **Git hooks** | 3 (pre-commit, commit-msg, pre-push) |
@@ -40,12 +40,12 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 112 | **Comando** | 92 |
-| **Concepto** | 45 | **Distribución** | 44 |
-| **Sistema** | 40 | **Entorno / WM** | 33 |
-| **Troubleshooting** | 21 | **Índice** | 13 |
-| **Instalación** | 9 | **Terminal** | 5 |
-| **Automatización** | 4 | **Log** | 2 |
+| **Programa** | 178 | **Comando** | 109 |
+| **Concepto** | 47 | **Distribución** | 45 |
+| **Sistema** | 47 | **Entorno / WM** | 32 |
+| **Troubleshooting** | 20 | **Índice** | 13 |
+| **Instalación** | 13 | **Terminal** | 5 |
+| **Automatización** | 4 | **Log** | 1 |
 
 ## 🚀 Primeros pasos en Obsidian
 
@@ -71,7 +71,10 @@ Todos en `scripts/`. Documentación completa en [[Scripts del Vault]].
 | `check-frontmatter.sh` | Valida frontmatter de todas las notas |
 | `find-orphans.sh` | Encuentra notas no enlazadas del MoC |
 | `setup.sh` | Configuración inicial del vault (hooks, cron, verificación) |
-| `add-modification-date.sh` | Sincroniza fecha_modificacion con mtime |
+| `add-modification-date.sh` | Sincroniza fecha_modificacion con mtime (perl) |
+| `find-orphans.sh` | Encuentra notas no enlazadas del MoC (~6s con arrays asociativos) |
+
+> ⚡ Los scripts han sido optimizados: `vault-stats.sh` pasó de ~11s a **~0.16s** (68x más rápido), `find-orphans.sh` de ~30s a ~6s, y `add-modification-date.sh` de ~23s a ~12s.
 
 ```bash
 # Configuración cron recomendada (domingos)

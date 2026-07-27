@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-27
 estado: en progreso
 categoria: indice
 ---
@@ -15,30 +15,30 @@ categoria: indice
 
 | Métrica | Total |
 |---|---|
-| Notas totales | **361** |
-| Estado **resuelto** | 355 |
+| Notas totales | **516** |
+| Estado **resuelto** | 509 |
 | Estado **en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | Estado **borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
-| Prioridad **alta** | 169 |
-| Prioridad **media** | 121 |
-| Prioridad **baja** | 68 |
+| Prioridad **alta** | 215 |
+| Prioridad **media** | 162 |
+| Prioridad **baja** | 133 |
 
 ### Por categoría
 
 | Categoría | Notas |
 |---|---|
-| Comando | 83 |
-| Programa | 96 |
-| Concepto | 38 |
-| Distribución | 41 |
-| Sistema | 30 |
-| Entorno / WM | 29 |
-| Troubleshooting | 17 |
+| Comando | 109 |
+| Programa | 178 |
+| Concepto | 47 |
+| Distribución | 45 |
+| Sistema | 47 |
+| Entorno / WM | 32 |
+| Troubleshooting | 20 |
 | Índice | 13 |
-| Instalación | 9 |
-| Terminal | 4 |
+| Instalación | 13 |
+| Terminal | 5 |
 | Automatización | 4 |
-| Log | 2 |
+| Log | 1 |
 
 ---
 
@@ -163,7 +163,7 @@ LIMIT 20
 
 ## 📈 Notas por prioridad
 
-### Alta (153 notas)
+### Alta (215 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"
@@ -172,7 +172,7 @@ WHERE prioridad = "alta" AND categoria != "indice"
 SORT categoria ASC
 ```
 
-### Media (105 notas)
+### Media (162 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"
@@ -181,7 +181,7 @@ WHERE prioridad = "media"
 SORT estado ASC, categoria ASC
 ```
 
-### Baja (51 notas)
+### Baja (133 notas)
 
 ```dataview
 TABLE categoria as "Categoría", estado as "Estado"

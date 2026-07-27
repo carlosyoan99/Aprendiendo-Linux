@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-27
 estado: en progreso
 categoria: log
 ---
@@ -797,3 +797,53 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 - **MoC actualizado** con wikilinks inline en 7 líneas.
 - **Validación**: check-frontmatter → 516/516 OK | find-orphans → 1 (README.md, intencional).
 - **Vault**: ~516 notas. Sin notas agrupadas pendientes de fragmentar.
+
+## 2026-07-27 — Expansión de 4 notas fragmentadas (segunda ronda)
+
+### 📈 Notas expandidas
+
+| Nota | Antes | Después | Secciones nuevas |
+|---|---|---|---|
+| [[LUKS]] | ~90 | **~270** | LUKS1 vs LUKS2 (tabla), detached headers, LVM sobre LUKS, TPM2 con systemd-cryptenroll, SSH unlock con dropbear, header backup/restore, resize, troubleshooting |
+| [[chage]] | ~50 | **~110** | Salida `chage -l` completa, /etc/shadow fields, script de auditoría, tabla de casos de uso, cuenta de servicio sin caducidad |
+| [[chsh]] | ~30 | **~75** | Opciones, validaciones de seguridad, /etc/passwd, casos de uso, troubleshooting table |
+| [[skel]] | ~40 | **~90** | Estructura completa recomendada, personalización avanzada (.bashrc, .profile, user-dirs), personalización por grupo (-k flag), troubleshooting |
+
+### ✅ Validación
+- **check-frontmatter.sh**: 516/516 OK.
+- **Code review**: 1 typo corregido ("rata" → "ruta" en chsh.md). Sin otros errores.
+
+## 2026-07-27 — Expansión de 4 notas fragmentadas (alto impacto)
+
+### 📈 Notas expandidas
+
+| Nota | Antes | Después | Secciones nuevas |
+|---|---|---|---|
+| [[MySQL]] | ~100 | **~280** | Replicación GTID, Galera Cluster, performance_schema, user management avanzado, binary log management, troubleshooting table, Docker Compose |
+| [[GPG]] | ~70 | **~230** | Subclaves + backup offline, Web of Trust + keyservers, firma Git commits, GPG como SSH agent, YubiKey/smartcards, cifrado híbrido (explicación), revocación con keyserver |
+| [[rsyslog]] | ~80 | **~220** | RainerScript, templates JSON, filtrado avanzado, RELP+TLS, forwarding a BD (MySQL), imfile (log ingestion), colas disk-assisted, impstats, troubleshooting |
+| [[logrotate]] | ~70 | **~200** | copytruncate vs create, compresión avanzada (bzip2/xz/zstd), dateext/dateformat, sharedscripts vs individual, prerotate, troubleshooting con permisos/SELinux |
+
+### ✅ Validación
+- **check-frontmatter.sh**: 516/516 OK. Sin errores.
+- **Code review**: 4 notas sin errores críticos. Estilo consistente, wikilinks correctos, ejemplos técnicamente precisos.
+
+## 2026-07-27 — Scripts optimizados + docs + MoC fix
+
+### ⚡ Optimización de scripts (3)
+- **vault-stats.sh**: single-pass combinado (estado+prioridad+categoria en 1 scan) + directorios con `find|awk`. **~11s → ~0.16s (68x)**
+- **find-orphans.sh**: arrays asociativos O(1) en vez de O(n×m) loop. **~30s → ~6s (5x)**
+- **add-modification-date.sh**: `perl -i` en vez de `sed -i`. **~23s → ~12s (2x)**
+
+### 🔗 MoC fix
+- [[suckless.md]] enlazada al MoC (Programas comunes). find-orphans ahora reporta 0 huérfanas.
+
+### 📄 Documentación actualizada
+- **Dashboard.md**: stats corregidas (509 resuelto, 215 alta, 162 media)
+- **TODO.md**: v11 con sesiones completadas, 2 tareas movidas a ✅
+- **README.md**: stats 516 notas, tiempos de scripts optimizados
+- **Scripts del Vault.md**: documentación de optimizaciones y rendimiento
+
+### ✅ Validación
+- check-frontmatter.sh: 516/516 OK.
+- find-orphans.sh: 0 huérfanas (suckless.md enlazada).

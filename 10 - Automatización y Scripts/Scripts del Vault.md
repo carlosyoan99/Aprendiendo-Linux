@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-27
 estado: resuelto
 categoria: automatizacion
 prioridad: alta
@@ -14,12 +14,12 @@ prioridad: alta
 
 | Script | Función | Frecuencia | Dependencias |
 |---|---|---|---|
-| `vault-stats.sh` | Estadísticas completas del vault | Semanal (manual/cron) | `find`, `grep`, `awk` |
+| `vault-stats.sh` | Estadísticas completas (~0.16s) | Semanal (manual/cron) | `find`, `grep` |
 | `vault-stats-weekly.sh` | Wrapper cron para stats semanales | Semanal (cron) | vault-stats.sh |
 | `daily-log.sh` | Crea nota de log diaria | Diaria (manual) | — |
-| `check-frontmatter.sh` | Valida frontmatter de todas las notas | Al crear/editar notas | — |
-| `find-orphans.sh` | Encuentra notas no enlazadas desde el MoC | Semanal | MoC - Linux.md |
-| `add-modification-date.sh` | Sincroniza `fecha_modificacion` con mtime | Semanal (cron) | `sed`, `date`, `grep` |
+| `check-frontmatter.sh` | Valida frontmatter (~0.4s) | Al crear/editar notas | — |
+| `find-orphans.sh` | Encuentra notas no enlazadas (~6s) | Semanal | MoC - Linux.md |
+| `add-modification-date.sh` | Sincroniza fechas con mtime (perl) | Semanal (cron) | `perl`, `date`, `grep` |
 | `setup.sh` | Configura git hooks y cron jobs | Una vez (post-clon) | — |
 
 ---
@@ -46,19 +46,22 @@ bash scripts/vault-stats.sh --csv
 ### Funcionamiento
 
 1. Cuenta archivos `.md` excluyendo `Templates/` y `.obsidian/`
-2. Busca en frontmatter los campos `estado:`, `prioridad:`, `categoria:`
-3. Agrupa notas por carpeta con `dirname`
-4. Obtiene las 10 últimas modificaciones del filesystem (`mtime`)
+2. **Single-pass**: un solo `grep -rh` extrae a la vez `estado:`, `prioridad:`, `categoria:` de todas las notas
+3. Procesa con `sort | uniq -c` para obtener conteos agregados
+4. Agrupa notas por carpeta con `find | awk -F/` (sin bash loop lento)
+5. Obtiene las 10 últimas modificaciones del filesystem (`mtime`)
+
+> ⚡ **Optimizado**: de ~11s a **~0.16s** (68x más rápido) usando un solo scan combinado en vez de 7 scans separados.
 
 ### Salida CSV
 
 ```csv
 metrico,valor
-total,316
-borrador,2
-resuelto,311
-prioridad_alta,155
-categoria_comando,68
+total,516
+borrador,0
+resuelto,509
+prioridad_alta,215
+categoria_comando,109
 ```
 
 ---
@@ -266,11 +269,13 @@ bash scripts/find-orphans.sh --sugerencias
 
 ### Funcionamiento
 
-1. Escanea todos los `.md` del vault
-2. Extrae wikilinks del MoC (`00 - Indices y Mapas/MoC - Linux.md`)
-3. Opcionalmente, extrae todos los wikilinks de todas las notas (backlinks)
-4. Compara cada nota contra los enlaces existentes
+1. Escanea todos los `.md` del vault y los guarda en un **array asociativo** (O(1) lookup)
+2. Extrae wikilinks del MoC en otro array asociativo
+3. Opcionalmente, extrae todos los wikilinks de todas las notas (backlinks) con un solo `grep -roP`
+4. Compara cada nota contra los enlaces existentes con lookup O(1), sin bucles anidados
 5. Excluye: `Templates/`, `.obsidian/`, `scripts/`, `Log.md`, `MoC - Linux.md`, `README.md`, `CLAUDE.md`
+
+> ⚡ **Optimizado**: de ~30s a **~6s** usando arrays asociativos en vez de bucles O(n×m).
 
 ### Sugerencias automáticas
 
@@ -303,8 +308,10 @@ bash scripts/add-modification-date.sh
 1. Recorre todos los `.md` del vault
 2. Salta archivos sin frontmatter (CLAUDE.md, README.md)
 3. Obtiene `mtime` del archivo con `date -r`
-4. Si ya tiene `fecha_modificacion:` → la actualiza con sed
-5. Si no tiene → la añade después de `fecha_creacion:`
+4. Si ya tiene `fecha_modificacion:` → la actualiza con `perl -i -pe` (más rápido que `sed -i`)
+5. Si no tiene → la añade después de `fecha_creacion:` con `perl -i -pe`
+
+> ⚡ **Optimizado**: de ~23s a ~12s usando perl en vez de sed para edición in-place.
 
 ### Automatización recomendada
 
@@ -340,7 +347,7 @@ crontab -e
 
 | Problema | Causa | Solución |
 |---|---|---|
-| `check-frontmatter.sh` tarda >30s | Escanea 316 archivos con grep en bash loop | Normal para el tamaño del vault. Usar `--solo-errores` para menos output |
+| `check-frontmatter.sh` tarda >0.5s | Escanea 516 archivos | Normal. El script está optimizado con awk single-pass (~0.4s) |
 | `find-orphans.sh` marca README.md como huérfana | README.md no está en el MoC | Es correcto — README.md es el índice del repo, no una nota de contenido |
 | `add-modification-date.sh` no actualiza CLAUDE.md | CLAUDE.md no tiene frontmatter | Es correcto — CLAUDE.md no es una nota de contenido |
 | `daily-log.sh` dice que ya existe | Ya creaste un log hoy | Se abre el log existente para editar — no hay duplicados |

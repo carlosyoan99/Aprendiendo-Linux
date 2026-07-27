@@ -1,5 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
+fecha_modificacion: 2026-07-26
 estado: en progreso
 categoria: indice
 prioridad: alta

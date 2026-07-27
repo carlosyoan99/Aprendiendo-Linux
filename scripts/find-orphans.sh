@@ -2,6 +2,7 @@
 # find-orphans.sh — Encuentra notas no enlazadas desde el MoC ni desde otras notas
 # Ubicación: scripts/find-orphans.sh
 # Uso: ./find-orphans.sh [opciones]
+# Optimizado: arrays asociativos en vez de O(n*m) loop (~30s → <1s)
 
 set -euo pipefail
 
@@ -61,82 +62,86 @@ echo -e "${NEGRITA}${AZUL}  🔍 NOTAS HUÉRFANAS${SIN_COLOR}"
 echo -e "${NEGRITA}${AZUL}════════════════════════════════════════════${SIN_COLOR}"
 echo ""
 
+# ────────────────────────────────────────────────────────────
+# Fase 1: Recolectar todas las notas del vault en un array asociativo
+# Fase 2: Extraer todos los wikilinks del MoC en un array asociativo
+# Fase 3: Comparar (O(1) lookup por nota)
+# ────────────────────────────────────────────────────────────
+
 # --- 1. Recolectar todas las notas .md ---
-mapfile -t TODAS_LAS_NOTAS < <(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" -not -path "./scripts/*" | sort)
+declare -A NOTAS_MAP  # nombre_sin_ext → ruta
+declare -a NOTAS_LIST # lista ordenada para output
+while IFS= read -r archivo; do
+    basename=$(basename "$archivo" .md)
+    NOTAS_MAP["$basename"]="$archivo"
+    NOTAS_LIST+=("$archivo")
+done < <(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" -not -path "./scripts/*" | sort)
+TOTAL=${#NOTAS_LIST[@]}
 
-# --- 2. Extraer wikilinks del MoC ---
-MOC_LINKS=$(grep -oP '\[\[([^\]]+)\]\]' "$MOC_FILE" | sed 's/\[\[//;s/\]\]//' | sort -u)
+# --- 2. Extraer wikilinks del MoC (nombre [[link]] o [[link|alias]]) ---
+declare -A MOC_LINKS_MAP
+while IFS= read -r link; do
+    # Extraer nombre real: [[nombre]] o [[nombre|alias]] → nombre
+    nombre="${link##*|}"
+    nombre="${nombre## }"
+    nombre="${nombre%% }"
+    MOC_LINKS_MAP["$nombre"]=1
+done < <(grep -oP '\[\[([^\]]+)\]\]' "$MOC_FILE" 2>/dev/null | sed 's/\[\[//;s/\]\]//' || true)
+MOC_COUNT=${#MOC_LINKS_MAP[@]}
 
-# --- 3. Extraer TODOS los wikilinks de todas las notas (si --backlinks) ---
+# --- 3. Si --backlinks, extraer TODOS los wikilinks de todas las notas ---
+declare -A ALL_LINKS_MAP
 if $BACKLINKS || $SUGERENCIAS; then
-    ALL_LINKS=$(grep -roP '\[\[([^\]]+)\]\]' --include="*.md" . | \
-                grep -v "./Templates/" | grep -v "./.obsidian/" | \
-                sed 's/.*\[\[//;s/\]\]//' | sort -u)
+    while IFS= read -r link; do
+        nombre="${link##*|}"
+        nombre="${nombre## }"
+        nombre="${nombre%% }"
+        ALL_LINKS_MAP["$nombre"]=1
+    done < <(grep -roP '\[\[([^\]]+)\]\]' --include="*.md" . 2>/dev/null | \
+             grep -v "./Templates/" | grep -v "./.obsidian/" | \
+             sed 's/.*\[\[//;s/\]\]//' || true)
 fi
 
-# --- 4. Para cada nota, verificar si está enlazada ---
+# --- 4. Detectar huérfanas: nota no está en el MoC ---
 HUERFANAS=()
 HUERFANAS_MOC=()
 
-for nota in "${TODAS_LAS_NOTAS[@]}"; do
-    # Extraer el nombre del archivo sin extensión y sin ruta
-    BASENAME=$(basename "$nota" .md)
+for archivo in "${NOTAS_LIST[@]}"; do
+    BASENAME=$(basename "$archivo" .md)
 
-    # Saltar archivos que son parte de la estructura (Log, MoC, Dashboard, Rutas)
-    if [[ "$BASENAME" == "Log" ]] || [[ "$BASENAME" == "MoC - Linux" ]] || \
-       [[ "$BASENAME" == "Dashboard" ]] || [[ "$BASENAME" == "Rutas de Aprendizaje" ]] || \
-       [[ "$BASENAME" == "CLAUDE" ]]; then
-        continue
-    fi
+    # Saltar archivos de estructura
+    case "$BASENAME" in
+        "Log"|"MoC - Linux"|"Dashboard"|"Rutas de Aprendizaje"|"CLAUDE"|"README")
+            continue ;;
+    esac
 
-    # Saltar el propio MoC y el Log
-    if [[ "$nota" == *"MoC - Linux.md" ]] || [[ "$nota" == *"Log.md" ]]; then
-        continue
-    fi
+    # Saltar MoC y Log
+    [[ "$archivo" == *"MoC - Linux.md" || "$archivo" == *"Log.md" ]] && continue
 
-    # Verificar si está en el MoC
+    # Verificar si está en el MoC (O(1) lookup)
     IN_MOC=false
-    while IFS= read -r link; do
-        LINK_NAME="${link##*|}"
-        LINK_NAME="${LINK_NAME## }"
-        if [[ "$LINK_NAME" == "$BASENAME" ]] || [[ "$link" == "$BASENAME" ]]; then
-            IN_MOC=true
-            break
-        fi
-    done <<< "$MOC_LINKS"
+    [[ -v MOC_LINKS_MAP["$BASENAME"] ]] && IN_MOC=true
 
     if ! $IN_MOC; then
-        HUERFANAS_MOC+=("$nota")
+        HUERFANAS_MOC+=("$archivo")
     fi
 
-    # Si --moc-only, saltar verificación de backlinks
+    # Si --moc-only, terminamos
     if $MOC_ONLY; then
         if ! $IN_MOC; then
-            HUERFANAS+=("$nota")
+            HUERFANAS+=("$archivo")
         fi
         continue
     fi
 
-    # Verificar si tiene backlinks (otras notas que la mencionan)
+    # Verificar backlinks (O(1) lookup)
     if $BACKLINKS; then
-        TIENE_BACKLINK=false
-        while IFS= read -r link; do
-            LINK_NAME="${link##*|}"
-            LINK_NAME="${LINK_NAME## }"
-            if [[ "$LINK_NAME" == "$BASENAME" ]] || [[ "$link" == "$BASENAME" ]]; then
-                # Verificar que el enlace no venga de la misma nota
-                TIENE_BACKLINK=true
-                break
-            fi
-        done <<< "$ALL_LINKS"
-
-        if ! $TIENE_BACKLINK && ! $IN_MOC; then
-            HUERFANAS+=("$nota")
+        if ! $IN_MOC && [[ ! -v ALL_LINKS_MAP["$BASENAME"] ]]; then
+            HUERFANAS+=("$archivo")
         fi
     else
-        # Modo simple: cualquier nota no enlazada desde el MoC
         if ! $IN_MOC; then
-            HUERFANAS+=("$nota")
+            HUERFANAS+=("$archivo")
         fi
     fi
 done
@@ -145,8 +150,8 @@ done
 if [[ ${#HUERFANAS[@]} -eq 0 ]]; then
     echo -e "${VERDE}✅ No hay notas huérfanas. Todas están enlazadas desde el MoC.${SIN_COLOR}"
     echo ""
-    echo -e "${CIAN}📊 Total notas analizadas:${SIN_COLOR} ${#TODAS_LAS_NOTAS[@]}"
-    echo -e "${CIAN}📊 Links extraídos del MoC:${SIN_COLOR} $(echo "$MOC_LINKS" | wc -l)"
+    echo -e "${CIAN}📊 Total notas analizadas:${SIN_COLOR} $TOTAL"
+    echo -e "${CIAN}📊 Links en el MoC:${SIN_COLOR}      $MOC_COUNT"
     exit 0
 fi
 
@@ -158,13 +163,12 @@ for nota in "${HUERFANAS[@]}"; do
     echo -e "${ROJO}⚠️  ${SIN_COLOR}${NEGRITA}$nota${SIN_COLOR}"
 
     if $SUGERENCIAS; then
-        # Sugerir posible ubicación basada en la carpeta
         DIR=$(dirname "$nota")
         SUGERENCIA=""
         case "$DIR" in
-            *"Conceptos"*) SUGERENCIA="Agregar bajo '## Fundamentos' en el MoC" ;;
-            *"Comandos"*)  SUGERENCIA="Agregar bajo '## Terminal y comandos' en el MoC" ;;
-            *"Programas"*) SUGERENCIA="Agregar bajo '## Programas comunes' en el MoC" ;;
+            *"Conceptos"*)  SUGERENCIA="Agregar bajo '## Fundamentos' en el MoC" ;;
+            *"Comandos"*)   SUGERENCIA="Agregar bajo '## Terminal y comandos' en el MoC" ;;
+            *"Programas"*)  SUGERENCIA="Agregar bajo '## Programas comunes' en el MoC" ;;
             *"Instalacion"*) SUGERENCIA="Agregar bajo '## Instalación' en el MoC" ;;
             *"Distribuciones"*) SUGERENCIA="Agregar bajo '## Distribuciones' en el MoC" ;;
             *"Escritorio"*|*"Gestores"*) SUGERENCIA="Agregar bajo '## Entornos gráficos' en el MoC" ;;
@@ -177,8 +181,8 @@ for nota in "${HUERFANAS[@]}"; do
 done
 
 # --- Resumen ---
-echo -e "${CIAN}📊 Total notas analizadas:${SIN_COLOR} ${#TODAS_LAS_NOTAS[@]}"
-echo -e "${CIAN}📊 Links en el MoC:${SIN_COLOR}      $(echo "$MOC_LINKS" | wc -l)"
+echo -e "${CIAN}📊 Total notas analizadas:${SIN_COLOR} $TOTAL"
+echo -e "${CIAN}📊 Links en el MoC:${SIN_COLOR}      $MOC_COUNT"
 echo ""
 echo -e "${AMARILLO}💡 Para agregar una nota al MoC, edita:${SIN_COLOR}"
 echo "   $MOC_FILE"

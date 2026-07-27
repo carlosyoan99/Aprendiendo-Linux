@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-24
+fecha_modificacion: 2026-07-25
 estado: resuelto
 categoria: terminal
 prioridad: media

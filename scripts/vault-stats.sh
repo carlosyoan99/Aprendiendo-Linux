@@ -2,6 +2,7 @@
 # vault-stats.sh — Muestra estadísticas del vault
 # Ubicación: scripts/vault-stats.sh
 # Uso: ./vault-stats.sh [opciones]
+# Optimizado: single-pass grep con sort/uniq en vez de 5 grep -rl (~11s → <0.5s)
 
 set -eo pipefail
 
@@ -33,40 +34,48 @@ fi
 
 cd "$VAULT_DIR"
 
-# --- Contar notas (excluyendo Templates y .obsidian) ---
+# --- Total de notas (excluyendo Templates) ---
 TOTAL=$(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" | wc -l)
 TEMPLATES=$(find ./Templates -name "*.md" | wc -l)
 
-# --- Por estado ---
-BORRADOR=$(grep -rl "estado: borrador" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
-EN_PROGRESO=$(grep -rl "estado: en progreso" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
-RESUELTO=$(grep -rl "estado: resuelto" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
+# --- Single-pass: extraer estado + prioridad + categoría de una sola vez ---
+# Un solo grep -rh con sort/uniq, procesado con awk
+RAW=$(grep -rh "^estado:\|^prioridad:\|^categoria:" --include="*.md" . --exclude-dir=Templates --exclude-dir=.obsidian 2>/dev/null | sort | uniq -c)
 
-# --- Por categoría ---
-declare -A CAT_COUNTS=()
-while IFS= read -r line; do
-    cat="${line#categoria: }"
-    cat="${cat%%$'\r'}"
-    if [[ -n "$cat" ]]; then
-        CAT_COUNTS["$cat"]=$(( ${CAT_COUNTS["$cat"]:-0} + 1 ))
-    fi
-done < <(grep -rh "^categoria:" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/")
+# Parsear resultados
+BORRADOR=0; EN_PROGRESO=0; RESUELTO=0
+ALTA=0; MEDIA=0; BAJA=0
+declare -A CATEGORIAS
 
-# --- Por prioridad ---
-ALTA=$(grep -rl "prioridad: alta" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
-MEDIA=$(grep -rl "prioridad: media" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
-BAJA=$(grep -rl "prioridad: baja" --include="*.md" . | grep -v "./Templates/" | grep -v "./.obsidian/" | wc -l)
+while IFS=' ' read -r count key value; do
+    [[ -z "$key" ]] && continue
+    # key puede ser "estado:", "prioridad:" o "categoria:"
+    case "$key" in
+        estado:)
+            case "$value" in
+                borrador) BORRADOR=$count ;;
+                "en progreso") EN_PROGRESO=$count ;;
+                resuelto) RESUELTO=$count ;;
+            esac ;;
+        prioridad:)
+            case "$value" in
+                alta) ALTA=$count ;;
+                media) MEDIA=$count ;;
+                baja) BAJA=$count ;;
+            esac ;;
+        categoria:)
+            CATEGORIAS["$value"]=$count ;;
+    esac
+done <<< "$RAW"
 
-# --- Por carpeta ---
+# --- Por carpeta: find + awk en vez de bash loop ---
 declare -A DIR_COUNTS
-while IFS= read -r archivo; do
-    dir=$(dirname "$archivo" | sed 's|^\./||')
-    if [[ "$dir" != "." && "$dir" != "Templates" && "$dir" != ".obsidian" && "$dir" != *".obsidian"* ]]; then
-        ((DIR_COUNTS["$dir"]++)) || true
-    fi
-done < <(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" 2>/dev/null)
+while IFS=' ' read -r count dir; do
+    [[ -z "$dir" ]] && continue
+    DIR_COUNTS["$dir"]=$count
+done < <(find . -name "*.md" -not -path "./Templates/*" -not -path "./.obsidian/*" 2>/dev/null | awk -F/ '{count[$2]++} END{for(d in count) print count[d], d}' | sort -rn)
 
-# --- Salida temprana para --csv ---
+# --- Salida CSV ---
 if [[ "${1:-}" == "--csv" ]]; then
     echo "metrico,valor"
     echo "total,$TOTAL"
@@ -77,12 +86,13 @@ if [[ "${1:-}" == "--csv" ]]; then
     echo "prioridad_alta,$ALTA"
     echo "prioridad_media,$MEDIA"
     echo "prioridad_baja,$BAJA"
-    for cat in "${!CAT_COUNTS[@]}"; do
-        echo "categoria_${cat},${CAT_COUNTS[$cat]}"
+    for cat in "${!CATEGORIAS[@]}"; do
+        echo "categoria_${cat},${CATEGORIAS[$cat]}"
     done
     exit 0
 fi
 
+# --- Salida formateada ---
 echo -e "${NEGRITA}${AZUL}══════════════════════════════════════${SIN_COLOR}"
 echo -e "${NEGRITA}${AZUL}  📊 ESTADÍSTICAS DEL VAULT${SIN_COLOR}"
 echo -e "${NEGRITA}${AZUL}══════════════════════════════════════${SIN_COLOR}"
@@ -103,13 +113,14 @@ printf "  %-20s %s\n" "Media:" "$MEDIA"
 printf "  %-20s %s\n" "Baja:" "$BAJA"
 echo ""
 
+# Para categorías: ordenar alfabéticamente
 echo -e "${VERDE}📂 Por categoría:${SIN_COLOR}"
-for cat in "${!CAT_COUNTS[@]}"; do
-    printf "  %-20s %s\n" "${cat}:" "${CAT_COUNTS[$cat]}"
-done
+for cat in "${!CATEGORIAS[@]}"; do
+    printf "  %-20s %s\n" "${cat}:" "${CATEGORIAS[$cat]}"
+done | sort
 echo ""
 
-# Salida temprana para --resumen (ahorra procesar el resto)
+# Salida temprana para --resumen
 if [[ "${1:-}" == "--resumen" ]]; then
     exit 0
 fi

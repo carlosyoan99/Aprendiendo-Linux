@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-07-26
 estado: resuelto
 categoria: programa
 prioridad: baja
