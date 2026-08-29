@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v15 — vault adaptive al tema del SO + guía Noctalia)
+> Última actualización: 2026-08-29 (v16 — expansión de 6 notas de programa)
 
 ---
 
@@ -300,19 +300,19 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **517** (+ 7 templates) |
-| **Estado resuelto** | 509 |
+| **Notas totales** | **518** (+ 7 templates) |
+| **Estado resuelto** | 510 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
 | **Prioridad alta** | 215 |
 | **Prioridad media** | 162 |
-| **Prioridad baja** | 133 |
+| **Prioridad baja** | 134 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 178 | **Comando** | 109 |
+| **Programa** | 179 | **Comando** | 109 |
 | **Concepto** | 47 | **Distribución** | 45 |
 | **Sistema** | 47 | **Entorno / WM** | 32 |
 | **Troubleshooting** | 20 | **Índice** | 13 |
@@ -327,7 +327,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 47 |
 | 04 - Entornos de Escritorio | 17 | 05 - Gestores de Ventanas | 15 |
 | 06 - La Terminal | 6 | 07 - Comandos Esenciales | 109 |
-| 08 - Programas y Herramientas | 178 | 09 - Solucion de Problemas | 20 |
+| 08 - Programas y Herramientas | 179 | 09 - Solucion de Problemas | 20 |
 | 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 45 |
 
 ---
@@ -347,6 +347,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-29 (v13): expansión de 6 notas de comando cortas (yes, nohup, timeout, seq, at, sleep) hacia el esquema de plantilla; fragmentación ya resuelta en sesión previa
 - Sesión 2026-08-29 (v14): expansión de 7 navegadores (Falkon, LibreWolf, Vivaldi, Ungoogled Chromium, Brave, Chromium, GNOME Web) + nota nueva [[Konqueror]] (518 notas)
 - Sesión 2026-08-29 (v15): vault en modo adaptive (sigue el tema del SO) + guía de Noctalia expandida en [[Desktop Shells (Noctalia Caelestia)]]
+- Sesión 2026-08-29 (v16): expansión de 6 notas de programa (Gedit, Geany, Kate, Xfce Terminal, Konsole, Suite de Oficina) hacia el esquema de plantilla; stats actualizadas (518 notas)
 
 ---
 

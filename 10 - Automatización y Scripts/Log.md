@@ -920,3 +920,25 @@ Se ampliaron hacia el esquema de la plantilla de programa (características, ins
 ### ✅ Validación
 - check-frontmatter.sh: 518 OK.
 - Config real aplicada en el sistema.
+
+## 2026-08-29 — Expansión de editores, terminales y suite de oficina
+
+### ✏️ Notas expandidas (6) — 08 - Programas y Herramientas
+Se ampliaron hacia el esquema de la plantilla de programa (instalación multi-distro + Flatpak, configuración, atajos, uso avanzado, comparativa, troubleshooting, enlaces):
+
+| Nota | Antes | Después | Añadido |
+|---|---|---|---|
+| [[Gedit]] | 41 | **~103** | Instalación + Flatpak, atajos, uso avanzado CLI, comparativa, troubleshooting |
+| [[Geany]] | 40 | **~100** | Instalación + Flatpak, atajos, build, comparativa, troubleshooting |
+| [[Kate]] | 43 | **~104** | Instalación + Flatpak, LSP, splits, atajos, uso avanzado, troubleshooting |
+| [[Xfce Terminal]] | 46 | **~103** | Instalación + Flatpak, atajos, uso avanzado, comparativa, troubleshooting |
+| [[Konsole]] | 47 | **~103** | Instalación + Flatpak, splits, perfiles SSH, atajos, comparativa, troubleshooting |
+| [[Suite de Oficina]] | 47 | **~93** | Qué es, formatos, instalación multi-distro, consumo de recursos |
+
+### 🔧 Investigación pre-push
+- El wikilink `[[env]]` (reportado como roto en una sesión anterior) se confirmó como **falso positivo transitorio**: el pipeline actual resuelve correctamente contra `env.md` y el hook pasa limpio. Sin cambios necesarios.
+
+### ✅ Validación
+- check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
+- find-orphans.sh: 0 huérfanas.
+- Wikilinks: todos válidos (pre-push exit 0).
