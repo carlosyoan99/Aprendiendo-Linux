@@ -6,8 +6,8 @@ set -euo pipefail
 
 echo "🔍 Validando frontmatter en archivos staged..."
 
-# Obtener archivos .md staged (excluyendo Templates/, CLAUDE.md, README.md)
-STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | grep -v '^Templates/' | grep -v '^CLAUDE\.md$' | grep -v '^README\.md$' || true)
+# Obtener archivos .md staged (excluyendo Templates/, CLAUDE.md, README.md, AGENTS.md)
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' | grep -v '^Templates/' | grep -v '^CLAUDE\.md$' | grep -v '^README\.md$' | grep -v '^AGENTS\.md$' || true)
 
 if [[ -z "$STAGED" ]]; then
     exit 0

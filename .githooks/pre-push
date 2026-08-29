@@ -23,6 +23,7 @@ WIKILINKS=$(find . -name '*.md' \
     -not -path './10 - Automatización y Scripts/Scripts del Vault.md' \
     -not -name 'CLAUDE.md' \
     -not -name 'README.md' \
+    -not -name 'AGENTS.md' \
     -not -name 'TODO.md' \
     -not -name 'Prompts de Trabajo.md' \
     -exec sed '/^```/,/^```/d' {} + 2>/dev/null | \

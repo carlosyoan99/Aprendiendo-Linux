@@ -111,7 +111,7 @@ for archivo in "${NOTAS_LIST[@]}"; do
 
     # Saltar archivos de estructura
     case "$BASENAME" in
-        "Log"|"MoC - Linux"|"Dashboard"|"Rutas de Aprendizaje"|"CLAUDE"|"README")
+        "Log"|"MoC - Linux"|"Dashboard"|"Rutas de Aprendizaje"|"CLAUDE"|"README"|"AGENTS")
             continue ;;
     esac
 

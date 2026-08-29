@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-07-27
+fecha_modificacion: 2026-08-29
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-07-27 (v11 — expansión de 8 notas fragmentadas, verificación notas antiguas, dashboard actualizado)
+> Última actualización: 2026-08-29 (v12.1 — creación de AGENTS.md, corrección de stats en README/Dashboard)
 
 ---
 
@@ -296,11 +296,11 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-07-27)
+## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-29)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **516** (+ 7 templates) |
+| **Notas totales** | **517** (+ 7 templates) |
 | **Estado resuelto** | 509 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
@@ -323,7 +323,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 | Carpeta | Notas | Carpeta | Notas |
 |---|---|---|---|
-| 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 47 |
+| 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 46 |
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 47 |
 | 04 - Entornos de Escritorio | 17 | 05 - Gestores de Ventanas | 15 |
 | 06 - La Terminal | 6 | 07 - Comandos Esenciales | 109 |
@@ -343,6 +343,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-07-26 (v10): Fragmentación total de 8 notas agrupadas (~20 individuales), 10 drafts → resuelto, 5 notas expandidas (PostgreSQL, Neovim, GRUB, Flatpak, SELinux), fix vault-stats.sh (^estado: + --exclude-dir + || true), Dashboard stats actualizadas, frontmatter sweep limpio
 - Sesión 2026-07-27 (v11): 8 notas fragmentadas expandidas (MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel), verificación notas antiguas (0 >30 días), Dashboard y TODO actualizados con stats reales (516 notas, 509 resuelto, 215 alta, 162 media, 133 baja)
 - Sesión 2026-07-27 (v12): 3 scripts optimizados (vault-stats ~68x, find-orphans ~5x, add-modification-date ~2x), [[suckless]] enlazada al MoC (0 huérfanas), README.md y Scripts del Vault.md actualizados con docs de rendimiento
+- Sesión 2026-08-29 (v12.1): creación de AGENTS.md, enlazada al MoC, exclusiones en pre-commit/pre-push, stats corregidas en README/Dashboard/TODO (517 notas, 46 en 01)
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-27
+fecha_modificacion: 2026-08-29
 estado: en progreso
 categoria: indice
 ---
@@ -15,10 +15,10 @@ categoria: indice
 
 | Métrica | Total |
 |---|---|
-| Notas totales | **516** |
+| Notas totales | **517** |
 | Estado **resuelto** | 509 |
 | Estado **en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
-| Estado **borrador** | 2 (README, CLAUDE.md — sin frontmatter por diseño) |
+| Estado **borrador** | 3 (README, CLAUDE.md, AGENTS.md — sin frontmatter por diseño) |
 | Prioridad **alta** | 215 |
 | Prioridad **media** | 162 |
 | Prioridad **baja** | 133 |

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-27
+fecha_modificacion: 2026-08-29
 estado: en progreso
 categoria: log
 ---
@@ -847,3 +847,18 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 ### ✅ Validación
 - check-frontmatter.sh: 516/516 OK.
 - find-orphans.sh: 0 huérfanas (suckless.md enlazada).
+
+## 2026-08-29 — Creación de AGENTS.md + corrección de stats
+
+### 🆕 AGENTS.md
+- Creado `AGENTS.md` en la raíz con guía compacta para agentes de IA (flujo de validación vía `.githooks/`, formato de commit, convenciones de frontmatter/MoC/Log, restricciones de filenames).
+- Añadido a las **exclusiones** de `pre-commit` y `pre-push` (como CLAUDE.md/README.md) y a la lista de estructura en `find-orphans.sh`.
+
+### 📊 Stats corregidas (vault-stats.sh 2026-08-29)
+- **Notas totales**: 516 → **517** (AGENTS.md). Resuelto 509, en progreso 5, borrador 3.
+- **README.md**: conteos por carpeta corregidos (01=46, 02=13, 03=47, 07=109, 08=178, 11=45), fecha a 2026-08-29, fila duplicada de `find-orphans.sh` eliminada.
+- **Dashboard.md** y **TODO.md**: totales y fecha de encabezado actualizados, tabla "por carpeta" corregida (01=46).
+
+### ✅ Validación
+- check-frontmatter.sh: 517 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
+- find-orphans.sh: 0 huérfanas (AGENTS.md excluida como nota de estructura).
