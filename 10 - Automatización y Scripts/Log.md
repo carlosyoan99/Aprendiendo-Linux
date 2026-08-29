@@ -883,3 +883,26 @@ Se ampliaron hacia el esquema de la plantilla de comando (opciones, formato, cas
 ### ✅ Validación
 - Todos los wikilinks nuevos verificados (existen los destinos).
 - Las 6 notas siguen enlazadas desde el MoC.
+
+## 2026-08-29 — Expansión de navegadores y nota nueva Konqueror
+
+### 🌐 Notas expandidas (7) — 08 - Programas y Herramientas
+Se ampliaron hacia el esquema de la plantilla de programa (características, instalación multi-distro, configuración, atajos, comparativa, troubleshooting, enlaces):
+
+| Nota | Antes | Después | Añadido |
+|---|---|---|---|
+| [[Falkon]] | 33 | **~95** | Instalación multi-distro, atajos, comparativa, troubleshooting |
+| [[LibreWolf]] | 33 | **~110** | Instalación (repo Debian), config, comparativa, troubleshooting |
+| [[Vivaldi]] | 33 | **~105** | Repo oficial, atajos, comparativa, troubleshooting |
+| [[Ungoogled Chromium]] | 34 | **~100** | Instalación, config, comparativa, troubleshooting |
+| [[Brave]] | 42 | **~110** | Repo oficial, Shields, Tor, BAT, comparativa, troubleshooting |
+| [[Chromium]] | 46 | **~110** | Instalación multi-distro, comparativa Chrome/Brave, troubleshooting |
+| [[GNOME Web (Epiphany)]] | 32 | **~90** | Instalación multi-distro, atajos, WebKit, troubleshooting |
+
+### 🆕 Nota nueva
+- **[[Konqueror]]** (08 - Programas): navegador/gestor de archivos de KDE, enlazada al MoC (línea de navegadores). Se detectó que el wikilink `[[Konqueror]]` de Falkon apuntaba a una nota inexistente — se creó la nota para resolverlo.
+
+### ✅ Validación
+- check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
+- find-orphans.sh: 0 huérfanas (Konqueror enlazada en MoC).
+- Wikilinks: todos válidos.
