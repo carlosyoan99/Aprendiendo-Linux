@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v17 — expansión de 7 notas de programa)
+> Última actualización: 2026-08-29 (v18 — expansión de 17 notas + fix pre-push)
 
 ---
 
@@ -349,6 +349,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-29 (v15): vault en modo adaptive (sigue el tema del SO) + guía de Noctalia expandida en [[Desktop Shells (Noctalia Caelestia)]]
 - Sesión 2026-08-29 (v16): expansión de 6 notas de programa (Gedit, Geany, Kate, Xfce Terminal, Konsole, Suite de Oficina) hacia el esquema de plantilla; stats actualizadas (518 notas)
 - Sesión 2026-08-29 (v17): expansión de 7 notas de programa (FreeOffice, OnlyOffice, WPS Office, Zed, Lapce, GNOME Terminal, Nemo)
+- Sesión 2026-08-29 (v18): expansión de 17 notas (gestores de archivos: Nautilus/Thunar/nnn/Gestores de Archivos; comandos CLI: df, df y du, touch, netstat, nmcli; comandos combinados: date y timedatectl, sed y awk, seq yes sleep, Touch y History; terminal/DE/WM: Nushell, Wayfire, COSMIC, CutefishOS) + **fix del hook pre-push** (bucle lento → `comm`, elimina colgadas y falsos positivos intermitentes)
 
 ---
 

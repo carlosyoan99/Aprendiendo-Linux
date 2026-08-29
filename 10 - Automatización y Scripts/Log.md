@@ -965,3 +965,68 @@ Se ampliaron hacia el esquema de la plantilla de programa (instalación multi-di
 - check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
 - find-orphans.sh: 0 huérfanas.
 - Wikilinks: todos válidos (pre-push exit 0, 5/5).
+
+## 2026-08-29 — Expansión de notas combinadoras de comandos
+
+### ✏️ Notas expandidas (4) — 07 - Comandos Esenciales
+Se convirtieron las notas combinadoras en guías de referencia unificadas: descripción conjunta, tabla comparativa, "cuándo usar cada uno", ejemplos combinados, ver también con las notas individuales y enlaces externos:
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[date y timedatectl]] | 30 | **91** |
+| [[sed y awk]] | 33 | **83** |
+| [[seq yes sleep]] | 25 | **81** |
+| [[Touch y History]] | 29 | **87** |
+
+### ✅ Validación
+- check-frontmatter.sh: 109/109 OK en 07 - Comandos Esenciales (4 modificadas incluidas).
+- Wikilinks: los 22 únicos usados resuelven a notas existentes.
+
+## 2026-08-29 — Expansión de Nushell, Wayfire, COSMIC y CutefishOS
+
+### ✏️ Notas reescritas por completo (4)
+Se expandieron siguiendo la plantilla correspondiente (terminal para Nushell; Entorno/WM para las otras tres): requisitos, instalación multi-distro, configuración, atajos, personalización, comparativa, troubleshooting y enlaces:
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[Nushell]] | 47 | **210** |
+| [[Wayfire]] | 44 | **152** |
+| [[COSMIC Desktop]] | 44 | **162** |
+| [[CutefishOS]] | 36 | **143** |
+
+- `fecha_modificacion` actualizada a 2026-08-29 en las 4 notas; frontmatter, `estado` y `prioridad` conservados (se añadieron `tipo`/`motor_composicion`/`lenguaje_config` en las de DE/WM).
+
+### ✅ Validación
+- Wikilinks: los 13 únicos usados en las 4 notas resuelven a notas existentes.
+
+## 2026-08-29 — Expansión de gestores de archivos y comandos CLI
+
+### 🗂️ Gestores de archivos (4) — 08 - Programas y Herramientas
+Se ampliaron hacia el esquema de la plantilla de programa (instalación multi-distro + Flatpak, configuración, atajos, uso avanzado, comparativa, troubleshooting, enlaces):
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[Nautilus]] | 59 | **122** |
+| [[Thunar]] | 58 | **118** |
+| [[nnn]] | 59 | **123** |
+| [[Gestores de Archivos]] (índice) | 59 | **93** |
+
+### ⌨️ Comandos CLI (5) — 07 - Comandos Esenciales
+Se ampliaron hacia la plantilla de comando (sintaxis, descripción, opciones, ejemplos, casos de uso, pipes, alternativas modernas, troubleshooting, enlaces):
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[df]] | 53 | **116** |
+| [[df y du]] | 32 | **75** |
+| [[touch]] | 53 | **123** |
+| [[netstat]] | 46 | **123** |
+| [[nmcli]] | 55 | **126** |
+
+### 🐛 Fix: pre-push se colgaba / falsos positivos intermitentes
+- **Causa**: el hook usaba un bucle `while read ... echo "$NOTAS" | grep -xqiF` que hacía un fork+pipe por cada wikilink (435 forks ≈ 12s). Bajo carga se colgaba o terminaba con exit 1 de forma no determinista, produciendo falsos positivos (`env`, `GRUB`, `Linux embebido`).
+- **Solución**: se sustituyó por `comm -23` (diferencia de conjuntos, normalizada a minúsculas para mantener matching case-insensitive), que corre en ~1ms y es determinista. Verificado: 6/6 ejecuciones sin falsos positivos y sin colgarse.
+
+### ✅ Validación
+- check-frontmatter.sh: 518 OK.
+- find-orphans.sh: 0 huérfanas.
+- pre-push arreglado: 6/6 ejecuciones OK.
