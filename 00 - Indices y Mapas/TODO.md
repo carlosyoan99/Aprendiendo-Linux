@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v14 — expansión de 7 navegadores + nota nueva Konqueror)
+> Última actualización: 2026-08-29 (v15 — vault adaptive al tema del SO + guía Noctalia)
 
 ---
 
@@ -346,6 +346,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-29 (v12.1): creación de AGENTS.md, enlazada al MoC, exclusiones en pre-commit/pre-push, stats corregidas en README/Dashboard/TODO (517 notas, 46 en 01)
 - Sesión 2026-08-29 (v13): expansión de 6 notas de comando cortas (yes, nohup, timeout, seq, at, sleep) hacia el esquema de plantilla; fragmentación ya resuelta en sesión previa
 - Sesión 2026-08-29 (v14): expansión de 7 navegadores (Falkon, LibreWolf, Vivaldi, Ungoogled Chromium, Brave, Chromium, GNOME Web) + nota nueva [[Konqueror]] (518 notas)
+- Sesión 2026-08-29 (v15): vault en modo adaptive (sigue el tema del SO) + guía de Noctalia expandida en [[Desktop Shells (Noctalia Caelestia)]]
 
 ---
 

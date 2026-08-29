@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-29
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -44,6 +44,51 @@ cp -r icons/Noctalia ~/.icons/
 - Notificaciones redondeadas con bordes translúcidos
 - Esquema de colores de alto contraste para accesibilidad
 - Compatible con GNOME 45+
+
+### Aplicar Noctalia en el sistema actual (GNOME)
+
+> En Arch/CachyOS con GNOME. La idea es que el sistema (y con él las apps que siguen el tema, incluido Obsidian en modo adaptive) adopte la estética oscura de Noctalia.
+
+```bash
+# 1. Instalar el tema GTK/shell (desde el repositorio de la shell)
+git clone https://github.com/noctalia/desktop-shell
+cd desktop-shell
+./install.sh        # copia a ~/.themes, ~/.icons y extensiones
+# Si no hay script: copiar manualmente
+# mkdir -p ~/.themes ~/.icons
+# cp -r themes/Noctalia ~/.themes/
+# cp -r icons/Noctalia ~/.icons/
+
+# 2. Activar el tema GTK y clave de color oscuro
+gsettings set org.gnome.desktop.interface gtk-theme "Noctalia"
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Noctalia"
+
+# 3. Tema del shell (requiere la extensión User Themes)
+gsettings set org.gnome.shell.extensions.user-theme name "Noctalia"
+# Asegurarse de que la extensión esté habilitada
+gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
+
+# 4. Activar el acento (azul / púrpura / verde) — depende de la shell
+# Ej.: si la shell expone una preferencia de acento (adw-gtk3 style)
+gsettings set org.gnome.desktop.interface accent-color "purple"
+```
+
+**Verificar**:
+```bash
+gsettings get org.gnome.desktop.interface gtk-theme
+gsettings get org.gnome.desktop.interface color-scheme   # debe dar 'prefer-dark'
+```
+
+### Vincular el vault de Obsidian al tema del sistema
+
+Para que **Obsidian siga el tema del SO** (y cambie a oscuro automáticamente cuando el sistema use la estética de Noctalia), el vault se configura en modo *adaptive*:
+
+- `.obsidian/appearance.json` → `"theme": "system"` (+ `"accentColor"` y `"cssTheme"` vacíos para heredar el tema del sistema).
+- En la UI: **Ajustes → Apariencia → Ajuste de color → Seguir el tema del sistema**.
+- Con `prefer-dark` activo en el SO, Obsidian muestra automáticamente su tema oscuro, coherente con Noctalia.
+
+> Nota: `.obsidian/` está en `.gitignore`, así que esta config es local y no se versiona en el repositorio.
 
 ## Caelestia
 

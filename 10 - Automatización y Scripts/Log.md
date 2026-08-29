@@ -906,3 +906,17 @@ Se ampliaron hacia el esquema de la plantilla de programa (características, ins
 - check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
 - find-orphans.sh: 0 huérfanas (Konqueror enlazada en MoC).
 - Wikilinks: todos válidos.
+
+## 2026-08-29 — Vault sigue el tema del SO (Noctalia)
+
+### 🎨 Configuración de Obsidian (local)
+- `.obsidian/appearance.json` → `"theme": "system"` (modo *adaptive*): el vault sigue el tema claro/oscuro del SO.
+- Con el sistema en `prefer-dark` + Noctalia, Obsidian muestra su tema oscuro automáticamente.
+- Nota: `.obsidian/` está en `.gitignore`, config local no versionada.
+
+### 📝 Nota ampliada
+- **[[Desktop Shells (Noctalia Caelestia)]]**: añadidas secciones "Aplicar Noctalia en el sistema actual (GNOME)" (gsettings, color-scheme prefer-dark, acento) y "Vincular el vault de Obsidian al tema del sistema" (modo adaptive).
+
+### ✅ Validación
+- check-frontmatter.sh: 518 OK.
+- Config real aplicada en el sistema.
