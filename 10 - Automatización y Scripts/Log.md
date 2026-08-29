@@ -942,3 +942,26 @@ Se ampliaron hacia el esquema de la plantilla de programa (instalación multi-di
 - check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
 - find-orphans.sh: 0 huérfanas.
 - Wikilinks: todos válidos (pre-push exit 0).
+
+## 2026-08-29 — Expansión de suites de oficina, editores modernos y app de escritorio
+
+### ✏️ Notas expandidas (7) — 08 - Programas y Herramientas
+Se ampliaron hacia el esquema de la plantilla de programa (instalación multi-distro + Flatpak, configuración, atajos, uso avanzado, comparativa, troubleshooting, enlaces):
+
+| Nota | Antes | Después | Grupo |
+|---|---|---|---|
+| [[FreeOffice]] | 38 | **~83** | Suite de oficina |
+| [[OnlyOffice]] | 48 | **~89** | Suite de oficina |
+| [[WPS Office]] | 50 | **~88** | Suite de oficina |
+| [[Zed]] | 51 | **~106** | Editor moderno |
+| [[Lapce]] | 43 | **~95** | Editor moderno |
+| [[GNOME Terminal]] | 54 | **~105** | Terminal |
+| [[Nemo]] | 52 | **~98** | Gestor de archivos |
+
+### 🔎 Nota sobre pre-push intermitente
+- Volvió a aparecer un falso positivo transitorio (`[[GRUB]]`) al ejecutar el hook; `GRUB.md` existe y **el hook pasa verde de forma consistente** (5/5 ejecuciones). Se confirma que estos falsos positivos (como el anterior `[[env]]`) ocurren sin relación con los cambios: el estado actual del repositorio valida limpio.
+
+### ✅ Validación
+- check-frontmatter.sh: 518 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
+- find-orphans.sh: 0 huérfanas.
+- Wikilinks: todos válidos (pre-push exit 0, 5/5).

@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v16 — expansión de 6 notas de programa)
+> Última actualización: 2026-08-29 (v17 — expansión de 7 notas de programa)
 
 ---
 
@@ -348,6 +348,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-29 (v14): expansión de 7 navegadores (Falkon, LibreWolf, Vivaldi, Ungoogled Chromium, Brave, Chromium, GNOME Web) + nota nueva [[Konqueror]] (518 notas)
 - Sesión 2026-08-29 (v15): vault en modo adaptive (sigue el tema del SO) + guía de Noctalia expandida en [[Desktop Shells (Noctalia Caelestia)]]
 - Sesión 2026-08-29 (v16): expansión de 6 notas de programa (Gedit, Geany, Kate, Xfce Terminal, Konsole, Suite de Oficina) hacia el esquema de plantilla; stats actualizadas (518 notas)
+- Sesión 2026-08-29 (v17): expansión de 7 notas de programa (FreeOffice, OnlyOffice, WPS Office, Zed, Lapce, GNOME Terminal, Nemo)
 
 ---
 
