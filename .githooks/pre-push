@@ -42,25 +42,24 @@ NOTAS_EXISTENTES=$(find . -name '*.md' \
     -not -path './Templates/*' \
     -not -path './.obsidian/*' \
     -not -path './.git/*' \
-    -exec basename {} .md \; | sort -u)
+    -exec basename {} .md \; || true)
+
+# v6: en vez de un bucle `while read ... grep` (lento y no determinista por los
+# miles de forks/pipe que podían colgar el hook y producir falsos positivos),
+# se usa `comm -23` para obtener la diferencia de conjuntos en O(n log n).
+# Se normaliza a minúsculas para mantener el matching case-insensitive previo.
+ROTOS=$(comm -23 \
+    <(printf '%s\n' "$WIKILINKS" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | tr '[:upper:]' '[:lower:]' | sed '/^$/d' | sort -u) \
+    <(printf '%s\n' "$NOTAS_EXISTENTES" | tr '[:upper:]' '[:lower:]' | sort -u))
 
 ERRORES=0
-while IFS= read -r link; do
-    if [[ -z "$link" ]]; then
-        continue
-    fi
-
-    LINK_NORMALIZADO=$(echo "$link" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-
-    if [[ -z "$LINK_NORMALIZADO" ]]; then
-        continue
-    fi
-
-    if ! echo "$NOTAS_EXISTENTES" | grep -xqiF "$LINK_NORMALIZADO"; then
-        echo "  ⚠️  Wikilink roto: [[${LINK_NORMALIZADO}]]"
+if [[ -n "$ROTOS" ]]; then
+    while IFS= read -r roto; do
+        [[ -z "$roto" ]] && continue
+        echo "  ⚠️  Wikilink roto: [[${roto}]]"
         ((ERRORES++)) || true
-    fi
-done <<< "$WIKILINKS"
+    done <<< "$ROTOS"
+fi
 
 if [[ $ERRORES -gt 0 ]]; then
     echo ""
