@@ -862,3 +862,24 @@ Registro cronológico de sesiones. Cada entrada la añade la IA (o tú) al final
 ### ✅ Validación
 - check-frontmatter.sh: 517 OK (CLAUDE/README/AGENTS/Log sin frontmatter por diseño).
 - find-orphans.sh: 0 huérfanas (AGENTS.md excluida como nota de estructura).
+
+## 2026-08-29 — Expansión de notas de comando cortas
+
+### 📝 Notas expandidas (6) — 07 - Comandos Esenciales
+Se ampliaron hacia el esquema de la plantilla de comando (opciones, formato, casos de uso reales, troubleshooting, alternativas, enlaces externos, ver también):
+
+| Nota | Antes | Después | Secciones nuevas |
+|---|---|---|---|
+| [[yes]] | 34 | **~100** | Opciones, casos reales (SIGPIPE), alternativas, troubleshooting |
+| [[nohup]] | 36 | **~120** | Opciones, `disown`/`setsid`/`systemd-run`, troubleshooting, advertencias |
+| [[timeout]] | 51 | **~140** | Duración, `--kill-after`, códigos 124/125, alternativas, troubleshooting |
+| [[seq]] | 45 | **~130** | Opciones (`-f`,`-s`,`-w`,`-t`), formato de salida, alternativas, troubleshooting |
+| [[at]] | 45 | **~140** | `-f`, `-c`, `batch`, formatos de hora, `at.allow`/`at.deny`, troubleshooting |
+| [[sleep]] | 46 | **~130** | Opciones, backoff simple, alternativas, troubleshooting, portabilidad |
+
+### 🔍 Nota sobre fragmentación
+- `nohup-timeout-at.md` y `seq yes sleep.md` ya habían sido fragmentadas en la sesión 2026-07-26 (existen las notas individuales y los stubs actúan como índices). No requirieron acción.
+
+### ✅ Validación
+- Todos los wikilinks nuevos verificados (existen los destinos).
+- Las 6 notas siguen enlazadas desde el MoC.

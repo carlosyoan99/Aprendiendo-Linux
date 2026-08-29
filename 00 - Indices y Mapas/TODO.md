@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v12.1 — creación de AGENTS.md, corrección de stats en README/Dashboard)
+> Última actualización: 2026-08-29 (v13 — expansión de 6 notas de comando cortas)
 
 ---
 
@@ -344,6 +344,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-07-27 (v11): 8 notas fragmentadas expandidas (MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel), verificación notas antiguas (0 >30 días), Dashboard y TODO actualizados con stats reales (516 notas, 509 resuelto, 215 alta, 162 media, 133 baja)
 - Sesión 2026-07-27 (v12): 3 scripts optimizados (vault-stats ~68x, find-orphans ~5x, add-modification-date ~2x), [[suckless]] enlazada al MoC (0 huérfanas), README.md y Scripts del Vault.md actualizados con docs de rendimiento
 - Sesión 2026-08-29 (v12.1): creación de AGENTS.md, enlazada al MoC, exclusiones en pre-commit/pre-push, stats corregidas en README/Dashboard/TODO (517 notas, 46 en 01)
+- Sesión 2026-08-29 (v13): expansión de 6 notas de comando cortas (yes, nohup, timeout, seq, at, sleep) hacia el esquema de plantilla; fragmentación ya resuelta en sesión previa
 
 ---
 
