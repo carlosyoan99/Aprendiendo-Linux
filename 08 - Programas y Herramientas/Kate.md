@@ -98,6 +98,7 @@ kate --block archivo.txt
 
 - [[Editores de Texto]] — índice + comparativa
 - [[Gedit]] — alternativa GNOME
+- [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto
 - [[Geany]] — alternativa GTK ligera
 - [[KDE Plasma]]
 

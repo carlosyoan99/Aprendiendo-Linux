@@ -335,19 +335,19 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **536** (+ 7 templates) |
-| **Estado resuelto** | 528 |
+| **Notas totales** | **549** (+ 7 templates) |
+| **Estado resuelto** | 541 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
 | **Prioridad alta** | 218 |
-| **Prioridad media** | 177 |
-| **Prioridad baja** | 134 |
+| **Prioridad media** | 188 |
+| **Prioridad baja** | 136 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 189 | **Comando** | 110 |
+| **Programa** | 202 | **Comando** | 110 |
 | **Concepto** | 47 | **Distribución** | 45 |
 | **Sistema** | 49 | **Entorno / WM** | 33 |
 | **Troubleshooting** | 20 | **Índice** | 13 |
@@ -362,7 +362,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
 | 04 - Entornos de Escritorio | 18 | 05 - Gestores de Ventanas | 15 |
 | 06 - La Terminal | 6 | 07 - Comandos Esenciales | 110 |
-| 08 - Programas y Herramientas | 189 | 09 - Solucion de Problemas | 20 |
+| 08 - Programas y Herramientas | 202 | 09 - Solucion de Problemas | 20 |
 | 10 - Automatizacion y Scripts | 9 | 11 - Distribuciones | 45 |
 
 ---
@@ -390,6 +390,8 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-30 (v21): **expansión de 8 notas de programa cortas** — delta/pavucontrol/telegram-desktop/gparted/octopi/glances/meld/binutils (40-52 → 115-150 líneas); secciones añadidas: qué es, instalación multi-distro, comparativa, troubleshooting; Log.md y TODO actualizados
 - Sesión 2026-08-30 (v22): **expansión de [[Gestores de Paquetes]]** (hub alta prioridad, 67 → 135 líneas) — capa alto/bajo nivel, tabla de equivalentes apt/dnf/pacman, gestión de repositorios, troubleshooting rápido; Log.md actualizado. Hallazgo de curado: las demás hubs de alta prioridad (Bootloaders, Gestión de usuarios, Cifrado, SELinux/AppArmor, Logging) tienen hijas ya muy desarrolladas → no se expanden para evitar duplicación
 - Sesión 2026-08-30 (v23): **expansión de 5 notas de concepto y troubleshooting cortas** — [[Impresora no funciona]] (72→140), [[RTAI]] (71→120), [[Int 80h]] (73→115), [[Exec Shield]] (70→105), [[GEM]] (76→110); secciones añadidas: tablas comparativas, evolución histórica, comandos de verificación, troubleshooting rápido
+- Sesión 2026-08-30 (v24): **8 notas nuevas de programa** — [[rclone]] (cloud sync 70+ backends), [[eza]] (ls moderno), [[dust]] (du con barras), [[zoxide]] (cd inteligente), [[starship]] (prompt Rust), [[hexyl]] (hex viewer), [[sd]] (sed moderno), [[yt-dlp]] (descargador vídeos); MoC actualizado
+- Sesión 2026-08-30 (v25): **5 notas nuevas de accesos rápidos por defecto** — [[Atajos de teclado - Firefox]], [[Atajos de teclado - Editores Kate y Gedit]], [[Atajos de teclado - VSCode]], [[Atajos de teclado - GNOME Terminal y Kitty]], [[Atajos de teclado - Nautilus Thunar Dolphin]]; 'Ver también' añadido en Firefox/Kate/Gedit/Editores de código/GNOME Terminal/Kitty/Nautilus/Thunar/Dolphin, MoC actualizado (549 notas)
 
 ---
 

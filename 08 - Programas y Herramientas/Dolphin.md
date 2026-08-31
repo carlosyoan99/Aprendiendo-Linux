@@ -49,6 +49,7 @@ La terminal integrada (`F4`) permite ejecutar comandos en el directorio actual s
 - [[Nautilus]] — gestor de GNOME
 - [[Thunar]] — alternativa ligera
 - [[Nemo]] — fork de Nautilus
+- [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto
 - [[Konsole]] — terminal asociada a KDE
 - [[Gestores de Archivos]] — índice + comparativa
 

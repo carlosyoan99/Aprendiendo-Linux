@@ -58,6 +58,7 @@ map ctrl+shift+enter new_window
 - [[Alacritty]] — terminal GPU minimalista
 - [[Foot]] — terminal Wayland nativa ultra-ligera
 - [[Emuladores de Terminal]] — índice + comparativa
+- [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto
 - [[La Shell]]
 
 ## Enlaces externos

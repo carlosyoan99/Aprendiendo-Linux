@@ -116,6 +116,7 @@ Las extensiones más útiles se instalan desde los repositorios: `nautilus-image
 - [[Nemo]] — fork con más opciones
 - [[Dolphin]] — gestor de KDE, más potente
 - [[Thunar]] — alternativa ligera
+- [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto
 - [[GNOME]] — entorno de escritorio asociado
 - [[Gestores de Archivos]] — índice + comparativa
 

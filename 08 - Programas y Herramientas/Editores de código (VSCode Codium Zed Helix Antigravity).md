@@ -208,6 +208,7 @@ cargo build --release
 - [[Nano]] — editor simple para terminal
 - [[Vim Neovim]] — editor modal para terminal
 - [[Desarrollo en Linux (gcc make gdb strace)]] — herramientas de desarrollo
+- [[Atajos de teclado - VSCode]] — accesos rápidos por defecto del editor
 
 ## Enlaces externos
 

@@ -134,6 +134,7 @@ firefox
 ## Ver también
 
 - [[Navegadores Web]] — comparativa general con motores y alternativas
+- [[Atajos de teclado - Firefox]] — accesos rápidos por defecto del navegador
 - [[Personalización en Linux]] — temas para Firefox (Firefox Color, temas de opendesktop)
 - [[Gestores de Paquetes]] — Flatpak, AUR, repos oficiales
 

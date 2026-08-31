@@ -99,6 +99,7 @@ Se configura desde **Preferencias → Perfil → Fondo → Transparencia**. GNOM
 
 - [[GNOME]] — entorno de escritorio asociado
 - [[Emuladores de Terminal]] — índice + comparativa
+- [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto
 - [[Konsole]] — alternativa en KDE
 - [[Xfce Terminal]] — alternativa ligera
 

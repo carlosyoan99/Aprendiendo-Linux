@@ -112,6 +112,7 @@ Los scripts personalizados se colocan en `~/.config/Thunar/` y se pueden añadir
 - [[Dolphin]] — gestor de KDE, más potente
 - [[PCManFM]] — alternativa ultra-ligera
 - [[Nemo]] — fork con más opciones
+- [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto
 - [[XFCE]] — entorno de escritorio asociado
 - [[Gestores de Archivos]] — índice + comparativa
 

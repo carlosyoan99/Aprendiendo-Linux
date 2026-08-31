@@ -98,6 +98,7 @@ gedit --new-window --encoding=utf-8 archivo.txt
 
 - [[Editores de Texto]] — índice + comparativa
 - [[Kate]] — alternativa KDE
+- [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto
 - [[Geany]] — IDE ligero GTK
 
 #programa #editores

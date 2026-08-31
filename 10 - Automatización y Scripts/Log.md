@@ -1142,3 +1142,45 @@ Se expandió la nota hub [[Gestores de Paquetes]] de 67 a 135 líneas, hacia un 
 
 ### 🔗 Validación
 - fecha_modificacion actualizada a 2026-08-30 en las 5 notas.
+
+## 2026-08-30 (v24) — 8 notas nuevas de programa
+
+### 🆕 Notas creadas — 08 - Programas y Herramientas
+
+| Nota | Prioridad | Contenido |
+|---|---|---|
+| [[rclone]] | media | Sincronización cloud (70+ backends), mount FUSE, cifrado E2E, bisync, comparativa con rsync/restic/borg |
+| [[eza]] | media | ls moderno en Rust (colores, iconos, árbol, git status), aliases recomendados |
+| [[dust]] | media | du moderno con barras de progreso visuales, comparativa con ncdu/duf |
+| [[zoxide]] | media | cd inteligente que aprende frecuencia, selección interactiva con fzf, comparativa con autojump |
+| [[starship]] | media | Prompt cross-platform en Rust, configuración TOML, módulos (git, lenguajes, cloud), comparativa con oh-my-posh/p10k |
+| [[hexyl]] | baja | Visor hexadecimal con colores, rangos de bytes, formato hex/oct/bin |
+| [[sd]] | baja | sed moderno y simple, sintaxis limpia sin delimitadores, comparativa con sed |
+| [[yt-dlp]] | media | Descargador de vídeos multi-sitio (1000+), playlists, subtítulos, MP3, comparativa con youtube-dl |
+
+### 🔗 MoC actualizado
+- 8 notas añadidas en sección Programas comunes: eza, dust, zoxide, starship, sd, hexyl, rclone, yt-dlp.
+
+### ✅ Validación
+- check-frontmatter.sh pendiente de ejecutar.
+- 8 archivos nuevos creados en 08 - Programas y Herramientas.
+
+## 2026-08-30 (v25) — Notas de accesos rápidos por defecto
+
+### 📝 Notas nuevas (5) — categoria: programa, prioridad: media
+
+| Nota | Contenido |
+|---|---|
+| [[Atajos de teclado - Firefox]] | Navegación, barra, pestañas, búsqueda en página, historial/marcadores, zoom/reader, DevTools (F12). |
+| [[Atajos de teclado - Editores Kate y Gedit]] | Abrir/guardar, pestañas, edición (Ctrl+D difiere), búsqueda, terminal integrada Kate (Ctrl+T), paleta. |
+| [[Atajos de teclado - VSCode]] | Paleta (Ctrl+Shift+P), edición multicursor, rename (F2), navegación, split, depuración (F5-F11). |
+| [[Atajos de teclado - GNOME Terminal y Kitty]] | Pestañas, splits (Kitty), copiar/pegar, búsqueda scrollback, fuente. Aviso: atajos dependen de la shell. |
+| [[Atajos de teclado - Nautilus Thunar Dolphin]] | Navegación, pestañas, portapapeles, renombrar, vistas, previsualizar. |
+
+### 🔗 Enlaces
+- Añadido 'Ver también' con el enlace a su atajos en: Firefox, Kate, Gedit, Editores de código, GNOME Terminal, Kitty, Nautilus, Thunar, Dolphin.
+- MoC actualizado con los 5 enlaces de atajos en la sección de Programas.
+
+### 🔍 Validación
+- check-frontmatter.sh carpeta 08: 202/202 OK (0 sin frontmatter, 0 sin hasthag).
+- Wikilinks de las 5 notas nuevas verificados (resuelven todos).
