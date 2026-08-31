@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-30
 estado: en progreso
 categoria: indice
 ---
@@ -42,11 +42,11 @@ categoria: indice
 - [[CI-CD]] — integración continua, despliegue continuo, GitHub Actions, GitLab CI, Jenkins
 
 ## Sistema
-- [[Filesystem Hierarchy Standard]] · [[Proc y Sys]] · [[Sistemas de Archivos]] · [[Btrfs]] · [[LUKS2 y Btrfs]] — cifrado de bloque + Btrfs
+- [[Filesystem Hierarchy Standard]] · [[Proc y Sys]] · [[Sistemas de Archivos]] · [[fstab (montaje de discos)]] — montaje automático de discos en el arranque · [[Btrfs]] · [[LUKS2 y Btrfs]] — cifrado de bloque + Btrfs · [[snapper]] — snapshots Btrfs y rollback · [[Mi equipo (hardware CachyOS-Laptop)]] — el equipo real donde corre este vault
 - [[Proceso de Arranque (GRUB initramfs kernel params)]] · [[Bootloaders (GRUB Limine systemd-boot)]] — índice · [[GRUB]] · [[Limine]] · [[systemd-boot]] · [[initramfs]] — sistema de archivos en RAM · [[Firmware y BIOS-UEFI]] — firmware, Secure Boot, ESP · [[Logging del sistema (rsyslog journald logrotate)]] — índice · [[journald]] · [[rsyslog]] · [[logrotate]]
 - [[RAID (mdadm)]] · [[Módulos del kernel (lsmod modprobe blacklist)]]
 - [[cgroups (control de recursos)]]
-- [[systemd]] · [[systemd unidades personalizadas]] — templates, timers, sockets, paths, drop-ins · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
+- [[systemd]] · [[systemctl]] — gestión de servicios/units · [[systemd unidades personalizadas]] — templates, timers, sockets, paths, drop-ins · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
 - [[Audio en Linux]] · [[Firewall]] · [[iptables]] — firewall clásico (legacy) · [[LVM]] · [[ACLs]] · [[SELinux y AppArmor]] — índice · [[SELinux]] · [[AppArmor]] · [[D-Bus]]
 - [[systemd-networkd]] · [[NetworkManager]] — gestión de redes gráfica y CLI · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]]
 - [[Device nodes y udev]] — nodos de dispositivo en /dev, reglas udev
@@ -82,6 +82,7 @@ categoria: indice
 - [[Sugar]] · [[Trinity]]
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico · [[Motif]] — toolkit gráfico usado por CDE
 - [[Desktop Shells (Noctalia Caelestia)]]
+- [[Tema Material You en el escritorio]] — del wallpaper a las apps vía Noctalia
 - [[COSMIC Desktop]] — DE en Rust por System76, alpha
 - [[CutefishOS]] — DE Wayland con estética macOS (descontinuado)
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
@@ -93,7 +94,7 @@ categoria: indice
 - [[Comparativa gestores de ventanas]] — guía para elegir WM según perfil y caso de uso
 
 ## Programas comunes
-- [[Navegadores Web]] — índice + comparativa · [[Firefox]] · [[Chromium]] · [[Brave]] · [[LibreWolf]] · [[Vivaldi]] · [[Ungoogled Chromium]] · [[GNOME Web (Epiphany)]] · [[Falkon]] · [[Konqueror]]
+- [[Navegadores Web]] — índice + comparativa · [[Firefox]] · [[Chromium]] · [[Brave]] · [[LibreWolf]] · [[Vivaldi]] · [[Ungoogled Chromium]] · [[GNOME Web (Epiphany)]] · [[Falkon]] · [[Konqueror]] · [[google-chrome]] — Chrome de Google (con VAAPI en CachyOS)
 - [[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]] · [[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]] · [[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]] · [[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]] · [[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]]
 - [[WireGuard VPN]] · [[Nouveau (controlador)]] — driver libre NVIDIA · [[NTFS-3G]] — controlador NTFS · [[GNOME VFS]] — sistema archivos virtual GNOME (histórico) · [[Genkernel]] — compilación del kernel (Gentoo)
 - [[Kubernetes]] — orquestación de contenedores (pods, deployments, services) · [[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]] · [[LXC y Contenedores del Sistema]] · [[Incus]] · [[Proxmox VE]] · [[ffmpeg]] · [[Android Debug Bridge]] — ADB · [[scrcpy]] · [[Xrdp]] — escritorio remoto · [[timeshift]] · [[Git]] · [[htop btop]] · [[Neofetch Fastfetch]]
@@ -105,12 +106,12 @@ categoria: indice
 - [[PostgreSQL y MySQL]] — índice · [[PostgreSQL]] · [[MySQL]] — bases de datos relacionales · [[PostgreSQL vs MongoDB]] — SQL vs NoSQL, cuándo usar cada uno, migraciones · [[SQLite]] — la base de datos embebida más usada del mundo · [[Redis]] — estructura de datos en memoria, caching, colas, pub/sub · [[MongoDB y NoSQL]] — documentos, clave-valor, columnar y grafos
 - [[Desarrollo en Linux (gcc make gdb strace)]] — índice del toolchain · [[gcc]] · [[make]] · [[gdb]] · [[strace]]
 - [[GitHub CLI (gh)]] — terminal para GitHub (PRs, issues, Actions, codespaces) · [[Monitorización (Prometheus node_exporter)]] — índice del stack · [[Prometheus]] · [[node_exporter]] · [[Grafana]]
-- [[lazygit]] — Git TUI interactivo · [[gitui]] — Git TUI en Rust · [[tig]] — visor de commits Git · [[delta]] — visor de diff con syntax highlighting
+- [[lazygit]] — Git TUI interactivo · [[gitui]] — Git TUI en Rust · [[tig]] — visor de commits Git · [[delta]] — visor de diff con syntax highlighting · [[meld]] — comparador y fusionador visual (git difftool/mergetool)
 - [[Docker Compose]] — orquestación multi-contenedor (YAML, profiles, watch)
 - [[lazydocker]] — Docker TUI interactivo · [[dive]] — explorador capas Docker · [[ctop]] — top para contenedores
 - [[k9s]] — Kubernetes TUI | [[zellij]] — multiplexor de terminal moderno · [[yazi]] — gestor de archivos TUI rápido
 - [[bat]] — cat con syntax highlighting · [[glow]] — visor Markdown bonito | [[trippy]] — traceroute + ping visual
-- [[duf]] — df moderno con colores · [[btop]] — monitor de recursos con gráficos · [[iftop]] — monitor de ancho de banda por conexión · [[bmon]] — monitor de ancho de banda · [[nethogs]] — monitor de ancho de banda por proceso · [[nvtop]] — monitor de GPU (NVIDIA/AMD)
+- [[duf]] — df moderno con colores · [[btop]] — monitor de recursos con gráficos · [[iftop]] — monitor de ancho de banda por conexión · [[bmon]] — monitor de ancho de banda · [[nethogs]] — monitor de ancho de banda por proceso · [[nvtop]] — monitor de GPU (NVIDIA/AMD) · [[glances]] — monitor del sistema en Python (TUI + web)
 - [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + herramientas · [[lspci]] · [[lsusb]] · [[dmidecode]] · [[lshw]] · [[smartctl]] · [[gdebi]] — instalador de .deb con dependencias
 - [[Busybox]] · [[Ncurses]] · [[Stratis]] · [[suckless]] — comunidad de software minimalista (DWM, st, dmenu)
 - [[ranger]] — gestor de archivos TUI (Python) · [[lf]] — gestor de archivos TUI rápido (Go) · [[nnn]] — gestor TUI ultra-ligero en C
@@ -121,10 +122,11 @@ categoria: indice
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
 - [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]]
 - [[atuin]] — historial de shell con sincronización
-- [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]]
+- [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
+- [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
 - [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]]
 - [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
-- [[Parted Magic]] — Live CD de particionado y rescate
+- [[Parted Magic]] — Live CD de particionado y rescate · [[gparted]] — editor de particiones gráfico
 - [[GNUstep]] — framework Cocoa libre
 - [[GTK]] · [[Qt]] — toolkits de interfaces gráficas (GNOME y KDE respectivamente)
 - [[Heartbeat (Linux-HA)]] — alta disponibilidad · [[Linux Virtual Server]] — balanceo de carga · [[Open-Xchange]] — suite colaborativa · [[SONiC]] — SO redes Microsoft
@@ -150,6 +152,7 @@ categoria: indice
 - [[seq]] · [[yes]] · [[sleep]] · [[seq yes sleep]] — índice
 - [[tree]] — mostrar árbol de directorios · [[procs]] — ps moderno con colores · [[ripgrep]] — grep moderno en Rust · [[doggo]] — dig moderno con colores
 - [[pacman]] — gestor de paquetes de Arch Linux
+- [[octopi]] — frontend gráfico para pacman (con asistente AUR)
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
 - [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[gdb]] — depurador GNU, breakpoints, core dumps · [[ltrace]] — trazar llamadas a librerías · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
@@ -177,6 +180,8 @@ categoria: indice
 - [[Sistema no arranca]] — recuperación desde pantalla negra hasta kernel panic
 - [[Impresora no funciona]] — solucionar problemas de impresión (CUPS, drivers, red)
 - [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] [[Git hooks para el vault]]
+- [[Scripts de personalización del sistema]] — niri-gov, niri-ram, modo gaming · [[systemd user watchers para temas Noctalia]]
+- [[OCR de pantalla con noctalia-ocr]] · [[Recordatorios con noctalia-remind]] — utilidades propias en el PATH del sistema
 
 ## Enlaces externos
 

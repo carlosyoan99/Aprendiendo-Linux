@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-08-29
+fecha_modificacion: 2026-08-30
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-29 (v18 — expansión de 17 notas + fix pre-push)
+> Última actualización: 2026-08-30 (v19 — integración y personalización del sistema real)
 
 ---
 
@@ -294,41 +294,76 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | ✅ | [[FHS]] | ~10 bloques | ~5 (etc, var, usr, proc+sys, tmp+run+mnt+opt) |
 | ✅ | [[DNS y BIND]] | ~8 bloques | ~4 (host+nslookup, hosts+resolv.conf, resolved+NSSwitch, verificación) |
 
+### 🧠 Integración y personalización al sistema real — Sesión 2026-08-30 (v19)
+
+| Completado | Nota | Cambio |
+|---|---|---|
+| ✅ | [[Niri]] | Sección "Mi configuración real (CachyOS + Noctalia)": cfg/, keybinds reales, gaming-mode |
+| ✅ | [[CachyOS]] | Sección "Mi sistema CachyOS": hardware, kernel, scripts propios |
+| ✅ | [[Desktop Shells (Noctalia Caelestia)]] | Sección "Noctalia en mi sistema (realidad 2026)" |
+| ✅ | [[Fish]] | Sección "Mi config.fish (real)" |
+| ✅ | [[kew]] · [[snapper]] · [[obsidian]] · [[meld]] | Programas nuevos (08) |
+| ✅ | [[pavucontrol]] · [[gparted]] · [[octopi]] | Programas nuevos (08) |
+| ✅ | [[google-chrome]] · [[telegram-desktop]] · [[glances]] | Programas nuevos (08) |
+| ✅ | [[Mi equipo (hardware CachyOS-Laptop)]] | Nota nueva (03 - Sistema) |
+| ✅ | [[Tema Material You en el escritorio]] | Nota nueva (04 - Escritorio) |
+| ✅ | Scripts propios, watchers systemd, OCR/remind | Notas nuevas (10 - Automatización) |
+
+### 🆕 Notas de alta prioridad — Sesión 2026-08-30 (v20)
+
+| Completado | Nota | Categoría | Contenido |
+|---|---|---|---|
+| ✅ | [[systemctl]] | comando | Gestión de servicios/units systemd: start/stop/restart/enable/mask, targets, list-units, systemd-analyze, `--user` |
+| ✅ | [[fstab (montaje de discos)]] | sistema | Montaje persistente: 6 columnas, UUID vs /dev/sdX, opciones (nofail/noatime/ro/uid...), NFS/CIFS, automount, troubleshooting modo emergencia |
+
+### ✏️ Expansión de notas de programa — Sesión 2026-08-30 (v21)
+
+| Completado | Nota | Antes | Después | Mejoras clave |
+|---|---|---|---|---|
+| ✅ | [[delta]] | ~40 | **~130** | Qué es, multi-distro, config avanzada (side-by-side, syntax-theme), comparativa con diff-so-fancy, troubleshooting |
+| ✅ | [[pavucontrol]] | ~44 | **~115** | Qué es, multi-distro, comparativa con pw-recording/GNOME Settings, troubleshooting, notas personales |
+| ✅ | [[telegram-desktop]] | ~45 | **~130** | Qué es, multi-distro + Flatpak/Snap, atajos, múltiples cuentas, temas, comparativa con WhatsApp/Signal, troubleshooting |
+| ✅ | [[gparted]] | ~46 | **~125** | Qué es, multi-distro, uso avanzado (redimensionar, dual boot, copiar), comparativa con parted/fdisk, troubleshooting |
+| ✅ | [[octopi]] | ~46 | **~120** | Qué es, disponibilidad (solo Arch), config notificador/AUR, comparativa con pamac/yay, troubleshooting |
+| ✅ | [[glances]] | ~47 | **~140** | Qué es, multi-distro + pip extras, servidor web, config umbrales, comparativa con btop/htop, troubleshooting |
+| ✅ | [[meld]] | ~47 | **~135** | Qué es, carpetas, atajos, Git difftool/mergetool, comparativa con vimdiff/delta, troubleshooting |
+| ✅ | [[binutils]] | ~52 | **~150** | Qué es, multi-distro, casos de uso (seguridad/desarrollo/admin), comparativa LLVM, troubleshooting |
+
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-29)
+## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-30)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **518** (+ 7 templates) |
-| **Estado resuelto** | 510 |
+| **Notas totales** | **536** (+ 7 templates) |
+| **Estado resuelto** | 528 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
-| **Prioridad alta** | 215 |
-| **Prioridad media** | 162 |
+| **Prioridad alta** | 218 |
+| **Prioridad media** | 177 |
 | **Prioridad baja** | 134 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 179 | **Comando** | 109 |
+| **Programa** | 189 | **Comando** | 110 |
 | **Concepto** | 47 | **Distribución** | 45 |
-| **Sistema** | 47 | **Entorno / WM** | 32 |
+| **Sistema** | 49 | **Entorno / WM** | 33 |
 | **Troubleshooting** | 20 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
-| **Automatización** | 4 | **Log** | 1 |
+| **Automatización** | 8 | **Log** | 1 |
 
 ### Por carpeta (real)
 
 | Carpeta | Notas | Carpeta | Notas |
 |---|---|---|---|
 | 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 46 |
-| 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 47 |
-| 04 - Entornos de Escritorio | 17 | 05 - Gestores de Ventanas | 15 |
-| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 109 |
-| 08 - Programas y Herramientas | 179 | 09 - Solucion de Problemas | 20 |
-| 10 - Automatizacion y Scripts | 5 | 11 - Distribuciones | 45 |
+| 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
+| 04 - Entornos de Escritorio | 18 | 05 - Gestores de Ventanas | 15 |
+| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 110 |
+| 08 - Programas y Herramientas | 189 | 09 - Solucion de Problemas | 20 |
+| 10 - Automatizacion y Scripts | 9 | 11 - Distribuciones | 45 |
 
 ---
 
@@ -350,6 +385,11 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-29 (v16): expansión de 6 notas de programa (Gedit, Geany, Kate, Xfce Terminal, Konsole, Suite de Oficina) hacia el esquema de plantilla; stats actualizadas (518 notas)
 - Sesión 2026-08-29 (v17): expansión de 7 notas de programa (FreeOffice, OnlyOffice, WPS Office, Zed, Lapce, GNOME Terminal, Nemo)
 - Sesión 2026-08-29 (v18): expansión de 17 notas (gestores de archivos: Nautilus/Thunar/nnn/Gestores de Archivos; comandos CLI: df, df y du, touch, netstat, nmcli; comandos combinados: date y timedatectl, sed y awk, seq yes sleep, Touch y History; terminal/DE/WM: Nushell, Wayfire, COSMIC, CutefishOS) + **fix del hook pre-push** (bucle lento → `comm`, elimina colgadas y falsos positivos intermitentes)
+- Sesión 2026-08-30 (v19): **integración y personalización al sistema real** — 4 notas núcleo personalizadas (Niri, CachyOS, Noctalia, Fish), +16 notas nuevas (10 programas: kew/snapper/obsidian/meld/pavucontrol/gparted/octopi/google-chrome/telegram-desktop/glances; scripts niri-gov/niri-ram/gaming; watchers systemd; OCR/remind; hardware Mi equipo; Tema Material You), MoC y Log actualizados (534 notas)
+- Sesión 2026-08-30 (v20): **2 notas de alta prioridad** — [[systemctl]] (07, comando) y [[fstab (montaje de discos)]] (03, sistema); MoC, Log.md y stats actualizadas (536 notas)
+- Sesión 2026-08-30 (v21): **expansión de 8 notas de programa cortas** — delta/pavucontrol/telegram-desktop/gparted/octopi/glances/meld/binutils (40-52 → 115-150 líneas); secciones añadidas: qué es, instalación multi-distro, comparativa, troubleshooting; Log.md y TODO actualizados
+- Sesión 2026-08-30 (v22): **expansión de [[Gestores de Paquetes]]** (hub alta prioridad, 67 → 135 líneas) — capa alto/bajo nivel, tabla de equivalentes apt/dnf/pacman, gestión de repositorios, troubleshooting rápido; Log.md actualizado. Hallazgo de curado: las demás hubs de alta prioridad (Bootloaders, Gestión de usuarios, Cifrado, SELinux/AppArmor, Logging) tienen hijas ya muy desarrolladas → no se expanden para evitar duplicación
+- Sesión 2026-08-30 (v23): **expansión de 5 notas de concepto y troubleshooting cortas** — [[Impresora no funciona]] (72→140), [[RTAI]] (71→120), [[Int 80h]] (73→115), [[Exec Shield]] (70→105), [[GEM]] (76→110); secciones añadidas: tablas comparativas, evolución histórica, comandos de verificación, troubleshooting rápido
 
 ---
 

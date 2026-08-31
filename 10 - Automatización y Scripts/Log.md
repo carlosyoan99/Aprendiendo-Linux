@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-29
+fecha_modificacion: 2026-08-30
 estado: en progreso
 categoria: log
 ---
@@ -1030,3 +1030,115 @@ Se ampliaron hacia la plantilla de comando (sintaxis, descripción, opciones, ej
 - check-frontmatter.sh: 518 OK.
 - find-orphans.sh: 0 huérfanas.
 - pre-push arreglado: 6/6 ejecuciones OK.
+
+## 2026-08-30 — Integración y personalización del vault con el sistema real (v19)
+
+### 🧩 Fusión de conocimiento personal al vault
+Se transfirió conocimiento del vault personal (Obsidian Vault, 65 notas) a este vault, adaptándolo a las convenciones AL (frontmatter + hashtag final) y **personalizándolo al sistema real** tras las 4 notas núcleo:
+
+| Nota | Cambio |
+|---|---|
+| [[Niri]] | Nueva sección "Mi configuración real (CachyOS + Noctalia)": árbol cfg/, keybinds reales, gaming-mode.kdl |
+| [[CachyOS]] | Sección "Mi sistema CachyOS": hardware, kernel, scripts propios, tooling |
+| [[Desktop Shells (Noctalia Caelestia)]] | Sección "Noctalia en mi sistema (realidad 2026)": shell Wayland nativo sobre niri |
+| [[Fish]] | Sección "Mi config.fish (real)" |
+
+### 📜 Scripts y unidades systemd — 10 - Automatización y Scripts
+- Nota de scripts de personalización: [[niri-gov]], [[niri-ram]], [[toggle_gaming_mode.sh]] (governor CPU, liberar RAM, modo gaming vía `niri msg action load-config-file`).
+- Nota de watchers systemd: [[noctalia-alacritty]], [[noctalia-kew]] (PathChanged → touch/regenerar tema).
+- Notas [[noctalia-ocr]] y [[noctalia-remind]] (OCR de región + recordatorios con notificaciones Noctalia).
+
+### 🧰 10 programas nuevos — 08 - Programas y Herramientas
+[[kew]], [[snapper]], [[obsidian]], [[meld]], [[pavucontrol]], [[gparted]], [[octopi]], [[google-chrome]], [[telegram-desktop]], [[glances]].
+
+### 🖥️ Sistema y tema
+- [[Mi equipo (hardware CachyOS-Laptop)]] — especs reales del equipo (i5-4200U, 7.6GiB RAM, LUKS+Btrfs).
+- [[Tema Material You en el escritorio]] — cadena wallpaper → Noctalia → apps.
+
+### 🔗 MoC
+MoC - Linux.md actualizado con wikilinks a las 12 notas nuevas.
+
+### ✅ Validación
+- check-frontmatter.sh: 534 OK (7 plantillas).
+- find-orphans.sh: 0 huérfanas.
+
+## 2026-08-30 (v20)
+### 🆕 Notas nuevas de alta prioridad
+- **[[systemctl]]** (07 - Comandos Esenciales, `comando`, alta) — gestión de servicios/units de systemd: start/stop/restart/enable/mask, targets, list-units, systemd-analyze, unidades de usuario `--user`. ~230 líneas. Enlazada en MoC (Sistema).
+- **[[fstab (montaje de discos)]]** (03 - Estructura del Sistema, `sistema`, alta) — montaje persistente de discos: 6 columnas, UUID vs /dev/sdX, opciones (nofail/noatime/ro/uid...), NFS/CIFS, automount, troubleshooting (modo emergencia). Enlazada en MoC (Sistema).
+
+### 🔗 MoC
+- `systemctl` añadida en sección Sistema (junto a systemd). `fstab` añadida en sección Sistema (junto a Sistemas de Archivos). Sin duplicados: cron/crontab ya cubierto en [[Cron]] (10-Automatización).
+
+### ✅ Validación
+- check-frontmatter.sh pendiente de ejecutar.
+
+## 2026-08-30 (v21) — Expansión de 8 notas de programa cortas
+
+### ✏️ Notas expandidas (8) — 08 - Programas y Herramientas
+Se ampliaron las 8 notas de programa más cortas (40-52 líneas) hacia el esquema de la plantilla de programa (qué es, instalación multi-distro, configuración, uso avanzado, comparativa con alternativas, troubleshooting, enlaces externos):
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[delta]] | 40 | **~130** |
+| [[pavucontrol]] | 44 | **~115** |
+| [[telegram-desktop]] | 45 | **~130** |
+| [[gparted]] | 46 | **~125** |
+| [[octopi]] | 46 | **~120** |
+| [[glances]] | 47 | **~140** |
+| [[meld]] | 47 | **~135** |
+| [[binutils]] | 52 | **~150** |
+
+### Mejoras por nota
+- **delta**: añadida sección «Qué es», instalación multi-distro, configuración avanzada (side-by-side, syntax-theme), comparativa con diff-so-fancy/ydiff, troubleshooting.
+- **pavucontrol**: añadida sección «Qué es», instalación multi-distro, comparativa con pw-recording/GNOME Settings/KMix, troubleshooting, notas personales.
+- **telegram-desktop**: añadida sección «Qué es», instalación multi-distro + Flatpak/Snap, atajos de teclado, uso avanzado (múltiples cuentas, temas), comparativa con WhatsApp/Signal/Element, troubleshooting.
+- **gparted**: añadida sección «Qué es», instalación multi-distro, uso avanzado (redimensionar, dual boot, copiar partición), comparativa con parted/fdisk/KDE Partition Manager, troubleshooting.
+- **octopi**: añadida sección «Qué es», nota de disponibilidad (solo Arch), configuración del notificador y asistente AUR, comparativa con pacman/pamac/yay, troubleshooting.
+- **glances**: añadida sección «Qué es», instalación multi-distro + pip extras, servidor web, configuración de umbrales, comparativa con btop/htop/atop, troubleshooting.
+- **meld**: añadida sección «Qué es», comparación de carpetas, atajos de teclado, uso avanzado con Git (difftool/mergetool), comparativa con vimdiff/diff-so-fancy/delta, troubleshooting.
+- **binutils**: añadida sección «Qué es», instalación multi-distro, casos de uso avanzados (seguridad, desarrollo, administración), comparativa con herramientas LLVM, troubleshooting.
+
+### 🔗 Validación
+- check-frontmatter.sh pendiente de ejecutar.
+- Wikilinks verificados: todos resuelven a notas existentes.## 2026-08-30 (v22) — Expansión de Gestores de Paquetes (hub alta prioridad)
+
+### ✏️ Nota expandida (1) — 02 - Instalación y Configuración
+Se expandió la nota hub [[Gestores de Paquetes]] de 67 a 135 líneas, hacia un esquema de comparativa práctica multi-distro. Esta nota se eligió porque sus hijas ([[apt]], [[dnf]], [[pacman]]) son notas de comando individuales y la tabla comparativa agrega valor sin duplicar (a diferencia de otras hubs de alta prioridad cuyas hijas ya están muy desarrolladas).
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[Gestores de Paquetes]] | 67 | **135** |
+
+### ➕ Secciones añadidas
+- **Capa de alto y bajo nivel**: tabla apt/dpkg, dnf/rpm, pacman (alto nivel resuelve dependencias; bajo nivel instala .deb/.rpm directo).
+- **Comandos equivalentes entre gestores**: tabla de 10 operaciones del día a día (buscar, instalar, información, update/upgrade, eliminar, autoremove, listar, qué paquete dio archivo, limpiar caché) con la regla mental *apt = subcomandos verbales, pacman = flags cortos -S/-R/-Q, dnf = subcomandos + upgrade*.
+- **Gestión de repositorios**: tabla de rutas de config (Debian sources.list + .d/, Fedora yum.repos.d/*.repo, Arch pacman.conf + mirrorlist) + ejemplo de añadir repo .deb con signed-by + aviso de seguridad.
+- **Troubleshooting rápido**: tabla de 5 síntomas (no localiza paquetes, dependencias rotas, pacman lock, falta espacio, paquete no disponible).
+
+### 🔗 Validación
+- check-frontmatter.sh: 0 errores en carpeta "02 - Instalación y Configuración".
+- Wikilink [[Paquete roto]] verificado (existe).
+- Hallazgo de curado: hubs de alta prioridad restantes (Bootloaders, Gestión de usuarios, Cifrado, SELinux/AppArmor, Logging) tienen hijas ya muy desarrolladas → NO expandirlas para evitar duplicación (regla CLAUDE.md). Solo [[Gestores de Paquetes]] y [[Logging]]+[[Cifrado]] son hubs comparativos con valor propio.
+
+## 2026-08-30 (v22) — Expansión de notas de concepto y troubleshooting cortas
+
+### ✏️ Notas expandidas (5)
+
+| Nota | Carpeta | Antes | Después |
+|---|---|---|---|
+| [[Impresora no funciona]] | 09 - Troubleshooting | ~72 | **~140** |
+| [[RTAI (Tiempo Real)]] | 01 - Conceptos | ~71 | **~120** |
+| [[Int 80h]] | 01 - Conceptos | ~73 | **~115** |
+| [[Exec Shield]] | 01 - Conceptos | ~70 | **~105** |
+| [[Graphics Execution Manager (GEM)]] | 01 - Conceptos | ~76 | **~110** |
+
+### Mejoras por nota
+- **Impresora no funciona**: añadida tabla de troubleshooting rápido (7 síntomas), sección AirPrint/Avahi, tabla de drivers por marca (HP/Epson/Canon/Brother), cola de trabajos atascada, mejores prácticas, prevención.
+- **RTAI**: añadida tabla comparativa PREEMPT_RT vs RTAI, casos de uso concreto (audio/CNC/robótica), instalación de PREEMPT_RT en Arch, verificación de kernel RT.
+- **Int 80h**: añadida tabla de evolución (int 80h → sysenter → syscall), explicación de por qué int 80h es lenta, ejemplos con strace, referencia de números de syscall.
+- **Exec Shield**: añadida tabla de evolución a protecciones modernas (NX/XD/ASLR/canaries/PIE/seccomp), comandos para verificar protecciones en binarios (readelf/checksec).
+- **GEM**: añadida sección DMA-BUF, comandos para verificar estado DRM/GEM (lspci, sysfs), integración con Wayland, kernel versions.
+
+### 🔗 Validación
+- fecha_modificacion actualizada a 2026-08-30 en las 5 notas.
