@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-08-31
 estado: en progreso
 categoria: log
 ---
@@ -1301,3 +1301,21 @@ Se ampliaron las 12 notas de programa con `fecha_modificacion` más antigua (202
 
 ### ✅ Validación
 - fecha_modificacion actualizada a 2026-08-30 en las 6 notas tocadas.
+
+---
+
+## 2026-08-31 (v31) — AGENTS.md con flujo de commit por fase + TODO.md con estado real
+
+### 📝 AGENTS.md
+- Añadida sección **"Commit flow (commit per phase)"**: terminar una fase de trabajo → commitearla de inmediato (no acumular cambios para un commit grande al final).
+- Mensaje debe cumplir el hook `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` y ≤72 caracteres.
+- Stagear explícitamente solo los archivos de la fase; **nunca `git add -A`** cuando el worktree tenga trabajo ajeno sin terminar.
+- Archivos compartidos (MoC, TODO, Log): se incluyen en el commit de la fase que los toque (o preguntar).
+
+### 📊 TODO.md
+- Estadísticas actualizadas a valores reales (2026-08-31): **554 notas**, 546 resuelto, 216 alta / 189 media / 142 baja.
+- Por categoría: 200 programa / 118 comando / 19 troubleshooting.
+- Registrada la sesión v31 en NOTAS y cabecera "Última actualización".
+
+### ✅ Validación
+- AGENTS.md y TODO.md son root/index (exentos de frontmatter y de pre-push). Log.md excluido de pre-push.

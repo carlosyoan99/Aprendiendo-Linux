@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-08-31
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (v28 — expansión de 12 notas de programa antiguas)
+> Última actualización: 2026-08-31 (alea v28-v30 completadas, auditoría resuelta, AGENTS.md con flujo de commit por fase)
 
 ---
 
@@ -332,26 +332,26 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-30)
+## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-31)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **549** (+ 7 templates) |
-| **Estado resuelto** | 541 |
+| **Notas totales** | **554** (+ 7 templates) |
+| **Estado resuelto** | 546 |
 | **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
-| **Prioridad alta** | 218 |
-| **Prioridad media** | 188 |
-| **Prioridad baja** | 136 |
+| **Prioridad alta** | 216 |
+| **Prioridad media** | 189 |
+| **Prioridad baja** | 142 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 202 | **Comando** | 110 |
+| **Programa** | 200 | **Comando** | 118 |
 | **Concepto** | 47 | **Distribución** | 45 |
 | **Sistema** | 49 | **Entorno / WM** | 33 |
-| **Troubleshooting** | 20 | **Índice** | 13 |
+| **Troubleshooting** | 19 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
 | **Automatización** | 8 | **Log** | 1 |
 
@@ -362,8 +362,8 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 46 |
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
 | 04 - Entornos de Escritorio | 18 | 05 - Gestores de Ventanas | 15 |
-| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 110 |
-| 08 - Programas y Herramientas | 202 | 09 - Solucion de Problemas | 20 |
+| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 118 |
+| 08 - Programas y Herramientas | 200 | 09 - Solucion de Problemas | 19 |
 | 10 - Automatizacion y Scripts | 9 | 11 - Distribuciones | 45 |
 
 ---
@@ -398,6 +398,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-31 (v28): **expansión de 12 notas de programa 08 antiguas** — Podman/Linux Virtual Server/Heartbeat/btop/GNOME VFS/Open-Xchange/atuin/duf/jq/hyperfine/bmon/lf (51-86 → ~130 líneas cada una); todas tenían `fecha_modificacion: 2026-07-25` (~37 días). Secciones añadidas: instalación multi-distro, uso avanzado, configuración, comparativa con alternativas, troubleshooting; Log.md actualizado
 - Sesión 2026-08-30 (v29): **correcciones de errores de alta prioridad (auditoría oleada 2026-07-25)** — 8 errores factuales corregidos (kill, stat, sha256sum, Coreutils y util-linux, Linux en Moviles, Daemon, Hyprland, NVIDIA no detecta); 4 textos corruptos/CJK (bmon, duf, btop, trippy); wikilink roto [[yq]] resuelto en jq; duplicado [[Actualización rota]] eliminado (redirigido a [[Paquete roto]] vía MoC). Validado: sin CJK, 0 wikilinks rotos
 - Sesión 2026-08-30 (v30): **correcciones de errores de prioridad media y baja (auditoría oleada 2026-07-25)** — estructura duplicada limpiada (Sugar, Trinity: `## Notas personales` doble; Fedora: H2 vacío; spectrwm: enlace repetido en Ver también); títulos `#` alineados al filename en los 2 problemáticos ([[Proceso de Arranque (GRUB initramfs kernel params)]], [[Cheat Sheet - Comandos Esenciales]]). Validado en las 6 notas tocadas
+- Sesión 2026-08-31 (v31): **AGENTS.md actualizado** — añadida sección "Commit flow (commit per phase)": commitear al terminar cada fase (no acumular), mensaje conforme al hook `feat/fix/docs/expand/refactor/chore` + id de sesión, stagear solo los archivos de la fase (nunca `git add -A` con trabajo ajeno sin terminar), decidir los archivos compartidos MoC/Log/TODO. TODO.md actualizado con stats reales (554 notas, 546 resuelto, 200 programa/118 comando/19 troubleshooting)
 
 ---
 

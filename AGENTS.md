@@ -42,6 +42,15 @@ Run the same checks manually without committing:
 - **Filenames**: no spaces-breaking references — avoid `#`/`...`/`:` patterns in filenames (the pre-push regex treats those specially). Keep filenames basic.
 - **Scanner quirks**: use `find ...` pipelines rather than tools that choke on thousands of `.md` files. Scripts were optimized (vault-stats ~0.16s, find-orphans ~6s); don't regress that.
 
+## Commit flow (commit per phase)
+
+Finish a phase of work → **commit it immediately**. Don't accumulate changes for one big commit at the end. `git log` shows this pattern: one `feat:`/`fix:`/`expand:`/`docs:`/`chore:` commit per phase, with the session id when useful (e.g. `fix: ... (v29)`, `expand: ... (v28)`).
+
+- **Message must satisfy the commit-msg hook**: `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` and ≤72 chars. Commit right after the phase's work (crear/expandir/corregir un lote de notas) is validated.
+- **Stage explicitly** the files that belong to this phase. **Never `git add -A`** when the worktree holds unfinished work from another task — leave those un-staged.
+- Shared index files (`MoC - Linux.md`, `TODO.md`, `Log.md`) are updated by whichever phase touches them; if a shared file mixes several phases, include it in the commit of the phase that wrote it (or ask).
+- Before committing, run `git status --short` and confirm only your files are staged; then validate (see *The "test/lint" flow*) before the commit so the hooks pass cleanly.
+
 ## Structure at a glance
 
 `00` indices/MoC · `01-05` concepts/system/DEs/WMs · `07` one note per command · `08` programs · `09` troubleshooting · `10` automation/scripts/Log · `11` distros · `Templates/` (don't alter structure without asking) · `scripts/` bash validation/automation.
