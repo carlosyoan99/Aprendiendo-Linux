@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: baja
@@ -14,6 +14,8 @@ prioridad: baja
 
 GEM es una unidad de manejo de memoria especializada para controladores gráficos. Gestiona la memoria de video, controla contextos de ejecución y administra el acceso NUMA en GPUs modernas. Múltiples procesos pueden compartir recursos gráficos sin conflictos.
 
+GEM forma parte del subsistema **DRM (Direct Rendering Manager)**, que es la capa del kernel que gestiona el acceso a GPUs. Junto a DMA-BUF, GEM permite que diferentes procesos (Xorg, Wayland, apps gráficas) compartan buffers de vídeo de forma eficiente.
+
 ## Historia
 
 | Año | Evento |
@@ -21,6 +23,7 @@ GEM es una unidad de manejo de memoria especializada para controladores gráfico
 | 2008-05 | Anuncio por Keith Packard (Intel) en LWN |
 | 2008-12 | Incluido en Linux 2.6.28 |
 | 2009+ | Adoptado por drivers Intel, AMD (radeon) y Nouveau |
+| 2015+ | amdgpu usa TTM (por gestión avanzada de VRAM) |
 
 ## GEM vs TTM
 
@@ -33,6 +36,7 @@ GEM fue creado como alternativa minimalista a **TTM (Translation Table Maps)**, 
 | **Tamaño de código** | Pequeño (pocos cientos de líneas) | Grande |
 | **Drivers que lo usan** | Intel, radeon (antiguo), Nouveau | amdgpu (moderno) |
 | **Soporte BSD** | Sí (compatible con kernels BSD) | No |
+| **Gestión VRAM** | Básica | Avanzada (dedicated VRAM) |
 
 > GEM ganó la partida en la mayoría de drivers por su simplicidad, pero TTM sigue siendo necesario para GPUs AMD modernas (amdgpu) por su gestión más sofisticada de memoria VRAM.
 
@@ -54,23 +58,52 @@ El diseño de GEM asume que múltiples procesos (Xorg, Wayland compositor, aplic
 
 GEM se apoya en:
 - **DRM (Direct Rendering Manager)** — gestión de acceso a la GPU
-- **DMA-BUF** — compartición de buffers entre dispositivos
+- **DMA-BUF** — compartición de buffers entre dispositivos (GPU ↔ CPU ↔ otros dispositivos)
 - **NUMA** — gestión de memoria no-uniforme en GPUs
 
 ### Compatibilidad con BSD
 
 GEM fue diseñado para ser portable a kernels BSD, no solo Linux. Esto contrasta con TTM, que está más atado a la arquitectura del kernel Linux.
 
+## DMA-BUF: compartición de buffers
+
+DMA-BUF es el mecanismo que permite compartir buffers GEM entre dispositivos. Ejemplo práctico: una cámara USB captura vídeo → DMA-BUF → GPU lo renderiza → Wayland lo muestra en pantalla.
+
+```bash
+# Ver buffers DMA-BUF activos
+cat /proc/dma_buf/bufinfo    # si está disponible
+
+# Verificar soporte DRM del sistema
+ls /dev/dri/
+# card0  renderD128    ← GPU integrada
+# card1  renderD129    ← GPU dedicada (si hay)
+```
+
+## Verificar estado de GEM/DRM
+
+```bash
+# Ver driver DRM activo
+lspci -k | grep -A3 "VGA"
+
+# Ver info de GEM via sysfs
+cat /sys/class/drm/card0/device/vendor   # ej: 0x8086 (Intel)
+
+# Ver meminfo de la GPU (si disponible)
+cat /sys/kernel/debug/dri/0/i915_gem_objects  # Intel
+```
+
 ## Enlaces externos
 
 - [Wikipedia — Direct Rendering Manager (sección GEM)](https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Graphics_Execution_Manager)
 - [libdrm (interfaz de usuario para GEM/DRM) — GitHub](https://github.com/mesa3d/drm)
 - [Anuncio original de GEM por Keith Packard (LWN)](https://lwn.net/Articles/277973/)
+- [DRM documentation (kernel.org)](https://www.kernel.org/doc/html/latest/gpu/drm-internals.html)
 
 ## Ver también
 
 - [[Nouveau (controlador)]] — driver NVIDIA libre que usa GEM
 - [[Video4Linux (V4L2)]] — API de video del kernel
 - [[Procesos y Senales]] — gestión de procesos en Linux
+- [[Wayland vs X11]] — composición gráfica que usa DRM/GEM
 
 #concepto #graficos #kernel

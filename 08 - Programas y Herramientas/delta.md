@@ -16,7 +16,7 @@ prioridad: baja
 
 **Ventajas clave:**
 - Syntax highlighting automático (detecta el lenguaje del archivo)
-- Vista side-by-side con diff稳化
+- Vista side-by-side con diff estabilizado
 - Resaltado de tokens de diff (líneas añadidas/eliminadas/borradas)
 - Navegación por archivos con `n`/`p`
 - Soporte para diff de imágenes (delta --diff-type=image)

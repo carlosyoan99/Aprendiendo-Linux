@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: terminal
 prioridad: alta
@@ -33,6 +33,28 @@ echo $BASH_VERSION    # versión de bash
 **Fortalezas**: es el estándar de facto. Cualquier script que escribas en bash funcionará sin cambios en cualquier máquina Linux y en macOS.
 
 **Debilidades**: el autocompletado por defecto es básico (mejorable con `bash-completion`), el prompt requiere códigos de escape feas.
+
+### Configuración recomendada (~/.bashrc)
+
+```bash
+# ~/.bashrc — configuración mínima útil
+
+# Prompt personalizado
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# Habilitar colores en ls
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+
+# Historial mejorado
+HISTSIZE=10000
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+
+# Autocompletado mejorado (si está instalado)
+[ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+```
 
 ## zsh (Z Shell)
 
@@ -67,6 +89,29 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 - Temas de prompt potentes sin esfuerzo (Powerlevel10k, Spaceship)
 - Sistema de plugins (git, docker, npm, sudo — si presionas Esc+Esc agrega `sudo` al comando anterior)
 
+### Configuración recomendada (~/.zshrc)
+
+```bash
+# ~/.zshrc — configuración mínima útil
+
+# Autocorrección
+setopt CORRECT
+
+# Historial mejorado
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+
+# Navegación por directorios con flechas
+setopt AUTO_PUSHD
+DIRSTACKSIZE=10
+
+# Colores
+autoload -U colors && colors
+PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$ "
+```
+
 ## fish (Friendly Interactive Shell)
 
 | Aspecto | Detalle |
@@ -94,6 +139,41 @@ fish
 
 **Desventajas**: como no es compatible con bash, no puedes copiar-pegar scripts de internet sin modificarlos. Muchos eligen tener `fish` como shell interactiva y usan `bash` para scripting.
 
+### Configuración recomendada (~/.config/fish/config.fish)
+
+```fish
+# ~/.config/fish/config.fish
+
+# Aliases
+alias ll "ls -la"
+alias gs "git status"
+alias gp "git push"
+
+# Variables de entorno
+set -gx EDITOR nvim
+set -gx PATH $HOME/.local/bin $PATH
+
+# Autocompletado con fzf
+fzf --fish | source
+```
+
+## Cambiar de shell
+
+```bash
+# Ver shells disponibles
+cat /etc/shells
+
+# Cambiar shell por defecto
+chsh -s /bin/bash        # cambiar a bash
+chsh -s /bin/zsh         # cambiar a zsh
+chsh -s /usr/bin/fish    # cambiar a fish
+
+# Verificar shell actual
+echo $SHELL
+```
+
+> **Tip**: si cambias a zsh/fish y algo falla, puedes volver a bash con `bash` (temporal) o `chsh -s /bin/bash` (permanente).
+
 ## Comparativa rápida
 
 | Característica | bash | zsh + Oh My Zsh | fish |
@@ -118,6 +198,17 @@ Es una forma fácil de darle personalidad a tu terminal:
 
 **[Starship](https://starship.rs)** es un prompt universal que funciona en las tres shells: muestra git branch, versión de Node/Python/Rust, tiempo de ejecución, etc.
 
+## Troubleshooting
+
+| Problema | Shell | Causa | Solución |
+|---|---|---|---|
+| `command not found` tras instalar | zsh/fish | `.zshrc`/`config.fish` no tiene PATH | Añadir `export PATH=...` al config |
+| Prompt feo/extraño | zsh | Oh My Zsh no instalado | Instalar Oh My Zsh o configurar PS1 |
+| Scripts no funcionan | fish | Sintaxis incompatible | Ejecutar con `bash script.sh` o convertir |
+| Autocompletado no funciona | bash | bash-completion no instalado | `sudo apt install bash-completion` |
+| `shopt: command not found` | zsh | shopt es bash-only | Usar `setopt` en zsh |
+| Historial no se comparte | bash | historial por sesión | Añadir `shopt -s histappend` en .bashrc |
+
 ## Notas personales
 
 -
@@ -128,5 +219,6 @@ Es una forma fácil de darle personalidad a tu terminal:
 - [[Emuladores de Terminal]]
 - [[Editores de Texto]]
 - [[Variables de Entorno y PATH]]
+- [[starship]] — prompt cross-platform
 
 #terminal #shell

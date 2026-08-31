@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: media
@@ -31,7 +31,7 @@ macOS es el sistema operativo de Apple para Macintosh. Su arquitectura se apoya 
 - **UNIX certificado**: macOS cumple POSIX y Single UNIX Specification. Muchas herramientas de terminal funcionan igual que en Linux (pero con BSD, no GNU).
 - **Diferencias clave con Linux**: Homebrew en vez de apt, LaunchAgents en vez de systemd, `/Applications` en vez de `/usr/bin`, `open` en vez de `xdg-open`.
 - **Herramientas de desarrollo**: Muchos desarrolladores usan macOS. Conocer las diferencias evita frustraciones en scripts y entornos compartidos.
-- **Apple Silicon**: Los Mac M1-M4 usan ARM64 — mismo架构 que Raspberry Pi y servidores ARM.
+- **Apple Silicon**: Los Mac M1-M4 usan ARM64 — misma arquitectura que Raspberry Pi y servidores ARM.
 
 ## Estructura del sistema vs Linux
 

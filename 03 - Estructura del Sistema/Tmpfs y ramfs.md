@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: sistema
 prioridad: media
@@ -101,7 +101,7 @@ sudo umount /tmp/processing
 
 ### Cache de compilación
 ```bash
-#编译ar en RAM para máxima velocidad
+# compilar en RAM para máxima velocidad
 sudo mount -t tmpfs -o size=8G tmpfs /tmp/build
 cp -r /path/to/source /tmp/build/
 cd /tmp/build && make -j$(nproc)

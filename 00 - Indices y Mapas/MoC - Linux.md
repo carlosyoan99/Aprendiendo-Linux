@@ -144,9 +144,9 @@ categoria: indice
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]] · [[groups]] — mostrar grupos del usuario
 - [[ping]] · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
 - [[jq]] — procesador JSON de terminal
-- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
+- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[cut]] — extraer columnas · [[tr]] — traducir/eliminar caracteres · [[nl]] — numerar líneas · [[paste]] — unir líneas · [[comm]] — comparar archivos ordenados · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[sha256sum]] — verificar integridad con SHA-256 · [[md5sum]] — verificar integridad con MD5
-- [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]]
+- [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]] · [[basename dirname]] — extraer nombre/ruta de path · [[expr]] — calculadora de expresiones
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios
 - [[nohup]] · [[timeout]] · [[at]] · [[nohup-timeout-at]] — índice
 - [[seq]] · [[yes]] · [[sleep]] · [[seq yes sleep]] — índice
@@ -157,7 +157,7 @@ categoria: indice
 - [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[gdb]] — depurador GNU, breakpoints, core dumps · [[ltrace]] — trazar llamadas a librerías · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
 - [[df]] · [[du]] · [[df y du]] — índice
-- [[free]] — memoria RAM/swap · [[uname]] — información del kernel
+- [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[uptime]] — tiempo de actividad y carga media
 - [[date]] · [[timedatectl]] · [[date y timedatectl]] — índice
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
 

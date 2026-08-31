@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: media
@@ -8,7 +8,7 @@ prioridad: media
 
 # gdb
 
-> GNU Debugger — el depurador estándar de Linux. Permite inspeccionar programas en ejecución, 设置 breakpoints, rastrear variables y analizar crashes.
+> GNU Debugger — el depurador estándar de Linux. Permite inspeccionar programas en ejecución, configurar breakpoints, rastrear variables y analizar crashes.
 
 ## Sintaxis
 

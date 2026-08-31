@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: baja
@@ -32,13 +32,45 @@ Exec Shield funciona en CPUs x86 usando los **límites del segmento de código (
 
 **Protección contra ROP/return-to-libc**: al combinar NX emulado con ASLR, incluso si un atacante no puede ejecutar shellcode directamente, la aleatorización de direcciones de memoria (`mmap()`, heap) dificulta el encadenamiento de gadgets.
 
+## Evolución hacia protecciones modernas
+
+Exec Shield sentó las bases para las protecciones de memoria que hoy son estándar:
+
+| Protección | Qué hace | Estado actual |
+|---|---|---|
+| **Exec Shield (NX emulado)** | Marca memoria como no-ejecutable en x86 32-bit | ❌ Obsoleto (2007) |
+| **NX bit (hardware)** | Bit hardware en páginas de memoria | ✅ Estándar en x86-64 |
+| **XD bit (Intel)** | Nombre Intel del bit NX | ✅ Estándar |
+| **ASLR** | Aleatoriza direcciones de memoria | ✅ Habilitado por defecto |
+| **Stack canaries** | Detecta desbordamientos de pila | ✅ `-fstack-protector` |
+| **PIE** | Ejecutables posicion-independientes | ✅ Habilitado por defecto |
+| **SELinux/AppArmor** | MAC que restringe ejecución | ✅ Activo en la mayoría de distros |
+| **seccomp-bpf** | Filtra syscalls disponibles | ✅ Usado por Chrome, Firefox, systemd |
+
+### Verificar protecciones en un binario
+
+```bash
+# Ver si tiene NX (non-executable stack)
+readelf -l /usr/bin/ls | grep GNU_STACK
+# R E → stack no-ejecutable (bien)
+# RWE → stack ejecutable (peligro)
+
+# Ver si tiene PIE
+file /usr/bin/ls
+# "shared object" → PIE habilitado
+# "executable" → sin PIE
+
+# Ver si tiene stack canary
+checksec --file=/usr/bin/ls  # (de la herramienta checksec)
+```
+
 ## Proyectos relacionados
 
 | Proyecto | Relación |
 |---|---|
 | **PaX** | Proyecto independiente que implementó W^X y ASLR antes que Exec Shield |
 | **Openwall** | Parche enfocado en protección de pila y restricciones de /tmp |
-| **StackGuard** | Protección contra stack smashing con canarios |
+| **StackGuard** | Protección contra stack smashing con canaries |
 | **PIE** | Ejecutables con posición independiente (relacionado con ASLR) |
 | **GCC Fortify Source** | Comprobaciones en tiempo de compilación contra desbordamientos |
 | **GCC stack-protector** | Adaptación del concepto StackGuard en GCC |
@@ -61,10 +93,12 @@ La política estándar de Fedora Core integraba Exec Shield con **SELinux** para
 
 - [Página del parche Exec Shield (archivada)](http://people.redhat.com/mingo/exec-shield/)
 - [Wikipedia — Exec Shield](https://es.wikipedia.org/wiki/Exec_Shield)
+- [PaX project](https://pax.grsecurity.net/)
 
 ## Ver también
 
 - [[SELinux y AppArmor]] — MAC en Linux
 - [[Procesos y Senales]] — gestión de procesos y memoria
+- [[Int 80h]] — syscalls y espacio kernel/usuario
 
 #concepto #seguridad

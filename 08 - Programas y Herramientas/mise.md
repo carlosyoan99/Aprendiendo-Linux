@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -8,7 +8,7 @@ prioridad: baja
 
 # mise
 
-> Gestor de versiones universal (reemplaza nvm, pyenv, rbenv, goenv). Un solo工具 para gestionar versiones de Node, Python, Ruby, Go, Java, Rust y más.
+> Gestor de versiones universal (reemplaza nvm, pyenv, rbenv, goenv). Una sola herramienta para gestionar versiones de Node, Python, Ruby, Go, Java, Rust y más.
 
 ## Sintaxis
 

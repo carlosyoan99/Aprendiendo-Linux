@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -52,7 +52,7 @@ sudo nethogs -p -d 5                 # tracemode (para scripts)
 ## Formato de salida
 
 ```
-PID    User    程序           DEV       SENT      RECEIVED
+PID    User    PROGRAM        DEV       SENT      RECEIVED
 1234   carlos   firefox       eth0      12.5 KB/s  456.2 KB/s
 5678   carlos   curl          eth0       2.1 KB/s   12.3 KB/s
 9012   root     apt           eth0       0.5 KB/s  1024.0 KB/s

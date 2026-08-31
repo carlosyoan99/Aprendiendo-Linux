@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: baja
@@ -20,7 +20,7 @@ prioridad: baja
 | **2.0** | 1983 | Soporte de discos duros, subdirectorios |
 | **3.3** | 1987 | Versión más popular, estandarizada |
 | **5.0** | 1991 | Editor EDIT, Memory Manager, undelete |
-| **6.22** | 1993 | Última versión standalone (defrag, scan磁盘, antivirus) |
+| **6.22** | 1993 | Última versión standalone (defrag, scan disk, antivirus) |
 | **7.0/8.0** | 1995-2000 | Solo como bootloader de Windows 9x |
 
 **Origen**: Microsoft licenció **86-DOS** (de Seattle Computer Products), que era un clone de **CP/M** (de Digital Research) adaptado al Intel 8086.

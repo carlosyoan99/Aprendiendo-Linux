@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: distribucion
 prioridad: alta
@@ -42,7 +42,7 @@ Repositorio comunitario gigantesco: si un programa no está en los repos oficial
 | Helper | Lenguaje | Instalación | Notas |
 |---|---|---|---|
 | **yay** | Go | `sudo pacman -S yay` | El más popular, reemplaza a pacman (`yay -S paquete`) |
-| **paru** | Rust | `sudo pacman -S paru` | Moderno, más rápido, con捆绑包 (se pueden instalar grupos de dependencias juntos) |
+| **paru** | Rust | `sudo pacman -S paru` | Moderno, más rápido, con bundles (se pueden instalar grupos de dependencias juntos) |
 | **pamac** | Vala | `sudo pacman -S pamac` | GUI + CLI, usado en Manjaro |
 
 ```bash

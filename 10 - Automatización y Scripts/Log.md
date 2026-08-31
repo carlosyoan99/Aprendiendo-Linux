@@ -1165,6 +1165,24 @@ Se expandió la nota hub [[Gestores de Paquetes]] de 67 a 135 líneas, hacia un 
 - check-frontmatter.sh pendiente de ejecutar.
 - 8 archivos nuevos creados en 08 - Programas y Herramientas.
 
+## 2026-08-30 (v25) — Expansión de 3 notas de terminal/monitores
+
+### ✏️ Notas expandidas (3)
+
+| Nota | Carpeta | Antes | Después |
+|---|---|---|---|
+| [[Shells (bash zsh fish)]] | 06 - Terminal | ~132 | **~175** |
+| [[screen]] | 06 - Terminal | ~134 | **~185** |
+| [[htop btop]] | 08 - Programas | ~141 | **~185** |
+
+### Mejoras por nota
+- **Shells (bash zsh fish)**: añadidos ejemplos de config para cada shell (~/.bashrc, ~/.zshrc, config.fish), tabla de troubleshooting (6 problemas comunes), sección cambiar de shell, referenciar [[starship]].
+- **screen**: añadidos splits verticales (`Prefix + \`), logging configurado, multi-usuario (acladd), tabla de troubleshooting (5 problemas), config completa de ejemplo.
+- **htop btop**: añadidos columnas útiles de htop (11 columnas), modo batch para scripts, glances/atop en tabla comparativa, más atajos de htop (l, s).
+
+### 🔗 Validación
+- fecha_modificacion actualizada a 2026-08-30 en las 3 notas.
+
 ## 2026-08-30 (v25) — Notas de accesos rápidos por defecto
 
 ### 📝 Notas nuevas (5) — categoria: programa, prioridad: media
@@ -1184,3 +1202,20 @@ Se expandió la nota hub [[Gestores de Paquetes]] de 67 a 135 líneas, hacia un 
 ### 🔍 Validación
 - check-frontmatter.sh carpeta 08: 202/202 OK (0 sin frontmatter, 0 sin hasthag).
 - Wikilinks de las 5 notas nuevas verificados (resuelven todos).
+
+## 2026-08-30 (v27) — Correcciones de auditoría
+
+### 🔧 Errores de contenido (caracteres chinos intrusos)
+- Corregidos 8 textos corruptos con caracteres CJK en notas en español: Arch Linux.md, macOS.md, MS-DOS.md, Tmpfs y ramfs.md, nethogs.md, mise.md, gdb.md (07), delta.md.
+- Verificado: sin caracteres CJK restantes en el vault (grep unicode global).
+
+### 🧹 Eliminación de duplicados
+- `gdb` y `strace` existían en 07 (Comandos) y 08 (Programas). Conservada la versión de 07 (formato de comando del vault, más completa); borradas las de 08 con `git rm`.
+- Verificado: no quedan wikilinks rotos por el borrado ([[gdb]]/[[strace]] resuelven a las de 07).
+
+### 🔗 Renombrado de huérfana / wikilink roto
+- `08/yt-dlp.md` (antes `youtube-dl.md`): renombrado el archivo para que coincida con el título `# yt-dlp` y con el enlace `[[yt-dlp]]` del MoC. Resuelve a la vez la huérfana y el wikilink roto.
+
+### ✅ Validación
+- Simulación de pre-push sobre el vault completo: 0 wikilinks rotos.
+- fecha_modificacion actualizada a 2026-08-30 en las notas corregidas.

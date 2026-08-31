@@ -392,6 +392,8 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-30 (v23): **expansión de 5 notas de concepto y troubleshooting cortas** — [[Impresora no funciona]] (72→140), [[RTAI]] (71→120), [[Int 80h]] (73→115), [[Exec Shield]] (70→105), [[GEM]] (76→110); secciones añadidas: tablas comparativas, evolución histórica, comandos de verificación, troubleshooting rápido
 - Sesión 2026-08-30 (v24): **8 notas nuevas de programa** — [[rclone]] (cloud sync 70+ backends), [[eza]] (ls moderno), [[dust]] (du con barras), [[zoxide]] (cd inteligente), [[starship]] (prompt Rust), [[hexyl]] (hex viewer), [[sd]] (sed moderno), [[yt-dlp]] (descargador vídeos); MoC actualizado
 - Sesión 2026-08-30 (v25): **5 notas nuevas de accesos rápidos por defecto** — [[Atajos de teclado - Firefox]], [[Atajos de teclado - Editores Kate y Gedit]], [[Atajos de teclado - VSCode]], [[Atajos de teclado - GNOME Terminal y Kitty]], [[Atajos de teclado - Nautilus Thunar Dolphin]]; 'Ver también' añadido en Firefox/Kate/Gedit/Editores de código/GNOME Terminal/Kitty/Nautilus/Thunar/Dolphin, MoC actualizado (549 notas)
+- Sesión 2026-08-30 (v26): **expansión de 3 notas de terminal/monitores** — [[Shells (bash zsh fish)]] (132→175), [[screen]] (134→185), [[htop btop]] (141→185); config examples por shell, troubleshooting, splits/logging/screen, columnas batch/atop/glances
+- Sesión 2026-08-30 (v27): **correcciones de auditoría** — 8 textos con caracteres chinos corruptos corregidos (Arch Linux, macOS, MS-DOS, Tmpfs/ramfs, nethogs, mise, gdb, delta); duplicados [[gdb]]/[[strace]] resueltos (conservada la de 07, borradas las de 08); huérfana/wikilink roto resuelto renombrando youtube-dl.md → [[yt-dlp]]. Validado: 0 wikilinks rotos, sin CJK restantes
 
 ---
 
