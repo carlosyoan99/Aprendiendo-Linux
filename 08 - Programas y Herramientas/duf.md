@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -47,15 +47,93 @@ duf --json | jq                           # procesar con jq
   /dev/nvme0n2 /mnt/data    931.5G  456.2G 447.3G  49% █████░░░░░░░░░░░░░░░
 ```
 
-## Ver también
+## Instalación multi-distro
 
-- [[df y du]] — comandos clásicos de espacio en disco
-- ncdu — explorador interactivo de uso de disco
-- [[lsblk]] — listar dispositivos de bloque
+| Distro | Comando |
+|---|---|
+| Debian/Ubuntu | `sudo apt install duf` |
+| Arch | `sudo pacman -S duf` |
+| Fedora | `sudo dnf install duf` |
+| Alpine | `sudo apk add duf` |
+| macOS | `brew install duf` |
+
+```bash
+# Verificar
+duf --version
+
+# Alternativa: instalar desde GitHub releases
+curl -sL https://github.com/muesli/duf/releases/latest/download/duf_linux_amd64.deb -o duf.deb
+sudo dpkg -i duf.deb
+```
+
+## Filtrado avanzado
+
+```bash
+# Solo filesystems locales
+duf --only local
+
+# Solo red
+duf --only network
+
+# Solo FUSE (sshfs, rclone, etc.)
+duf --only fuse
+
+# Excluir tipos
+duf --only local,local-noroot
+
+# Ordenar por diferentes campos
+duf --sort size    # por tamaño total
+duf --sort used   # por usado
+duf --sort avail  # por disponible
+duf --sort inode  # por inodos
+
+# Salida JSON para procesamiento
+duf --json | jq '.[] | select(.percent > 80)'
+
+# Ancho de columnas
+duf --width 120
+```
+
+## Configuración
+
+```bash
+# ~/.config/duf.json (temas personalizados)
+{
+  "theme": "dark",
+  "sort": "mountpoint",
+  "style": "256"
+}
+```
+
+## Comparativa con df clásico
+
+| Característica | duf | df |
+|---|---|---|
+| Formato | Tabla con barras | Tabla texto plano |
+| Colores | ✅ Temas integrados | ❌ Necesita awk/sed |
+| Filtrado | `--only local,network` | `-t ext4`, etc. |
+| JSON | `--json` | ❌ |
+| Velocidad | Muy rápido (Go) | Rápido (C) |
+| Bind mount | ❌ No siempre | ✅ |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `duf: command not found` | No instalado | `sudo apt install duf` |
+| No muestra bind mounts | Limitación | Usar `df -h` para bind mounts |
+| Colores rotos en SSH | Terminal sin 256 colores | `duf --theme bw` |
+| No muestra tmpfs | Filtrado por defecto | `duf --only local,local-noroot` |
 
 ## Enlaces externos
 
 - [GitHub — duf](https://github.com/muesli/duf)
 - [Arch Wiki — duf](https://wiki.archlinux.org/title/Duf)
+
+## Ver también
+
+- [[df y du]] — comandos clásicos de espacio en disco
+- ncdu — explorador interactivo de uso de disco
+- [[lsblk]] — listar dispositivos de bloque
 
 #programa #tui #disco
