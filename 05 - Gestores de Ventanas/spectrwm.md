@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -168,6 +168,5 @@ region = ws[4-6]:960x1080+960+0
 - [[i3]] — el tiling WM clásico, similar en filosofía
 - [[DWM]] — alternativa minimalista suckless
 - [[Comparativa gestores de ventanas]] — comparativa de todos los WMs
-- [[Comparativa gestores de ventanas]] — comparativa completa de todos los WMs
 
 #entorno-escritorio

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -120,10 +120,6 @@ Implementación portable de Sugar diseñada para ejecutarse desde un pendrive US
 | Actividades no cargan | Versión Python incorrecta | Verificar Python 3: `python3 --version` |
 | Journal no guarda | Permisos en `~/.sugar/` | `chown -R $USER:$USER ~/.sugar` |
 | No se ve red local | Firewall bloqueando puertos | Abrir puerto 8080 en firewall local |
-
-## Notas personales
-
--
 
 ## Notas personales
 

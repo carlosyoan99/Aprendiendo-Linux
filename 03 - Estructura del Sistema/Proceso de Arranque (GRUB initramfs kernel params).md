@@ -1,12 +1,12 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: sistema
 prioridad: alta
 ---
 
-# Proceso de Arranque (Boot Process)
+# Proceso de Arranque (GRUB initramfs kernel params)
 
 ## Definición
 

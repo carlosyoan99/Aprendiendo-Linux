@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -25,8 +25,6 @@ Ideal para: desarrolladores y entusiastas que quieren software reciente pero má
 | **Fedora IoT** | Minimalista | Para dispositivos IoT / edge |
 | **Fedora Silverblue** | GNOME (inmutable) | Sistema base de solo lectura, apps en contenedores (rpm-ostree) |
 | **Fedora KDE** / XFCE / etc. | Varios | Spins con DEs alternativos oficiales |
-
-## Gestor de paquetes
 
 ## Gestor de paquetes: dnf
 

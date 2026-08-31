@@ -1,12 +1,12 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: alta
 ---
 
-# Cheat Sheet: Comandos Esenciales
+# Cheat Sheet - Comandos Esenciales
 
 Referencia rápida de comandos de uso diario. Cada comando tiene su propia nota; usa [[Dia a Dia en CLI]] para una guía priorizada de aprendizaje.
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -130,10 +130,6 @@ yay -S trinity-desktop
 | Konqueror no carga web | SSL desactualizado | Usar navegador moderno (Firefox) para web, Konqueror para archivos |
 | Sonido no funciona | PulseAudio no detectado | `sudo apt install pulseaudio pulseaudio-module-x11` |
 | Pantalla negra al iniciar sesión | Controlador gráfico incorrecto | Usar controladores vesafb o modesetting en lugar de propietarios |
-
-## Notas personales
-
--
 
 ## Notas personales
 

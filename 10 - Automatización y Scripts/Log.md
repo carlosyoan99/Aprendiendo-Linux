@@ -1285,3 +1285,19 @@ Se ampliaron las 12 notas de programa con `fecha_modificacion` más antigua (202
 ### ✅ Validación
 - fecha_modificacion actualizada a 2026-08-30 en las 13 notas de contenido corregidas.
 - Sin caracteres CJK restantes en las notas tocadas; MoC sin enlaces rotos a notas borradas.
+
+## 2026-08-30 (v30) — Correcciones de errores de prioridad media y baja (auditoría oleada 2026-07-25)
+
+### 🧹 Estructura duplicada / secciones vacías repetidas
+- **[[Sugar]]** y **[[Trinity]]** (04): eliminada la primera sección `## Notas personales` vacía (quedó una sola con contenido).
+- **[[Fedora]]** (11): eliminado el H2 `## Gestor de paquetes` vacío que precedía a `## Gestor de paquetes: dnf`.
+- **[[spectrwm]]** (05): eliminada la referencia duplicada a `[[Comparativa gestores de ventanas]]` en Ver también.
+
+### ✏️ Títulos `#` que no coincidían con el nombre del archivo (solo los 2 problemáticos)
+- **[[Proceso de Arranque (GRUB initramfs kernel params)]]** (03): título `# Proceso de Arranque (Boot Process)` → `# Proceso de Arranque (GRUB initramfs kernel params)` (coincide con el filename).
+- **[[Cheat Sheet - Comandos Esenciales]]** (07): título `# Cheat Sheet: Comandos Esenciales` (con dos puntos) → `# Cheat Sheet - Comandos Esenciales`.
+
+> Nota: el resto de desajustes título/filename se dejan como convención descriptiva (H1 con em-dash) y los filenames sin tilde/ñ (Procesos y Senales, Redes Basicas) no se renombran por tener ~31 y ~46 referencias respectivamente.
+
+### ✅ Validación
+- fecha_modificacion actualizada a 2026-08-30 en las 6 notas tocadas.
