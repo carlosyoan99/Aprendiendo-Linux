@@ -42,14 +42,61 @@ En abril de 2008, GNOME declaró obsoleto GnomeVFS en favor de **GIO** (la nueva
 
 GVFS introdujo un modelo cliente-servidor: cada aplicación se comunica via D-Bus con un demonio GVFS que monta los sistemas remotos. Los sistemas de archivos remotos (SFTP, SMB, FTP, WebDAV) se montan como carpetas FUSE, lo que los hace accesibles desde cualquier aplicación, no solo las de GNOME.
 
+## GVFS: el sucesor moderno
+
+GVFS se ejecuta como un demonio D-Bus que monta sistemas de archivos remotos como carpetas FUSE accesibles desde cualquier aplicación.
+
+```bash
+# Montar SMB/CIFS desde Nautilus
+# gvfs monta automáticamente al hacer clic en la red
+
+# Ver montajes activos
+mount | grep fuse.gvfs
+
+# Montar SFTP manualmente
+ gio mount sftp://usuario@servidor
+
+# Listar shares de red
+gio list smb://
+
+# Montar WebDAV
+ gio mount davs://servidor/webdav/
+
+# Desmontar
+gio unmount sftp://usuario@servidor/
+```
+
+### Protocolos soportados por GVFS
+
+| Protocolo | Paquete |
+|---|---|
+| SFTP | `gvfs-backend-ssh` |
+| SMB/CIFS | `gvfs-backend-samba` |
+| FTP | `gvfs-backend-ftp` |
+| WebDAV | `gvfs-backend-davs` |
+| MTP (móviles) | `gvfs-backend-mtp` |
+| AFP (macOS) | `gvfs-backend-afp` |
+
+## Alternativas modernas
+
+| Herramienta | Enfoque |
+|---|---|
+| **GVFS** | Montaje transparente, integrado GNOME |
+| **sshfs** | Montaje SFTP vía FUSE |
+| **rclone** | 70+ backends, CLI potente |
+| **curlftpfs** | Montaje FTP vía FUSE |
+
 ## Enlaces externos
 
 - [Documentación archivada de GnomeVFS](https://web.archive.org/web/20070619031151/http://developer.gnome.org/doc/API/2.0/gnome-vfs-2.0/)
+- [GNOME GVFS (GitLab)](https://gitlab.gnome.org/GNOME/gvfs)
+- [Arch Wiki — GVFS](https://wiki.archlinux.org/title/GVFS)
 
 ## Ver también
 
 - [[GNOME]] — entorno de escritorio
 - [[Filesystem Hierarchy Standard]] — sistema de archivos estándar
 - [[Proc y Sys]] — otros sistemas de archivos virtuales
+- [[rclone]] — sync con 70+ backends
 
 #programa #gnome

@@ -20,18 +20,103 @@ prioridad: media
 - **Systemd integrado**: `podman generate systemd` crea units para contenedores
 - **Pods**: grupos de contenedores que comparten red y namespaces (como Kubernetes)
 
-## Instalación
+## Instalación multi-distro
+
+| Distro | Comando |
+|---|---|
+| Debian/Ubuntu | `sudo apt install podman` |
+| Arch/Manjaro | `sudo pacman -S podman` |
+| Fedora | `sudo dnf install podman` |
+| openSUSE | `sudo zypper install podman` |
+| Alpine | `sudo apk add podman` |
 
 ```bash
-# Debian/Ubuntu
-sudo apt install podman
+# Verificar instalación
+podman --version
+podman info | head -20
 
-# Arch
-sudo pacman -S podman
-
-# Fedora (viene preinstalado)
-sudo dnf install podman
+# Rootless: configurar subuids para tu usuario
+sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER
 ```
+
+## Comandos avanzados
+
+```bash
+# Crear y gestionar pods (agrupar contenedores)
+podman pod create --name myapp -p 8080:80
+podman run -d --pod myapp --name web nginx
+podman run -d --pod myapp --name db postgres
+podman pod ps
+
+# Generar systemd units para contenedores
+podman generate systemd --name mi-contenedor --new
+podman generate systemd --name mi-contenedor --files --restart-policy=always
+
+# Buildah: construir imágenes sin daemon
+buildah bud -t mi-app:latest ./
+buildah from alpine
+buildah run alpine-working-container apk add nginx
+buildah commit alpine-working-container mi-nginx:latest
+
+# Podman con Docker Compose
+podman-compose up -d
+# O con el plugin nativo de podman
+podman compose up -d
+
+# Inspección y debug
+podman inspect mi-contenedor
+podman logs -f mi-contenedor
+top mi-contenedor
+podman stats --no-stream
+```
+
+## Rootless vs Rootful
+
+| Aspecto | Rootless | Rootful |
+|---|---|---|
+| Permisos | Sin sudo | Requiere root |
+| Seguridad | Mayor (menor superficie) | Menor |
+| Puertos | >1024 (unprivileged) | 1-65535 |
+| Storage | ~/.local/share/containers | /var/lib/containers |
+| Red | slirp4netns/pasta | bridge |
+
+```bash
+# Forzar rootful si es necesario
+sudo podman run -d -p 80:80 nginx
+
+# Verificar modo
+podman info | grep -A5 rootless
+```
+
+## Comparativa con Docker
+
+| Característica | Podman | Docker |
+|---|---|---|
+| Daemon | ❌ Sin daemon | ✅ Docker daemon |
+| Rootless | ✅ Por defecto | ⚠️ Necesita config |
+| Pods | ✅ Nativo | ❌ No nativo |
+| systemd | ✅ Integrado | ⚠️ Vía plugin |
+| Compatibilidad OCI | ✅ | ✅ |
+| Docker Compose | ✅ podman-compose | ✅ Nativo |
+| Seguridad | Mayor (sin daemon root) | Menor |
+| Curva aprendizaje | Baja (alias docker=podman) | Baja |
+
+```bash
+# Alias para usar docker → podman
+alias docker=podman
+alias docker-compose=podman-compose
+```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `unable to find user: not found` | Rootless sin subuids configurados | `sudo usermod --add-subuids 100000-165535 $USER` |
+| `Error: cannot set up namespace` | Kernel sin soporte user namespaces | `sysctl user.max_user_namespaces=28633` |
+| `ERRO[0000] could not find runtime` | Falta crun/runc | `sudo apt install crun` |
+| Contenedor no arranca con `-p 80:80` | Rootless no puede usar puertos <1024 | Usar puerto >1024 o `sysctl net.ipv4.ip_unprivileged_port_start=80` |
+| `Error: slirp4netns failed` | Falta slirp4netns rootless | `sudo apt install slirp4netns` |
+| `podman compose` no funciona | Falta el plugin | `sudo apt install podman-compose` |
 
 ## Enlaces externos
 
