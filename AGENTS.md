@@ -19,7 +19,7 @@ chmod +x .githooks/*
 
 Three hooks enforce invariants on commit/push:
 
-- **pre-commit** — staged `.md` files must have valid YAML frontmatter (`fecha_creacion`, `estado`, `categoria`). Excludes `Templates/`, `CLAUDE.md`, `README.md`.
+- **pre-commit** — staged `.md` files must have valid YAML frontmatter (`fecha_creacion`, `estado`, `categoria`). Excludes `Templates/`, `CLAUDE.md`, `README.md`, and `AGENTS.md` (root docs are exempt).
 - **commit-msg** — message must match `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` and be ≤72 chars. Use `expand:` for growing existing notes, `chore:` for infra (hooks/scripts). This is a hard requirement — a plain "Update x.md" won't commit.
 - **pre-push** — all wikilinks `[[X]]` must resolve to an existing note filename. Note: index/MoC files, `Log.md`, `Scripts del Vault.md`, `Templates/`, `CLAUDE.md`/`README.md` are excluded from the check.
 
