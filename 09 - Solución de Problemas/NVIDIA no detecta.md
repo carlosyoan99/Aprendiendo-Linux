@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: troubleshooting
 sistema: NVIDIA / Linux graphics
@@ -130,9 +130,10 @@ nvidia-smi                                # debe mostrar info de la GPU
 # Opción 1: Desactivar Secure Boot desde BIOS/UEFI
 # (entrar al menú de boot y desactivarlo)
 
-# Opción 2: Firmar el módulo NVIDIA (para mantener Secure Boot activo)
-sudo mokutil --disable-validation          # desactivar validación de módulos
-# (requiere reinicio y seguir el asistente MOK para establecer contraseña)
+# Opción 2: Importar la clave MOK y firmar el módulo (mantiene Secure Boot activo)
+# Generar/obtener la clave MOK (MOK.der) y registrarla para poder firmar el módulo NVIDIA
+sudo mokutil --import MOK.der                 # registrar la clave MOK (pedirá contraseña)
+# (requiere reinicio y seguir el asistente MOK para confirmar la importación)
 
 # Opción 3 (Avanzado): Firmar el módulo manualmente
 # /usr/src/nvidia-*/sign_module.sh

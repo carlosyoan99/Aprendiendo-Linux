@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: baja
@@ -157,7 +157,7 @@ Mer es la capa intermedia entre el kernel Linux y la interfaz de usuario de Sail
 
 | Característica | Ubuntu Touch | postmarketOS | Sailfish OS | KaiOS | Android |
 |---|---|---|---|---|---|
-| **Base** | Ubuntu (Canonical) | Alpine Linux | Mer (openSUSE) | Linux (Gonki) | Linux (AOSP) |
+| **Base** | Ubuntu (Canonical) | Alpine Linux | Mer (fork de MeeGo) | Linux (Gonki) | Linux (AOSP) |
 | **Código abierto** | ✅ Mayormente | ✅ Completo | ❌ UI cerrada | ⚠️ Parcial | ✅ AOSP |
 | **Apps nativas** | Qt/QML + HTML5 | Qt/GTK + Wayland | Qt + Silica | HTML5 + JS | Java/Kotlin |
 | **Apps Android** | ⚠️ (Anbox, limitado) | ❌ No | ✅ (Alien Dalvik) | ❌ No | ✅ Nativo |

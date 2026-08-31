@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: alta
@@ -95,7 +95,8 @@ diff <(stat -c '%Y' a.txt) <(stat -c '%Y' b.txt)
 | `%u` | Owner (UID) | `1000` |
 | `%y` | Modify time | `2026-07-24 15:45:00` |
 | `%x` | Access time | `2026-07-25 10:30:00` |
-| `%w` | Change time | `2026-07-24 15:45:00` |
+| `%w` | Birth time (fecha de creación) | `2026-07-24 15:45:00` |
+| `%z` | Change time | `2026-07-24 16:00:00` |
 | `%i` | Inode | `1234567` |
 | `%F` | Tipo de archivo | `regular file` |
 

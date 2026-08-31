@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -46,7 +46,7 @@ trippy google.com
 trippy 1.1.1.1
 trippy midominio.com
 
-# Modo clásico (como mpr)
+# Modo clásico (como mtr)
 trippy google.com --mode classic
 
 # Con puerto específico (TCP)
@@ -102,7 +102,7 @@ Trippy 0.11.0 — google.com (142.250.80.46)
 | Modo | Comando | Descripción |
 |---|---|---|
 | **TUI** | `trippy host` | Interfaz interactiva con paneles |
-| **Classic** | `trippy host --mode classic` | Similar a mpr (una línea por hop) |
+| **Classic** | `trippy host --mode classic` | Similar a mtr (una línea por hop) |
 | **Report** | `trippy host --report` | Salida tipo `mtr --report` |
 | **JSON** | `trippy host --report-json` | Para procesar con [[jq]] |
 

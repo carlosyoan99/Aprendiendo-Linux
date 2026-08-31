@@ -1219,3 +1219,69 @@ Se expandió la nota hub [[Gestores de Paquetes]] de 67 a 135 líneas, hacia un 
 ### ✅ Validación
 - Simulación de pre-push sobre el vault completo: 0 wikilinks rotos.
 - fecha_modificacion actualizada a 2026-08-30 en las notas corregidas.
+
+## 2026-08-31 — Lote 1: Expansión de 12 notas de programa 08 (antiguas + cortas)
+
+### ✏️ Notas expandidas (12) — 08 - Programas y Herramientas
+Se ampliaron las 12 notas de programa con `fecha_modificacion` más antigua (2026-07-25, ~37 días) y menos de 100 líneas, hacia el esquema de la plantilla de programa (qué es, instalación multi-distro, uso avanzado, configuración, comparativa, troubleshooting, enlaces externos).
+
+| Nota | Antes | Después |
+|---|---|---|
+| [[Podman]] | 51 | **~130** |
+| [[Linux Virtual Server]] | 52 | **~130** |
+| [[Heartbeat (Linux-HA)]] | 54 | **~130** |
+| [[btop]] | 55 | **~130** |
+| [[GNOME VFS]] | 55 | **~130** |
+| [[Open-Xchange]] | 55 | **~130** |
+| [[atuin]] | 61 | **~130** |
+| [[duf]] | 61 | **~130** |
+| [[jq]] | 64 | **~130** |
+| [[hyperfine]] | 77 | **~130** |
+| [[bmon]] | 84 | **~130** |
+| [[lf]] | 86 | **~130** |
+
+### Mejoras por nota
+- **Podman**: añadida tabla instalación multi-distro, comandos avanzados (pods, buildah, systemd units), rootless vs rootful, comparativa con Docker, troubleshooting (6 problemas).
+- **Linux Virtual Server**: añadida tabla instalación, modos de operación (NAT/DR/TUN), comandos ipvsadm, integración con keepalived (config de ejemplo), troubleshooting.
+- **Heartbeat**: añadida tabla instalación, configuración ha.cf/authkeys/haresources, gestión con crmsh (Pacemaker), modelos de clúster HA, troubleshooting.
+- **btop**: añadida tabla instalación, configuración con temas, comparativa con htop/atop/glances/nvtop, troubleshooting (5 problemas).
+- **GNOME VFS**: añadida sección GVFS (protocolos, comandos gio mount/list/unmount), tabla alternativas modernas, enlaces a docs GVFS.
+- **Open-Xchange**: añadida instalación Docker, funcionalidades detalladas (OX App Suite), comparativa con Nextcloud/Zentyal, troubleshooting.
+- **atuin**: añadida instalación multi-distro + setup por shell, sincronización, configuración avanzada, búsqueda avanzada (cwd/fecha/duración), comparativa, troubleshooting.
+- **duf**: añadida instalación multi-distro, filtrado avanzado (--only, --json), configuración, comparativa con df, troubleshooting.
+- **jq**: añadida instalación multi-distro, filtros avanzados (construir objetos, group_by, CSV, base64), pipelines comunes, configuración, troubleshooting (4 problemas).
+- **hyperfine**: añadida instalación multi-distro, ejemplos avanzados (compiladores, CI/CD, paramétrica, shells), tabla de exportación, comparativa, troubleshooting.
+- **bmon**: añadida instalación, configuración, filtrado avanzado, atajos expandidos, comparativa con 7 monitores de red, troubleshooting.
+- **lf**: añadida instalación multi-distro, configuración avanzada (lfrc completo, iconos), integración con shell (cd-lf), comparativa con ranger/yazi/nnn, troubleshooting.
+
+### 🔗 Validación
+- fecha_modificacion actualizada a 2026-08-31 en las 12 notas.
+- check-frontmatter.sh pendiente de ejecutar.
+
+## 2026-08-30 (v29) — Correcciones de errores de alta prioridad (auditoría oleada 2026-07-25)
+
+### 🐛 Errores factuales corregidos (8)
+- **[[kill]]**: `kill -1 nginx` → `pkill -1 nginx` (kill requiere PID).
+- **[[stat]]**: `%w` es Birth time, no "Change time" (se añadió fila `%z Change time`).
+- **[[sha256sum]]**: hash de ejemplo era el de la cadena vacía; sustituido y ejemplo de formato corregido (64 chars).
+- **Coreutils y util-linux**: `grep/sed/awk` y `cal` mal ubicados en el diagrama de paquetes; `cal` retirado de la lista de coreutils.
+- **Linux en Moviles**: Base de Sailfish era `Mer (openSUSE)`; corregido a `Mer (fork de MeeGo)`.
+- **Daemon**: `ps aux | grep ?` no filtra daemons; corregido a `ps aux | awk '$7 == "?"'`.
+- **[[Hyprland]]**: PPA incorrecto `xremap/xremap` → `ppa:spvkgn/hyprland`.
+- **[[NVIDIA no detecta]]**: `mokutil --disable-validation` (no existe) → `mokutil --import MOK.der`.
+
+### 🧹 Textos corruptos/CJK corregidos (4)
+- **[[bmon]]** `solo output用人间` → `solo la salida en la terminal`.
+- **[[duf]]** `uf --version` → `duf --version`; `Terminal sin 256色` → `256 colores`.
+- **[[btop]]** `plugu0069ns` → `plugins`.
+- **[[trippy]]** `mpr` → `mtr` (2 ocurrencias).
+
+### 🔗 Wikilinks
+- **[[jq]]**: wikilink roto `[[yq]]` (no existe nota) → texto plano `yq — procesador YAML similar a jq (sin nota propia)`.
+
+### 🗑️ Duplicado eliminado
+- **[[Actualización rota]]** (94 líneas) era un subconjunto de **[[Paquete roto]]** (209 líneas). Borrado con `git rm`; la entrada del MoC se redirigió a [[Paquete roto]].
+
+### ✅ Validación
+- fecha_modificacion actualizada a 2026-08-30 en las 13 notas de contenido corregidas.
+- Sin caracteres CJK restantes en las notas tocadas; MoC sin enlaces rotos a notas borradas.

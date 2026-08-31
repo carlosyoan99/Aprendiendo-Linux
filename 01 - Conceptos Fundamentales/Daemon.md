@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: concepto
 prioridad: alta
@@ -44,10 +44,7 @@ Sin daemons, Linux sería un sistema sin red, sin cron, sin servidores, sin impr
 ## Identificar daemons
 
 ```bash
-# Listar procesos con daemons (sin terminal asociada)
-ps aux | grep ?
-
-# Más preciso: ver procesos cuyo TTY es '?'
+# Listar daemons: procesos cuyo terminal (TTY) es '?'
 ps aux | awk '$7 == "?"'
 
 # Listar servicios de systemd (todos los daemons gestionados)
@@ -344,7 +341,7 @@ journalctl -u mi-daemon -o json-pretty             # en formato JSON
 | `systemctl start/stop/restart <servicio>` | Gestionar un daemon (iniciar, detener, reiniciar) |
 | `systemctl enable/disable <servicio>` | Activar/desactivar inicio automático |
 | `journalctl -u <servicio>` | Ver logs de un daemon específico |
-| `ps aux | grep ?` | Listar procesos sin terminal (daemons) |
+| `ps aux | awk '$7 == "?"'` | Listar procesos sin terminal (daemons) |
 | `ss -tlnp` | Ver puertos en escucha (servicios de red) |
 | `kill -1 <PID>` | Enviar SIGHUP para recargar configuración |
 

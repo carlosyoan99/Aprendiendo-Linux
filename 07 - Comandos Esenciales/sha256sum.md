@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: baja
@@ -36,7 +36,7 @@ sha256sum [opciones] [archivo...]
 ### Generar hash de un archivo
 ```bash
 sha256sum archivo.tar.gz
-# Salida: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  archivo.tar.gz
+# Salida: d9e6762dd1c8eaf6d61b3c6192fc408d4d6d5f1176d0c29169bc24e71c3f274ad  archivo.tar.gz
 ```
 
 ### Verificar integridad de una descarga
@@ -78,8 +78,7 @@ sha256sum archivo.tar.gz | awk '{print $1}'
 ## Formato de salida
 
 ```
-e3b0c44298fc1c149afbf4c8996fb924  archivo.iso
-<hash hexadecimal 64 chars>        <nombre archivo>
+<hash hexadecimal de 64 chars>        <nombre archivo>
 ```
 
 ## Casos de uso

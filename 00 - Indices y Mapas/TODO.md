@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-30 (v19 — integración y personalización del sistema real)
+> Última actualización: 2026-08-31 (v28 — expansión de 12 notas de programa antiguas)
 
 ---
 
@@ -247,9 +247,10 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | Tarea | Detalle | Estado |
 |---|---|---|
 | ~~Verificar wikilinks rotos~~ | `find-orphans.sh` confirma solo README.md intencional | ✅ completado |
-| ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 0 notas encontradas (vault empezó el 18 jul) | ✅ completado |
+| ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 348 notas con fecha 2026-07-25 | ✅ completado |
 | Automatizar `add-modification-date.sh` | Ejecutar periódicamente para mantener fechas al día | ⚪ pendiente |
 | ~~Expandir resto de fragmentadas~~ | MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel — las 13 ya completas (AppArmor, Snap, Limine, PAM, journald ya estaban expandidas) | ✅ completado |
+| Expandir notas de 08 antiguas (Lote 2) | 8 notas restantes de 08 con fecha antigua: GNUstep, SONiC, lshw, pcmanfm, spacefm, handbrake, duplicity, Ethernet | ⚪ pendiente |
 
 ### 🟢 Prioridad baja — Mejoras continuas
 
@@ -394,6 +395,8 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 - Sesión 2026-08-30 (v25): **5 notas nuevas de accesos rápidos por defecto** — [[Atajos de teclado - Firefox]], [[Atajos de teclado - Editores Kate y Gedit]], [[Atajos de teclado - VSCode]], [[Atajos de teclado - GNOME Terminal y Kitty]], [[Atajos de teclado - Nautilus Thunar Dolphin]]; 'Ver también' añadido en Firefox/Kate/Gedit/Editores de código/GNOME Terminal/Kitty/Nautilus/Thunar/Dolphin, MoC actualizado (549 notas)
 - Sesión 2026-08-30 (v26): **expansión de 3 notas de terminal/monitores** — [[Shells (bash zsh fish)]] (132→175), [[screen]] (134→185), [[htop btop]] (141→185); config examples por shell, troubleshooting, splits/logging/screen, columnas batch/atop/glances
 - Sesión 2026-08-30 (v27): **correcciones de auditoría** — 8 textos con caracteres chinos corruptos corregidos (Arch Linux, macOS, MS-DOS, Tmpfs/ramfs, nethogs, mise, gdb, delta); duplicados [[gdb]]/[[strace]] resueltos (conservada la de 07, borradas las de 08); huérfana/wikilink roto resuelto renombrando youtube-dl.md → [[yt-dlp]]. Validado: 0 wikilinks rotos, sin CJK restantes
+- Sesión 2026-08-31 (v28): **expansión de 12 notas de programa 08 antiguas** — Podman/Linux Virtual Server/Heartbeat/btop/GNOME VFS/Open-Xchange/atuin/duf/jq/hyperfine/bmon/lf (51-86 → ~130 líneas cada una); todas tenían `fecha_modificacion: 2026-07-25` (~37 días). Secciones añadidas: instalación multi-distro, uso avanzado, configuración, comparativa con alternativas, troubleshooting; Log.md actualizado
+- Sesión 2026-08-30 (v29): **correcciones de errores de alta prioridad (auditoría oleada 2026-07-25)** — 8 errores factuales corregidos (kill, stat, sha256sum, Coreutils y util-linux, Linux en Moviles, Daemon, Hyprland, NVIDIA no detecta); 4 textos corruptos/CJK (bmon, duf, btop, trippy); wikilink roto [[yq]] resuelto en jq; duplicado [[Actualización rota]] eliminado (redirigido a [[Paquete roto]] vía MoC). Validado: sin CJK, 0 wikilinks rotos
 
 ---
 

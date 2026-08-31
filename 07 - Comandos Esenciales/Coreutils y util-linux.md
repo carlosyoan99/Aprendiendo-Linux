@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: alta
@@ -19,9 +19,10 @@ Linux se compone de múltiples colecciones de utilidades. Cada colección tiene 
 │    GNU Coreutils   │    util-linux    │     procps-ng     │
 │  ls, cp, mv, rm,   │  mount, fdisk,   │  ps, top, kill,   │
 │  cat, echo, sort,  │  dmesg, blkid,   │  free, uptime,    │
-│  grep, sed, awk  │  hwclock, cal   │  vmstat, watch    │
+│  mkdir, ln, stat   │  hwclock         │  vmstat, watch    │
 ├───────────────────┴──────────────────┴───────────────────┤
-│              Otras: findutils, diffutils, tar, gzip       │
+│       Otras: findutils (find), diffutils (diff), grep,    │
+│       sed, gawk/awk, tar, gzip, cal                       │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -45,7 +46,7 @@ cat, tac, head, tail, nl, od, base64, basename, dirname, pathchk
 sort, uniq, cut, tr, expand, unexpand, fmt, pr, fold, paste, join
 echo, printf, yes, seq, env, printenv, factor, shred, sha*sum
 # Fechas y sistema
-date, cal, sleep, timeout, true, false, sync, hostname, nproc, whoami
+date, sleep, timeout, true, false, sync, hostname, nproc, whoami
 # Otros
 tee, test, [, who, users, uname, arch, uptime, pwd, realpath, readlink
 stat, wc, md5sum, sha1sum, sha256sum, b2sum

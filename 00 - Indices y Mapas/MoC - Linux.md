@@ -176,7 +176,7 @@ categoria: indice
 - [[Docker permiso denegado]] — grupo docker, socket, rootless
 - [[Fuentes rotas o faltantes (fontconfig)]] — fuentes rotas, emojis, fontconfig, caché
 - [[Red no conecta]] — diagnóstico completo de conectividad (DNS/DHCP/firewall)
-- [[Actualización rota]] — reparar paquetes rotos (dpkg/apt/dnf/pacman)
+- [[Paquete roto]] — reparar paquetes rotos y actualización interrumpida (dpkg/apt/dnf/pacman)
 - [[Sistema no arranca]] — recuperación desde pantalla negra hasta kernel panic
 - [[Impresora no funciona]] — solucionar problemas de impresión (CUPS, drivers, red)
 - [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] [[Git hooks para el vault]]

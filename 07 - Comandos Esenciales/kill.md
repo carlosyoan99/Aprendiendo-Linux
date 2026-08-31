@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: comando
 prioridad: alta
@@ -62,7 +62,8 @@ kill -15 1234
 kill -9 1234
 
 # Caso 4: SIGHUP — recargar configuración (nginx, sshd)
-kill -1 nginx
+# kill requiere un PID; para recargar por nombre usa pkill
+pkill -1 nginx
 
 # Caso 5: SIGSTOP — pausar proceso
 kill -19 1234

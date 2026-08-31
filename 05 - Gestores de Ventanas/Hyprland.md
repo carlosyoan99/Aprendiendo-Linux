@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-30
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: alta
@@ -23,8 +23,8 @@ sudo pacman -S hyprland
 sudo dnf install hyprland
 
 # Ubuntu/Debian
-# Suele requerir el repositorio PPA de ximia o compilar desde fuente
-sudo add-apt-repository ppa:xremap/xremap
+# No hay paquete oficial: usar el PPA de spvkgn o compilar desde fuente
+sudo add-apt-repository ppa:spvkgn/hyprland
 sudo apt install hyprland
 ```
 
