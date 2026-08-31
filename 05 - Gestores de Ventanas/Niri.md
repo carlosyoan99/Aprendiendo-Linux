@@ -137,9 +137,61 @@ binds {
 - Ideal para: desarrolladores que trabajan con muchos terminales uno al lado del otro (cada columna es un terminal), o para ultra-wide monitors.
 - Escrito en Rust: se nota la solidez. No recuerdo la última vez que Niri me crasheó.
 
+## Mi configuración real (CachyOS + Noctalia)
+
+> Estado actual de mi equipo: Laptop con **CachyOS** (hostname `CachyOS-Laptop`), niri **26.04**, shell **Noctalia v5** (shell nativa Wayland que corre sobre niri).
+
+### Estructura de `~/.config/niri/`
+
+```
+config.kdl        → solo `include` de módulos + noctalia.kdl (no añadir settings aquí)
+cfg/
+├── animation.kdl ├── autostart.kdl ├── display.kdl ├── input.kdl
+├── keybinds.kdl  ├── layout.kdl    ├── misc.kdl    ├── rules.kdl
+├── workspace.kdl
+noctalia.kdl      → colores del tema (focus-ring/border/etc.), regenerado por Noctalia
+```
+
+- Los módulos se agrupan por *concern*; `config.kdl` solo los `include`.
+- `noctalia.kdl` es **regenerado por el shell** → no editar a mano, usar la UI de Noctalia.
+- `cfg/keybinds.kdl.save` es un backup, ignorar.
+- `gaming-mode.kdl` (en `~/.config/niri/`) es una config alternativa completa que `include` `config.kdl`, desactiva blur/animaciones/touchpad y redefine `Mod+Shift+G` para salir; se carga con `niri msg action load-config-file --path ~/.config/niri/gaming-mode.kdl`.
+
+### Verificación y recarga
+
+```bash
+niri validate                          # valida la config
+niri msg action load-config-file       # recarga en caliente (desde el cliente)
+```
+
+### Atajos reales (extracto de `cfg/keybinds.kdl`)
+
+| Atajo | Acción |
+|---|---|
+| `Mod+Shift+ESCAPE` | Hotkey overlay |
+| `Mod+Q` | Cerrar ventana |
+| `Mod+Shift+G` | Toggle modo gaming (`toggle_gaming_mode.sh`) |
+| `Mod+Print` | OCR de la selección (`noctalia-ocr`) |
+| `Print` / `Shift+Print` / `Ctrl+Print` | Capturas pantalla / ventana / todos los monitores |
+
+Aplicaciones: `Mod+B` Chrome · `Mod+Z` Zed · `Mod+E` Nautilus · `Mod+N` kew · `Mod+X` Firefox · `Mod+Y` Obsidian · `Mod+G` LibreOffice · `Mod+U` VLC · `Mod+Shift+A` Quick Share (r-quick-share) · `Ctrl+Alt+T` alacritty.
+
+Noctalia: `Mod+Shift+Return` wallpaper · `Mod+S` centro de control · `Mod+Shift+S` ajustes · `Mod+D` lanzador · `Mod+Shift+E` clipboard · `Mod+Shift+Q` menú sesión · `Mod+Alt+N` DND.
+
+> ⚠️ Nota: en esta configuración **Noctalia** es quien gestiona wallpaper, barra, lanzador, centro de control, OSD, notificaciones y multimedia (no `waybar`/`fuzzel`/`mako` como en la config de ejemplo genérica de arriba).
+
+### Detalle de los binds con argumentos
+
+El config KDL solo permite `spawn` con comandos simples; para comandos con argumentos (ej. `noctalia msg ...`) se usa `spawn-sh "..."`:
+
+```kdl
+Mod+Shift+A hotkey-overlay-title="Quick Share: Compartir archivos" { spawn-sh "rquickshare"; }
+```
+
 ## Ver también
 
 - [[Hyprland]] — el compositor Wayland tiling más popular
+- [[Desktop Shells (Noctalia Caelestia)]] — el shell que corre sobre niri
 - [[i3]] — tiling clásico en X11
 - [[Wayland vs X11]]
 - [[Emuladores de Terminal]]

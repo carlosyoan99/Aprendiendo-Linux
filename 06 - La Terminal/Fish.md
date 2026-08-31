@@ -161,11 +161,25 @@ fisher install patrickf1/fzf.fish    # fzf integrado
 - **Funciones**: la sintaxis de funciones es más limpia que bash.
 - **No para scripts**: no usar para scripts de sistema ni cron (no POSIX compatible).
 
+## Mi config.fish (real)
+
+`~/.config/fish/config.fish` es mínimo en mi equipo — deriva de la config de CachyOS:
+
+```fish
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+```
+
+- La config base de CachyOS define aliases/abreviaciones típicas (ls → eza con icons, cat → bat, etc.).
+- El `fish_greeting` (fastfetch) está **comentado/desactivado** para un prompt limpio.
+- `~/.local/bin` está en `$PATH` (todo apunta a mis scripts: `noctalia-ocr`, `noctalia-remind`, `niri-gov`, `niri-ram`, `toggle_gaming_mode.sh`).
+- Fish es mi shell de terminal (alacritty); bash se usa para cron/systemd (POSIX).
+
 ## Ver también
 
 - [[Shells (bash zsh fish)]]
 - [[La Shell]]
 - [[tmux]]
 - [[Alias]]
+- [[Alacritty]] — terminal que usa fish como shell
 
 #fish #shell #terminal #interactivo #autocompletado

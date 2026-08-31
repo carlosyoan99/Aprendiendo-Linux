@@ -179,10 +179,23 @@ kpackagetool5 -i caelestia.tar.gz      # instalar tema
 # Luego activar desde System Settings
 ```
 
+## Noctalia en mi sistema (realidad 2026)
+
+> Nota importante: la sección `## Noctalia` de arriba describe una **desktop shell como tema GNOME**, que es una visión genérica/histórica. En **mi sistema real** Noctalia es otra cosa:
+
+- **Noctalia v5** es una **shell Wayland nativa e independiente** que corre **sobre niri** (no es un tema GTK/GNOME). Proporciona por sí misma: capturas de pantalla, clipboard encriptado, notificaciones/OSD/DND, clima, wallpaper, temas Material You, brillo/volumen/mic, WiFi/BT, perfiles de energía, nightlight, lanzador, centro de control, sesión, window-switcher, taskbar/dock, widgets de escritorio y bloqueo, plugins Luau, dmenu y **host de bandeja SNI** (`org.kde.StatusNotifierWatcher` en el bus, CRÍTICO para r-quick-share).
+- Config: `~/.config/noctalia/config.toml` es mínimo (solo `[shell] polkit_agent = true`); los ajustes reales viven en `~/.local/state/noctalia/settings.toml` (v5). La UI de ajustes gestiona casi todo.
+- Interacción desde terminal/scripts: `noctalia msg <subcomando>` (ej. `notification-show`, `screenshot-region`, `panel-toggle`, `wallpaper-next`, `theme-mode-set`).
+- La barra superior ya incluye el widget `tray` (`capsule = true`, `drawer = true`) donde aparecen los appindicators (p. ej. r-quick-share).
+- Genera temas por app a partir del wallpaper (Material You): `~/.config/alacritty/themes/noctalia.toml`, `~/.config/kitty/themes/noctalia.conf`, `~/.config/kew` (via `gen-noctalia.sh`); con watchers systemd que fuerzan recargas.
+
+Consejo de mantenimiento: mantener **ambas visiones** — la teórica (Noctalia como concepto de desktop shell) y esta sección práctica del equipo real — en la misma nota.
+
 ## Ver también
 
 - [[GNOME]] — base más común para desktop shells
 - [[KDE Plasma]] — soporta temas globales
+- [[Niri]] — el compositor sobre el que corre Noctalia en mi equipo
 - [[Personalización en Linux]] — temas GTK, iconos, cursores
 - [[Neofetch Fastfetch]] — mostrar la shell activa en el fetch
 

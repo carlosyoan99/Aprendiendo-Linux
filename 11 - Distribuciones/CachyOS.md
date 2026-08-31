@@ -337,7 +337,52 @@ snapper list
 
 > **CachyOS vs Bazzite para gaming**: CachyOS prioriza rendimiento puro (binarios optimizados, kernel BORE), mientras que Bazzite prioriza inmutabilidad y soporte NVIDIA out-of-the-box. CachyOS es mejor para CPUs modernas AMD/Intel; Bazzite para GPUs NVIDIA o sistemas que necesitan rollback atómico.
 
+## Mi sistema CachyOS (configuración real)
+
+> Configuración actual (2026): laptop con **hostname `CachyOS-Laptop`**, kernel `7.2.2-1-cachyos`, escritorio **niri 26.04 + Noctalia v5**, shell fish.
+
+### Hardware
+
+| Componente | Detalle |
+|---|---|
+| CPU | Intel Core i5-4200U @ 1.60 GHz (4 hilos, Haswell ~2013) |
+| RAM | 7.6 GiB |
+| GPU | Intel Haswell-ULT (iGPU) |
+| Disco | sda 111.8G — `/boot` (sda1, 4G) + root **LUKS** (`luks-ecf4fe4c...`) Btrfs ~107.8G |
+| Bluetooth | Controller `28:C2:DD:DB:B9:9C` |
+| WiFi | `wlan0` (red nauta_Hogar_011561) |
+
+Implicaciones de hardware modesto → **scripts de optimización**: `niri-ram` (drop_caches), `niri-gov` (governor CPU), modo gaming (`toggle_gaming_mode.sh`), wallpapers redimensionados a 1366x768.
+
+### Gestor de paquetes y herramientas
+
+- `pacman` con repos de CachyOS (v3 para Haswell) + **AUR** vía `paru`/`yay` (tengo caché de `yay` para rquickshare-x-bin).
+- `octopi` como frontend gráfico + CachyOS Package Installer.
+- Snapper + Btrfs disponible para rollbacks (`snapper 0.13.1`).
+
+### Scripts propios relevantes
+
+| Script | Función |
+|---|---|
+| `niri-gov` | Cicla `scaling_governor`: schedutil → performance → powersave → schedutil |
+| `niri-ram` | `sync` + `echo 3 > /proc/sys/vm/drop_caches` |
+| `toggle_gaming_mode.sh` | Carga `gaming-mode.kdl`/`config.kdl` vía `niri msg action load-config-file` |
+| `noctalia-ocr` | OCR de región (`Mod+Print`) |
+| `noctalia-remind` | Recordatorios con notificación Noctalia |
+
+> Ver también: [[Automatización y Scripts]], [[snapper]].
+
 ## Ver también
+
+- [[Arch Linux]] — base de CachyOS
+- [[SteamOS]] — distro gaming de Valve (comparar enfoques)
+- [[Bazzite]] — distro gaming inmutable basada en Fedora
+- [[Videojuegos en Linux]] — gaming en Linux en general
+- [[Gamescope]] — compositor micro-gráfico de Valve
+- [[Hyprland]] — WM Wayland, perfil de instalación disponible
+- [[KDE Plasma]] — escritorio recomendado
+- [[Manjaro]] — alternativa Arch-friendly
+- [[EndeavourOS]] — otra alternativa Arch-friendly
 
 - [[Arch Linux]] — base de CachyOS
 - [[SteamOS]] — distro gaming de Valve (comparar enfoques)
