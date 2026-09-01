@@ -413,24 +413,24 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **554** (+ 7 templates) |
-| **Estado resuelto** | 546 |
-| **Estado en progreso** | 5 (TODO, MoC, Dashboard, Log, Prompts de Trabajo) |
+| **Notas totales** | **556** (+ 7 templates) |
+| **Estado resuelto** | 547 |
+| **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
 | **Prioridad alta** | 216 |
 | **Prioridad media** | 189 |
-| **Prioridad baja** | 142 |
+| **Prioridad baja** | 143 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 200 | **Comando** | 118 |
+| **Programa** | 201 | **Comando** | 118 |
 | **Concepto** | 47 | **Distribución** | 45 |
 | **Sistema** | 49 | **Entorno / WM** | 33 |
 | **Troubleshooting** | 19 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
-| **Automatización** | 8 | **Log** | 1 |
+| **Automatización** | 8 | **Log** | 2 |
 
 ### Por carpeta (real)
 
@@ -440,8 +440,8 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
 | 04 - Entornos de Escritorio | 18 | 05 - Gestores de Ventanas | 15 |
 | 06 - La Terminal | 6 | 07 - Comandos Esenciales | 118 |
-| 08 - Programas y Herramientas | 200 | 09 - Solucion de Problemas | 19 |
-| 10 - Automatizacion y Scripts | 9 | 11 - Distribuciones | 45 |
+| 08 - Programas y Herramientas | 201 | 09 - Solucion de Problemas | 19 |
+| 10 - Automatizacion y Scripts | 10 | 11 - Distribuciones | 45 |
 
 ---
 
