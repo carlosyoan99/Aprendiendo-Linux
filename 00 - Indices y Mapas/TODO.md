@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (alea v28-v30 completadas, auditoría resuelta, AGENTS.md con flujo de commit por fase)
+> Última actualización: 2026-08-31 (plan de expansión por lotes v33+ — Lote 1 programas 08, Lote 2 comandos 07, Lote 3 distros 11)
 
 ---
 
@@ -242,6 +242,34 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 ## 🎯 PRÓXIMOS PASOS
 
+### 🟢 EXPANSIÓN DE NOTAS CORTAS POR LOTES (plan v33+)
+
+Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesión con su propio commit `expand:`. Los hubs/índices (Cifrado, Bootloaders, SELinux y AppArmor, Logging, Gestión usuarios, PostgresQL y MySQL, Vim Neovim, nohup-timeout-at, df y du, date y timedatectl, sed y awk, Navegadores Web, Editores de Texto, Emuladores de Terminal, Utilidades Base, Diagnóstico de hardware, Monitorización, Multimedia, Lenguajes y gestores, Atajos de teclado) NO se expanden — sus hijas ya existen desarrolladas (decisión v22 de evitar duplicación).
+
+**Lote 1 — Programas de uso diario (08)**, prioridad alta:
+| Nota | líneas | Resuelve Lote-2 previo |
+|---|---|---|
+| [[obsidian]] | ~50 | |
+| [[mise]] | ~52 | |
+| [[google-chrome]] | ~54 | |
+| [[snapper]] | ~54 | |
+| [[Helix]] | ~57 | |
+| [[Alacritty]] | ~63 | |
+| [[Kitty]] | ~69 | |
+| [[Foot]] | ~62 | |
+| [[PCManFM]] | ~70 | ✓ |
+| [[handbrake]] | ~71 | ✓ |
+| [[duplicity]] | ~73 | ✓ |
+| [[vlc]] | ~78 | |
+| [[AbiWord]] | ~77 | |
+| [[Dolphin]] | ~61 | |
+| [[Double Commander]] | ~76 | |
+| [[gstreamer]] | ~75 | |
+| [[lshw]] | ~60 | ✓ |
+| [[SpaceFM]] | ~71 | ✓ |
+
+> **Lote 2 previo** = tarea pendiente `Expandir notas de 08 antiguas (Lote 2)` del TODO (GNUstep, SONiC, lshw, pcmanfm, spacefm, handbrake, duplicity). Los marcados ✓ resuelven 6 de esas 8. GNUstep (~94) y SONiC (~120) ya superan/nacen al objetivo ~100 y se verifican al final sin expandir si no es necesario; "Ethernet" ya no existe como nota.
+
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
@@ -250,7 +278,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 | ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 348 notas con fecha 2026-07-25 | ✅ completado |
 | Automatizar `add-modification-date.sh` | Ejecutar periódicamente para mantener fechas al día | ⚪ pendiente |
 | ~~Expandir resto de fragmentadas~~ | MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel — las 13 ya completas (AppArmor, Snap, Limine, PAM, journald ya estaban expandidas) | ✅ completado |
-| Expandir notas de 08 antiguas (Lote 2) | 8 notas restantes de 08 con fecha antigua: GNUstep, SONiC, lshw, pcmanfm, spacefm, handbrake, duplicity, Ethernet | ⚪ pendiente |
+| Expandir notas de 08 antiguas (Lote 2) | 8 notas de 08 con fecha antigua — pasadas al **plan Lote 1** (Lote-2 previo): PCManFM, handbrake, duplicity, lshw, SpaceFM + GNUstep/SONiC a verificar | 🟡 planificado |
 
 ### 🟢 Prioridad baja — Mejoras continuas
 
