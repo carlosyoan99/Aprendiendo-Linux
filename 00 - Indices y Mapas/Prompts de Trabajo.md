@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-31
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -22,7 +22,7 @@ Estoy retomando el proyecto "AprendiendoLinux", un vault de Obsidian para docume
 Antes de hacer nada:
 1. Lee CLAUDE.md en la raíz — define estructura de carpetas, esquema de frontmatter (fecha_creacion, fecha_modificacion, estado, categoria, prioridad) y reglas de edición.
 2. Lee 00 - Indices y Mapas/TODO.md — próximos pasos ya priorizados.
-3. Lee las últimas 3-5 entradas de 10 - Automatizacion y Scripts/Log.md — qué se hizo en las sesiones más recientes.
+3. Lee las últimas 3-5 filas de la tabla "Registro activo" en `10 - Automatizacion y Scripts/Log.md` — qué se hizo en las sesiones más recientes (una fila por sesión: Fecha | Sesión | Tipo | Ámbito | Resumen).
 4. Si hay un repo git, revisa `git log --oneline -15` para el historial reciente de commits.
 
 Después, dame un resumen breve (5-6 líneas) del estado actual: cuántas notas hay, qué se hizo últimamente, y qué queda pendiente según el TODO. No edites nada todavía — solo confirmame que entendiste el proyecto antes de que te pida la siguiente tarea.
@@ -40,7 +40,7 @@ Sigue exactamente las convenciones de CLAUDE.md:
 - Antes de crear, revisa que el tema no exista ya (evitar duplicados).
 - Enlaza cada nota nueva desde 00 - Indices y Mapas/MoC - Linux.md.
 - Usa [[wikilinks]] hacia notas relacionadas ya existentes.
-- Registra la sesión en Log.md al final (2-4 líneas, qué se agregó y dónde).
+- Registra la sesión como una fila en la tabla de Log.md (una línea: Fecha | Sesión | Tipo | Ámbito | Resumen). El detalle (qué notas, validación) va en TODO.md sección NOTAS.
 ```
 
 ## 3. Auditoría completa
@@ -53,7 +53,7 @@ Audita el vault completo antes de tocar nada. Verifica:
 4. Cifras del README.md contra la realidad — usa scripts/vault-stats.sh si existe como fuente de verdad, no cuentes a ojo.
 5. Consistencia de estructura: carpetas vacías residuales, duplicados, convenciones de nombres.
 
-Repórtame los hallazgos ANTES de corregir nada, clasificados en: errores reales (rompen algo) vs. puntos de mejora (no rompen pero convendría arreglar) vs. observaciones (decisión mía, no lo toques). Después de mi confirmación, aplica los fixes y registra todo en Log.md.
+Repórtame los hallazgos ANTES de corregir nada, clasificados en: errores reales (rompen algo) vs. puntos de mejora (no rompen pero convendría arreglar) vs. observaciones (decisión mía, no lo toques). Después de mi confirmación, aplica los fixes y registra una fila por sesión en Log.md (formato compacto: Fecha | Sesión | Tipo | Ámbito | Resumen).
 ```
 
 ## 4. Priorizar próximos temas
@@ -65,7 +65,7 @@ Dado el estado actual del vault (revisa qué ya existe recorriendo las carpetas 
 ## 5. Cierre de sesión
 
 ```
-Antes de terminar: registra en Log.md un resumen de todo lo que se hizo en esta sesión (2-6 líneas según el volumen de cambios). Si algo quedó pendiente, actualiza TODO.md. Si hay repo git, prepara el commit siguiendo el formato de mensajes ya usado en el historial (revisa `git log` para el estilo exacto) — no hagas commit sin que yo lo pida explícitamente si estamos en una sesión donde no lo he mencionado antes.
+Antes de terminar: añade una fila a la tabla de Log.md con lo que se hizo en esta sesión (una línea: Fecha | Sesión | Tipo | Ámbito | Resumen). Si algo quedó pendiente, actualiza TODO.md. Si hay repo git, prepara el commit siguiendo el formato de mensajes ya usado en el historial (revisa `git log` para el estilo exacto) — no hagas commit sin que yo lo pida explícitamente si estamos en una sesión donde no lo he mencionado antes.
 ```
 
 ---

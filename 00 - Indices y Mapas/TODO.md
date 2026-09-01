@@ -372,7 +372,7 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 - Las plantillas se actualizaron el 2026-07-23 y se volvieron a actualizar el 2026-07-24 con `fecha_modificacion`.
 - Las notas existentes NO se migraron automáticamente a las nuevas plantillas — se expandirán progresivamente según prioridad.
-- **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro histórico detallado de todas las sesiones.
+- **Log.md** en `10 - Automatizacion y Scripts/` tiene el registro compacto (una fila por sesión, rotación por año). El historial detallado vive en `Log-2026.md` (archivo del año).
 - Sesión 2026-07-24: 14 notas TUI (1 guía + 13 específicas) + 3 notas planificadas (Regex, Vim, systemd).
 - Sesión 2026-07-25 (v2): 6 notas alta prioridad, 5 expandidas, enlaces externos, +3 alta prioridad completada, +xh.md creada, TODO.md actualizado con stats correctas (vault-stats.sh)
 - Sesión 2026-07-25 (v3): 6 distros expandidas (Motif, Alpine, Linux Lite, openSUSE, Versiones Debian, Peppermint OS), 2 notas nuevas (GTK, Qt), 7 notas con bloques de código unificados (Fedora, NixOS, gh CLI, FHS, DNS, Sistemas Archivos, Permisos), MoC actualizado

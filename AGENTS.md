@@ -21,7 +21,7 @@ Three hooks enforce invariants on commit/push:
 
 - **pre-commit** — staged `.md` files must have valid YAML frontmatter (`fecha_creacion`, `estado`, `categoria`). Excludes `Templates/`, `CLAUDE.md`, `README.md`, and `AGENTS.md` (root docs are exempt).
 - **commit-msg** — message must match `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` and be ≤72 chars. Use `expand:` for growing existing notes, `chore:` for infra (hooks/scripts). This is a hard requirement — a plain "Update x.md" won't commit.
-- **pre-push** — all wikilinks `[[X]]` must resolve to an existing note filename. Note: index/MoC files, `Log.md`, `Scripts del Vault.md`, `Templates/`, `CLAUDE.md`/`README.md` are excluded from the check.
+- **pre-push** — all wikilinks `[[X]]` must resolve to an existing note filename. Note: index/MoC files, `Log*.md` (live + year archives), `Scripts del Vault.md`, `Templates/`, `CLAUDE.md`/`README.md` are excluded from the check.
 
 Run the same checks manually without committing:
 
@@ -36,7 +36,7 @@ Run the same checks manually without committing:
 
 - **Frontmatter is mandatory on every content note** (`fecha_creacion`, `fecha_modificacion`, `estado`, `categoria`, `prioridad`). Only `README.md`, `CLAUDE.md`, and index/log notes may omit parts (see CLAUDE.md §3). Maintain 12 fixed categories; unknown categories fail validation.
 - **`fecha_modificacion`** is updated by `add-modification-date.sh` (perl, mtime-based) — a pre-commit hook does not do it for you. Update it when hand-editing a note with substantial changes.
-- **Update `10 - Automatización y Scripts/Log.md`** (append, never rewrite) after any vault work; keep `00 - Indices y Mapas/TODO.md` current.
+- **Update `10 - Automatización y Scripts/Log.md`** as a **compact table** after any vault work (one row per session: `Fecha | Sesión | Tipo | Ámbito | Resumen`); put the verbose detail in `00 - Indices y Mapas/TODO.md` (NOTAS), never in the Log. Keep `Log.md` under ~25 rows — rotate older rows to `Log-YYYY.md` (per-year archive) instead of deleting history. Keep `00 - Indices y Mapas/TODO.md` current.
 - **Link new notes from the MoC** (`00 - Indices y Mapas/MoC - Linux.md`) and use wikilinks `[[Nota]]`. Broken wikilinks block push.
 - **Do not store images locally** — use external URLs (`upload.wikimedia.org` / official sites).
 - **Filenames**: no spaces-breaking references — avoid `#`/`...`/`:` patterns in filenames (the pre-push regex treats those specially). Keep filenames basic.

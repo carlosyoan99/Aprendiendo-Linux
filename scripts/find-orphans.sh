@@ -111,12 +111,12 @@ for archivo in "${NOTAS_LIST[@]}"; do
 
     # Saltar archivos de estructura
     case "$BASENAME" in
-        "Log"|"MoC - Linux"|"Dashboard"|"Rutas de Aprendizaje"|"CLAUDE"|"README"|"AGENTS")
+        "Log"|"Log-"*|"MoC - Linux"|"Dashboard"|"Rutas de Aprendizaje"|"CLAUDE"|"README"|"AGENTS")
             continue ;;
     esac
 
-    # Saltar MoC y Log
-    [[ "$archivo" == *"MoC - Linux.md" || "$archivo" == *"Log.md" ]] && continue
+    # Saltar MoC y Log (activo + archivos por año Log-YYYY.md)
+    [[ "$archivo" == *"MoC - Linux.md" || "$archivo" == *"Log"*.md ]] && continue
 
     # Verificar si está en el MoC (O(1) lookup)
     IN_MOC=false
