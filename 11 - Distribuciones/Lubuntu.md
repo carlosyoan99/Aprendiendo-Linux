@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -145,7 +145,7 @@ sudo apt autoremove --purge
 - [[XFCE]] — alternativa ligera similar
 - [[Linux Lite]] — otra distro ligera para Windows refugees
 - [[MX Linux]] — distro ligera basada en Debian
-- [[PCManFM-Qt]] — gestor de archivos de LXQt
+- [[PCManFM]] — gestor de archivos de LXQt (también versión Qt)
 
 ## Enlaces externos
 

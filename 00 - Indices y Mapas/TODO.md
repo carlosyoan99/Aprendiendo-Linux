@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-01
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (Lote 1-3 + resto 07 completados — 8 programa 08 + 11 distro 11 + 14 comando 07 expandidas)
+> Última actualización: 2026-08-31 (links rotos resueltos + 4 notas nuevas: 7z AUR FRRouting Proton)
 
 ---
 
@@ -336,9 +336,6 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | ~~Crea nota xh.md~~ | Alternativa Rust a httpie (resolver wikilink roto) | ✅ ya creada |
 | Unificar bloques de código sueltos | Fedora, NixOS, GitHub CLI, FHS, DNS, Sistemas de Archivos, Permisos | ✅ completado |
 | Expandir Motif.md | ~50 → ~100 líneas | ✅ completado |
-| Descargar logos restantes | Fedora, Arch, Mint, openSUSE, Manjaro, NixOS, Alpine, etc. (~12) | ⚪ pendiente |
-| Descargar capturas DE/WM | GNOME, KDE, XFCE, i3, Hyprland, etc. (7 capturas) | ⚪ pendiente |
-| Descargar diagramas técnicos | Kernel, FHS, boot process (3 diagramas) | ⚪ pendiente |
 
 ---
 
@@ -413,7 +410,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **556** (+ 7 templates) |
+| **Notas totales** | **560** (+ 7 templates) |
 | **Estado resuelto** | 547 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
@@ -425,8 +422,8 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 201 | **Comando** | 118 |
-| **Concepto** | 47 | **Distribución** | 45 |
+| **Programa** | 203 | **Comando** | 119 |
+| **Concepto** | 47 | **Distribución** | 46 |
 | **Sistema** | 49 | **Entorno / WM** | 33 |
 | **Troubleshooting** | 19 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
@@ -439,9 +436,9 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 46 |
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
 | 04 - Entornos de Escritorio | 18 | 05 - Gestores de Ventanas | 15 |
-| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 118 |
-| 08 - Programas y Herramientas | 201 | 09 - Solucion de Problemas | 19 |
-| 10 - Automatizacion y Scripts | 10 | 11 - Distribuciones | 45 |
+| 06 - La Terminal | 6 | 07 - Comandos Esenciales | 119 |
+| 08 - Programas y Herramientas | 203 | 09 - Solucion de Problemas | 19 |
+| 10 - Automatizacion y Scripts | 10 | 11 - Distribuciones | 46 |
 
 ---
 
@@ -480,6 +477,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-08-31 (v33): **Lote 2 completado** — 7 notas comando 07 (du, md5sum, history, date, sed, zip, chmod) expandidas de ~67-87 a ~120+ líneas; secciones añadidas: configuración, ejemplos avanzados, comparativa, troubleshooting. Log.md y TODO actualizados
 - Sesión 2026-08-31 (v34): **Resto comandos 07 completado** — 7 notas comando 07 (nc, tar, expr, yes, paste, nl, comm) expandidas de ~81-99 a ~120+ líneas; secciones añadidas: uso avanzado, comparativa, troubleshooting. Log.md y TODO actualizados
 - Sesión 2026-08-31 (v35): **Lote 2 — comandos 07 a ~100+ líneas (expansión paralela, sincronizada con v33)** — date (159), sed (127), du (129), history (174), timedatectl (99, 63→99), md5sum (147). Secciones añadidas: casos de uso (timestamps, diagnóstico de disco, checksums), comparativas (date vs timedatectl, md5sum vs sha256sum), historia/estado de timedatectl, troubleshooting. Corregido enlace [[ncdu]] (no existe nota). Content commiteado en `c8c4233` junto al lote 2-3. Log.md actualizado (fila v35)
+- Sesión 2026-08-31 (v37): **links rotos resueltos + 4 notas nuevas** — creadas [[7z]], [[AUR]], [[FRRouting]], [[Proton]] (resolvían wikilinks rotos en zip/EndeavourOS/SONiC/HoloISO); corregido [[PCManFM-Qt]]→[[PCManFM]] en Lubuntu; hook pre-push mejorado para ignorar código inline `` `...` `` (eliminó falsos positivos [[Nota]] y [[\"$a\" == *patron*]]); automatizada `fecha_modificacion` en el hook pre-commit (automatiza add-modification-date.sh en staged); eliminadas 3 tareas cosméticas de "Prioridad baja" (descargar logos/capturas/diagramas, contradicen no usar imágenes locales). Stats → 560 notas.
 
 ---
 

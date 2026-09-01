@@ -26,7 +26,7 @@ WIKILINKS=$(find . -name '*.md' \
     -not -name 'AGENTS.md' \
     -not -name 'TODO.md' \
     -not -name 'Prompts de Trabajo.md' \
-    -exec sed '/^```/,/^```/d' {} + 2>/dev/null | \
+    -exec sed -e '/^```/,/^```/d' -e 's/`[^`]*`//g' {} + 2>/dev/null | \
     grep -oP '\[\[([^\]]+)\]\]' | \
     sed 's/\[\[//;s/\]\]//' | \
     sed 's/|.*//' | \

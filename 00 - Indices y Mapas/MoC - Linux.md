@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-01
 estado: en progreso
 categoria: indice
 ---
@@ -73,6 +73,7 @@ categoria: indice
 - [[Clear Linux]] — distro Intel optimizada para rendimiento
 - [[Drauger OS]] — distro gaming basada en Ubuntu
 - [[Garuda Linux]] — Arch-based, Btrfs, Dracut, gaming
+- [[AUR]] — Arch User Repository: repositorio comunitario de Arch
 - [[ChimeraOS]] — distro gaming inmutable para living room · [[HoloISO]] — fork abandonado de SteamOS
 - [[Distros adicionales (Gentoo Slackware Void Solus MX Linux Zorin elementary Kali Parrot Tails)]] — resto de distros menores + comparativas SteamOS
 
@@ -125,11 +126,11 @@ categoria: indice
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
 - [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]]
-- [[Videojuegos en Linux]] · [[Wine]] · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
+- [[Videojuegos en Linux]] · [[Wine]] · [[Proton]] — capa de compatibilidad de juegos de Valve · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
 - [[Parted Magic]] — Live CD de particionado y rescate · [[gparted]] — editor de particiones gráfico
 - [[GNUstep]] — framework Cocoa libre
 - [[GTK]] · [[Qt]] — toolkits de interfaces gráficas (GNOME y KDE respectivamente)
-- [[Heartbeat (Linux-HA)]] — alta disponibilidad · [[Linux Virtual Server]] — balanceo de carga · [[Open-Xchange]] — suite colaborativa · [[SONiC]] — SO redes Microsoft
+- [[Heartbeat (Linux-HA)]] — alta disponibilidad · [[Linux Virtual Server]] — balanceo de carga · [[Open-Xchange]] — suite colaborativa · [[SONiC]] — SO redes Microsoft · [[FRRouting]] — suite de routing (BGP/OSPF)
 - [[Ansible]] — gestión de configuración, playbooks, roles
 - [[Entorno de desarrollo Linux]] — toolchain completo por lenguaje, contenedores para desarrollo
 - [[TUI tools]] — guía de Terminal User Interfaces (monitores, editores, git, docker, multimedia, redes)
@@ -144,7 +145,7 @@ categoria: indice
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]] · [[groups]] — mostrar grupos del usuario
 - [[ping]] · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
 - [[jq]] — procesador JSON de terminal
-- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[cut]] — extraer columnas · [[tr]] — traducir/eliminar caracteres · [[nl]] — numerar líneas · [[paste]] — unir líneas · [[comm]] — comparar archivos ordenados · [[tar]] · [[zip]] · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
+- [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[cut]] — extraer columnas · [[tr]] — traducir/eliminar caracteres · [[nl]] — numerar líneas · [[paste]] — unir líneas · [[comm]] — comparar archivos ordenados · [[tar]] · [[zip]] · [[7z]] — máxima compresión · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[sha256sum]] — verificar integridad con SHA-256 · [[md5sum]] — verificar integridad con MD5
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]] · [[basename dirname]] — extraer nombre/ruta de path · [[expr]] — calculadora de expresiones
 - [[xargs]] · [[tee]] · [[rsync]] · [[watch]] · [[dd]] · [[pv]] — monitor de progreso en pipes · [[nc]] · [[kubectl]] — Kubernetes CLI · [[adduser]] — creación de usuarios

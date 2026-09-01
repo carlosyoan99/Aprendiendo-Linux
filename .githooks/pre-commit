@@ -1,6 +1,7 @@
 #!/bin/bash
-# pre-commit — Verifica frontmatter en archivos .md nuevos/modificados
+# pre-commit — Verifica frontmatter y sincroniza fecha_modificacion en .md staged
 # Ubicación: .githooks/pre-commit
+# v2 — Automatiza add-modification-date.sh en los archivos staged (fecha_modificacion = hoy)
 
 set -euo pipefail
 
@@ -56,4 +57,25 @@ if [[ $ERRORES -gt 0 ]]; then
 fi
 
 echo "  ✅ Frontmatter válido en todos los archivos staged."
+
+# Sincronizar fecha_modificacion = hoy en las notas staged (automatiza add-modification-date.sh)
+HOY=$(date +%Y-%m-%d)
+SYNCED=0
+while IFS= read -r archivo; do
+    [[ ! -f "$archivo" ]] && continue
+    if ! grep -q '^fecha_modificacion:' "$archivo"; then
+        # Añadir tras fecha_creacion
+        perl -i -pe "s/^(fecha_creacion:.*)$/\$1\\nfecha_modificacion: $HOY/" "$archivo" || continue
+    else
+        # Actualizar la existente
+        perl -i -pe "s/^fecha_modificacion:.*/fecha_modificacion: $HOY/" "$archivo" || continue
+    fi
+    git add -- "$archivo" 2>/dev/null || true
+    ((SYNCED++)) || true
+done <<< "$STAGED"
+
+if [[ $SYNCED -gt 0 ]]; then
+    echo "  🔄 fecha_modificacion → $HOY en $SYNCED nota(s) staged."
+fi
+
 exit 0
