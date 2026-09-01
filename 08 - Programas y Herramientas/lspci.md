@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -68,6 +68,15 @@ slot.func
 - **Antes de instalar drivers**: `lspci -nnk | grep -A2 VGA` para saber GPU y driver
 - **Diagnóstico de red**: verificar si la NIC es detectada (`lspci | grep Ethernet`)
 - **Compatibilidad**: comprobar versión PCIe y ancho de enlace
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `lspci` no muestra la GPU | GPU integrada + devuelta desactivada en BIOS/UEFI | Revisar BIOS; `lspci -nnk | grep -A2 VGA` |
+| No veo el driver en `lspci -nnk` | La línea `Kernel driver in use` solo sale con `-k` | Usar `lspci -nnk` (o `-v`). Si no hay driver, instalar el módulo del kernel |
+| Un dispositivo no aparece | No está enclavado por el kernel o está en un slot deshabilitado | `lspci -t` para ver el árbol PCIe; verificar `dmesg` del dispositivo |
+| Quiero saber si el ancho PCIe es el real | No se distingue el enlace activo del máximo | Espera; no se obtiene con lspci sino con `lspci -vv` y la línea `LnkCap`/`LnkSta`. Buscar `LnkSta Speed/Width` |
 
 ## Ver también
 

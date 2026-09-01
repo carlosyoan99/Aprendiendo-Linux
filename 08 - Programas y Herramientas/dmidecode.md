@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -64,6 +64,15 @@ sudo dmidecode -t memory | grep -E "Size:|Type:|Speed:|Manufacturer:|Part Number
 - **Antes de comprar RAM**: `sudo dmidecode -t memory` para saber tipo, slots disponibles y máxima capacidad
 - **Número de serie**: `sudo dmidecode -s system-serial-number` para garantía o soporte
 - **Actualizar BIOS**: `sudo dmidecode -s bios-version` para saber la versión actual
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `dmidecode` no puede acceder a la memoria | Requiere `root`/sudo para leer el SMBIOS | Ejecutar con `sudo` |
+| Faltan datos de RAM o vienen en blanco | El firmware (BIOS/UEFI) no rellena bien la tabla SMBIOS | Probar con `sudo dmidecode -t memory`; si sigue vacío, usar `lshw` como alternativa |
+| `dmidecode -s bios-version` devuelve vacío | Campo no poblado en esta máquina | Usar `sudo dmidecode -t bios | grep -i version` |
+| Quiero la máxima RAM soportada | No siempre viene en la tabla | Revisar `dmidecode -t memory | grep -i max` o la documentación del fabricante |
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -59,6 +59,15 @@ bus            número   vendor:product   descripción
 - **Detectar webcam**: `lsusb | grep -i camera` para ver si el sistema reconoce la cámara
 - **Identificar dispositivo desconocido**: el vendor:product ID permite buscar drivers
 - **Verificar hubs**: `lsusb -t` muestra la jerarquía de puertos USB
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Un dispositivo USB no aparece en `lsusb` | No es detectado por el kernel o el bus está inactivo | `lsusb -t` para el árbol; si falta, revisar alimentación/hub |
+| Desconecto y reconecto un USB y cambia `Device 00X` | Es normal: el número se reasigna al reconectar | Identificar por `ID vendor:product`, no por número de `Device` |
+| Webcam no reconocida aunque `lsusb` la ve | Falta el driver V4L2 | Ver [[Video4Linux (V4L2)]]; probar `v4l2-ctl --list-devices` |
+| USB en el hub adecuado pero lento | El bus es USB 2.0/1.1 en ese puerto | Conectar a puerto USB 3.x; `lsusb -t` muestra la velocidad del hub |
 
 ## Ver también
 
