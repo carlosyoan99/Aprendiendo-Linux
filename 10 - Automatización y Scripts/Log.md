@@ -19,6 +19,7 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-08-31 | v36 | docs | — | TODO.md: estadísticas actualizadas (556 notas, 6 en progreso, 201 programa, log 2) |
 | 2026-08-31 | v35 | expand | 07 | Lote 2: 6 comandos 07 (date sed du history timedatectl md5sum) → ~100+ líneas |
 | 2026-08-31 | v34 | expand | 08 | Lote 1: 13 notas de programa 08 (uso diario) expandidas a ~100 líneas |
 | 2026-08-31 | v34 | expand | 07 | 7 notas comando 07 restantes (nc, tar, expr, yes, paste, nl, comm) expandidas a ~120+ líneas |
