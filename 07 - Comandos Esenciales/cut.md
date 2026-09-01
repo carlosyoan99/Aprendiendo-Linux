@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: comando
 prioridad: media
@@ -58,6 +58,37 @@ cat access.log | cut -d' ' -f1
 # Mostrar solo el PATH (sin export)
 echo $PATH | tr ':' '\n' | cut -d'/' -f3 | sort -u
 ```
+
+## Casos de uso
+
+```bash
+# Extraer usuarios y shells del /etc/passwd
+cut -d: -f1,7 /etc/passwd
+
+# Columnas de un log con el campo 1 como fecha (IMPORTANTE: se repite el espacio como delimitador)
+cat access.log | cut -d' ' -f1,4
+
+# Forzar delimitador de salida para normalizar
+cut -d',' -f1,2 datos.csv | tr ',' '\t'
+
+# Invertir la selección: todo EXCEPTO los campos 2 y 3
+cut -d',' -f1,3 --complement datos.csv
+
+# Campos 2 a 5 de un archivo TSV
+cut -f2-5 datos.tsv
+
+# Extraer campos con múltiples apariciones usando rangos abiertos
+echo "a:b:c:d:e" | cut -d: -f3-5
+# c:d:e
+```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `cut: invalid byte, character or field list` | Formato incorrecto en `-f`/`-c` | Revisa comas, rangos (`1-3`, `2-`) y que no haya espacios |
+| Devuelve la línea entera | Delimitador no presente en la línea | Comprueba que el delimitador real coincida (`-d`, tab por defecto) |
+| Campos con espacios se cortan mal | Delimitador no es un carácter único utilizable (p.ej. CSV con quoted fields) | Usar `awk`/`csvkit` que entienden comillas |
 
 ## cut vs awk vs sed
 

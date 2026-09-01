@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-08-29
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: comando
 prioridad: baja
@@ -19,6 +19,53 @@ Son tres utilidades simples, **no relacionadas entre sí**, pero que aparecen ju
 - **`sleep`** — pausa la ejecución un tiempo dado. Acepta sufijos `s`/`m`/`h`/`d` (y decimales en GNU) para regular la cadencia de reintentos y esperas.
 
 Todas vienen en `coreutils`: disponibles en cualquier distro sin instalación.
+
+## Sintaxis y opciones por comando
+
+### `seq`
+
+```bash
+seq [OPCIÓN] INICIO FINAL
+seq [OPCIÓN] INICIO INCREMENTO FINAL
+```
+
+| Opción | Efecto |
+|---|---|
+| `-f FORMATO` | Formato printf de salida (p.ej. `%03g` para padding) |
+| `-s SEPARADOR` | Separador entre números (por defecto `\n`) |
+| `-w` | Igualar el ancho con ceros a la izquierda |
+
+```bash
+seq 1 3          # 1 2 3
+seq 0 2 10       # 0 2 4 6 8 10
+seq -w 8 12      # 08 09 10 11 12
+seq -s ' ' 1 3   # 1 2 3 (en una línea)
+seq -f '%.2f' 1 3   # 1.00 2.00 3.00
+```
+
+### `yes`
+
+```bash
+yes [STRING]     # repite STRING (por defecto 'y' 'y' 'y'...)
+```
+
+| Precauciones | Detalle |
+|---|---|
+| Ctrl+C | Única salida limpia esperada |
+| SIGPIPE | Se detiene solo si la tubería se cierra (`yes | cmd`) |
+| Riesgo | **Solo usarlo en prompts que SÍ acepten la respuesta** (ej: instaladores de paquete/gestión de repos). Confirmar que el comando no pregunta algo destructivo |
+
+### `sleep`
+
+```bash
+sleep [NÚMERO][s/m/h/d]...   # acepta varias magnitudes en GNU
+```
+
+| Precauciones | Detalle |
+|---|---|
+| Decimales | `sleep 0.5` y `sleep 1.5` funcionan en GNU coreutils |
+| Múltiples | `sleep 1m 30s` suma y espera 90 s |
+| Backoff | Combinar con un bucle para reintentos con espera creciente: `sleep $((attempt * 2))` |
 
 ## Tabla comparativa
 
@@ -63,6 +110,15 @@ yes "línea de prueba" | head -n 1000 > demo.txt
 # Pausa entre pasos de un pipeline
 seq 1 20 | xargs -I{} sh -c 'echo "Paso {}"; sleep 0.3'
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `seq` produce decimales con comas locales | Localización (locale) | `LC_ALL=C seq 0 0.5 3` |
+| `yes` lanza un instalador que pide algo irreversible | El prompt aceptaba la confirmación por defecto | Usar `echo 'n'` y responder manualmente si hay duda |
+| `sleep` avisa `invalid time interval` | Formato decimal con `,` en vez de `.` | `sleep 0,5` → `sleep 0.5` |
+| `seq` lento o command substitution excesiva | Generar rangos con `$(seq ...)` dentro de un bucle es costoso | Preferir `for i in {1..100}` (brace expansion) o `seq` una vez |
 
 ## Ver también
 

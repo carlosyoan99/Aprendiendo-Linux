@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-01
 estado: resuelto
 categoria: comando
 prioridad: baja
@@ -75,6 +75,27 @@ realpath --directory-name archivo.txt
 realpath --basename archivo.txt
 # archivo.txt
 ```
+
+## Casos en sub-shell y pipes
+
+```bash
+# Iterar sobre un directorio sin escribir "find" por cada archivo
+find . -name '*.png' -exec sh -c 'echo "Imagen: $(dirname "$1")/$(basename "$1")"' _ {} \;
+
+# Saltar el nombre de archivo y quedarse con la carpeta
+for p in $(find . -maxdepth 2 -name '*.log'); do
+  log_dir=$(dirname "$p")
+  echo "Analizando logs en $log_dir" && tail -3 "$p"
+done
+```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `dirname` devuelve `.` para rutas relativas sin `/` | No hay separador de directorio | Usar `realpath` si necesitas la ruta canónica completa |
+| `basename` deja la extensión | No pasaste el sufijo | `basename archivo.tar.gz .tar.gz` |
+| Comillas perdidas en scripts | Rutas sin comillar | Siempre `"$(basename "$var")"` |
 
 ## Ver también
 
