@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-08-31
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -10,7 +10,18 @@ alternativas: Cocoa (Apple), Qt, GTK
 
 # GNUstep
 
-> Implementación libre del framework **OpenStep/Cocoa** de NeXT/Apple. Permite desarrollar aplicaciones de escritorio en Objective-C con aspecto NeXTSTEP, funcionando en Linux, BSD y otros Unix. Una alternativa libre a Cocoa para quienes buscan un paradigma de desarrollo orientado a objetos maduro.
+> Implementación libre del framework **OpenStep/Cocoa** de NeXT/Apple. Permite desarrollar aplicaciones de escritorio en Objective-C con aspecto NeXTSTEP, funcionando en Linux, BSD y otros Unix.
+
+## Qué es
+
+GNUstep es una reimplementación **libre y multiplataforma** de las APIs de Cocoa (las bibliotecas que Apple heredó de NeXTSTEP). Permite compilar en Linux, BSD y macOS aplicaciones escritas en Objective-C que usan las mismas clases Foundation/AppKit que las apps de macOS, pero con un look and feel NeXTSTEP nativo.
+
+- **Lenguaje**: Objective-C (también soporta Swift vía gnustep-swift)
+- **Toolkit**: Foundation (NS*), AppKit (ventanas, controles)
+- **Backend**: X11, Wayland (experimental), Cairo
+- **Ventana**: WindowMaker (integración nativa), cualquier WM X11
+
+> GNUstep es a Cocoa lo que GCC es a Xcode: una implementación libre y multiplataforma de una API propietaria.
 
 ## Historia
 
@@ -21,10 +32,7 @@ alternativas: Cocoa (Apple), Qt, GTK
 | Inicio del proyecto GNUstep | ~1998 |
 | Madurez de paquetes Make/Base/GUI/Back | 2000s |
 | Apple lanza Mac OS X (basado en OpenStep) | 2001 |
-
-GNUstep nació como una reimplementación libre de las bibliotecas **OpenStep** que NeXT (posteriormente Apple) definió para su sistema operativo NeXTSTEP. Cuando Apple lanzó Mac OS X sobre los restos de NeXTSTEP, GNUstep también apuntó a compatibilidad con **Cocoa**, el nombre que Apple dio a las mismas APIs.
-
-> GNUstep es a Cocoa lo que GCC es a Xcode: una implementación libre y multiplataforma de una API propietaria.
+| GNUstep-on-Articles (integración Wayland experimental) | 2020s |
 
 ## Arquitectura
 
@@ -47,6 +55,45 @@ Las aplicaciones GNUstep tienen un aspecto distintivo que recuerda a **NeXTSTEP*
 - Configurable: se puede usar barra de tareas tradicional o menú en ventana
 - En macOS, se comporta como una app nativa de Cocoa
 
+## Instalación multi-distro
+
+| Distro | Comando |
+|---|---|
+| Debian/Ubuntu | `sudo apt install gnustep gnustep-devel` |
+| Arch | `sudo pacman -S gnustep gnustep-make` |
+| Fedora | `sudo dnf install gnustep gnustep-base gnustep-gui gnustep-make` |
+| openSUSE | `sudo zypper install gnustep gnustep-devel` |
+| Void | `sudo xbps-install -S gnustep gnustep-make` |
+| macOS | `brew install gnustep-make` |
+
+```bash
+# Verificar instalación
+gnustep-config --version
+gnustep-config --variable=GNUSTEP_SYSTEM_HEADERS
+
+# Compilar un proyecto
+. /usr/share/GNUstep/Makefiles/GNUstep.sh
+make
+```
+
+## Configuración
+
+```bash
+# Archivos de configuración GNUstep
+~/.GNUstepDefaults          # Preferencias del usuario (NSUserDefaults)
+~/.GNUstep/                 # Directorio de configuración
+
+# Cambiar aspecto (defaults)
+defaults write NSGlobalDomain GSRightMouseDraggedMask 0
+defaults write NSGlobalDomain NSThemeChromeStyle 1
+
+# Forzar estilo clásico NeXTSTEP
+defaults write NSGlobalDomain GSUseBackgroundColor YES
+
+# WindowMaker + GNUstep = escritorio NeXTSTEP completo
+# En WindowMaker: Info menu → Appearance → usa los temas GNUstep
+```
+
 ## Aplicaciones hechas con GNUstep
 
 | Aplicación | Descripción |
@@ -65,18 +112,33 @@ Las aplicaciones GNUstep tienen un aspecto distintivo que recuerda a **NeXTSTEP*
 - **Orange Concept** — desarrollo de software
 - **IntarS** — consultoría informática
 
-## Instalación
+## Casos de uso
 
-```bash
-# Debian/Ubuntu
-sudo apt install gnustep gnustep-devel
+- **Portar apps macOS a Linux**: cualquier app Cocoa moderate puede compilarse con GNUstep
+- **Desarrollo Objective-C multiplataforma**: IDEs como Project Center + GORM
+- **Escritorio NeXTSTEP**: WindowMaker + GNUstep = replicar el look de NeXTSTEP en Linux
+- **Herencia educativa**: entender la arquitectura de Cocoa/Mac desde una perspectiva libre
 
-# Arch Linux
-sudo pacman -S gnustep
+## Comparativa con alternativas
 
-# Fedora
-sudo dnf install gnustep*
-```
+| Aspecto | GNUstep | GTK | Qt |
+|---|---|---|---|
+| **Lenguaje** | Objective-C | C (con GObject) | C++ |
+| **Look** | NeXTSTEP clásico | GNOME moderno | KDE moderno |
+| **Madurez** | Desde ~1998 | Desde 1997 | Desde 1991 |
+| **Licencia** | GPL/LGPL | LGPL | LGPL/GPL comercial |
+| **Documentación** | Buena (Apple docs aplicables) | Excelente | Excelente |
+| **Ecosistema apps** | Pequeño | Grande | Grande |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `gnustep-config: command not found` | Paquete gnustep-make no instalado | `sudo apt install gnustep-make` |
+| Errores de compilación "GNUSTEP_SYSTEM_HEADERS" | Variable de entorno no configurada | `. /usr/share/GNUstep/Makefiles/GNUstep.sh` |
+| Aplicaciones sin menú vertical | Usando WM diferente a WindowMaker | Configurar `NSMenuDisabled` o usar WindowMaker |
+|_look and feel feo/desactualizado| Tema GTK por defecto en Back | Configurar `GSTheme` o usar Cairo backend |
+| `ld: library not found -lgnustep-base` | Runtime GNUstep no instalado | Instalar paquete gnustep-base (runtime) |
 
 ## Ver también
 
@@ -90,5 +152,6 @@ sudo dnf install gnustep*
 - [Wikipedia — GNUstep](https://en.wikipedia.org/wiki/GNUstep)
 - [Sitio oficial — GNUstep](http://www.gnustep.org/)
 - [GitHub — gnustep](https://github.com/gnustep)
+- [GNUstep Documentation](https://wiki.gnustep.org/)
 
 #programa #framework

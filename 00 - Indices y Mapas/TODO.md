@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (plan de expansión por lotes v33+ — Lote 1 programas 08, Lote 2 comandos 07, Lote 3 distros 11)
+> Última actualización: 2026-08-31 (Lote 1-3 completados — 8 programa 08 + 11 distro 11 + 7 comando 07 expandidas)
 
 ---
 
@@ -270,6 +270,44 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 > **Lote 2 previo** = tarea pendiente `Expandir notas de 08 antiguas (Lote 2)` del TODO (GNUstep, SONiC, lshw, pcmanfm, spacefm, handbrake, duplicity). Los marcados ✓ resuelven 6 de esas 8. GNUstep (~94) y SONiC (~120) ya superan/nacen al objetivo ~100 y se verifican al final sin expandir si no es necesario; "Ethernet" ya no existe como nota.
 
+**✅ Lote 2 — Programas 08 antiguas (completado v32)**:
+| Nota | Antes | Después |
+|---|---|---|
+| [[GNUstep]] | ~100 | ~130 |
+| [[SONiC]] | ~110 | ~140 |
+| [[lshw]] | ~55 | ~130 |
+| [[PCManFM]] | ~110 | ~130 |
+| [[SpaceFM]] | ~110 | ~130 |
+| [[handbrake]] | ~80 | ~130 |
+| [[duplicity]] | ~70 | ~130 |
+| [[ethtool]] | nueva | ~130 |
+
+**✅ Lote 3 — Distribuciones 11 (completado v32)**:
+| Nota | Antes | Después |
+|---|---|---|
+| [[Zentyal]] | ~59 | ~130 |
+| [[Xero Linux]] | ~62 | ~130 |
+| [[Garuda Linux]] | ~66 | ~140 |
+| [[Vanilla OS]] | ~73 | ~130 |
+| [[LXLE Linux]] | ~74 | ~130 |
+| [[Drauger OS]] | ~76 | ~130 |
+| [[EU OS]] | ~76 | ~130 |
+| [[Lubuntu]] | ~88 | ~130 |
+| [[HoloISO]] | ~89 | ~130 |
+| [[EndeavourOS]] | ~93 | ~130 |
+| [[Clear Linux]] | ~94 | ~130 |
+
+**✅ Lote 2 — Comandos 07 (completado v33)**:
+| Nota | Antes | Después |
+|---|---|---|
+| [[du]] | ~67 | ~120 |
+| [[md5sum]] | ~74 | ~120 |
+| [[history]] | ~75 | ~120 |
+| [[date]] | ~77 | ~120 |
+| [[sed]] | ~77 | ~120 |
+| [[zip]] | ~84 | ~120 |
+| [[chmod]] | ~87 | ~120 |
+
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
@@ -278,7 +316,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 348 notas con fecha 2026-07-25 | ✅ completado |
 | Automatizar `add-modification-date.sh` | Ejecutar periódicamente para mantener fechas al día | ⚪ pendiente |
 | ~~Expandir resto de fragmentadas~~ | MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel — las 13 ya completas (AppArmor, Snap, Limine, PAM, journald ya estaban expandidas) | ✅ completado |
-| Expandir notas de 08 antiguas (Lote 2) | 8 notas de 08 con fecha antigua — pasadas al **plan Lote 1** (Lote-2 previo): PCManFM, handbrake, duplicity, lshw, SpaceFM + GNUstep/SONiC a verificar | 🟡 planificado |
+| ~~Expandir notas de 08 antiguas (Lote 2)~~ | 8 notas de 08 antiguas — completadas en v32: GNUstep, SONiC, lshw, PCManFM, SpaceFM, handbrake, duplicity, ethtool | ✅ completado |
 
 ### 🟢 Prioridad baja — Mejoras continuas
 
@@ -427,6 +465,8 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-08-30 (v29): **correcciones de errores de alta prioridad (auditoría oleada 2026-07-25)** — 8 errores factuales corregidos (kill, stat, sha256sum, Coreutils y util-linux, Linux en Moviles, Daemon, Hyprland, NVIDIA no detecta); 4 textos corruptos/CJK (bmon, duf, btop, trippy); wikilink roto [[yq]] resuelto en jq; duplicado [[Actualización rota]] eliminado (redirigido a [[Paquete roto]] vía MoC). Validado: sin CJK, 0 wikilinks rotos
 - Sesión 2026-08-30 (v30): **correcciones de errores de prioridad media y baja (auditoría oleada 2026-07-25)** — estructura duplicada limpiada (Sugar, Trinity: `## Notas personales` doble; Fedora: H2 vacío; spectrwm: enlace repetido en Ver también); títulos `#` alineados al filename en los 2 problemáticos ([[Proceso de Arranque (GRUB initramfs kernel params)]], [[Cheat Sheet - Comandos Esenciales]]). Validado en las 6 notas tocadas
 - Sesión 2026-08-31 (v31): **AGENTS.md actualizado** — añadida sección "Commit flow (commit per phase)": commitear al terminar cada fase (no acumular), mensaje conforme al hook `feat/fix/docs/expand/refactor/chore` + id de sesión, stagear solo los archivos de la fase (nunca `git add -A` con trabajo ajeno sin terminar), decidir los archivos compartidos MoC/Log/TODO. TODO.md actualizado con stats reales (554 notas, 546 resuelto, 200 programa/118 comando/19 troubleshooting)
+- Sesión 2026-08-31 (v32): **Lote 2+3 completados** — 8 notas programa 08 antiguas (GNUstep, SONiC, lshw, PCManFM, SpaceFM, handbrake, duplicity, ethtool) + 11 notas distribución 11 (Zentyal, Xero Linux, Garuda, Vanilla OS, LXLE, Drauger, EU OS, Lubuntu, HoloISO, EndeavourOS, Clear Linux) expandidas a ~130+ líneas; ethtool creada nueva (era 'Ethernet' en TODO). Log.md actualizado
+- Sesión 2026-08-31 (v33): **Lote 2 completado** — 7 notas comando 07 (du, md5sum, history, date, sed, zip, chmod) expandidas de ~67-87 a ~120+ líneas; secciones añadidas: configuración, ejemplos avanzados, comparativa, troubleshooting. Log.md y TODO actualizados
 
 ---
 
