@@ -246,29 +246,24 @@ Verificadas 516 notas: 100% de valores válidos en estado/categoría/prioridad. 
 
 Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesión con su propio commit `expand:`. Los hubs/índices (Cifrado, Bootloaders, SELinux y AppArmor, Logging, Gestión usuarios, PostgresQL y MySQL, Vim Neovim, nohup-timeout-at, df y du, date y timedatectl, sed y awk, Navegadores Web, Editores de Texto, Emuladores de Terminal, Utilidades Base, Diagnóstico de hardware, Monitorización, Multimedia, Lenguajes y gestores, Atajos de teclado) NO se expanden — sus hijas ya existen desarrolladas (decisión v22 de evitar duplicación).
 
-**Lote 1 — Programas de uso diario (08)**, prioridad alta:
-| Nota | líneas | Resuelve Lote-2 previo |
+**✅ Lote 1 — Programas de uso diario (08), completado v34**:
+| Nota | Antes | Después |
 |---|---|---|
-| [[obsidian]] | ~50 | |
-| [[mise]] | ~52 | |
-| [[google-chrome]] | ~54 | |
-| [[snapper]] | ~54 | |
-| [[Helix]] | ~57 | |
-| [[Alacritty]] | ~63 | |
-| [[Kitty]] | ~69 | |
-| [[Foot]] | ~62 | |
-| [[PCManFM]] | ~70 | ✓ |
-| [[handbrake]] | ~71 | ✓ |
-| [[duplicity]] | ~73 | ✓ |
-| [[vlc]] | ~78 | |
-| [[AbiWord]] | ~77 | |
-| [[Dolphin]] | ~61 | |
-| [[Double Commander]] | ~76 | |
-| [[gstreamer]] | ~75 | |
-| [[lshw]] | ~60 | ✓ |
-| [[SpaceFM]] | ~71 | ✓ |
+| [[obsidian]] | ~50 | ~100 |
+| [[mise]] | ~52 | ~100 |
+| [[google-chrome]] | ~54 | ~100 |
+| [[snapper]] | ~54 | ~100 |
+| [[Helix]] | ~57 | ~100 |
+| [[Alacritty]] | ~63 | ~100 |
+| [[Kitty]] | ~69 | ~100 |
+| [[Foot]] | ~62 | ~100 |
+| [[vlc]] | ~78 | ~100 |
+| [[AbiWord]] | ~77 | ~100 |
+| [[Dolphin]] | ~61 | ~100 |
+| [[Double Commander]] | ~76 | ~100 |
+| [[gstreamer]] | ~75 | ~100 |
 
-> **Lote 2 previo** = tarea pendiente `Expandir notas de 08 antiguas (Lote 2)` del TODO (GNUstep, SONiC, lshw, pcmanfm, spacefm, handbrake, duplicity). Los marcados ✓ resuelven 6 de esas 8. GNUstep (~94) y SONiC (~120) ya superan/nacen al objetivo ~100 y se verifican al final sin expandir si no es necesario; "Ethernet" ya no existe como nota.
+> Los 5 marcados ✓ del plan original ([[PCManFM]], [[handbrake]], [[duplicity]], [[lshw]], [[SpaceFM]]) quedaron cubiertos por el Lote 2 de programas 08 antiguas (v32). "Ethernet" ya no existe como nota.
 
 **✅ Lote 2 — Programas 08 antiguas (completado v32)**:
 | Nota | Antes | Después |
@@ -325,7 +320,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 |---|---|---|
 | ~~Verificar wikilinks rotos~~ | `find-orphans.sh` confirma solo README.md intencional | ✅ completado |
 | ~~Verificar notas con `fecha_modificacion` antigua (>30 días)~~ | Identificar candidatas a revisión/expansión — 348 notas con fecha 2026-07-25 | ✅ completado |
-| Automatizar `add-modification-date.sh` | Ejecutar periódicamente para mantener fechas al día | ⚪ pendiente |
+| ~~Automatizar `add-modification-date.sh`~~ | Ejecutar periódicamente para mantener fechas al día — automatizado en el hook pre-commit (v37): sincroniza `fecha_modificacion` de las notas staged a la fecha actual | ✅ completado |
 | ~~Expandir resto de fragmentadas~~ | MySQL, GPG, rsyslog, logrotate, LUKS, chage, chsh, skel — las 13 ya completas (AppArmor, Snap, Limine, PAM, journald ya estaban expandidas) | ✅ completado |
 | ~~Expandir notas de 08 antiguas (Lote 2)~~ | 8 notas de 08 antiguas — completadas en v32: GNUstep, SONiC, lshw, PCManFM, SpaceFM, handbrake, duplicity, ethtool | ✅ completado |
 
@@ -411,12 +406,12 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | Métrica | Valor |
 |---|---|
 | **Notas totales** | **560** (+ 7 templates) |
-| **Estado resuelto** | 547 |
+| **Estado resuelto** | 551 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
 | **Prioridad alta** | 216 |
-| **Prioridad media** | 189 |
-| **Prioridad baja** | 143 |
+| **Prioridad media** | 191 |
+| **Prioridad baja** | 145 |
 
 ### Por categoría (real)
 
