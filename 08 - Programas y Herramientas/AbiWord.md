@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-31
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -62,6 +62,31 @@ abiword --to=txt documento.odt  # Convertir ODT a texto plano
 - Sin control de cambios (track changes)
 - Limitado para documentos largos o con formato complejo
 - Sin compatibilidad con macros
+
+## AbiWord vs LibreOffice Writer vs OnlyOffice
+
+| Aspecto | AbiWord | LibreOffice Writer | OnlyOffice |
+|---|---|---|---|
+| Peso/RAM | ~20 MB | ~300 MB | Medio |
+| Arranque | Instantáneo | Lento | Medio |
+| Formatos avanzados | Básico | Completo | Completo |
+| Track changes | No | Sí | Sí |
+| Macros | No | Sí | Limitado |
+| Ideal | Hardware antiguo | Oficina completa | Compat. exacta Office |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No abre .docx complejo | Formato complejo Word | Usar [[LibreOffice]] o [[OnlyOffice]] |
+| Falta diccionario en español | Paquete de idioma ausente | Instalar `abiword-grammar` / `aspell-es` |
+| No exporta a PDF | Falta plugin | Instalar `abiword-plugin-*` o usar exportar ODF |
+| Interfaz distorsionada | Tema GTK antiguo | Actualizar `libreoffice-gtk3` no aplicable → usar tema del sistema |
+
+## Notas personales
+
+- Lo uso en máquinas ligeras o VM; para trabajo real prefiero [[LibreOffice]].
+- El desajuste de formato al exportar lo limito a documentos simples (apuntes, cartas).
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-31
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -53,6 +53,39 @@ gst-play-1.0 video.mp4              # reproductor simple basado en GStreamer
 gst-launch-1.0 filesrc location=entrada.mp4 ! qtdemux ! h264parse ! \
   avdec_h264 ! videoconvert ! vp8enc ! webmmux ! filesink location=salida.webm
 ```
+
+## Elementos clave de un pipeline
+
+| Tipo de elemento | Función | Ejemplos |
+|---|---|---|
+| **source** | Genera la señal de entrada | `filesrc`, `audiotestsrc`, `videotestsrc` |
+| **filter** | Transforma/decodifica el flujo | `audioconvert`, `videoconvert`, `avdec_h264` |
+| **sink** | Entrega la salida | `autoaudiosink`, `autovideosink`, `filesink` |
+
+Los pipelines se escriben encadenando elementos con `!` y se pueden inspeccionar con `gst-inspect-1.0`.
+
+## GStreamer vs FFmpeg vs mpv
+
+| Aspecto | GStreamer | FFmpeg | mpv |
+|---|---|---|---|
+| Naturaleza | Framework/biblioteca | CLI/biblioteca | Reproductor |
+| Pipelines | `gst-launch` | `ffmpeg` (filtros) | No |
+| Integración GUI | Backend GNOME | Electrón | Interfaz propia |
+| Caso de uso | Apps multimédia | Procesado por lotes | Reproducción |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `gst-launch` no encuentra el elemento | Falta el plugin | Instalar `gst-plugins-*` correspondiente |
+| No reproduce MP3 en GNOME | Falta gst-plugins-ugly | `sudo apt install gstreamer1.0-plugins-ugly` |
+| Pipeline corta en `negotiation failed` | Formato de entrada incompatible | Añadir `videoconvert`/`audioconvert` antes del sink |
+| Sin video en Videos (Totem) | Falta `gst-libav` | Instalar `gstreamer1.0-libav` / `gst-libav` |
+
+## Notas personales
+
+- Como el backend de GNOME, instalar los `gst-plugins-*` adecuados resuelve la mayoría de codecs que faltan en Totem.
+- Para pipelines de un solo uso prefiero [[ffmpeg]]; GStreamer lo reservo para entender la arquitectura de apps GNOME.
 
 ## Uso en GNOME
 

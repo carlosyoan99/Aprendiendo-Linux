@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-08-31
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -59,6 +59,32 @@ sudo dnf install doublecmd       # Fedora
 - Interfaz menos moderna que Dolphin o Nemo
 - Dependencia de plugins para algunas conexiones de red
 - No tiene vista integrada de miniaturas tan pulida como Nautilus
+
+## Double Commander vs Dolphin vs Nautilus
+
+| Aspecto | Double Commander | Dolphin | Nautilus |
+|---|---|---|---|
+| Layout | Dos paneles | Split opcional (`F3`) | Panel único |
+| Atajos estilo COMMANDER | Sí (F5/F6/F8) | No | No |
+| Operaciones en 2º plano | Sí | Sí | Sí |
+| Expresiones regex renombrado | Sí | Parcial | No |
+| Conexiones red integradas | FTP/SFTP/SCP/WebDAV/SMB | Vía KIO | Vía GVfs |
+| Consumo | Medio | Medio | Bajo |
+| Ideal | Migrantes de Windows | Usuario KDE | Usuario GNOME |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No ve el panel de vista rápida | Panel cerrado | `Ctrl+Q` o menú Ver → Panel de vista |
+| Conexión FTP falla | Falta plugin WFX | Instalar `doublecmd-plugins` |
+| Doble panel desorienta | Costumbre | Bajar a un solo panel: `Ctrl+U` |
+| Sonido/notificación en copia | Ajustes | Menú Configuración → Opciones → Operación |
+
+## Notas personales
+
+- Su esquema de teclas me facilita la migración del hábito de Total Commander.
+- Uso el panel de vista rápida (`Ctrl+Q`, debe estar activado) para previsualizar sin abrir.
 
 ## Ver también
 
