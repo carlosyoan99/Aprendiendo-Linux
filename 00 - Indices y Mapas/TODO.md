@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (Lote 1-3 completados — 8 programa 08 + 11 distro 11 + 7 comando 07 expandidas)
+> Última actualización: 2026-08-31 (Lote 1-3 + resto 07 completados — 8 programa 08 + 11 distro 11 + 14 comando 07 expandidas)
 
 ---
 
@@ -308,6 +308,17 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | [[zip]] | ~84 | ~120 |
 | [[chmod]] | ~87 | ~120 |
 
+**✅ Comandos 07 restantes (completado v34)**:
+| Nota | Antes | Después |
+|---|---|---|
+| [[nc]] | ~99 | ~120 |
+| [[tar]] | ~91 | ~120 |
+| [[expr]] | ~92 | ~120 |
+| [[yes]] | ~97 | ~120 |
+| [[paste]] | ~81 | ~120 |
+| [[nl]] | ~84 | ~120 |
+| [[comm]] | ~89 | ~120 |
+
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
@@ -467,6 +478,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-08-31 (v31): **AGENTS.md actualizado** — añadida sección "Commit flow (commit per phase)": commitear al terminar cada fase (no acumular), mensaje conforme al hook `feat/fix/docs/expand/refactor/chore` + id de sesión, stagear solo los archivos de la fase (nunca `git add -A` con trabajo ajeno sin terminar), decidir los archivos compartidos MoC/Log/TODO. TODO.md actualizado con stats reales (554 notas, 546 resuelto, 200 programa/118 comando/19 troubleshooting)
 - Sesión 2026-08-31 (v32): **Lote 2+3 completados** — 8 notas programa 08 antiguas (GNUstep, SONiC, lshw, PCManFM, SpaceFM, handbrake, duplicity, ethtool) + 11 notas distribución 11 (Zentyal, Xero Linux, Garuda, Vanilla OS, LXLE, Drauger, EU OS, Lubuntu, HoloISO, EndeavourOS, Clear Linux) expandidas a ~130+ líneas; ethtool creada nueva (era 'Ethernet' en TODO). Log.md actualizado
 - Sesión 2026-08-31 (v33): **Lote 2 completado** — 7 notas comando 07 (du, md5sum, history, date, sed, zip, chmod) expandidas de ~67-87 a ~120+ líneas; secciones añadidas: configuración, ejemplos avanzados, comparativa, troubleshooting. Log.md y TODO actualizados
+- Sesión 2026-08-31 (v34): **Resto comandos 07 completado** — 7 notas comando 07 (nc, tar, expr, yes, paste, nl, comm) expandidas de ~81-99 a ~120+ líneas; secciones añadidas: uso avanzado, comparativa, troubleshooting. Log.md y TODO actualizados
 - Sesión 2026-08-31 (v35): **Lote 2 — comandos 07 a ~100+ líneas (expansión paralela, sincronizada con v33)** — date (159), sed (127), du (129), history (174), timedatectl (99, 63→99), md5sum (147). Secciones añadidas: casos de uso (timestamps, diagnóstico de disco, checksums), comparativas (date vs timedatectl, md5sum vs sha256sum), historia/estado de timedatectl, troubleshooting. Corregido enlace [[ncdu]] (no existe nota). Content commiteado en `c8c4233` junto al lote 2-3. Log.md actualizado (fila v35)
 
 ---

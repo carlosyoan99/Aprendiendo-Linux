@@ -21,6 +21,7 @@ Historial completo del año (detallado): [[Log-2026]].
 |---|---|---|---|---|
 | 2026-08-31 | v35 | expand | 07 | Lote 2: 6 comandos 07 (date sed du history timedatectl md5sum) → ~100+ líneas |
 | 2026-08-31 | v34 | expand | 08 | Lote 1: 13 notas de programa 08 (uso diario) expandidas a ~100 líneas |
+| 2026-08-31 | v34 | expand | 07 | 7 notas comando 07 restantes (nc, tar, expr, yes, paste, nl, comm) expandidas a ~120+ líneas |
 | 2026-08-31 | v33 | expand | 07 | Lote 2: 7 notas comando 07 (du, md5sum, history, date, sed, zip, chmod) expandidas a ~120+ líneas |
 | 2026-08-31 | v32 | expand | 08/11 | Lote 2+3: 8 notas programa 08 + 11 notas distro 11 expandidas a ~130+ líneas |
 | 2026-08-31 | v31 | docs | — | AGENTS.md: flujo de commit por fase; TODO.md con stats reales (554 notas) |
