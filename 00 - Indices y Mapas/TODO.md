@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-09-01
+fecha_modificacion: 2026-09-02
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -473,6 +473,10 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-08-31 (v34): **Resto comandos 07 completado** — 7 notas comando 07 (nc, tar, expr, yes, paste, nl, comm) expandidas de ~81-99 a ~120+ líneas; secciones añadidas: uso avanzado, comparativa, troubleshooting. Log.md y TODO actualizados
 - Sesión 2026-08-31 (v35): **Lote 2 — comandos 07 a ~100+ líneas (expansión paralela, sincronizada con v33)** — date (159), sed (127), du (129), history (174), timedatectl (99, 63→99), md5sum (147). Secciones añadidas: casos de uso (timestamps, diagnóstico de disco, checksums), comparativas (date vs timedatectl, md5sum vs sha256sum), historia/estado de timedatectl, troubleshooting. Corregido enlace [[ncdu]] (no existe nota). Content commiteado en `c8c4233` junto al lote 2-3. Log.md actualizado (fila v35)
 - Sesión 2026-08-31 (v37): **links rotos resueltos + 4 notas nuevas** — creadas [[7z]], [[AUR]], [[FRRouting]], [[Proton]] (resolvían wikilinks rotos en zip/EndeavourOS/SONiC/HoloISO); corregido [[PCManFM-Qt]]→[[PCManFM]] en Lubuntu; hook pre-push mejorado para ignorar código inline `` `...` `` (eliminó falsos positivos [[Nota]] y [[\"$a\" == *patron*]]); automatizada `fecha_modificacion` en el hook pre-commit (automatiza add-modification-date.sh en staged); eliminadas 3 tareas cosméticas de "Prioridad baja" (descargar logos/capturas/diagramas, contradicen no usar imágenes locales). Stats → 560 notas.
+- Sesión 2026-09-01 (v38): **TODO — lotes completados y stats corregidas** — marcados como ✅ completados Lote 1 de programas 08 (v34) y "Automatizar add-modification-date" (v37, pre-commit); stats corregidas a 551 resuelto / 191 media / 145 baja.
+- Sesión 2026-09-01 (v39): **Lote 4 Fase A — comandos 07 restantes** — cut (86→117) y seq/yes/sleep (81→137) con casos de uso, sintaxis y troubleshooting; basename/dirname (91→112) con casos en sub-shell y troubleshooting. `nohup` ya completa, sin cambios.
+- Sesión 2026-09-01 (v40): **Lote 4 Fase B — utilidades de sistema 08** — procps-ng reescrito (57→145) con componentes, señales y opciones; troubleshooting añadido a lspci/lsusb/dmidecode. gcc/make/node_exporter/smartctl ya completas.
+- Sesión 2026-09-01 (v41): **Lote 4 Fase G — Labwc** — [[Labwc]] (WM Wayland 05) expandido (71→~110) con modelo de stacking, comparativa labwc vs Openbox/Sway/Wayfire y troubleshooting. Fases C/D/E/F valoradas sin cambios (notas de editores/programas, ofimática, navegadores y conceptos ya completas — sin padding).
 
 ---
 

@@ -19,6 +19,10 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-09-01 | v41 | expand | 05 | labwc (WM Wayland) expandido: modelo stacking, labwc vs Openbox/Sway/Wayfire, troubleshooting |
+| 2026-09-01 | v40 | expand | 08 | procps-ng reescrito + troubleshooting en lspci/lsusb/dmidecode (diagnóstico hardware 08) |
+| 2026-09-01 | v39 | expand | 07 | comandos 07 (cut, seq/yes/sleep, basename/dirname) ampliados con casos de uso y troubleshooting |
+| 2026-09-01 | v38 | docs | — | TODO.md: lotes 1 completados marcados + stats corregidas (551 resuelto/191 media/145 baja) |
 | 2026-08-31 | v37 | feat | 07/08/11/hooks | 4 notas nuevas (7z AUR FRRouting Proton) + fix links rotos + pre-push ignora código inline + pre-commit sincroniza fecha_modificacion |
 | 2026-08-31 | v36 | docs | — | TODO.md: estadísticas actualizadas (556 notas, 6 en progreso, 201 programa, log 2) |
 | 2026-08-31 | v35 | expand | 07 | Lote 2: 6 comandos 07 (date sed du history timedatectl md5sum) → ~100+ líneas |

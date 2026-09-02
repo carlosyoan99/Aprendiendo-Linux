@@ -19,15 +19,15 @@ chmod +x .githooks/*
 
 Three hooks enforce invariants on commit/push:
 
-- **pre-commit** — staged `.md` files must have valid YAML frontmatter (`fecha_creacion`, `estado`, `categoria`). Excludes `Templates/`, `CLAUDE.md`, `README.md`, and `AGENTS.md` (root docs are exempt).
-- **commit-msg** — message must match `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` and be ≤72 chars. Use `expand:` for growing existing notes, `chore:` for infra (hooks/scripts). This is a hard requirement — a plain "Update x.md" won't commit.
-- **pre-push** — all wikilinks `[[X]]` must resolve to an existing note filename. Note: index/MoC files, `Log*.md` (live + year archives), `Scripts del Vault.md`, `Templates/`, `CLAUDE.md`/`README.md` are excluded from the check.
+- **pre-commit** — staged `.md` files must have valid YAML frontmatter (`fecha_creacion`, `estado`, `categoria`). Excludes `Templates/`, `CLAUDE.md`, `README.md`, and `AGENTS.md` (root docs are exempt). It also auto-sets `fecha_modificacion: <today>` on staged notes and re-stages them.
+- **commit-msg** — message must match `^(feat|fix|docs|expand|refactor|chore)(\(.+\))?: ` and the whole first line must be ≤72 chars. Use `expand:` for growing existing notes, `chore:` for infra (hooks/scripts). This is a hard requirement — a plain "Update x.md" won't commit.
+- **pre-push** — all wikilinks `[[X]]` must resolve to an existing note filename. Excluded from the check: the whole `00 - Indices y Mapas/` dir, `TODO.md`, `Prompts de Trabajo.md`, `Log*.md` (live + year archives), `Scripts del Vault.md`, `Templates/`, `.obsidian/`, and root docs (`CLAUDE.md`/`README.md`/`AGENTS.md`).
 
 Run the same checks manually without committing:
 
 ```bash
 ./scripts/check-frontmatter.sh            # validate all notes (--fix, --solo-errores, or per-folder)
-./scripts/find-orphans.sh                 # notes not linked from the MoC
+./scripts/find-orphans.sh                 # notes not linked from the MoC nor other notes (--moc-only to check just the MoC)
 ./scripts/vault-stats.sh --resumen        # up-to-date stats
 ./scripts/add-modification-date.sh        # sync fecha_modificacion with mtime
 ```
@@ -35,7 +35,7 @@ Run the same checks manually without committing:
 ## Conventions an agent will get wrong
 
 - **Frontmatter is mandatory on every content note** (`fecha_creacion`, `fecha_modificacion`, `estado`, `categoria`, `prioridad`). Only `README.md`, `CLAUDE.md`, and index/log notes may omit parts (see CLAUDE.md §3). Maintain 12 fixed categories; unknown categories fail validation.
-- **`fecha_modificacion`** is updated by `add-modification-date.sh` (perl, mtime-based) — a pre-commit hook does not do it for you. Update it when hand-editing a note with substantial changes.
+- **`fecha_modificacion`** — the pre-commit hook sets it to today on every staged note, so no hand-editing when committing. `add-modification-date.sh` (perl, mtime-based) is only needed to bulk-sync dates to real file mtime (e.g. external edits that bypass git).
 - **Update `10 - Automatización y Scripts/Log.md`** as a **compact table** after any vault work (one row per session: `Fecha | Sesión | Tipo | Ámbito | Resumen`); put the verbose detail in `00 - Indices y Mapas/TODO.md` (NOTAS), never in the Log. Keep `Log.md` under ~25 rows — rotate older rows to `Log-YYYY.md` (per-year archive) instead of deleting history. Keep `00 - Indices y Mapas/TODO.md` current.
 - **Link new notes from the MoC** (`00 - Indices y Mapas/MoC - Linux.md`) and use wikilinks `[[Nota]]`. Broken wikilinks block push.
 - **Do not store images locally** — use external URLs (`upload.wikimedia.org` / official sites).
