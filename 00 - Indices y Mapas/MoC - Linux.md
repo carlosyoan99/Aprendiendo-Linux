@@ -76,11 +76,15 @@ categoria: indice
 - [[AUR]] — Arch User Repository: repositorio comunitario de Arch
 - [[ChimeraOS]] — distro gaming inmutable para living room · [[HoloISO]] — fork abandonado de SteamOS
 - [[Distros adicionales (Gentoo Slackware Void Solus MX Linux Zorin elementary Kali Parrot Tails)]] — resto de distros menores + comparativas SteamOS
+- [[Nobara Linux]] — Fedora gaming de GloriousEggroll · [[BigLinux]] — Arch + KDE, Brasil
+- [[Artix Linux]] — Arch sin systemd (openrc/runit/s6) · [[Devuan]] — Debian sin systemd
+- [[Guix System]] — sistema declarativo 100% libre (Scheme) · [[SpiralLinux]] — Debian fácil · [[Q4OS]] — Debian ligera estilo Windows
+- [[EasyOS]] — ligera portable, de Puppy, contenedores propios
 
 ## Entornos gráficos
 - [[GNOME]] · [[KDE Plasma]] · [[XFCE]] · [[Cinnamon]]
 - [[MATE]] · [[Budgie]] · [[LXDE]] · [[LXQt]] · [[Deepin]] · [[Pantheon]] · [[Enlightenment]]
-- [[Sugar]] · [[Trinity]]
+- [[Sugar]] · [[Trinity]] · [[Unity]] — shell clásico de launcher + global menu (regresó en Ubuntu 23.10)
 - [[Common Desktop Environment (CDE)]] — escritorio Unix clásico · [[Motif]] — toolkit gráfico usado por CDE
 - [[Desktop Shells (Noctalia Caelestia)]]
 - [[Tema Material You en el escritorio]] — del wallpaper a las apps vía Noctalia
@@ -92,6 +96,7 @@ categoria: indice
 - [[herbstluftwm]]
 - [[Labwc]] — compositor Wayland minimalista tipo Openbox
 - [[Wayfire]] — compositor Wayland con efectos 3D (tipo Compiz)
+- [[Xmonad]] — WM tiling configurable en Haskell · [[IceWM]] — WM clásico ligero · [[Window Maker]] — WM estilo NeXTSTEP · [[twm]] — gestor por defecto de X11 (histórico)
 - [[Comparativa gestores de ventanas]] — guía para elegir WM según perfil y caso de uso
 
 ## Programas comunes
