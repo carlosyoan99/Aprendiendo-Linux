@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -20,7 +20,6 @@ Suite ofimática libre del proyecto KDE. Incluye procesador de textos (Words), h
 | **Kexi** | Base de datos visual (MS Access-like) | `kexi` |
 | **Plan** | Gestión de proyectos (Gantt) | `calligraplan` |
 | **Braindump** | Notas y mapas mentales | `braindump` |
-| **Gemini** | Visor de documentos (PDF, mobi, ePub) | `okular` parte de KDE |
 
 ## Instalación
 
@@ -44,7 +43,19 @@ Se pueden instalar solo las aplicaciones que se necesiten (no es necesario insta
 calligrawords documento.odt     # Abrir documento
 calligrasheets hoja.ods         # Abrir hoja de cálculo
 kexi proyecto.kexi              # Abrir base de datos
+calligrastage presentacion.odp  # Abrir presentación
 ```
+
+## Formatos compatibles
+
+| Formato | Lectura | Escritura |
+|---|---|---|
+| .odt (ODF) | ✅ | ✅ |
+| .docx | ✅ (básico) | ✅ (básico) |
+| .ods | ✅ | ✅ |
+| .xlsx | ✅ (básico) | ✅ (básico) |
+| .odp | ✅ | ✅ |
+| .pptx | ✅ (básico) | ✅ (básico) |
 
 ## Características
 
@@ -54,6 +65,12 @@ kexi proyecto.kexi              # Abrir base de datos
 - **Ligera**: ~200 MB completa, componentes individuales ~40-60 MB
 - **Compatibilidad básica** con formatos MS Office (.docx, .xlsx, .pptx)
 - **Múltiples idiomas**: interfaz traducida a 30+ idiomas
+
+## Uso avanzado
+
+- **Kexi**: crear bases de datos visuales sin SQL (modo diseño drag-and-drop). Puede conectarse a MySQL, PostgreSQL, SQLite.
+- **Plan**: diagramas de Gantt, asignación de recursos, exportación a MS Project.
+- **Words**: modo de etiquetas para Correspondencia Masiva (mail merge).
 
 ## Ventajas
 
@@ -67,6 +84,24 @@ kexi proyecto.kexi              # Abrir base de datos
 - Menos usuarios → menos tutoriales y comunidades
 - Algunas apps (Braindump, Plan) reciben menos desarrollo
 - Renderizado de documentos complejos inferior a LibreOffice
+
+## Calligra vs LibreOffice vs OnlyOffice
+
+| Aspecto | Calligra | LibreOffice | OnlyOffice |
+|---|---|---|---|
+| Licencia | GPL | MPL | AGPL |
+| Integración KDE | Nativa | Parcial | No |
+| Kexi (BD visual) | Sí | No | No |
+| Compatibilidad OOXML | Básica | Alta | Máxima |
+| Suite completa | Sí | Sí | Sí |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No inicia en Wayland | Qt5/KDE sin Wayland nativo | Probar con XWayland o usar KDE Plasma |
+| Docx se ve diferente | ODF nativo vs OOXML | Exportar a ODF para preservar formato |
+| Kexi no conecta a MySQL | Falta driver | Instalar `calligra-kexi-mysql` |
 
 ## Ver también
 

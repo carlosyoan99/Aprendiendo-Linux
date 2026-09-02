@@ -9,7 +9,7 @@ prioridad: alta
 # TODO — Plan de trabajo del vault
 
 > Este archivo centraliza el estado de todo el proyecto: lo completado, lo pendiente, y el roadmap futuro.
-> Última actualización: 2026-08-31 (links rotos resueltos + 4 notas nuevas: 7z AUR FRRouting Proton)
+> Última actualización: 2026-09-02 (v42: 10 notas 08 expandidas a ~100-140 líneas)
 
 ---
 
@@ -314,6 +314,20 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | [[nl]] | ~84 | ~120 |
 | [[comm]] | ~89 | ~120 |
 
+**✅ Lote 5 — Programas 08 cortas (completado v42)**:
+| Nota | Antes | Después |
+|---|---|---|
+| [[kew]] | 63 | 120 |
+| [[Antigravity]] | 65 | 110 |
+| [[Gem]] | 79 | 109 |
+| [[Gnumeric]] | 81 | 120 |
+| [[google-chrome]] | 82 | 102 |
+| [[Proton]] | 82 | 112 |
+| [[snapper]] | 83 | 100 |
+| [[Calligra Suite]] | 83 | 118 |
+| [[FreeOffice]] | 83 | 107 |
+| [[st]] | 83 | 140 |
+
 ### 🟡 Prioridad media
 
 | Tarea | Detalle | Estado |
@@ -401,11 +415,11 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 ---
 
-## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-08-31)
+## 📊 ESTADÍSTICAS DEL VAULT (vault-stats.sh 2026-09-02)
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **560** (+ 7 templates) |
+| **Notas totales** | **561** (+ 7 templates) |
 | **Estado resuelto** | 551 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos los drafts completados) |
@@ -477,6 +491,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-01 (v39): **Lote 4 Fase A — comandos 07 restantes** — cut (86→117) y seq/yes/sleep (81→137) con casos de uso, sintaxis y troubleshooting; basename/dirname (91→112) con casos en sub-shell y troubleshooting. `nohup` ya completa, sin cambios.
 - Sesión 2026-09-01 (v40): **Lote 4 Fase B — utilidades de sistema 08** — procps-ng reescrito (57→145) con componentes, señales y opciones; troubleshooting añadido a lspci/lsusb/dmidecode. gcc/make/node_exporter/smartctl ya completas.
 - Sesión 2026-09-01 (v41): **Lote 4 Fase G — Labwc** — [[Labwc]] (WM Wayland 05) expandido (71→~110) con modelo de stacking, comparativa labwc vs Openbox/Sway/Wayfire y troubleshooting. Fases C/D/E/F valoradas sin cambios (notas de editores/programas, ofimática, navegadores y conceptos ya completas — sin padding).
+- Sesión 2026-09-02 (v42): **Lote expansion 08 Programas cortas** — 10 notas 08 expandidas a ~100-140 líneas: kew (63→120), Antigravity (65→110), Gem (79→109), Gnumeric (81→120), google-chrome (82→102), Proton (82→112), snapper (83→100), Calligra Suite (83→118), FreeOffice (83→107), st (83→140). Secciones añadidas: instalación multi-distro, uso avanzado, comparativas con alternativas, troubleshooting.
 
 ---
 

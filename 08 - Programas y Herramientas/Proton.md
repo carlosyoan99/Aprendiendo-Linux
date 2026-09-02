@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-31
-fecha_modificacion: 2026-09-01
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -41,6 +41,10 @@ Para forzar una versión concreta de Proton en línea de comandos:
 ```bash
 # Ver versiones instaladas
 ls ~/.steam/root/compatibilitytools.d/
+
+# Forzar proton Experimental para un juego
+STEAM_COMPAT_DATA_PATH=~/.steam/root/steamapps/compatdata/<APPID> \
+  proton run /path/to/game.exe
 ```
 
 ## Estado de compatibilidad
@@ -56,6 +60,21 @@ El portal comunitario que consulta si un juego corre es **ProtonDB**:
 
 **~90%** de los juegos de Steam funcionan con Proton (ProtonDB: ~80% impactan Platinum/Gold). Los anti-cheat (EAC/BattlEye/FACEIT) son el límite principal: requieren soporte del desarrollador.
 
+## Configuración avanzada
+
+- **Proton Experimental** — última versión con fixes recientes (recomendado para juegos nuevos).
+- **Proton 9.0** — versión estable general.
+- **Proton Hotfix** — correcciones urgentes entre versiones.
+- **Proton GE (GloriousEggroll)** — versión comunitaria con parches adicionales (install manual desde GitHub).
+- **DXVK_ASYNC** — parche para reducir stuttering en juegos con mucho shader compilation.
+
+```bash
+# Instalar Proton GE manualmente
+mkdir -p ~/.steam/root/compatibilitytools.d/
+tar -xf Proton-GE.tar.gz -C ~/.steam/root/compatibilitytools.d/
+# Reiniciar Steam para que lo detecte
+```
+
 ## Proton vs Wine
 
 | Aspecto | Proton | Wine |
@@ -68,6 +87,16 @@ El portal comunitario que consulta si un juego corre es **ProtonDB**:
 | Ideal | Juegos de Steam | Toda app de Windows |
 
 El punto clave: **Proton** = Wine + DXVK + Steam/DRM + parches de juegos, y además con sofisticado auto-configurado por juego.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Juego no arranca | Proton incompatible | Probar Proton Experimental o GE |
+| Stuttering inicial | Shader compilation | Dejar que el juego compile shaders (esperar o usar DXVK_ASYNC) |
+| Negro en pantalla | Driver GPU obsoleto | Actualizar driver (Mesa o NVIDIA proprietary) |
+| Anti-cheat bloquea | EAC/BattlEye sin soporte Linux | Verificar en ProtonDB si el juego tiene soporte |
+| Audio no funciona | PipeWire/PulseAudio | Verificar `PULSE_SERVER` o usar `protontricks` |
 
 ## Ver también
 

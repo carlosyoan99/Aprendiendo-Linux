@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -22,6 +22,7 @@ prioridad: media
 yay -S google-chrome       # AUR / CachyOS repos
 # Debian/Ubuntu: .deb oficial desde google.com/chrome
 # Fedora: .rpm oficial desde google.com/chrome (o rpm fusion)
+# macOS: brew install --cask google-chrome
 ```
 
 ## Sintaxis
@@ -31,7 +32,21 @@ google-chrome-stable                # lanzar navegador
 google-chrome-stable --new-window <url>
 google-chrome-stable --incognito
 google-chrome-stable --profile-directory="Person 2"
+google-chrome-stable --restore-last-session
+google-chrome-stable --disable-gpu  # sin aceleración GPU
+google-chrome-stable --no-sandbox   # sin sandbox (entornos Docker)
 ```
+
+## Flags útiles
+
+| Flag | Efecto |
+|---|---|
+| `--enable-features=VaapiVideoDecoder` | Aceleración VAAPI (Intel) |
+| `--ozone-platform=wayland` | Forzar Wayland |
+| `--disable-extensions` | Desactivar todas las extensiones |
+| `--disable-popup-blocking` | Permitir popups |
+| `--enable-parallel-downloading` | Descargas paralelas (experimental) |
+| `--disable-background-networking` | Sin conexiones en segundo plano |
 
 ## Aceleración VAAPI (usado en mi setup)
 
@@ -52,6 +67,7 @@ spawn-sh "google-chrome-stable --enable-features=VaapiVideoDecoder"
 - Perfil por defecto en `~/.config/google-chrome/`.
 - Sincronización de marcadores/extensiones con cuenta de Google.
 - Perfiles múltiples: crear con "Añadir persona" o `--profile-directory`.
+- Cada perfil tiene su propio directorio en `~/.config/google-chrome/Profile N/`.
 
 ## Chrome vs Chromium vs Firefox
 
@@ -61,14 +77,17 @@ spawn-sh "google-chrome-stable --enable-features=VaapiVideoDecoder"
 | Codecs propios (H.264/AAC) | Sí | No | Sí |
 | Sincronización Google | Nativa | Limitada | Cuenta Mozilla |
 | Extensiones | Chrome Web Store | Store + laterales | addons.mozilla.org |
+| Sandboxing | Habilitado | Habilitado | Habilitado |
 
 ## Troubleshooting
 
 | Problema | Causa | Solución |
 |---|---|---|
 | Video sin aceleración en Intel | Falta flag VAAPI o driver | Usar `--enable-features=VaapiVideoDecoder` |
-| No inicia (sandbox) en Wayland | Falta soporte | Probar `--ozone-platform=wayland` |
+| No inicia (sandbox) en Wayland | Falta soporte | Probar `--ootype-platform=wayland` |
 | Mucho uso de RAM | Perfil con muchas pestañas/extensiones | Cerrar pestañas o usar modo proceso por WebUI |
+| Perfil corrupto | Fallo de escritura | Renombrar `~/.config/google-chrome/Default` y re-sincronizar |
+| Extensión no funciona en Wayland | API de pantalla limitada | Verificar permisos de captura de pantalla |
 
 ## Ver también
 

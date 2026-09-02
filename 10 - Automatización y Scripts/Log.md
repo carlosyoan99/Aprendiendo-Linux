@@ -19,6 +19,7 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-09-02 | v42 | expand | 08 | 10 notas programa 08 cortas expandidas a ~100-140 líneas (kew, Antigravity, Gem, Gnumeric, google-chrome, Proton, snapper, Calligra, FreeOffice, st) |
 | 2026-09-01 | v41 | expand | 05 | labwc (WM Wayland) expandido: modelo stacking, labwc vs Openbox/Sway/Wayfire, troubleshooting |
 | 2026-09-01 | v40 | expand | 08 | procps-ng reescrito + troubleshooting en lspci/lsusb/dmidecode (diagnóstico hardware 08) |
 | 2026-09-01 | v39 | expand | 07 | comandos 07 (cut, seq/yes/sleep, basename/dirname) ampliados con casos de uso y troubleshooting |

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-29
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -46,6 +46,27 @@ softmaker-freeoffice --register
 | `Ctrl+N / O / S` | Nuevo / abrir / guardar |
 | `F1` | Ayuda contextual |
 | Cinta / menú clásico | Según perfil de interfaz elegido |
+| `F5` | Presentación en Presentations |
+| `Ctrl+D` | Rellenar selección en PlanMaker |
+
+## Formatos compatibles
+
+| Formato | Lectura | Escritura |
+|---|---|---|
+| .docx | ✅ | ✅ |
+| .xlsx | ✅ | ✅ |
+| .pptx | ✅ | ✅ |
+| .odt | ✅ | ✅ |
+| .ods | ✅ | ✅ |
+| .odp | ✅ | ✅ |
+| .pdf | ✅ | ✅ (exportar) |
+
+## Uso avanzado
+
+- **Macros Basic**: FreeOffice soporta macros en Basic (compatibles con VBA de MS Office en muchos casos).
+- **Formularios**: crear formularios con campos de texto, listas, casillas en TextMaker.
+- **Tablas dinámicas**: PlanMaker soporta tablas dinámicas (pivot tables) básicas.
+- **Plantillas**: importar/exportar plantillas `.dotx`, `.xltx`, `.potx` de MS Office.
 
 ## Comparativa con alternativas
 
@@ -55,13 +76,16 @@ softmaker-freeoffice --register
 | **Compatibilidad OOXML** | Muy alta | Alta | Máxima | Máxima |
 | **Peso** | ~400 MB | ~500 MB | ~300 MB | ~200 MB |
 | **Código abierto** | No | Sí | Sí | No |
+| **Macros** | Basic (VBA-like) | Basic + Python | Macros JS | Basic |
 
-## Troubleshooting / Problemas frecuentes
+## Troubleshooting
 
 | Problema | Causa | Solución |
 |---|---|---|
 | La versión gratuita no activa el corrector | Idioma no incluido | Usar SoftMaker Office de pago o descargar diccionarios |
 | Diferencia de fuentes con MS Office | Fuentes propietarias ausentes | Instalar fuentes como *Carlito* / *Caladea* (equivalentes libres) |
+| No reconoce macro VBA | VBA completa es de pago | Simplificar macro o usar LibreOffice (VBA gratuito) |
+| Interfaz en inglés | Idioma no seleccionado | Cambiar en Options → Interface → Language |
 
 ## Notas y advertencias
 

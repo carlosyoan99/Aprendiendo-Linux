@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -53,6 +53,27 @@ Gnumeric tiene un excelente motor de importación CSV con detección automática
 - **Análisis estadístico**: regresión, ANOVA, pruebas t, chi-cuadrado y más
 - **Análisis financiero**: VAN, TIR, amortización, tablas de préstamos
 
+## Uso avanzado
+
+```bash
+# Convertir CSV a XLSX desde línea de comandos
+gnumeric --import=csv datos.csv --export=xlsx datos.xlsx
+
+# Procesar CSV grande con filtro de columnas
+gnumeric --import=csv datos.csv --export=csv filtrado.csv -columns="A,B,D"
+```
+
+Dentro de la aplicación, las funciones estadísticas más usadas:
+
+| Función | Uso |
+|---|---|
+| `=MEDIA()` | Promedio aritmético |
+| `=DESVEST()` | Desviación estándar |
+| `=VAR()` | Varianza |
+| `=COVARIANZA()` | Covarianza entre dos rangos |
+| `=REGRESION()` | Regresión lineal |
+| `=PRUEBA.T()` | Prueba t de Student |
+
 ## Ventajas
 
 - Inigualable para procesar CSV grandes (más rápido que Excel o Calc)
@@ -66,6 +87,24 @@ Gnumeric tiene un excelente motor de importación CSV con detección automática
 - Sin macros ni scripts (VB, Python)
 - Sin control de versiones ni colaboración
 - Interfaz muy básica, sin cinta de opciones
+
+## Gnumeric vs LibreOffice Calc vs Excel
+
+| Aspecto | Gnumeric | LibreOffice Calc | Excel |
+|---|---|---|---|
+| Peso | ~5 MB | ~500 MB (suite) | ~3 GB |
+| Funciones | ~600 | ~500 | ~500 |
+| Macros | No | Basic / Python | VBA |
+| Rendimiento CSV | Excelente | Bueno | Bueno |
+| Código abierto | Sí | Sí | No |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No abre .xlsx | Falta plugin | Instalar `libgsf` o usar `gnumeric-plugins` |
+| Gráficos no se ven | Versión GTK incompatible | Actualizar GTK o gnumeric |
+| CSV con encoding mal | Caracteres no UTF-8 | Re-importar forzando encoding |
 
 ## Ver también
 

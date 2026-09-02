@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -36,12 +36,25 @@ snapper delete <número>                    # borrar un snapshot
 snapper rollback                           # revertir a un snapshot anterior
 snapper status <a>..<b>                    # ver cambios entre snapshots
 snapper diff <a>..<b>                      # ver diff de archivos
+snapper get-config                         # mostrar configuración actual
+snapper set-config TIMELINE_LIMIT_HOURLY=5  # limitar snapshots por hora
+snapper cleanup timeline                   # limpiar snapshots antiguos
 ```
 
 ## Configuración
 
 - Configuraciones en `/etc/snapper/configs/*`. En CachyOS se crea `/home` con `SNAPPER_BTRFS` (instalador Calamares) — snapshots automáticos por cron/systemd.
 - Timeline (`--sync` + timeline_create) mantiene snapshots por hora/día/mes.
+- **Límites de retención** (evita que los snapshots llenen el disco):
+
+```bash
+# Configurar límites de retención
+sudo snapper -c root set-config \
+  TIMELINE_LIMIT_HOURLY=5 \
+  TIMELINE_LIMIT_DAILY=7 \
+  TIMELINE_LIMIT_WEEKLY=4 \
+  TIMELINE_LIMIT_MONTHLY=6
+```
 
 ## Uso en CachyOS
 
@@ -61,6 +74,7 @@ sudo snapper -c root rollback
 | Rollback | CLI + bootloader | GUI | CLI |
 | Automático | Cron/timers | Automa | Cron |
 | Interfaz | CLI | GUI | GUI/CLI |
+| Retención | Configurable | Configurable | Configurable |
 
 ## Troubleshooting
 
@@ -68,7 +82,9 @@ sudo snapper -c root rollback
 |---|---|---|
 | No hay `root` config | Falta `snapper -c root create-config` | Crear la configuración del root |
 | Rollback no aparece | bootloader sin entry de snapshot | Usar Btrfs-assistant o regenerar GRUB |
-| Snapshots ocupan mucho | Mucha timeline sin limpieza | Ajustar timelimit al config |
+| Snapshots ocupan mucho | Mucha timeline sin limpieza | Ajustar timelimit al config con `set-config TIMELINE_LIMIT_*` |
+| Error "read-only filesystem" | Snapshot montado como read-only | Desmontar antes de rollback |
+| `snapper rollback` no funciona | Subvolúmenes no configurados correctamente | Verificar subvolúmenes con `btrfs subvolume list /` |
 
 ## Ver también
 

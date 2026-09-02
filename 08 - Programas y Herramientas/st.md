@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -24,6 +24,24 @@ cd st
 sudo make clean install
 ```
 
+## Configuración
+
+La configuración se hace modificando `config.h` **antes** de compilar. No hay archivo de configuración en runtime:
+
+```c
+// config.h — opciones principales
+static const char *font[]        = { "monospace:size=12" };
+static const int colorscheme[]   = { ... }; // paleta de colores
+static const int borderpx        = 2;       // borde de la ventana
+static const int scrollback      = 2000;    // líneas de scroll
+```
+
+Tras modificar, recompilar:
+
+```bash
+sudo make clean install
+```
+
 ## Parches útiles
 
 La terminal se personaliza aplicando parches (patches) sobre el código fuente antes de compilar:
@@ -43,6 +61,8 @@ sudo make clean install
 | **anysize** | Redimensionado suave con la ventana |
 | **font2** | Fuente alternativa (fallback) |
 | **clipboard** | Sincronización con portapapeles primario |
+| **urlselect** | Seleccionar URLs con teclado |
+| **bold-is-not-bright** | Negrita sin brillo (colores separados) |
 
 ## Características
 
@@ -51,6 +71,23 @@ sudo make clean install
 - **Sin config en runtime**: todo se define en `config.h` y se recompila
 - **Se personaliza con parches**: comunidad activa de parches oficiales
 - **Fuentes bitmap y TrueType**: soporte básico
+
+## Uso avanzado
+
+```bash
+# Abrir st como terminal por defecto en DWM
+# En config.h de DWM:
+static const char *termcmd[]  = { "st", NULL };
+
+# Abrir con diferentes fuentes
+st -f "monospace:size=14"
+
+# Abrir con título específico
+st -t "Mi terminal"
+
+# Copiar/pegar (requiere parche clipboard)
+# Seleccionar texto → copia automáticamente al portapapeles primario
+```
 
 ## Ventajas
 
@@ -65,6 +102,26 @@ sudo make clean install
 - Sin aceleración GPU (no hay scroll suave, ni ligaduras sin parche)
 - Sin soporte nativo de Unicode sin parches adicionales
 - Curva de aprendizaje para aplicar parches (necesitas entender diff/patch)
+
+## st vs Alacritty vs Kitty vs foot
+
+| Aspecto | st | Alacritty | Kitty | foot |
+|---|---|---|---|---|
+| Lenguaje | C | Rust | C/C++ | C |
+| Configuración | Re-compilar | YAML | Config file | INI |
+| GPU acelerada | No | Sí | Sí | Sí |
+| Parches | Sí | No | No | No |
+| Consumo RAM | ~5 MB | ~30 MB | ~50 MB | ~20 MB |
+| Ideal | Filosofía suckless | Rendimiento | Funcionalidad | Wayland minimalista |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Fuente no se ve bien | Fontconfig no configura | Revisar `fc-list` y ajustar `font[]` en `config.h` |
+| Sin scroll con ratón | Falta parche scrollback | Aplicar parche `scrollback` y recompilar |
+| No copia al portapapeles | Falta parche clipboard | Aplicar parche `clipboard` y recompilar |
+| Caracteres raros (CJK) | Sin soporte Unicode completo | Usar fuente que soporte CJK o parche `font2` |
 
 ## Ver también
 
