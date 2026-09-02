@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-09-01
+fecha_modificacion: 2026-09-02
 estado: en progreso
 categoria: indice
 ---
@@ -103,7 +103,7 @@ categoria: indice
 - [[Nginx]] — servidor web, proxy inverso, balanceador de carga
 - [[DNS y BIND]] — servidor DNS, zonas, resolución local
 - [[Nmap]] — descubrimiento de red, escaneo de puertos
-- [[Samba]] — compartición de archivos con Windows (SMB/CIFS)
+- [[Samba]] — compartición de archivos con Windows (SMB/CIFS) · [[sshfs]] — montar sistemas de archivos remotos vía SSH
 - [[PostgreSQL y MySQL]] — índice · [[PostgreSQL]] · [[MySQL]] — bases de datos relacionales · [[PostgreSQL vs MongoDB]] — SQL vs NoSQL, cuándo usar cada uno, migraciones · [[SQLite]] — la base de datos embebida más usada del mundo · [[Redis]] — estructura de datos en memoria, caching, colas, pub/sub · [[MongoDB y NoSQL]] — documentos, clave-valor, columnar y grafos
 - [[Desarrollo en Linux (gcc make gdb strace)]] — índice del toolchain · [[gcc]] · [[make]] · [[gdb]] · [[strace]]
 - [[GitHub CLI (gh)]] — terminal para GitHub (PRs, issues, Actions, codespaces) · [[Monitorización (Prometheus node_exporter)]] — índice del stack · [[Prometheus]] · [[node_exporter]] · [[Grafana]]
@@ -126,7 +126,7 @@ categoria: indice
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
 - [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]]
-- [[Videojuegos en Linux]] · [[Wine]] · [[Proton]] — capa de compatibilidad de juegos de Valve · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]]
+- [[Videojuegos en Linux]] · [[Wine]] · [[Proton]] — capa de compatibilidad de juegos de Valve · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]] · [[flatpak-builder]] — herramienta para compilar Flatpaks
 - [[Parted Magic]] — Live CD de particionado y rescate · [[gparted]] — editor de particiones gráfico
 - [[GNUstep]] — framework Cocoa libre
 - [[GTK]] · [[Qt]] — toolkits de interfaces gráficas (GNOME y KDE respectivamente)
@@ -143,8 +143,8 @@ categoria: indice
 - [[stat]] · [[file]] · [[sudo]] · [[Man]] · [[Nano]] · [[Vim Neovim]] — índice · [[Vim]] — editor clásico · [[Neovim]] — fork moderno · [[Vim comandos avanzados]]
 - [[touch]] — crear archivos y timestamps · [[history]] — historial de comandos · [[Touch y History]] — índice
 - [[cp]] · [[mv]] · [[rm]] · [[chmod]] · [[chown]] · [[chgrp]] — cambiar grupo · [[ps]] · [[kill]] · [[top]] · [[groups]] — mostrar grupos del usuario
-- [[ping]] · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
-- [[jq]] — procesador JSON de terminal
+- [[ping]] · [[mtr]] — diagnóstico de red (ping + traceroute) · [[curl]] · [[httpie]] · [[xh]] — clientes HTTP amigables · [[cat]] · [[less]] · [[journalctl]]
+- [[jq]] — procesador JSON · [[yq]] — procesador YAML/JSON/XML
 - [[head]] · [[tail]] · [[wc]] · [[sort]] · [[uniq]] · [[cut]] — extraer columnas · [[tr]] — traducir/eliminar caracteres · [[nl]] — numerar líneas · [[paste]] — unir líneas · [[comm]] — comparar archivos ordenados · [[tar]] · [[zip]] · [[7z]] — máxima compresión · [[diff]] · [[cmp]] — comparación byte a byte · [[patch]] — aplicar parches
 - [[sha256sum]] — verificar integridad con SHA-256 · [[md5sum]] — verificar integridad con MD5
 - [[env]] — ejecutar con entorno modificado · [[source]] · [[export]] · [[alias]] · [[type]] · [[which]] · [[basename dirname]] — extraer nombre/ruta de path · [[expr]] — calculadora de expresiones
@@ -157,7 +157,7 @@ categoria: indice
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
 - [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[gdb]] — depurador GNU, breakpoints, core dumps · [[ltrace]] — trazar llamadas a librerías · [[bash-avanzado]]
 - [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
-- [[df]] · [[du]] · [[df y du]] — índice
+- [[df]] · [[du]] · [[ncdu]] — analizador de disco interactivo · [[df y du]] — índice
 - [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[uptime]] — tiempo de actividad y carga media
 - [[date]] · [[timedatectl]] · [[date y timedatectl]] — índice
 - [[Coreutils y util-linux]] — GNU Coreutils, util-linux, procps-ng
@@ -180,7 +180,7 @@ categoria: indice
 - [[Paquete roto]] — reparar paquetes rotos y actualización interrumpida (dpkg/apt/dnf/pacman)
 - [[Sistema no arranca]] — recuperación desde pantalla negra hasta kernel panic
 - [[Impresora no funciona]] — solucionar problemas de impresión (CUPS, drivers, red)
-- [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] [[Git hooks para el vault]]
+- [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] · [[inotifywait]] — monitoreo de eventos del sistema de archivos · [[Git hooks para el vault]]
 - [[Scripts de personalización del sistema]] — niri-gov, niri-ram, modo gaming · [[systemd user watchers para temas Noctalia]]
 - [[OCR de pantalla con noctalia-ocr]] · [[Recordatorios con noctalia-remind]] — utilidades propias en el PATH del sistema
 
