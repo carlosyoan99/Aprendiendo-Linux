@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -18,7 +18,7 @@ PCManFM (PCMan File Manager) es un gestor de archivos que prioriza **ligereza y 
 
 - **Motor**: GTK2/GTK3
 - **Dependencias mínimas**: PCManFM-qt (Qt), pcmanfm (GTK)
-- **Integración**: GVfs, udisks,管理 de escritorio opcional
+- **Integración**: GVfs, udisks,gestión de escritorio opcional
 - **Ideal para**: hardware viejo, WMs minimalistas, LXDE/LXQt
 
 ## Instalación multi-distro

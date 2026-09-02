@@ -113,7 +113,7 @@ categoria: indice
 - [[k9s]] — Kubernetes TUI | [[zellij]] — multiplexor de terminal moderno · [[yazi]] — gestor de archivos TUI rápido
 - [[bat]] — cat con syntax highlighting · [[glow]] — visor Markdown bonito | [[trippy]] — traceroute + ping visual
 - [[duf]] — df moderno con colores · [[dust]] — du moderno con barras · [[btop]] — monitor de recursos con gráficos · [[iftop]] — monitor de ancho de banda por conexión · [[bmon]] — monitor de ancho de banda · [[nethogs]] — monitor de ancho de banda por proceso · [[nvtop]] — monitor de GPU (NVIDIA/AMD) · [[glances]] — monitor del sistema en Python (TUI + web)
-- [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + herramientas · [[lspci]] · [[lsusb]] · [[dmidecode]] · [[lshw]] · [[smartctl]] · [[gdebi]] — instalador de .deb con dependencias
+- [[Impresión (CUPS)]] · [[Diagnóstico de hardware (lspci lsusb dmidecode smartctl)]] — índice + herramientas · [[lspci]] · [[lsusb]] · [[dmidecode]] · [[lshw]] · [[smartctl]] · [[ethtool]] — diagnóstico de red · [[gdebi]] — instalador de .deb con dependencias
 - [[Busybox]] · [[Ncurses]] · [[Stratis]] · [[suckless]] — comunidad de software minimalista (DWM, st, dmenu)
 - [[ranger]] — gestor de archivos TUI (Python) · [[lf]] — gestor de archivos TUI rápido (Go) · [[nnn]] — gestor TUI ultra-ligero en C
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
