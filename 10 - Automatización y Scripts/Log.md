@@ -19,6 +19,7 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-09-02 | v42b | expand | 01/08/11 | 6 notas expandidas: AUR (78→120), Firefox OS (82→93), Debate Tanenbaum-Torvalds (83→92), lsusb (83→109), Ungoogled Chromium (86→106), Dolphin (86→108) |
 | 2026-09-02 | v44 | fix | 08/10/MoC | Auditoría: 3 CJK corregidos (PCManFM, Log-2026), ethtool añadido al MoC, wikilinks verificados |
 | 2026-09-02 | v43 | feat | 07/08 | 6 notas nuevas: sshfs, mtr, inotifywait, ncdu, flatpak-builder, yq; MoC actualizado |
 | 2026-09-02 | v42 | expand | 08 | 10 notas programa 08 cortas expandidas a ~100-140 líneas (kew, Antigravity, Gem, Gnumeric, google-chrome, Proton, snapper, Calligra, FreeOffice, st) |

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -27,6 +27,10 @@ sudo dnf install dolphin         # Fedora
 | `F7` | Panel de navegación rápida |
 | `Ctrl+I` | Búsqueda avanzada |
 | `F2` (múltiple) | Renombrado batch |
+| `F5` | Actualizar vista |
+| `Ctrl+Shift+N` | Nueva carpeta |
+| `Alt+↑` | Subir un nivel |
+| `Ctrl+L` | Barra de dirección (editar ruta) |
 
 ## Características
 
@@ -44,6 +48,23 @@ sudo dnf install dolphin         # Fedora
 
 La terminal integrada (`F4`) permite ejecutar comandos en el directorio actual sin cambiar de ventana, combinando la potencia de la GUI con la flexibilidad de la terminal.
 
+## Servicios y KIO
+
+Dolphin usa **KIO** (KDE I/O) para acceder a archivos locales y remotos de forma transparente:
+
+```bash
+# Acceder a archivos remotos vía SSH (sin montaje manual)
+sftp://usuario@host/ruta
+
+# Acceder a SMB (Windows)
+smb://servidor/compartido
+
+# Accersa a SharePoint o WebDAV
+webdav://servidor/ruta
+```
+
+Los **Servicios** (menú contextual → \"Acciones\") permiten ejecutar scripts personalizados sobre archivos seleccionados.
+
 ## Dolphin vs Nautilus vs Thunar
 
 | Aspecto | Dolphin | Nautilus | Thunar |
@@ -54,6 +75,7 @@ La terminal integrada (`F4`) permite ejecutar comandos en el directorio actual s
 | Renombrado batch | Sí | No | Sí (con plugin) |
 | Consumo | Medio | Medio | Bajo |
 | Integración Git | Sí | No | No |
+| KIO (archivos remotos) | Sí | No | No |
 
 ## Troubleshooting
 

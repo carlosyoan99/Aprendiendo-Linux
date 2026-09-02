@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-31
-fecha_modificacion: 2026-09-01
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -38,6 +38,46 @@ Dos caminos:
    ```
    Los asistentes resuelven las dependencias del AUR automáticamente, buscando en los repos oficiales donde falten.
 
+## Asistentes AUR comparados
+
+| Aspecto | yay | paru | pikaur |
+|---|---|---|---|
+| Lenguaje | Go | Rust | Python |
+| Velocidad | Rápida | Rápida | Media |
+| Interfaz | CLI | CLI | CLI |
+| Popularidad | La más alta | Creciente | Menor |
+| Ordenar por votes | `-Ss --sort votes` | `-Ss --sort votes` | `-Ss` (por defecto) |
+
+## Estructura de un PKGBUILD
+
+```bash
+# pkgname, pkgver, pkgrel, pkgdesc, arch, url, license, depends, makedepends
+pkgname=mi-paquete
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Descripcion del paquete"
+arch=('x86_64')
+url="https://github.com/usuario/proyecto"
+license=('MIT')
+depends=('openssl' 'zlib')
+makedepends=('cmake' 'gcc')
+
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "$pkgname-$pkgver"
+  mkdir build && cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver/build"
+  make DESTDIR="$pkgdir" install
+}
+```
+
 ## En mi sistema (CachyOS)
 
 En CachyOS (basada en Arch) el AUR es la misma infraestructura que en Arch Linux. Trabajo con `yay` para instalar software del AUR, por ejemplo:
@@ -54,6 +94,7 @@ Ejemplo real de esta vault: [[google-chrome]] se instala en CachyOS desde el AUR
 - Los PKGBUILD del AUR no están auditados por Arch. Revisa siempre `/pkgbuild`, las fuentes y el mantenedor.
 - Prefiere los repos oficiales cuando el paquete exista allí.
 - Para software propietario (Chrome, Slack, Spotify) el AUR es el único canal en sistemas Arch; asume el riesgo de confiar en el mantenedor.
+- Verifica la fecha de actualización del PKGBUILD y el número de votos.
 
 ## AUR vs repositorios oficiales
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-09-01
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -59,6 +59,32 @@ bus            número   vendor:product   descripción
 - **Detectar webcam**: `lsusb | grep -i camera` para ver si el sistema reconoce la cámara
 - **Identificar dispositivo desconocido**: el vendor:product ID permite buscar drivers
 - **Verificar hubs**: `lsusb -t` muestra la jerarquía de puertos USB
+- **Discos USB**: combinar con `lsblk` para ver dispositivos de bloque USB
+
+## Integración con udev
+
+Los dispositivos USB se gestionan con **udev**. Puedes crear reglas para ejecutar acciones al conectar/dispositivos:
+
+```bash
+# Crear regla udev para un dispositivo USB específico
+# /etc/udev/rules.d/99-mi-dispositivo.rules
+ACTION=="add", ATTRS{idVendor}=="1234", ATTRS{idProduct}=="5678", RUN+="/usr/local/bin/mi-script.sh"
+```
+
+```bash
+# Recargar reglas udev tras modificar
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+## lsusb vs lspci vs lshw
+
+| Aspecto | lsusb | lspci | lshw |
+|---|---|---|---|
+| Dispositivos | USB | PCIe | Todos |
+| Velocidad | Rápida | Rápida | Lenta (full scan) |
+| Detalle | Vendor:Product ID | Clase, controlador | Todo (HW completo) |
+| Ideal | Diagnóstico USB rápido | Tarjetas internas | Auditoría completa |
 
 ## Troubleshooting
 

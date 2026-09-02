@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-29
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -14,7 +14,7 @@ alternativas: [[Chromium]], [[Brave]], [[Firefox]]
 
 ## Qué es
 
-**Ungoogled Chromium** es Chromium con todos los servicios de Google eliminados a nivel de compilación: sin cuentas Google, sin sincronización en la nube, sin actualización automática a servicios de Google y sin telemetría. Es mantenido por la comunidad y ofrece una versión de Chromium "limpia" para quien prioriza la privacidad al máximo manteniendo el motor Blink.
+**Ungoogled Chromium** es Chromium con todos los servicios de Google eliminados a nivel de compilación: sin cuentas Google, sin sincronización en la nube, sin actualización automática a servicios de Google y sin telemetría. Es mantenido por la comunidad y ofrece una versión de Chromium \"limpia\" para quien prioriza la privacidad al máximo manteniendo el motor Blink.
 
 ## Instalación
 
@@ -34,6 +34,16 @@ yay -S ungoogled-chromium-bin
 - Al no tener cuentas Google, la sincronización se hace **manualmente** (exportar marcadores, etc.).
 - Permite añadir extensiones de la **Chrome Web Store** de forma manual.
 
+## Flags útiles
+
+| Flag | Efecto |
+|---|---|
+| `--disable-extensions` | Desactivar todas las extensiones |
+| `--disable-popup-blocking` | Permitir popups |
+| `--no-sandbox` | Sin sandbox (entornos Docker) |
+| `--enable-features=VaapiVideoDecoder` | Aceleración VAAPI (Intel) |
+| `--ozone-platform=wayland` | Forzar Wayland |
+
 ## Comandos / atajos útiles
 
 | Atajo | Efecto |
@@ -41,22 +51,29 @@ yay -S ungoogled-chromium-bin
 | `Ctrl+T` | Nueva pestaña |
 | `Ctrl+Shift+N` | Ventana de incógnito |
 | `Ctrl+H` | Historial |
+| `Ctrl+Shift+Delete` | Borrar datos de navegación |
+| `F12` | DevTools |
 
 ## Uso avanzado
 
 ```bash
 # perfil separado
 ungoogled-chromium --user-data-dir=~/ungoogled-trabajo
+
+# Exportar marcadores (sin sync de Google)
+# Ir a chrome://bookmarks → ⋮ → Exportar marcadores
 ```
 
-## Comparativa con alternativas
+## Ungoogled vs Chromium vs Brave vs Firefox
 
-| Aspecto | Ungoogled | Chromium | Brave |
-|---|---|---|---|
-| **Telemetría Google** | Ninguna | Mínima | Ninguna |
-| **Sincronización** | Manual | Cuenta Google | Cuenta Brave |
-| **Extensiones** | Chrome (manual) | Chrome | Chrome |
-| **Actualizaciones** | Manual/Flatpak | Automáticas | Automáticas |
+| Aspecto | Ungoogled | Chromium | Brave | Firefox |
+|---|---|---|---|---|
+| **Telemetría Google** | Ninguna | Mínima | Ninguna | Ninguna |
+| **Sincronización** | Manual | Cuenta Google | Cuenta Brave | Cuenta Mozilla |
+| **Extensiones** | Chrome (manual) | Chrome | Chrome | addons.mozilla.org |
+| **Actualizaciones** | Manual/Flatpak | Automáticas | Automáticas | Automáticas |
+| **DRM (Netflix)** | Requiere Widevine manual | Sí | Sí | Sí |
+| **Código cerrado** | Parcialmente | Parcialmente | Parcialmente | No |
 
 ## Troubleshooting / Problemas frecuentes
 
@@ -64,11 +81,14 @@ ungoogled-chromium --user-data-dir=~/ungoogled-trabajo
 |---|---|---|
 | No hay actualización automática | Se elimina el updater de Google | Actualizar a través de Flatpak o del paquete de la distro |
 | DRM (Netflix) no funciona | Sin Widevine | Instalar Widevine por separado o usar otro navegador |
+| Extensiones no se instalan | Chrome Web Store bloqueada | Habilitar en chrome://flags o usar instalación manual |
+| Perfil no se carga | Ruta incorrecta | Verificar `~/.config/ungoogled-chromium/Default/` |
 
 ## Notas y advertencias
 
-- Al no tener telemetría ni actualizador, **mantenerlo actualizado es responsabilidad del usuario** (usar Flatpak/ParkMuze facilita esto).
+- Al no tener telemetría ni actualizador, **mantenerlo actualizado es responsabilidad del usuario** (usar Flatpak facilita esto).
 - Es la opción más privada del ecosistema Blink, pero requiere algo más de mantenimiento manual.
+- Para DRM (Netflix, Spotify Web), necesitarás instalar Widevine manualmente.
 
 ## Enlaces externos
 

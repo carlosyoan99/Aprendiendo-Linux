@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-02
 estado: resuelto
 categoria: concepto
 prioridad: baja
@@ -60,6 +60,16 @@ Firefox OS se componía de tres capas:
 - **Alcatel One Touch Fire** — popular en Europa
 - **Huawei Y300** — versión con Firefox OS
 
+## KaiOS: el legado
+
+Tras el fin de Firefox OS, la comunidad creó **KaiOS** (2017), un fork que adaptó el sistema para **feature phones** (teléfonos con teclado físico). KaiOS ha sido exitoso:
+
+- **Millones de dispositivos** en India, África y Latinoamérica
+- **Google invirtió $22M** en 2018 para incluir Search, Maps y YouTube
+- **WhatsApp y Facebook** están disponibles en KaiOS
+- Ejecuta en hardware extremadamente barato (256MB RAM)
+- KaiOS 3.x usa un kernel Linux actualizado con Wayland
+
 ## Fin del proyecto
 
 En diciembre de 2015, Mozilla anunció el fin del desarrollo para móviles, citando:
@@ -73,6 +83,7 @@ El código fue adaptado para smart TVs y dispositivos IoT. La comunidad continu�
 
 - [Wikipedia — Firefox OS](https://es.wikipedia.org/wiki/Firefox_OS)
 - [Boot to Gecko en GitHub](https://github.com/mozilla-b2g)
+- [KaiOS — sitio oficial](https://www.kaiostech.com/)
 
 ## Ver también
 
