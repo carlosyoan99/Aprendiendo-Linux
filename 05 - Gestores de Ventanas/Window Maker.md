@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
 tipo: WM (flotante/clásico)
@@ -121,4 +121,4 @@ Arrancar con `wmaker` desde gestor de sesión o `startx`.
 - [[IceWM]] — WM clásico ligero con barra de tareas
 - [[Wayland vs X11]] — servidor gráfico subyacente
 
-#DE-WM
+#entorno-escritorio

@@ -19,6 +19,7 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-09-02 | v46 | fix | 04/05/11 | 13 borradores → resuelto (5 WMs/DEs + 8 distros); hashtags #DE-WM → #entorno-escritorio; 0 borradores restantes |
 | 2026-09-02 | v45 | docs | — | README.md actualizado con stats reales (568 notas, 557 resuelto, 206 programa, 122 comando) |
 | 2026-09-02 | v42b | expand | 01/08/11 | 6 notas expandidas: AUR (78→120), Firefox OS (82→93), Debate Tanenbaum-Torvalds (83→92), lsusb (83→109), Ungoogled Chromium (86→106), Dolphin (86→108) |
 | 2026-09-02 | v44 | fix | 08/10/MoC | Auditoría: 3 CJK corregidos (PCManFM, Log-2026), ethtool añadido al MoC, wikilinks verificados |

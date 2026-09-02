@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
 tipo: WM (flotante/clásico)
@@ -122,4 +122,4 @@ Tras instalar, arrancar con `icewm-session` (desde el gestor de sesión o `start
 - [[Openbox]] — WM flotante ligero configurable
 - [[Wayland vs X11]] — servidor gráfico subyacente
 
-#DE-WM
+#entorno-escritorio

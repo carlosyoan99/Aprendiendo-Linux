@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: distribucion
 prioridad: media
 gestor_paquetes: dnf (Fedora) + RPM Fusion + COPR

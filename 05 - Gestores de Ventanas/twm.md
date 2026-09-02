@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
 tipo: WM (flotante/minimalista)
@@ -119,4 +119,4 @@ Arrancar con `startx` (si no hay otro WM en `~/.xinitrc`) o `twm &` en una sesi�
 - [[Fluxbox]] — WM ligero con barra
 - [[Wayland vs X11]] — servidor gráfico subyacente
 
-#DE-WM
+#entorno-escritorio

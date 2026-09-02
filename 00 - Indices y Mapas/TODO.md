@@ -420,9 +420,9 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | Métrica | Valor |
 |---|---|
 | **Notas totales** | **580** (+ 7 templates) |
-| **Estado resuelto** | 557 |
+| **Estado resuelto** | 570 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
-| **Estado borrador** | 13 (las 13 notas nuevas de v45, pendientes de promoción a "resuelto") |
+| **Estado borrador** | 0 (todos completados) |
 | **Prioridad alta** | 216 |
 | **Prioridad media** | 205 |
 | **Prioridad baja** | 150 |
@@ -496,6 +496,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-02 (v43): **Notas nuevas topics faltantes** — 6 notas nuevas: sshfs (123 líneas, montaje remoto SSH), mtr (101, diagnóstico de red), inotifywait (132, monitoreo filesystem), ncdu (107, analizador disco TUI), flatpak-builder (127, compilar Flatpaks), yq (116, procesador YAML). MoC actualizado. Eliminada sqlite3 (duplicada con SQLite existente de 585 líneas).
 - Sesión 2026-09-02 (v42): **Lote expansion 08 Programas cortas** — 10 notas 08 expandidas a ~100-140 líneas: kew (63→120), Antigravity (65→110), Gem (79→109), Gnumeric (81→120), google-chrome (82→102), Proton (82→112), snapper (83→100), Calligra Suite (83→118), FreeOffice (83→107), st (83→140). Secciones añadidas: instalación multi-distro, uso avanzado, comparativas con alternativas, troubleshooting.
 - Sesión 2026-09-02 (v45): **Notas nuevas distros/DE/WM faltantes** — 13 notas nuevas completas (estado borrador): distros Nobara Linux, Artix Linux, Guix System, Devuan, SpiralLinux, Q4OS, EasyOS, BigLinux (11); DE Unity (04); WM Xmonad, IceWM, Window Maker, twm (05). MoC actualizado con enlaces a todas. Commit `feat: 13 notas nuevas de distros DE y WM (v45)` = b387955. Stats → 580 notas.
+- Sesión 2026-09-02 (v46): **Borradores completados** — 13 notas marcadas `resuelto` (5 WMs/DEs: Unity, IceWM, Window Maker, Xmonad, twm + 8 distros: Artix, BigLinux, Devuan, EasyOS, Guix System, Nobara, Q4OS, SpiralLinux). Hashtags `#DE-WM` corregidos a `#entorno-escritorio`. 0 borradores restantes. Stats → 570 resuelto, 0 borrador.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
 tipo: DE (shell de escritorio sobre GNOME/Mutter)
@@ -121,4 +121,4 @@ Normalmente se instala el paquete de sesión y se elige "Unity" en el gestor de 
 - [[KDE Plasma]] — alternativa de escritorio completa
 - [[Wayland vs X11]] — servidor gráfico subyacente
 
-#DE-WM
+#entorno-escritorio
