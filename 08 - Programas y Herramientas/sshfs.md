@@ -112,8 +112,8 @@ WantedBy=multi-user.target
 
 - [[rsync]] — sincronización de archivos
 - [[SSH]] — acceso remoto
-- [[FHS]] — jerarquía de directorios
-- [[NFS]] — montaje de red local
+- [[Filesystem Hierarchy Standard]] — jerarquía de directorios
+- NFS — montaje de red local
 
 ## Enlaces externos
 
