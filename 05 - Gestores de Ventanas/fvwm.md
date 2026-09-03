@@ -1,7 +1,7 @@
 ---
 fecha_creacion: 2026-09-02
 fecha_modificacion: 2026-09-02
-estado: borrador
+estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
 tipo: WM (completamente configurable, flotante/tiling)

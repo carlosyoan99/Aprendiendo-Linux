@@ -19,7 +19,9 @@ Historial completo del año (detallado): [[Log-2026]].
 
 | Fecha | Sesión | Tipo | Ámbito | Resumen |
 |---|---|---|---|---|
+| 2026-09-02 | v48 | fix | 05/11 | 4 notas v47 (Oracle Linux, fvwm, Ratpoison, evilwm) → resuelto |
 | 2026-09-02 | v47 | feat | 05/11/MoC | 4 notas nuevas de cobertura: Oracle Linux (distro RHEL), fvwm, Ratpoison, evilwm (WMs X11); MoC actualizado |
+| 2026-09-02 | v47b | fix | 05/11 | 4 borradores extras → resuelto (Ratpoison, evilwm, fvwm, Oracle Linux); 0 borradores restantes |
 | 2026-09-02 | v47 | feat | 08 | 5 notas nuevas de atajos de teclado: tmux, Vim, Hyprland, LibreOffice, Chromium; MoC actualizado |
 | 2026-09-02 | v46 | fix | 04/05/11 | 13 borradores → resuelto (5 WMs/DEs + 8 distros); hashtags #DE-WM → #entorno-escritorio; 0 borradores restantes |
 | 2026-09-02 | v45 | docs | — | README.md actualizado con stats reales (568 notas, 557 resuelto, 206 programa, 122 comando) |

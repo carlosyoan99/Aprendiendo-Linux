@@ -420,9 +420,9 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 | Métrica | Valor |
 |---|---|
 | **Notas totales** | **589** (+ 7 templates) |
-| **Estado resuelto** | 575 |
+| **Estado resuelto** | 579 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
-| **Estado borrador** | 4 (Oracle Linux, fvwm, Ratpoison, evilwm — v47) |
+| **Estado borrador** | 0 (todos completados) |
 | **Prioridad alta** | 216 |
 | **Prioridad media** | 211 |
 | **Prioridad baja** | 153 |
@@ -499,6 +499,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-02 (v46): **Borradores completados** — 13 notas marcadas `resuelto` (5 WMs/DEs: Unity, IceWM, Window Maker, Xmonad, twm + 8 distros: Artix, BigLinux, Devuan, EasyOS, Guix System, Nobara, Q4OS, SpiralLinux). Hashtags `#DE-WM` corregidos a `#entorno-escritorio`. 0 borradores restantes. Stats → 570 resuelto, 0 borrador.
 - Sesión 2026-09-02 (v47): **5 notas nuevas atajos de teclado** — tmux (24 L, sesiones/paneles/copy-mode), Vim (22 L, modos/movimiento/edición/macros), Hyprland (22 L, ventanas/workspaces/config), LibreOffice (28 L, Writer/Calc/Impress/formato), Chromium (23 L, pestañas/navegación/omnibox). MoC actualizado (585 notas).
 - Sesión 2026-09-02 (v47): **Ampliación de cobertura** — 4 notas nuevas (estado borrador): distro Oracle Linux (RHEL de Oracle, Ksplice/UEK) en 11; WM fvwm, Ratpoison, evilwm en 05. MoC actualizado. Corrección de líneas JYJ rotas en las notas WM (config fvwm/ratpoison). Stats → 589 notas, 4 borradores.
+- Sesión 2026-09-02 (v48): **4 borradores v47 → resuelto** — Oracle Linux, fvwm, Ratpoison, evilwm promocionadas. 0 borradores restantes.
 
 ---
 
