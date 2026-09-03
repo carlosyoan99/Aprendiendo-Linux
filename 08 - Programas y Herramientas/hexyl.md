@@ -85,6 +85,15 @@ hexyl --bytes 32 archivo         # primeros 32 bytes
 | **Dependencias** | Ninguna (binario estático) | vim | coreutils | coreutils | vim |
 | **Ideal para** | Inspección visual rápida | Edición hex en vim | Scripts, pipes | Configuración | Generar arrays C |
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Salida sin colores | Terminal no soporta ANSI | Usar un terminal compatible o `--force-color` si está disponible |
+| No abre binario grande | Render volcado gigante | Limitar con `head -c <n> fichero \| hexyl` o `--len`/`--skip` |
+| `hexyl: command not found` | No instalado en PATH | `sudo apt install hexyl`/`pacman -S hexyl` o instalar desde release |
+| Pipe de gzip muestra bytes de cabecera | Es comprimido | Descomprimir antes: `zcat fichero.gz \| hexyl` |
+
 ## Ver también
 
 - `xxd` — hexdump clásico (viene con vim)

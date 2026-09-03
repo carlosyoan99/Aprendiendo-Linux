@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -89,6 +89,16 @@ return {
 - Config en Lua más compleja que Alacritty (YAML/TOML)
 - Sin soporte oficial de paquetes en Debian/Ubuntu (hay que descargar .deb manual)
 - Puede ser abrumador para quien solo quiere una terminal simple
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Fuente de iconos/nerd font se ve cuadrada | Falta ligadura/glyphs | Instalar una Nerd Font y configurar `font = wezterm.font_with_fallback(...)` |
+| Layout con pestañas desordenado | Config de workspace | Ajustar `initial_cols`/arrangement en `wezterm.gui` |
+| Escapos ANSI raros con tmux | Divergencia de `TERM` | Ajustar `TERM`/`wezterm` compatibility con tmux |
+| Lento con mucho contenido | Render | Use Accelerated/Direct2D si disponible en config |
+| Config inválida | Error de lua al arrancar | `wezterm --config-file` para depurar o validar con linter |
 
 ## Ver también
 

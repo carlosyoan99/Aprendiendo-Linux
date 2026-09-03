@@ -100,6 +100,16 @@ alias la='eza -a --icons --group-directories-first'
 
 > **Nota:** `exa` fue abandonado en 2023; `eza` es su fork activo con mejoras. En scripts, `ls` sigue siendo universal.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `command not found` tras instalar | PATH sin binario | Añadir el directorio de instalación (p.ej. `~/.cargo/bin`) al PATH |
+| Iconos/colores que faltan | Fuente/iconos no instalados | Usar Nerd Font o ajustar `--icons`/color scheme |
+| Comportamiento distinto por `LS_COLORS` | Hereda `dircolors` | Configurar `EZA_COLORS` para tu esquema |
+| Aliases `ls`→`eza` rompen scripts | Flags diferentes a GNU coreutils | Crear alias `ls='eza ...'` de forma controlada, no global para scripts |
+| Fecha larga/iso no sale | Formato de time | Usar `--time-style`/`--time=long-iso` |
+
 ## Ver también
 
 - `ls` — el clásico

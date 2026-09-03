@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -89,6 +89,15 @@ dust --no-percent             # ocultar porcentaje
 | **Orden automático** | ✅ | ✅ | ❌ (necesita pipe) | ✅ |
 | **Rendimiento** | ⚡ Rust | ⚡ C | ⚡ C | ⚡ Go |
 | **Uso de disco** | ~2MB | ~5MB | ~1MB | ~3MB |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Escanea toda la casa de archivos lentamente | Rutas con muchos inodes/credenciales | Acotar con subdirectorio o tipo de archivo (`-x` para no cruzar FS) |
+| `Permission denied` en algunas carpetas | Sin acceso | Ejecutar con `sudo` o excluir rutas sensibles |
+| Barras raras en montajes | No itera correctamente en FS virtuales | Evitar `/proc`, `/sys`, `/dev`; usar `-X`/`-x` para saltar montajes |
+| Árbol enorme | Sin límite de profundidad | Usar `--depth` para acotar |
 
 ## Ver también
 

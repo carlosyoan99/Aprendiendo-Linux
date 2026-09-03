@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -89,6 +89,15 @@ nvtop -s temp
 | **rocm-smi** | Solo AMD, CLI |
 | **intel_gpu_top** | Solo Intel |
 | **btop** | CPU/RAM/Disk/GPU integrado |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `NVML not supported` | Driver NVIDIA no detecta la GPU | Comprobar `nvidia-smi`; reinstalar/reiniciar el driver |
+| No muestra GPU (AMD/Intel) | Backend no detectado | `nvtop -d` (listar dispositivos) y revisar libdrm/paquetes de AMD |
+| Ventana pestañea/parpadea | TUI incompatibilidad de terminal | Usar terminal moderno (kitty/alacritty) redimensionando |
+| Acentos o caracteres raros | Locale/encoding | `export LANG=C.UTF-8` o usar `nvtop` en terminal UTF-8 |
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -87,6 +87,15 @@ timeout 60 nethogs -p -d 1 >> /tmp/nethogs.log
 | **bmon** | Por interfaz (aggregate) |
 | **bandwhich** | TUI moderno, proceso + host |
 | **nload** | Por interfaz, gráfico ASCII |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Permission denied` al abrir interfaz | Necesita root para capturar | Ejecutar `sudo nethogs <interface>` |
+| No muestra ningún proceso | Interfaz equivocada / sin tráfico | Especificar con `-i eth0`; generar tráfico de prueba |
+| Salida muy lenta o congelada | Buffering de captura / librería | `nethogs -t` (texto) para loguear o reanudar con `-r` |
+| Sólo ve tráfico del propio nethogs | Interfaz/loopback | Verificar con `-d` retraso y la interfaz real (`ip link`) |
 
 ## Ver también
 

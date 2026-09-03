@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -92,6 +92,16 @@ cargo install gitui
 | **Curva aprendizaje** | Muy baja | Baja |
 
 > Ambos son excelentes. **lazygit** tiene más funciones y mejor UX para principiantes. **gitui** es más rápido, más pequeño, y tiene temas nativos. Para uso diario, cualquiera sirve.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No muestra estatus en repo con submódulos | Soporte parcial de submodules | Revisar manualmente; gitui no gestiona submodule tree completo |
+| Diff no se ve (sin color) | Terminal no terminfo | Usar terminal moderno; `gitui` requiere TUI decente |
+| Atajos "no hacen nada" | Conflicto con binding local | `gitui` config keybindings en `~/.config/gitui/key_bindings.ron` |
+| Lento en repos enormes | Escale de diff/cache | Aumentar resistencia y usar `git gc`; o revisar límite de líneas |
+| Se queda en pantalla tras salir | Bug de TUI en terminal | Actualizar gitui o usar terminal más estándar |
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -95,6 +95,17 @@ ffmpeg -f concat -i lista.txt -c copy unido.mp4
 | **HandBrake** | GUI para convertir videos entre formatos. Usa ffmpeg por debajo |
 | **OBS Studio** | Grabación y streaming en vivo, con GUI. No es un conversor de archivos |
 | **VLC** | Reproductor que también convierte (Media → Convert/Save). Interfaz simple |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Unknown encoder 'libx264'` | Build sin ese codec | Instalar ffmpeg completo o compilar con `--enable-libx264` |
+| `No such file or directory: 'foo'` en pipe | Formato de salida mal | Añadir `-f rawvideo`/`-f mpegts` explícito para pipes |
+| Audio copiado se desincroniza | Reencuadre/duracion | Reencodear audio o usar `-copyts`/`-vsync` correctos |
+| `Invalid pixel format` al filtrar | Formato no soportado por filtro | Convertir con `-pix_fmt yuv420p` (compatibilidad) |
+| Duración se corta al recodificar | Mal cálculo con `-t`/`-to` | Revisar parámetros `-t/-to` y usar `-map` completo |
+| `Segmentation fault` al usar NVENC | Driver/driver nvenc mal | Actualizar driver; usar `-hwaccel` adecuado |
 
 ## Ver también
 
