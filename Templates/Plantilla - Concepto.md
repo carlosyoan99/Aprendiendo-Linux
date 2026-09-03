@@ -8,6 +8,8 @@ prioridad: media
 
 # {{title}}
 
+> **Calidad**: un concepto completo para `resuelto` supera las ~130 líneas (definición, relevancia, relaciones, casos prácticos, troubleshooting). Si queda por debajo de ~100 líneas, deja `estado: borrador`.
+
 ## Definición
 _Explicación clara y concisa del concepto. ¿Qué es? ¿Para qué sirve?_
 
@@ -55,6 +57,13 @@ _Si aplica, diagrama ASCII o referencia a imagen._
 | Problema | Causa probable | Solución |
 |---|---|---|
 | | | |
+
+## Pros / Contras
+
+| ✅ Pros | ❌ Contras |
+|---|---|
+| | |
+| | |
 
 ## Notas personales
 _Espacio para anotaciones propias al aprender el concepto._

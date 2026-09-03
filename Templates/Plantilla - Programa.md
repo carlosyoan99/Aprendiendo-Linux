@@ -12,6 +12,8 @@ alternativas:
 
 > _Resumen de una línea: qué hace este programa y por qué es relevante._
 
+> **Calidad**: un programa completo para `resuelto` supera las ~130 líneas (instalación multi-distro, configuración, uso, comparativa, troubleshooting). Si queda por debajo de ~100 líneas, deja `estado: borrador`.
+
 ## Qué es
 _Descripción general, funcionalidades principales, para qué tipo de usuario está pensado. Incluir riesgos de seguridad si aplica._
 
@@ -73,6 +75,13 @@ _Configuraciones más complejas, integración con otras herramientas, scripts._
 | Problema | Causa | Solución |
 |---|---|---|
 | | | |
+
+## Pros / Contras
+
+| ✅ Pros | ❌ Contras |
+|---|---|
+| | |
+| | |
 
 ## Notas personales
 -

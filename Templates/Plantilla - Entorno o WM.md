@@ -13,6 +13,8 @@ lenguaje_config:
 
 > _Resumen de una línea: qué hace único a este entorno/gestor de ventanas._
 
+> **Calidad**: un entorno/WM completo para `resuelto` supera las ~130 líneas (qué es, instalación, configuración, atajos, comparativa, troubleshooting). Si queda por debajo de ~100 líneas, deja `estado: borrador`.
+
 ## Qué es
 _Descripción general: tipo (DE, WM, compositor Wayland), filosofía, público objetivo, x11 vs wayland._
 

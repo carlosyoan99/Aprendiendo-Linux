@@ -8,6 +8,8 @@ prioridad: media
 
 # {{title}}
 
+> **Calidad**: una nota de comando completa para `resuelto` debe superar las ~130 líneas (instalación, opciones, ejemplos, casos de uso, alternativas, troubleshooting). Si queda por debajo de ~100 líneas, deja `estado: borrador`.
+
 ## Sintaxis
 ```bash
 comando -opciones argumento
@@ -74,6 +76,13 @@ _Reemplazos modernos si existen (ej. `bat` por `cat`, `ripgrep` por `grep`, `fd`
 ## Notas y advertencias
 - Incluir riesgos de seguridad si aplica
 - 
+
+## Pros / Contras
+
+| ✅ Pros | ❌ Contras |
+|---|---|
+| | |
+| | |
 
 ## Enlaces externos
 - [Wikipedia — {{title}}](https://en.wikipedia.org/wiki/{{title}})

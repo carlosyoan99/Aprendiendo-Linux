@@ -18,6 +18,8 @@ arquitecturas:
 
 > _Resumen de una línea: qué hace única a esta distribución._
 
+> **Calidad**: una distro completa para `resuelto` supera las ~130 líneas (gestor de paquetes, ciclo, comparativa, troubleshooting). Si queda por debajo de ~100 líneas, deja `estado: borrador`.
+
 ## Filosofía / público objetivo
 _¿Para quién está pensada? ¿Novatos, avanzados, servidores, escritorio? ¿Qué la diferencia de otras distros?_
 
