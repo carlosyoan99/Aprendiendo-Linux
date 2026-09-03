@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -105,6 +105,15 @@ Awesome tiene su propia barra (wibar) integrada. Se pueden añadir widgets desde
 - ❌ Curva más alta que i3: si no tocas el `rc.lua`, no tienes un escritorio usable.
 - ❌ Ecosistema de widgets de terceros menor que el de KDE/GNOME.
 - ❌ Solo X11 (Wayland no soportado — hay forks experimentales como awesome-git o Hyprland como alternativa).
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| rc.lua con error no carga | Sintaxis Lua inválida | Depurar con `awesome -k` (check config) y revisar paquetes `lua` |
+| Atajos Modkey no responden | Mod4/Mod1 mal mapeado | Verificar `modkey = Mod4` en `rc.lua` y `xmodmap -pke` |
+| Widgets vacíos | Dependencias faltantes | Instalar `vicious`/`awmtt` o librerías de widget |
+| Multi-monitor no aplica | Config per-screen ausente | Definir layouts por `screen.connect` en rc.lua |
 
 ## Notas personales
 

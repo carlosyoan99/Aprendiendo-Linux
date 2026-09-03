@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -21,6 +21,17 @@ Creado por **Bastián Winkler** en 2014. Escrito en C, sigue la filosofía suckl
 - **Árbol binario**: cada ventana divide el espacio en dos, creando una jerarquía de splits
 - **Rápido y ligero**: escrito en C, sin dependencias innecesarias
 - **IPC completo**: todo se controla mediante `bspc` (cliente de línea de comandos)
+
+## Características clave
+
+| Aspecto | Detalle |
+|---|---|
+| **Tipo** | WM tiling de árbol binario (BSP) |
+| **Configuración** | Scripts en `~/.config/bspwm/` |
+| **Atajos** | sxhkd (externo) |
+| **Control** | bspc (cliente CLI IPC) |
+| **RAM en idle** | ~50 MB |
+| **Wayland** | No (solo X11) |
 
 ## Instalación
 
@@ -137,6 +148,26 @@ bspc node -p east                # preseleccionar split al este
 | **picom** | Compositor (transparencias, sombras) |
 | **feh** / **nitrogen** | Fondo de pantalla |
 | **dunst** | Notificaciones |
+
+## Comparativa con alternativas
+
+| Aspecto | bspwm | i3 | qtile | Awesome WM |
+|---|---|---|---|---|
+| **Modelo** | Árbol binario | Tiling manual | Layouts dinámicos | Layouts dinámicos |
+| **Configuración** | Shell (bspc) | Texto | Python | Lua |
+| **Atajos** | sxhkd | i3-config | Config Python | rc.lua |
+| **RAM idle** | ~50 MB | ~45 MB | ~80 MB | ~100 MB |
+| **Wayland** | No | No | X11+Wayland | No |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Ventanas emergen fuera del árbol | Regla no gestionada | Añadir regla en `bspc rule` o iniciar flotantes con apps específicas |
+| Atajos de sxhkd no responden | sxhkd no corre | Lanzar `sxhkd &` antes que bspwm en el autostart |
+| Borde/default layout raro tras reiniciar | Config no aplicada | Revisar `bspwmrc` (chmod +x) y `bspc monitor -d` |
+| Barra de tareas ausente | No instalado/levantado | Usar `polybar`/`lemonbar` y lanzarlo en autostart |
+| Cambios de config sin efecto | bspwmrc sin ejecutar de nuevo | `bspc wm -r` para recargar |
 
 ## Notas personales
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -128,6 +128,15 @@ binds {
 - ❌ El modelo scrollable tiene curva de adaptación — puede sentirse extraño si vienes de i3/Hyprland.
 - ❌ Instalación menos amigable en distros que no sean Arch (compilar desde Rust).
 - ❌ Menos documentación/ejemplos de configuración que i3 o Hyprland.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Pantalla en negro al arrancar | Falta compositor/pipeline | Revisar `niri-session` y `wayland` de la sesión |
+| Scroll entre ventanas no responde | Atajo no configurado | Definir `Spaces`/scroll en config niri |
+| FPS/Jank bajo | Render en software | Activar aceleración de GPU y backends Vulkan/Egl |
+| Multi-monitor descolocado | Sin layout barragenerado | Configurar `Monitor` y switchers en niri config |
 
 ## Notas personales
 

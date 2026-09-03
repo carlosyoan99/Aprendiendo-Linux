@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -119,6 +119,15 @@ git clone https://github.com/torrinfail/dwmblocks
 - ❌ Sin parches, la experiencia base es muy minimalista (ni gaps, ni barra bonita, ni atajos complejos).
 - ❌ Mantener parches puede ser tedioso al actualizar dwm (los parches pueden no aplicar limpio en la nueva versión).
 - ❌ Soport Only X11 (no Wayland).
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Nueva config no compila | Error en C/patch | Recompilar: `sudo make clean install` desde el dir de dwm |
+| `status2d`/barra no muestra | Patch o script ausente | Relanzar `xsetroot -name`/dwmblocks tras reiniciar sesión |
+| Espacio en blanco entre ventanas | Bordes/gaps | Ajustar `gappx` o `borderpx` en `config.def.h` y recompilar |
+| Atajos por defecto vacíos | config sin MODKEY | Definir `MODKEY = MOD4` y recargar |
 
 ## Notas personales
 

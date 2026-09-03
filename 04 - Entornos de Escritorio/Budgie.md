@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -21,6 +21,18 @@ Creado por **Ikey Doherty** en 2014 como el escritorio nativo de Solus. Desde 20
 - **Integración GNOME**: usa el stack de GNOME (GTK, Mutter, GLib) pero con personalidad propia
 - **Flexibilidad sin complicación**: configurable sin ser abrumador
 - **Raven**: centro de control lateral todo-en-uno (notificaciones, calendario, volumen, config rápida)
+
+## Características clave
+
+| Aspecto | Detalle |
+|---|---|
+| **Tipo** | Entorno de escritorio completo |
+| **Toolkit** | GTK 3/4 |
+| **Motor de ventanas** | Mutter (de GNOME) |
+| **Panel** | Budgie Panel (menú, tareas, bandeja) |
+| **Centro lateral** | Raven (notificaciones, calendario, audio) |
+| **Wayland** | Experimental (estable la vía X11) |
+| **RAM en idle** | ~600-800 MB |
 
 ## Componentes clave
 
@@ -90,6 +102,26 @@ budgie-desktop-settings
 # - Network Manager
 # - PulseAudio
 ```
+
+## Comparativa con otras DEs
+
+| Aspecto | Budgie | GNOME | XFCE |
+|---|---|---|---|
+| **Filosofía** | Moderno + tradicional | Moderno minimalista | Clásico ligero |
+| **Panel** | Inferior clásico | Actividades (sin panel) | Inferior clásico |
+| **RAM idle** | ~600-800 MB | ~1-1.2 GB | ~300-500 MB |
+| **Toolkit** | GTK 3/4 | GTK 4 | GTK 3 |
+| **Centro de control lateral** | Sí (Raven) | No | No |
+| **Wayland** | Experimental | Nativo | En desarrollo |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Panel no responde tras instalar applets | Applet roto | Reiniciar sesión o `budgie-desktop-settings` → quitar applet |
+| Sin notificaciones | Raven deshabilitado | `Super+A` y comprobar "No molestar" |
+| Fondo no cambia | Config de pantalla | Ajustar en Settings → Escritorio → Fondo |
+| Refresco de panel lento | Poco hardware | Desactivar efectos y reducir applets |
 
 ## Notas personales
 

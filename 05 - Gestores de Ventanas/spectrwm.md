@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -149,6 +149,15 @@ region = ws[4-6]:960x1080+960+0
 - ❌ Comunidad pequeña — menos dotfiles, menos ayuda online.
 - ❌ Sintaxis de bar_format críptica (códigos numéricos).
 - ❌ Menos flexible que i3 para configuraciones complejas.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Config `spectrwm.conf` sin efecto | No recargada | `spectrwm -r` o reiniciar sesión del WM |
+| Region teclas no aplican | `[<window>`/region config | Revisar `region` y `home`/`next` en config |
+| Barra no aparece | `bar_action`/dwmstatus ausente | Definir `bar_action` o lanzar `status2d` |
+| Atajos por defecto perdidos | Config muy restringida | Comparar con `spectrwm -V` y default.conf |
 
 ## Notas personales
 

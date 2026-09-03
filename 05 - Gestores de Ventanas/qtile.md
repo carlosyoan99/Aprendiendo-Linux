@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -21,6 +21,17 @@ Creado por **Aldo Cortesi** en 2012. Es mantenido por un equipo de desarrollador
 - **Backend dual**: mismo config funciona en X11 y Wayland
 - **Barra integrada**: qtile incluye su propia barra con widgets nativos
 - **Hooks**: responde a eventos del sistema (cambio de wallpaper, conexión WiFi, batería baja)
+
+## Características clave
+
+| Aspecto | Detalle |
+|---|---|
+| **Tipo** | WM tiling con layouts dinámicos |
+| **Configuración** | Python (`config.py`) |
+| **Barra integrada** | Sí, con widgets (fecha, red, CPU…) |
+| **Backend dual** | X11 + Wayland |
+| **RAM en idle** | ~80 MB |
+| **Extensibilidad** | Python puro |
 
 ## Instalación
 
@@ -175,6 +186,25 @@ echo "exec qtile start -b wayland" > ~/.xinitrc
 # En X11
 qtile start -b x11
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | qtile | bspwm | i3 | awesome |
+|---|---|---|---|---|
+| **Configuración** | Python | Shell (bspc) | Texto | Lua |
+| **Barra integrada** | Sí (widgets) | No | No (i3bar simple) | Sí |
+| **Backend** | X11 + Wayland | X11 | X11 | X11 |
+| **RAM idle** | ~80 MB | ~50 MB | ~45 MB | ~100 MB |
+| **Curva** | Media (Python) | Media | Baja | Alta (Lua) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Config Python con error no arranca | Sintaxis/layout inválido | `python -c "import config"` para depurar; revisar `~/.config/qtile/config.py` |
+| Widget no se actualiza | Backend o librería ausente | Comprobar dependencias (`psutil`, `netifaces`…) y reiniciar |
+| Wayland + atajos fallan | GDK/backend | Lanzar `qtile start -b wayland` con la sesión correcta |
+| No se ve la barra | Extensión no cargada | Verificar lista `screens[0].bar` en config |
 
 ## Notas personales
 

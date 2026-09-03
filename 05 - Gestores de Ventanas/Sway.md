@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: alta
@@ -160,6 +160,15 @@ swaymsg -t get_tree
 | **Barra** | swaybar (i3bar protocol) | i3bar |
 | **Apps legacy** | XWayland (opcional) | Nativas X11 |
 | **NVIDIA** | ⚠️ Limitado (requiere nvidia-dkms) | ✅ Completo |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Alt+Tab no cambia ventana | `Mod+Tab` configurado distinto | Revisar bindsym `Mod4+Tab` en config |
+| Pantalla en negro con GPU propia | Falta mesa/Vulkan | Instalar driver `mesa`/`libvulkan` y WLR |
+| Screenshare no funciona | Falta portal | Instalar `xdg-desktop-portal-wlr` (ver [[xdg-desktop-portal]]) |
+| Ejecutar CLI de sway lenta | IPC bloqueado | Comprobar `swaymsg` y socket |
 
 ## Notas personales
 

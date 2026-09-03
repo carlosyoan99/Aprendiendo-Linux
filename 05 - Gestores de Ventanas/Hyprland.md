@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: alta
@@ -163,6 +163,15 @@ decoration {
 - ❌ Ecosistema Wayland aún tiene huecos de compatibilidad (algunas apps X11 necesitan XWayland, algunas apps de captura de pantalla/grabación pueden no funcionar).
 - ❌ Configuración más compleja que i3 (hay que configurar barra, lanzador, wallpaper, notificaciones por separado).
 - ❌ Puede ser más pesado que i3/DWM por los efectos visuales.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Screenshare con pantalla negra | Falta xdg-desktop-portal | Instalar `xdg-desktop-portal-hyprland` (ver [[xdg-desktop-portal]]) |
+| Fragmentación en NVidia | Optimus mal configurado | Revisar `env = WLR_DRM_NO_MODIFIERS`, `nvidia-drm modeset=1` |
+| Duplicar ventana mirro hexagonal | Render glitch | Reiniciar hyprland o actualizar drivers |
+| Fondo/flash blanco al abrir apps | Falta `hyprpaper`/`swww` | Cargar wallpaper con esos daemons en autostart |
 
 ## Notas personales
 

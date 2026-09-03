@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: media
@@ -21,6 +21,17 @@ Desarrollado por **Dana Jansens** como fork de **Blackbox** (de ahí el nombre).
 - **Estándar**: implementa correctamente los estándares de freedesktop (EWMH, ICCCM)
 - **Ligereza extrema**: ~100 MB RAM en idle, funciona en hardware de los 90
 - **Pipe menus**: menús generados dinámicamente por scripts
+
+## Características clave
+
+| Aspecto | Detalle |
+|---|---|
+| **Tipo** | WM flotante (stacking) minimalista |
+| **Configuración** | XML (`rc.xml`, `menu.xml`, `autostart`) |
+| **Estándares** | EWMH + ICCCM completos |
+| **Configuración gráfica** | obconf, obmenu |
+| **RAM en idle** | ~100 MB |
+| **Wayland** | No (solo X11) |
 
 ## Instalación
 
@@ -172,6 +183,25 @@ copyq &
 | `Win+Space` | Menú Openbox |
 | `Alt+Left Click` | Mover ventana |
 | `Alt+Right Click` | Redimensionar |
+
+## Comparativa con alternativas
+
+| Aspecto | Openbox | Fluxbox | bspwm | i3 |
+|---|---|---|---|---|
+| **Estilo** | Flotante | Flotante | Tiling | Tiling |
+| **Configuración** | XML | Texto | Shell (bspc) | Texto |
+| **RAM idle** | ~100 MB | ~60 MB | ~50 MB | ~45 MB |
+| **Pipe menus** | Sí | No | No | No |
+| **Wayland** | No | No | No | No |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Cambios en rc.xml no se aplican | No recargado | `openbox --reconfigure` |
+| Atajos no responden | Conflicto con otro WM/app | Revisar `Alt+f8`/`Win+d` duplicados |
+| Menú Pipe no se ve | Script sin ejecutable | `chmod +x` al script y `openbox --reconfigure` |
+| Sesión no arranca | Falta exec en .xinitrc | `exec openbox-session` en `~/.xinitrc` |
 
 ## Notas personales
 
