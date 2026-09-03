@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -114,6 +114,17 @@ Tails incluye **Electrum** conectado por defecto a Tor para transacciones de Bit
 5. **Cámbiate de identidad** periódicamente: Tor Browser → New Identity (Ctrl+Shift+U)
 6. **No descargues archivos grandes**: atrae atención sobre tu circuito Tor
 7. **Usa teclado en pantalla** si sospechas keylogging hardware
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Tails]] | [[Parrot OS]] | [[Kali Linux]] | Tor Browser (solo) |
+|---|---|---|---|---|
+| **Foco** | Anonimato total | Seguridad + privacidad | Pentesting | Anonimato en navegador |
+| **Persistencia** | Volátil (opcional) | Persistente | Persistente | Persistente (perfil) |
+| **SO completo** | ✅ | ✅ | ✅ | Solo navegador |
+| **Uso** | Tor por defecto | Privacidad diaria | Auditoría técnica | Navegación anónima |
+
+**En resumen**: Tails es un SO efímero enfocado a Tor por defecto; Parrot añade privacidad y herramientas de pentesting para uso persistente; Kali es la solución de auditoría técnica; el Tor Browser es solo la pieza de navegación.
 
 ## Ver también
 

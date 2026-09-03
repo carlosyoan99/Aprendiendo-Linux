@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -382,6 +382,18 @@ nix path-info -Sh /nix/store/* | sort -rh | head -10
 NixOS es la distro más innovadora del ecosistema Linux actual. Su modelo declarativo, flakes, y home-manager ofrecen un nivel de reproducibilidad y gestión de configuraciones que ninguna otra distro iguala. La desventaja es la **curva de aprendizaje**: hay que pensar en Nix, no en bash.
 
 **¿Merece la pena?** Si administras varios equipos (laptop + servidor + Raspberry Pi), si necesitas entornos de desarrollo reproducibles, o si simplemente te atrae la idea de que tu sistema esté versionado en Git y sea replicable en segundos, NixOS es para ti.
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[NixOS]] | [[Arch Linux]] | [[Debian]] | [[Fedora]] |
+|---|---|---|---|---|
+| **Modelo de config** | Declarativa (Nix/Scheme) | Imperativa (files del usuario) | Imperativa | Imperativa |
+| **Reproducibilidad** | Total (nix store hashes) | Parcial | Parcial | Parcial |
+| **Rollback** | Sí, atómico (generaciones) | No | No | No |
+| **Gestor** | nix (+ flakes) | pacman | apt | dnf |
+| **Base de paquetes** | nixpkgs (enorme) | AUR + repos | repos Debian | repos Fedora/RPM Fusion |
+
+**En resumen**: NixOS es la revolución declarativa — definir el sistema en código y reproducirlo/rollback atómicamente es su ventaja única; Arch, Debian y Fedora son imperativas: se configuran "en vivo" y su coherencia depende del mantenimiento del admin.
 
 ## Ver también
 

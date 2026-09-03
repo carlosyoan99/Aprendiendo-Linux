@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -103,6 +103,18 @@ mx-codecs                                   # instalar códecs
 mx-tweak                                    # ajustar escritorio
 sudo apt update && sudo apt upgrade         # actualizar
 ```
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[MX Linux]] | [[Debian]] | [[Linux Mint]] | [[Lubuntu]] |
+|---|---|---|---|---|
+| **Base** | Debian stable | Debian | Ubuntu/Debian | Ubuntu |
+| **Escritorio** | XFCE (por defecto) | variado | Cinnamon | LXQt |
+| **Herramientas** | MX Tools (propias) | ninguna extra | Mint Tools | básicas |
+| **Público** | Ligereza fácil | Estabilidad | Usuarios generales | Ultra-ligera |
+| **Init** | sysvinit / systemd | systemd | systemd | systemd |
+
+**En resumen**: MX Linux destaca por su ligereza y **MX Tools** únicas sobre Debian estable; Mint es amigable sobre Ubuntu; Lubuntu es la ultra-ligera; Debian patrocinado es la base estable pura.
 
 ## Ver también
 

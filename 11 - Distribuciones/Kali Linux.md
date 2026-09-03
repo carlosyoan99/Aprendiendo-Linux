@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -130,6 +130,18 @@ Kali Linux es una herramienta profesional para **entornos autorizados**. Usar la
 - Computer Fraud and Abuse Act (CFAA) en EE.UU.
 - Ley de Delitos Informáticos en España/América Latina
 - GDPR si accedes a datos personales
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Kali Linux]] | [[Parrot OS]] | [[Tails]] | Arch + herramientas |
+|---|---|---|---|---|
+| **Enfoque** | Pentesting | Seguridad + privacidad | Anonimato extremo | Rollín con herramientas |
+| **Base** | [[Debian]] | Debian | Debian | Arch Linux |
+| **Herramientas** | ~600 por defecto | ~600 (parrot tools) | Tor + utilidades mínimas | Arch + metapaquetes |
+| **Modelo** | Rolling | Rolling | Fixed | Rolling |
+| **Filosofía** | Auditoría completa | Privacidad + usabilidad | Tor por defecto | DIY (Arch) |
+
+**En resumen**: Kali es el estándar de la industria para auditoría de seguridad; Parrot añade capas de privacidad y uso diario; Tails es de uso único para anonimato absoluto; sobre Arch puedes montar tu propio stack de pentesting a medida.
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -78,6 +78,19 @@ Ver: [copr.fedorainfracloud.org](https://copr.fedorainfracloud.org/)
 ## Ciclo de lanzamiento
 
 Releases cada ~6 meses (abril y octubre), con ~13 meses de soporte por versión. No hay LTS — hay que actualizar a la siguiente versión o dos versiones después como máximo (cada Fedora recibe actualizaciones hasta 1 mes después del lanzamiento de la 2da versión siguiente).
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Fedora]] | [[Ubuntu]] | [[Arch Linux]] | [[openSUSE]] |
+|---|---|---|---|---|
+| **Base** | RHEL upstream | Debian | Independiente | SUSE (independiente) |
+| **Gestor de paquetes** | dnf (rpm) | apt (deb) | pacman | zypper (rpm) |
+| **Modelo** | Fixed (~13 meses/salto) | Fixed (LTS + interim) | Rolling | Leap (fixed) / Tumbleweed (rolling) |
+| **Novedades** | Muy al día | Al día | Máximas | Al día |
+| **Estabilidad** | Alta | Alta-Media | Media (DIY) | Alta |
+| **Entorno por defecto** | GNOME Workstation | GNOME | ninguna | KDE Plasma (Leap) |
+
+**En resumen**: Fedora ofrece tecnología muy reciente con estabilidad razonable (base de RHEL); Ubuntu la combina con soporte LTS y compatibilidad comercial; Arch es el do-it-yourself rolling; openSUSE brilla por yaST y saltar entre estable y rolling libremente.
 
 ## Notas de instalación propias
 

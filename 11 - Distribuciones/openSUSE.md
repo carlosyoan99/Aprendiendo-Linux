@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -143,6 +143,18 @@ osc commit                               # subir cambios
 - [Open Build Service](https://build.opensuse.org/)
 - [Snapper — Documentación](https://snapper.io/)
 - [openSUSE Aeon](https://aeon.opensuse.org/)
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[openSUSE]] | [[Fedora]] | [[Rocky Linux]] | [[Debian]] |
+|---|---|---|---|---|
+| **Base** | Independiente (SUSE) | RHEL upstream | RHEL | Independiente |
+| **Modelo** | Leap (fixed) + Tumbleweed (rolling) | Fixed | Fixed (LTS) | Fixed (stable) |
+| **Gestor** | zypper (rpm) | dnf (rpm) | dnf (rpm) | apt (deb) |
+| **Diferenciador** | YaST + Snapper/Btrfs | Tecnología nueva | Empresarial estable | Máxima estabilidad |
+| **Software comercial** | SLE (SUSE) | Red Hat | — | — |
+
+**En resumen**: openSUSE es único por ofrecer a la vez Leap (estable) y Tumbleweed (rolling) con la potente herramienta YaST y Snapper/Btrfs para rollback; Fedora lidera en novedades; Rocky es el RHEL-compatible estable; Debian es la estabilidad pura.
 
 ## Ver también
 

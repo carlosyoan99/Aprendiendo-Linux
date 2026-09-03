@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -120,6 +120,16 @@ cat /proc/cpuinfo | grep Revision   # revisión del hardware
 | No se ve pantalla | HDMI incompatible | Añadir `hdmi_force_hotplug=1` en config.txt |
 | Wifi no funciona en headless | Falta configuración | Crear wpa_supplicant.conf en partición boot |
 | Throttling (performance baja) | Sobrecalentamiento o falta voltaje | Añadir heatsink y fuente adecuada |
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Raspberry Pi OS]] | [[Alpine Linux]] | Armbian | Ubuntu Server (ARM) |
+|---|---|---|---|---|
+| **Optimizado para** | Raspberry Pi | ARM general | SBCs múltiples | ARM general |
+| **Escritorio** | LXDE (ligero) | Ninguno | LXQt/XFCE | Server |
+| **Filosofía** | Oficial, sencillo | Minimalista | Community SBCs | Enterprise |
+
+**En resumen**: Raspberry Pi OS es la oficial con soporte completo de la fundación y el escritorio más pulido para RPi; Alpine es ultra-ligera sin GUI; Armbian cubre muchas SBC; Ubuntu Server aporta ecosistema enterprise en ARM.
 
 ## Ver también
 

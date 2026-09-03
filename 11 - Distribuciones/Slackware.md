@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: alta
@@ -188,6 +188,17 @@ slackpkg install git curl wget vim htop
 | **Dependencia faltante** | Slackware no resuelve dependencias automáticamente | Instalar la dependencia manualmente con slackpkg |
 | **Kernel desactualizado** | Las versiones estables usan kernel antiguo | Usar -current o instalar kernel desde SlackBuilds |
 | **Slackpkg no encuentra mirror** | Mirror desactualizado o mal configurado | Cambiar mirror en /etc/slackpkg/mirrors |
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Slackware]] | [[Arch Linux]] | [[Gentoo]] | [[Void Linux]] |
+|---|---|---|---|---|
+| **Gestor** | pkgtools (tar.xz) | pacman | Portage (emerge) | xbps |
+| **Init** | rc.d (BSD-style) | systemd | OpenRC (default) | runit |
+| **Control de calidad** | Manual, conservador | Colaborativo KISS | Settings/USE manual | Conservador |
+| **Público** | Tradicionalistas | DIY avanzados | Compilación desde fuente | Minimalistas sin systemd |
+
+**En resumen**: Slackware es el veterano conservador (sin systemd, sin resolución de dependencias); Arch aporta pacman y AUR pero con systemd; Gentoo permite compilar cada paquete con el perfil USE; Void es minimalista con runit.
 
 ## Ver también
 

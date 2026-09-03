@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -109,6 +109,17 @@ tgz2pet paquete.tar.gz # convertir a PET
 ---
 
 > **Dato curioso**: El creador Barry Kauler se retiró en 2015, pero la comunidad sigue manteniendo Puppy activamente con nuevas versiones (BionicPup, FossaPup). Hay más de 50 "pupplets" (derivados) con diferentes escritorios y propósitos.
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Puppy Linux]] | [[Alpine Linux]] | [[Lubuntu]] | [[MX Linux]] |
+|---|---|---|---|---|
+| **RAM mínima** | ~300 MB (en RAM) | ~200 MB | ~800 MB | ~800 MB |
+| **Ejecución en RAM** | ✅ (frugal/full) | Parcial | ✗ | ✗ |
+| **Persistencia** | Save-file (personal) | Persistente | Persistente | Persistente |
+| **Público** | Ultra-ligera/portable | Contenedores/edge | Linux liviano | Ligereza + herramientas |
+
+**En resumen**: Puppy es singular: corre casi entero desde RAM y guarda cambios en un save-file portable; Alpine es minimalista para contenedores/edge; Lubuntu y MX son ligeras pero persistentes al uso tradicional.
 
 ## Ver también
 

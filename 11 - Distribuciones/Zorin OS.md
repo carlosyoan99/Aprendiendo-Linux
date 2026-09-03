@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -85,6 +85,17 @@ sudo dd if=zorin-17-core-*.iso of=/dev/sdX bs=4M status=progress
 #    - Zorin Appearance → elegir layout
 #    - Zorin Connect → integración con Android (KDE Connect)
 ```
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Zorin OS]] | [[Linux Mint]] | [[elementary OS]] | [[Ubuntu]] |
+|---|---|---|---|---|
+| **Base** | Ubuntu | Ubuntu/Debian | Ubuntu | Debian |
+| **Estética clave** | Layouts Windows/macOS | Cinnamon (clásico) | macOS (Pantheon) | GNOME |
+| **Migrantes de Windows** | ✅ (objetivo directo) | ✅ | parcial | ❌ |
+| **Escritorio** | XFCE/KDE (spins) | Cinnamon | Pantheon | GNOME |
+
+**En resumen**: Zorin es el mejor puente para quien viene de Windows con layouts intercambiables y Zorin Appearance; Mint es el clásico amigable; elementary brilla en diseño estilo macOS; Ubuntu es la base general.
 
 ## Ver también
 

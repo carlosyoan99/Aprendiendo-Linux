@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -90,6 +90,18 @@ sudo dd if=elementaryos-*.iso of=/dev/sdX bs=4M status=progress
 #    - Configurar servicios online: Calendar, Mail, Online Accounts
 #    - Ajustar dock y preferencias del sistema
 ```
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[elementary OS]] | [[Ubuntu]] | [[Zorin OS]] | [[Linux Mint]] |
+|---|---|---|---|---|
+| **Base** | Ubuntu LTS | Debian | Ubuntu | Ubuntu / Debian |
+| **Estética** | macOS (Pantheon) | GNOME | Windows (layouts) | Windows clásico |
+| **App-center** | AppCenter (Flatpak) | Snap Store | App Grid | Mint Software Manager |
+| **Público** | Diseño + simplicidad | General | Migrantes de Windows | Usuarios generales |
+| **Modelo** | LTS | LTS + interim | LTS | LTS |
+
+**En resumen**: elementary prioriza la estética pulida estilo macOS; Zorin apunta a migrantes de Windows con layouts intercambiables; Mint ofrece clásico y estable; Ubuntu es la base general más extendida.
 
 ## Ver también
 

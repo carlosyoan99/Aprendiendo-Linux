@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: alta
@@ -112,6 +112,19 @@ Rolling release — no hay "versiones" discretas. Se instala una vez y se actual
 - [Arch User Repository (AUR)](https://aur.archlinux.org/)
 - [Arch Linux Package Search](https://archlinux.org/packages/)
 - [Guía de instalación](https://wiki.archlinux.org/title/Installation_guide)
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[Arch Linux]] | [[Manjaro]] | [[EndeavourOS]] | [[Debian]] |
+|---|---|---|---|---|
+| **Gestor de paquetes** | pacman (+AUR) | pacman (+AUR) | pacman (+AUR) | apt |
+| **Modelo** | Rolling (DIY total) | Rolling curado | Rolling | Fixed (stable) |
+| **Instalador** | Manual / archinstall | Gráfico (Calamares) | GUI (Welcomer) | Gráfico (Calamares/clásico) |
+| **Estabilidad** | Media-Alta (DIY) | Alta (curado) | Media | Máxima |
+| **Filosofía** | KISS, control total | Amigable | Arch fácil | Conservadora/estable |
+| **Público** | Avanzados | Usuarios varios | Migrantes de Arch | Servidores/estables |
+
+**En resumen**: Arch es la base "pura" de control total; Manjaro la endulza con repos curados, EndeavourOS la empaqueta fácil sin adulterar, y Debian prioriza la estabilidad por encima de la novedad.
 
 ## Ver también
 

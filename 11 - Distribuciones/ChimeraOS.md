@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -140,6 +140,17 @@ sudo dd if=chimeraos.iso of=/dev/sdX bs=4M status=progress
 | **Pantalla negra al arrancar** | GPU NVIDIA sin drivers | Usar GPU AMD/Intel o probar Bazzite |
 | **No detecta el mando** | Bluetooth no configurado | Probar con cable USB primero |
 | **WiFi no funciona** | Firmware no incluido | Usar Ethernet o conectar vía móvil |
+
+## Comparativa con otras distribuciones
+
+| Aspecto | [[ChimeraOS]] | [[SteamOS]] | [[Bazzite]] | [[HoloISO]] |
+|---|---|---|---|---|
+| **Base** | Arch (inmutable) | Arch (inmutable) | Fedora (inmutable) | Arch |
+| **Soporte NVIDIA** | ✗ | ✗ | ✅ | ✗ |
+| **Estado** | Activa | Oficial (Steam Deck) | Activa | Abandonado |
+| **Característica** | Web app + gamescope | Valve-first | AMD/NVIDIA desktop-first | Fork SteamOS |
+
+**En resumen**: ChimeraOS lleva el espíritu SteamOS al living room con soporte impecable de gamescope; SteamOS es la oficial de Valve pero restringida al hardware del Deck; Bazzite aporta NVIDIA y escritorio flexible; HoloISO quedó abandonado.
 
 ## Ver también
 
