@@ -124,7 +124,7 @@ categoria: indice
 - [[Busybox]] · [[Ncurses]] · [[Stratis]] · [[suckless]] — comunidad de software minimalista (DWM, st, dmenu)
 - [[ranger]] — gestor de archivos TUI (Python) · [[lf]] — gestor de archivos TUI rápido (Go) · [[nnn]] — gestor TUI ultra-ligero en C
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
-- [[PipeWire]] · [[Problemas de audio avanzados]] — routing multi-dispositivo, Bluetooth A2DP, HDMI, latencia, migración PulseAudio → PipeWire · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Atajos de teclado - VSCode]] — accesos rápidos del editor
+- [[PipeWire]] · [[Problemas de audio avanzados]] — routing multi-dispositivo, Bluetooth A2DP, HDMI, latencia, migración PulseAudio → PipeWire · [[xdg-desktop-portal]] — API de permisos para apps en sandbox (Flatpak, Wayland) · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Atajos de teclado - VSCode]] — accesos rápidos del editor
 - [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — índice + comparativa de gestores · [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]]
 - [[just]] — ejecutor de tareas tipo make · [[mise]] — gestor de versiones universal · [[hyperfine]] — benchmark CLI con análisis estadístico · [[eza]] — ls moderno en Rust (colores, iconos, árbol) · [[zoxide]] — cd inteligente que aprende frecuencia · [[starship]] — prompt cross-platform en Rust · [[sd]] — sed moderno y simple · [[hexyl]] — visor hexadecimal con colores · [[rclone]] — sincronización cloud (S3, Drive, 70+ backends) · [[yt-dlp]] — descargador de vídeos multi-sitio
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
@@ -132,7 +132,7 @@ categoria: indice
 - [[atuin]] — historial de shell con sincronización
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
-- [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]]
+- [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Grabación de pantalla y streaming]] — OBS, NVENC/VAAPI, wf-recorder, baja latencia, Twitch/YouTube
 - [[Videojuegos en Linux]] · [[Wine]] · [[Proton]] — capa de compatibilidad de juegos de Valve · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]] · [[flatpak-builder]] — herramienta para compilar Flatpaks
 - [[Parted Magic]] — Live CD de particionado y rescate · [[gparted]] — editor de particiones gráfico
 - [[GNUstep]] — framework Cocoa libre

@@ -21,6 +21,10 @@ Historial completo del año (detallado): [[Log-2026]].
 |---|---|---|---|---|
 | 2026-09-02 | v48 | fix | 05/11 | 4 notas v47 (Oracle Linux, fvwm, Ratpoison, evilwm) → resuelto |
 | 2026-09-02 | v47 | feat | 05/11/MoC | 4 notas nuevas de cobertura: Oracle Linux (distro RHEL), fvwm, Ratpoison, evilwm (WMs X11); MoC actualizado |
+| 2026-09-03 | v59 | expand | 08 | 8 notas 08 con Comparativa añadida: jq (yq/fx/gron/jql), QEMU (VirtualBox/VMware/UTM), libvirt (Incus/VirtualBox/Podman), Genkernel (dracut/mkinitcpio/update-initramfs), node_exporter (Telegraf/collectd/Netdata), Prometheus (InfluxDB/VictoriaMetrics/Zabbix), V4L2 (libcamera/PipeWire), Multimedia (GStreamer/VLC/MPV/HandBrake) |
+| 2026-09-03 | v58 | expand | 00 | Comparativa contenedores expandida (¿400→520): seguridad (superficie ataque, rootless, userns), migraciones Docker→Podman/LXD→Incus/nspawn→Incus, redes (bridge/host/macvlan/port mapping) |
+| 2026-09-03 | v57 | expand | 08 | WireGuard VPN expandida (304→518): QR móviles, PSK, wg syncconf, systemd-networkd, Docker, firewall ufw/nftables/firewalld, MTU, kill switch DNS |
+| 2026-09-03 | v56 | feat | 08 | 1 nota nueva: Grabación de pantalla y streaming (OBS, VAAPI/NVENC, wf-recorder, gpu-screen-recorder, baja latencia, Twitch/YouTube); MoC actualizado |
 | 2026-09-03 | v55 | feat | 08/09 | 2 notas nuevas: VirtualBox (Type 2, CLI, snapshots, Guest Additions), Problemas de audio avanzados (routing multi-device, Bluetooth A2DP, HDMI, latencia, migración PipeWire); MoC actualizado |
 | 2026-09-03 | v54 | feat | 08 | 3 notas nuevas atajos: Git (aliases, funciones shell, staging/rebase), Docker CLI (aliases Docker/Compose, containers), Neovim (LSP, Telescope, buffers, tabs); MoC actualizado |
 | 2026-09-03 | v53 | feat | 01 | 3 notas nuevas seguridad: SSH Hardening (claves, fail2ban, certs, port knocking), AppArmor (MAC, perfiles, containers), DNS encriptado (DoH/DoT, systemd-resolved, proveedores); MoC actualizado |
