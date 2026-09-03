@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-23
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: en progreso
 categoria: indice
 prioridad: alta
@@ -419,8 +419,8 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **589** (+ 7 templates) |
-| **Estado resuelto** | 579 |
+| **Notas totales** | **608** (+ 9 templates) |
+| **Estado resuelto** | 582 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos completados) |
 | **Prioridad alta** | 216 |
@@ -497,8 +497,15 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-02 (v42): **Lote expansion 08 Programas cortas** — 10 notas 08 expandidas a ~100-140 líneas: kew (63→120), Antigravity (65→110), Gem (79→109), Gnumeric (81→120), google-chrome (82→102), Proton (82→112), snapper (83→100), Calligra Suite (83→118), FreeOffice (83→107), st (83→140). Secciones añadidas: instalación multi-distro, uso avanzado, comparativas con alternativas, troubleshooting.
 - Sesión 2026-09-02 (v45): **Notas nuevas distros/DE/WM faltantes** — 13 notas nuevas completas (estado borrador): distros Nobara Linux, Artix Linux, Guix System, Devuan, SpiralLinux, Q4OS, EasyOS, BigLinux (11); DE Unity (04); WM Xmonad, IceWM, Window Maker, twm (05). MoC actualizado con enlaces a todas. Commit `feat: 13 notas nuevas de distros DE y WM (v45)` = b387955. Stats → 580 notas.
 - Sesión 2026-09-02 (v46): **Borradores completados** — 13 notas marcadas `resuelto` (5 WMs/DEs: Unity, IceWM, Window Maker, Xmonad, twm + 8 distros: Artix, BigLinux, Devuan, EasyOS, Guix System, Nobara, Q4OS, SpiralLinux). Hashtags `#DE-WM` corregidos a `#entorno-escritorio`. 0 borradores restantes. Stats → 570 resuelto, 0 borrador.
-- Sesión 2026-09-02 (v47): **5 notas nuevas atajos de teclado** — tmux (24 L, sesiones/paneles/copy-mode), Vim (22 L, modos/movimiento/edición/macros), Hyprland (22 L, ventanas/workspaces/config), LibreOffice (28 L, Writer/Calc/Impress/formato), Chromium (23 L, pestañas/navegación/omnibox). MoC actualizado (585 notas).
+- Sesión 2026-09-02 (v47): **5 notas nuevas atajos de teclado** — tmux (24 L, sesiones/paneles/copy-mode), Vim (22 L, modos/movimiento/edición/macros), Hyprland (22 L, ventanas/workspaces/config), LibreOffice (28 L, Writer/Calc/Impress/formato), Chromium (23 L, pestañas/navegación/omnibox). MoC actualizado (589 notas).
 - Sesión 2026-09-02 (v47): **Ampliación de cobertura** — 4 notas nuevas (estado borrador): distro Oracle Linux (RHEL de Oracle, Ksplice/UEK) en 11; WM fvwm, Ratpoison, evilwm en 05. MoC actualizado. Corrección de líneas JYJ rotas en las notas WM (config fvwm/ratpoison). Stats → 589 notas, 4 borradores.
+- Sesión 2026-09-03 (v55): **2 notas nuevas** — [[VirtualBox]] (08, Type 2, VBoxManage CLI, snapshots, clonación, Guest Additions, comparativa con KVM/VMware), [[Problemas de audio avanzados]] (09, routing multi-device, Bluetooth A2DP/HFP, HDMI audio, eco/duplicado, latencia PipeWire, migración PulseAudio→PipeWire, glitches/xruns). MoC actualizado. Stats → 608 notas.
+- Sesión 2026-09-03 (v54): **3 notas nuevas atajos de teclado** — [[Atajos de teclado - Git]] (08, aliases ~/.gitconfig, funciones shell, git add -p, rebase interactivo, mergetool), [[Atajos de teclado - Docker CLI]] (08, aliases Docker/Compose, funciones shell, docker attach, lazydocker), [[Atajos de teclado - Neovim]] (08, LSP gd/gr/K, Telescope, buffers/tabs, gitsigns, config init.lua). MoC actualizado. Stats → 606 notas.
+- Sesión 2026-09-03 (v53): **3 notas nuevas seguridad** — [[SSH Hardening]] (01, claves Ed25519, fail2ban, port knocking, SSH certs, ~/.ssh/config, auditoría), [[AppArmor]] (01, MAC, perfiles enforce/complain, containers Docker/Podman), [[DNS encriptado (DoH DoT)]] (01, DoH/DoT, systemd-resolved, dnsproxy, proveedores, browser config). MoC actualizado. Stats → 603 notas.
+- Sesión 2026-09-03 (v52): **4 notas nuevas troubleshooting** — [[Suspend-Resume no funciona]] (09, NVIDIA, ACPI, lid switch, WiFi/audio tras reanudar, 8 escenarios), [[Permisos Flatpak]] (09, sandboxing, portales, filesystem exceptions, cámara/micrófono, Flatseal, 8 escenarios), [[Arranque lento]] (09, NetworkManager-wait-online, fstab, initramfs, Plymouth, 8 escenarios), [[Fuga de memoria]] (09, OOM Killer, cache, swap, containers, zombies, 8 escenarios). MoC actualizado. Stats → 600 notas.
+- Sesión 2026-09-03 (v51): **3 notas nuevas troubleshooting** — [[Kernel Panic]] (09, initramfs, módulos, hardware, filesystem, 6 escenarios), [[Display Manager no arranca]] (09, GDM/SDDM/LightDM, 7 escenarios), [[USB no detecta]] (09, energía, drivers, filesystem, 8 escenarios). MoC actualizado. Stats → 595 notas.
+- Sesión 2026-09-02 (v50): **14 notas 08 con Comparativa añadida** — hexyl (vs xxd/hexdump/od), eza (vs ls/exa/lsd), vlc (vs mpv/SMPlayer/Celluloid), mpv (vs VLC/Celluloid/ffplay), KVM (vs VirtualBox/VMware/Xen/Hyper-V), restic (vs borg/duplicity/rsync/timeshift), kew (vs cmus/ncmpcpp/mpc), yq (vs jq/xmlstarlet/sed), Go (vs Cargo/npm/pip/gem), Cargo (vs npm/pip/go/gem), Gem (vs npm/pip/Cargo/go), Grafana (vs Kibana/Datadog/Netdata), fail2ban (vs CrowdSec/DenyHosts/sshguard), Proton (vs Wine/Lutris/Bottles/CrossOver).
+- Sesión 2026-09-02 (v49): **3 notas nuevas temas faltantes** — [[Accesibilidad en Linux]] (01, ~180L: Orca, alto contraste, lupa, daltonismo, sticky keys), [[Gestión de energía y batería]] (01, ~220L: TLP, powertop, auto-cpufreq, umbrales batería, suspend/hibernate), [[Compatibilidad Wayland]] (03, ~180L: matriz apps, screen sharing, xdg-portal, workarounds, HiDPI). MoC actualizado. Stats → 592 notas.
 - Sesión 2026-09-02 (v48): **4 borradores v47 → resuelto** — Oracle Linux, fvwm, Ratpoison, evilwm promocionadas. 0 borradores restantes.
 
 ---

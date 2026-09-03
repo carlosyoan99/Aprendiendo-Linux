@@ -21,6 +21,13 @@ Historial completo del año (detallado): [[Log-2026]].
 |---|---|---|---|---|
 | 2026-09-02 | v48 | fix | 05/11 | 4 notas v47 (Oracle Linux, fvwm, Ratpoison, evilwm) → resuelto |
 | 2026-09-02 | v47 | feat | 05/11/MoC | 4 notas nuevas de cobertura: Oracle Linux (distro RHEL), fvwm, Ratpoison, evilwm (WMs X11); MoC actualizado |
+| 2026-09-03 | v55 | feat | 08/09 | 2 notas nuevas: VirtualBox (Type 2, CLI, snapshots, Guest Additions), Problemas de audio avanzados (routing multi-device, Bluetooth A2DP, HDMI, latencia, migración PipeWire); MoC actualizado |
+| 2026-09-03 | v54 | feat | 08 | 3 notas nuevas atajos: Git (aliases, funciones shell, staging/rebase), Docker CLI (aliases Docker/Compose, containers), Neovim (LSP, Telescope, buffers, tabs); MoC actualizado |
+| 2026-09-03 | v53 | feat | 01 | 3 notas nuevas seguridad: SSH Hardening (claves, fail2ban, certs, port knocking), AppArmor (MAC, perfiles, containers), DNS encriptado (DoH/DoT, systemd-resolved, proveedores); MoC actualizado |
+| 2026-09-03 | v52 | feat | 09 | 4 notas nuevas troubleshooting: Suspend-Resume no funciona, Permisos Flatpak, Arranque lento, Fuga de memoria; MoC actualizado |
+| 2026-09-03 | v50 | feat | 09 | 3 notas nuevas troubleshooting: Kernel Panic, Display Manager no arranca, USB no detecta; MoC actualizado |
+| 2026-09-02 | v49 | expand | 08 | 14 notas 08 con Comparativa añadida: hexyl, eza, vlc, mpv, KVM, restic, kew, yq, Go, Cargo, Gem, Grafana, fail2ban, Proton |
+| 2026-09-02 | v48 | feat | 01/03 | 3 notas nuevas: Accesibilidad en Linux, Gestión de energía y batería, Compatibilidad Wayland; MoC actualizado |
 | 2026-09-02 | v47b | fix | 05/11 | 4 borradores extras → resuelto (Ratpoison, evilwm, fvwm, Oracle Linux); 0 borradores restantes |
 | 2026-09-02 | v47 | feat | 08 | 5 notas nuevas de atajos de teclado: tmux, Vim, Hyprland, LibreOffice, Chromium; MoC actualizado |
 | 2026-09-02 | v46 | fix | 04/05/11 | 13 borradores → resuelto (5 WMs/DEs + 8 distros); hashtags #DE-WM → #entorno-escritorio; 0 borradores restantes |

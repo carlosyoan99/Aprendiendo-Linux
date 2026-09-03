@@ -14,7 +14,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 | `05 - Gestores de Ventanas` | i3, Hyprland, DWM, Awesome WM, Sway, bspwm, qtile, River, Openbox, Fluxbox, herbstluftwm, Niri, Labwc, Wayfire + tiling WMs | 15 |
 | `06 - La Terminal` | Shell, shells (bash/zsh/fish), tmux, screen, Fish, Nushell, atajos, tuberías y redirecciones | 6 |
 | `07 - Comandos Esenciales` | **122 comandos** documentados (Coreutils + util-linux, sudo, nano, vim, man, stat, file, gdb, sha256sum, groups, ltrace...) + cheat sheet | 122 |
-| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Docker Compose, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools, just, btop, hyperfine, duf | 206 |
+| `08 - Programas y Herramientas` | Ansible, Git, KVM, Docker, Docker Compose, Nmap, Nginx, Samba, FFmpeg, WireGuard, editores, bases de datos, backups, monitors, juegos, audio, TUI tools, just, btop, hyperfine, duf, atajos de teclado | 211 |
 | `09 - Solución de Problemas` | Recursos + **19 problemas resueltos** (WiFi, permisos, sonido, SSH, Docker, fuentes, paquete roto, pantalla negra, disco lleno, teclado, Bluetooth, resolución, reloj, NVIDIA, GRUB, red no conecta, sistema no arranca, impresora) | 19 |
 | `10 - Automatización y Scripts` | Scripts propios (7: stats, weekly, logs, validación, huérfanas, fechas, setup), cron, git hooks, Log.md, docs | 10 |
 | `11 - Distribuciones` | Catálogo completo de 50 distros (Ubuntu, Debian, Arch, Fedora, Mint, NixOS, Gentoo, Kali, Clear Linux, Drauger OS, Garuda...) | 50 |
@@ -26,8 +26,8 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **580** (+ 7 templates) |
-| **Estado resuelto** | 570 |
+| **Notas totales** | **608** (+ 9 templates) |
+| **Estado resuelto** | 582 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log, Log-2026, Prompts de Trabajo) |
 | **Estado borrador** | 0 |
 | **Prioridad alta** | 216 |
@@ -42,9 +42,9 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 206 | **Comando** | 122 |
-| **Concepto** | 47 | **Distribución** | 46 |
-| **Sistema** | 49 | **Entorno / WM** | 33 |
+| **Programa** | 211 | **Comando** | 122 |
+| **Concepto** | 49 | **Distribución** | 46 |
+| **Sistema** | 50 | **Entorno / WM** | 33 |
 | **Troubleshooting** | 19 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
 | **Automatización** | 8 | **Log** | 2 |

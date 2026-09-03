@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: en progreso
 categoria: indice
 ---
@@ -28,7 +28,7 @@ categoria: indice
 - [[Distribuciones de Linux]] — qué son, familias, modelos, tabla comparativa
 - [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
 - [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilación desde Código Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
-- [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — índice · [[PAM]] · [[chage]] · [[chsh]] · [[skel]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers
+- [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — índice · [[PAM]] · [[chage]] · [[chsh]] · [[skel]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers · [[SSH Hardening]] — endurecimiento SSH: claves, fail2ban, port knocking, certificates · [[AppArmor]] — MAC con perfiles: enforce, complain, containers · [[DNS encriptado (DoH DoT)]] — DNS cifrado: DoH, DoT, proveedores, systemd-resolved · [[Accesibilidad en Linux]] — lectores de pantalla, alto contraste, daltonismo, teclado virtual
 - [[Docker]] — contenedores, build, ship, run
 - [[Exec Shield]] — protección NX · [[Graphics Execution Manager (GEM)]] — memoria GPU · [[Int 80h]] — syscalls x86 · [[RTAI (Tiempo Real)]] — tiempo real en Linux
 - [[Namespaces (Linux)]] — aislamiento de recursos, base de contenedores
@@ -48,7 +48,7 @@ categoria: indice
 - [[cgroups (control de recursos)]]
 - [[systemd]] · [[systemctl]] — gestión de servicios/units · [[systemd unidades personalizadas]] — templates, timers, sockets, paths, drop-ins · [[Permisos y Propietarios]] · [[Procesos y Senales]] · [[Redes Basicas]]
 - [[Audio en Linux]] · [[Firewall]] · [[iptables]] — firewall clásico (legacy) · [[LVM]] · [[ACLs]] · [[SELinux y AppArmor]] — índice · [[SELinux]] · [[AppArmor]] · [[D-Bus]]
-- [[systemd-networkd]] · [[NetworkManager]] — gestión de redes gráfica y CLI · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]]
+- [[systemd-networkd]] · [[NetworkManager]] — gestión de redes gráfica y CLI · [[systemd-resolved]] — resolución DNS integrada · [[Wayland vs X11]] · [[Compatibilidad Wayland]] — apps, screen sharing, XWayland, HiDPI, troubleshooting
 - [[Device nodes y udev]] — nodos de dispositivo en /dev, reglas udev
 - [[systemd-nspawn]] — contenedores ligeros nativos de systemd
 - [[zram]] · [[Tmpfs y ramfs]] — filesystems en memoria, /dev/shm · [[coreboot]] · [[s6 init]] · [[Linux Standard Base (LSB)]]
@@ -103,9 +103,9 @@ categoria: indice
 
 ## Programas comunes
 - [[Navegadores Web]] — índice + comparativa · [[Firefox]] · [[Chromium]] · [[Brave]] · [[LibreWolf]] · [[Vivaldi]] · [[Ungoogled Chromium]] · [[GNOME Web (Epiphany)]] · [[Falkon]] · [[Konqueror]] · [[google-chrome]] — Chrome de Google (con VAAPI en CachyOS) · [[Atajos de teclado - Firefox]] — accesos rápidos del navegador · [[Atajos de teclado - Chromium]] — accesos rápidos de Chromium/Chrome/Brave
-- [[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[Atajos de teclado - LibreOffice]] — accesos rápidos de la suite · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]] · [[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]] · [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto · [[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]] · [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto · [[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]] · [[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]] · [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto · [[Atajos de teclado - Vim]] — accesos rápidos del editor modal
+- [[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[Atajos de teclado - LibreOffice]] — accesos rápidos de la suite · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]] · [[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]] · [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto · [[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]] · [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto · [[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]] · [[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]] · [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto · [[Atajos de teclado - Vim]] — accesos rápidos del editor modal · [[Atajos de teclado - Neovim]] — LSP, Telescope, buffers, tabs, config Lua
 - [[WireGuard VPN]] · [[Nouveau (controlador)]] — driver libre NVIDIA · [[NTFS-3G]] — controlador NTFS · [[GNOME VFS]] — sistema archivos virtual GNOME (histórico) · [[Genkernel]] — compilación del kernel (Gentoo)
-- [[Kubernetes]] — orquestación de contenedores (pods, deployments, services) · [[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]] · [[LXC y Contenedores del Sistema]] · [[Incus]] · [[Proxmox VE]] · [[ffmpeg]] · [[Android Debug Bridge]] — ADB · [[scrcpy]] · [[Xrdp]] — escritorio remoto · [[timeshift]] · [[Git]] · [[htop btop]] · [[Neofetch Fastfetch]]
+- [[Kubernetes]] — orquestación de contenedores (pods, deployments, services) · [[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]] · [[VirtualBox]] — virtualización Type 2, snapshots, CLI, Guest Additions · [[LXC y Contenedores del Sistema]] · [[Incus]] · [[Proxmox VE]] · [[ffmpeg]] · [[Android Debug Bridge]] — ADB · [[scrcpy]] · [[Xrdp]] — escritorio remoto · [[timeshift]] · [[Git]] · [[Atajos de teclado - Git]] — aliases, funciones shell, atajos de staging/rebase · [[Atajos de teclado - Docker CLI]] — aliases Docker/Compose, funciones shell, atajos de containers · [[htop btop]] · [[Neofetch Fastfetch]]
 - [[Backups (borg restic duplicity rsync)]] — índice + comparativa + estrategia 3-2-1 · [[borg]] · [[restic]] · [[duplicity]]
 - [[Nginx]] — servidor web, proxy inverso, balanceador de carga
 - [[DNS y BIND]] — servidor DNS, zonas, resolución local
@@ -124,7 +124,7 @@ categoria: indice
 - [[Busybox]] · [[Ncurses]] · [[Stratis]] · [[suckless]] — comunidad de software minimalista (DWM, st, dmenu)
 - [[ranger]] — gestor de archivos TUI (Python) · [[lf]] — gestor de archivos TUI rápido (Go) · [[nnn]] — gestor TUI ultra-ligero en C
 - [[Formatos de Paquetes en GNU Linux]] — anatomía de .deb, .rpm, .pkg.tar.zst y otros formatos
-- [[PipeWire]] · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Atajos de teclado - VSCode]] — accesos rápidos del editor
+- [[PipeWire]] · [[Problemas de audio avanzados]] — routing multi-dispositivo, Bluetooth A2DP, HDMI, latencia, migración PulseAudio → PipeWire · [[Cava]] · [[Python en Linux]] · [[Editores de código (VSCode Codium Zed Helix Antigravity)]] · [[Atajos de teclado - VSCode]] — accesos rápidos del editor
 - [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — índice + comparativa de gestores · [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]]
 - [[just]] — ejecutor de tareas tipo make · [[mise]] — gestor de versiones universal · [[hyperfine]] — benchmark CLI con análisis estadístico · [[eza]] — ls moderno en Rust (colores, iconos, árbol) · [[zoxide]] — cd inteligente que aprende frecuencia · [[starship]] — prompt cross-platform en Rust · [[sd]] — sed moderno y simple · [[hexyl]] — visor hexadecimal con colores · [[rclone]] — sincronización cloud (S3, Drive, 70+ backends) · [[yt-dlp]] — descargador de vídeos multi-sitio
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
@@ -163,7 +163,7 @@ categoria: indice
 - [[octopi]] — frontend gráfico para pacman (con asistente AUR)
 - [[dpkg]] — gestor de paquetes Debian de bajo nivel (.deb)
 - [[apt]] · [[nala]] — frontend moderno APT · [[pwd]] — mostrar directorio actual · [[cd]] · [[ls]] · [[mkdir]] · [[ln]] · [[locate]] · [[mount]] · [[lsblk]] — listar dispositivos de bloque · [[ip]] · [[ss]] · [[dig]] · [[traceroute]] · [[wget]] · [[sysctl]] · [[perf]] · [[strace]] — depuración de syscalls · [[gdb]] — depurador GNU, breakpoints, core dumps · [[ltrace]] — trazar llamadas a librerías · [[bash-avanzado]]
-- [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso
+- [[Optimización de rendimiento]] — ciclo de diagnóstico, kernel tuning, ulimit, perfiles por uso · [[Gestión de energía y batería]] — TLP, powertop, batería, suspend/hibernate
 - [[df]] · [[du]] · [[ncdu]] — analizador de disco interactivo · [[df y du]] — índice
 - [[free]] — memoria RAM/swap · [[uname]] — información del kernel · [[uptime]] — tiempo de actividad y carga media
 - [[date]] · [[timedatectl]] · [[date y timedatectl]] — índice
@@ -187,6 +187,13 @@ categoria: indice
 - [[Paquete roto]] — reparar paquetes rotos y actualización interrumpida (dpkg/apt/dnf/pacman)
 - [[Sistema no arranca]] — recuperación desde pantalla negra hasta kernel panic
 - [[Impresora no funciona]] — solucionar problemas de impresión (CUPS, drivers, red)
+- [[Kernel Panic]] — kernel detiene el sistema: initramfs, módulos, hardware, filesystem
+- [[Display Manager no arranca]] — GDM/SDDM/LightDM no muestra login o sesión falla
+- [[USB no detecta]] — dispositivo USB no reconocido: energía, drivers, filesystem
+- [[Suspend-Resume no funciona]] — suspend/resume falla, pantalla negra tras reanudar, wakeup espontáneo
+- [[Permisos Flatpak]] — apps Flatpak sin acceso a archivos, cámara, micrófono, red
+- [[Arranque lento]] — boot lento: servicios lentos, fstab, initramfs, Plymouth
+- [[Fuga de memoria]] — procesos con memory leak, OOM Killer, cache, swap
 - [[Automatización y Scripts]] · [[Scripts del Vault]] — documentación completa de los 6 scripts · [[Cron]] · [[systemd timers]] · [[inotifywait]] — monitoreo de eventos del sistema de archivos · [[Git hooks para el vault]]
 - [[Scripts de personalización del sistema]] — niri-gov, niri-ram, modo gaming · [[systemd user watchers para temas Noctalia]]
 - [[OCR de pantalla con noctalia-ocr]] · [[Recordatorios con noctalia-remind]] — utilidades propias en el PATH del sistema
