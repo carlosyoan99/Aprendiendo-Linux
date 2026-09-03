@@ -88,6 +88,17 @@ require (
 | **Curva aprendizaje** | Baja | Media | Baja | Baja | Baja |
 | **Uso típico** | CLI, microservicios, DevOps | Sistemas, web, embebido | Web, scripts, APIs | ML, scripting, web | Web (Rails), scripts |
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `command not found: go` | `PATH` sin el binario tras instalar | Añadir `export PATH=$PATH:/usr/local/go/bin` |
+| `go build` descarga red lentamente | Red/proxy mal configurado | `go env -w GOPROXY=https://proxy.golang.org,direct` |
+| `undefined: fmt` u otro paquete | No se importó el paquete | Añadir el `import "fmt"` correcto |
+| `go.sum` desincronizado | Cambiaron hashes | `go mod tidy` |
+| Compilación cruzada falla por CGO | Librerías del host | `CGO_ENABLED=0 go build` para builds estáticos |
+| `no required module provides package` | Dependencia en `go.mod` faltante | `go get <paquete>` o `go mod tidy` |
+
 ## Ver también
 
 - [[Node.js]] — gestor de paquetes de JavaScript

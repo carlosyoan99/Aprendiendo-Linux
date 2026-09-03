@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -79,6 +79,16 @@ node_exporter --help | grep collector
 | `node_load1` / `node_load5` / `node_load15` | Load average |
 | `node_systemd_unit_state` | Estado de unidades systemd |
 | `node_boot_time_seconds` | Timestamp de arranque |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Puerto 9100 no responde | Servicio detenido o firewall | `systemctl status node_exporter`; abrir `9100` en firewall |
+| Métricas vacías tras configurar collector | Colector deshabilitado por defecto | Añadir `--collector.xxx` al arranque (p.ej. `--collector.systemd`) |
+| `node_exporter` no inicia por permisos | Falta binario o usuario inexistente | Crear usuario dedicado y revisar `systemctl cat` |
+| Duplicación de métricas de disco | `textfile` y colector a la vez | Limpiar `/var/lib/node_exporter/textfile` solapado |
+| Timeout en scrape | Demasiados collectors o máquina lenta | Deshabilitar collectors pesados con `--no-collector.xxx` |
 
 ## Ver también
 

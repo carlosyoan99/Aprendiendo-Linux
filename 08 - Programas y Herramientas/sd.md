@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -81,6 +81,16 @@ sd '\.md$' '.txt' *.md
 | Archivo in-place | `sed -i 's/.../.../g'` | `sd '...' '...'` |
 | Delimitador | Necesita `/` o `#` | Automático |
 | Flags | `-i`, `-E`, `-n`... | Integrados |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No reemplaza en varios ficheros | `sd` opera por archivo, no recursivo | Iterar: `rg -l 'regla' archivos | xargs -I{} sd 'patrón' 'nuevo' {}` |
+| Caracteres literales interpretados como regex | `sd` usa regex por defecto | Usar `-F` (fixed string) o escapar el patrón |
+| Edición in-place no persistida | Faltó el flag `-i` | `sd 'patrón' 'nuevo' archivo -i` |
+| `$`/`\` en el reemplazo dan salida inesperada | Colisiones de escapes de regex/captura | Ajustar el escaping de capturas o usar `-F` |
+| Diferencias con sed al sustituir en sitio | Sintaxis distinta (sd: archivo al final) | Revisar el orden: `sd patrón reemplazo archivo -i` |
 
 ## Ver también
 

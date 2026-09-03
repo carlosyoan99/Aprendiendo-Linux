@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -118,6 +118,17 @@ pipx install cookiecutter             # generador de proyectos
 1. **No uses `sudo pip install`** — puede romper paquetes del sistema. Usa `--user`, `venv` o `pipx`.
 2. **Usa entornos virtuales** (venv, poetry, conda) para aislar proyectos.
 3. **Usa `pip freeze > requirements.txt`** para congelar dependencias.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Externally-managed-environment` (Debian 12+/Ubuntu 23.10+) | PIP del sistema bloqueado | Usar venv: `python -m venv .venv && . .venv/bin/activate` |
+| `Permission denied` al instalar global | No se debe usar sudo pip | Crear/activar venv en vez de `sudo pip install` |
+| `WARNING: Package would be ignored` para versiones | Paquete ya instalado con distinto gestor | Detectar con `pip show`; usar venv limpio |
+| `timeout`/descarga fallida | Red/red de espejos | `pip install --index-url https://pypi.org/simple` o mirror local |
+| `ModuleNotFoundError` pese a instalar | Instalaste en otro entorno | Verificar `which python`/`which pip` dentro del venv |
+| Wheel compilada deja errores (build de C) | Faltan build-deps | Instalar `build-essential`/`python3-dev` |
 
 ## Ver también
 

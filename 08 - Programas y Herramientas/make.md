@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -77,6 +77,17 @@ app: main.o utilidades.o
 | **make** | **CMake** | Genera Makefiles u otros (Ninja). Más portable |
 | **make** | **Meson** | Más rápido, sintaxis Python-like |
 | **make** | **Ninja** | Sistema de construcción minimalista, extremadamente rápido |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `make: *** No rule to make target 'clean'` | No existe un destino llamado `clean` en el Makefile | Comprobar el nombre exacto (`grep '^clean:' Makefile`) |
+| "Error: missing separator" | Se usó espacio en vez de tab para las reglas | Las recetas DEBEN empezar con **tabulador**, no espacios |
+| Recompila todo aunque no cambió nada | `.PHONY` roto o timestamps | Usar `.PHONY: all clean` y revisar `touch` |
+| `make` no recoge un cambio en el `.h` | Los `.h` no se listaron como dependencia | Añadir el header en la línea del objetivo |
+| "Nothing to be done for 'all'" | El destino ya está actualizado | Forzar: `make -B` (rebuild) |
+| `pmake`/`gmake` instrucciones | Distro BSD vs GNU | En Linux usar `gmake` si traen Makefiles BSD |
 
 ## Ver también
 

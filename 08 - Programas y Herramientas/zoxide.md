@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -110,6 +110,16 @@ export ZOXIDE_FZF_OPTIONS='--height 40% --layout=reverse'
 | **Selección interactiva** | ✅ (fzf) | ❌ | ❌ | ❌ |
 | **Instalación** | Simple | pip/brew | Go | Source |
 | **Base de datos** | SQLite | SQLite | JSON | Bash vars |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `z` no se activa en la shell | No se añadió la línea de init | Añadir `eval "$(zoxide init bash)"` (zsh/fish según shell) al `.bashrc` |
+| Cambios de dir no se registran | Shell no evalúa el hook | Asegurar que la línea de init va en el archivo correcto y tras export |
+| Directorio antiguo no aparece | La base de datos no se actualiza | `zoxide add <ruta>` manualmente, o revisar `~/.local/share/zoxide/db.zo` |
+| Comando ambiguo al saltar | Varias rutas parecidas | Especificar subcadena más larga: `z proy/libr` en vez de `z pro` |
+| Config de autocompletado / fzf no funciona | Init y plugin de fzf por separado | Cargar zoxide init DESPUÉS de activar fzf |
 
 ## Ver también
 

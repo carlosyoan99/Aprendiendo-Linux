@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -91,6 +91,16 @@ gio unmount sftp://usuario@servidor/
 - [Documentación archivada de GnomeVFS](https://web.archive.org/web/20070619031151/http://developer.gnome.org/doc/API/2.0/gnome-vfs-2.0/)
 - [GNOME GVFS (GitLab)](https://gitlab.gnome.org/GNOME/gvfs)
 - [Arch Wiki — GVFS](https://wiki.archlinux.org/title/GVFS)
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No ve el recurso remoto en Nautilus | Backend GVFS no instalado | Instalar `gvfs-backend-ssh`/`-samba`/`-ftp` según protocolo |
+| `gio mount` falla por protocolo no soportado | Backend ausente | Verificar con `gio list -f` o instalar el backend correspondiente |
+| Montajes visibles pero no accesibles desde apps no-GNOME | Gvfs daemon no corriendo en tu sesión | `systemctl --user start gvfs-daemon` |
+| Conexión SFTP lenta | Handshake/cifrado | Revisar claves y usar `-o`/opciones de mount apropiadas |
+| App antigua pide "gnome-vfs" desaparecida | Binario legacy que depende de GnomeVFS | Recompilar/instalar alternativa que use GVFS/GIO |
 
 ## Ver también
 

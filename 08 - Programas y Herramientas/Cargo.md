@@ -81,6 +81,17 @@ ls ~/.cargo/bin/
 2. **Commitea `Cargo.lock`** para builds reproducibles en proyectos binarios.
 3. **No commitees `target/`** — añádelo a `.gitignore`.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `error: could not compile` y logs largos | Error en deps/código | Leer el `error[E...]` concreto; revisar `cargo build` en modo verbose |
+| `failed to select a version` | Conflictos de versiones en `Cargo.toml` | Restringir versiones o `cargo update` |
+| Dependencia descargada desde crates.io lenta | Red/credentials | `cargo vendor` para offline o configurar mirror |
+| `Cargo.lock` cambiando por sí solo | Dependencias no ancladas | Usar versiones exactas/`cargo update` controlado |
+| `error[E0433]: failed to resolve: use of undeclared crate` | Módulo no declarado en `lib.rs`/`main.rs` | Añadir `mod <módulo>;` y `pub` de exports |
+| La lib no genera `.rlib`/`.so` esperado | `crate-type` no definido | Añadir `[lib] crate-type = ["cdylib", "rlib"]` |
+
 ## Ver también
 
 ## Comparativa con alternativas

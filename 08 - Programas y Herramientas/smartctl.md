@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -75,6 +75,16 @@ sudo apt install nvme-cli
 sudo nvme list
 sudo nvme smart-log /dev/nvme0n1         # temperatura, desgaste, errores
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Permission denied` al leer atributos | Necesita root | Ejecutar con `sudo smartctl ...` |
+| `Device: /dev/sda not found` | El kernel no expone S.M.A.R.T. para esa interfaz | Probar `/dev/sda` vs `/dev/sda1`, o usar `-d` para el tipo de dispositivo |
+| `SMART support is: Disabled` en USB externo | USBs no siempre pasan SMART | Usar `-d sat` cuando el bridge lo soporte |
+| Atributos a 0 / sin datos en NVMe | NVMe usa otro mecanismo | Usar `smartctl -d nvme` (vía NVMe driver) |
+| Reallocated sectors aumentando | Disco fallando físicamente | Backup inmediato + sustitución (`Reallocated_Sector_Ct` alto) |
 
 ## Ver también
 

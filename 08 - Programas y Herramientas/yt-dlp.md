@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -110,6 +110,17 @@ yt-dlp "ytsearch5:linux tutorial"   # 5 resultados
 | **Sitios soportados** | 1000+ | 900+ | ~100 | 1000+ |
 | **Playlists** | ✅ | ✅ | ✅ | ✅ |
 | **Subtítulos** | ✅ | ✅ | ✅ | ❌ |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `ERROR: Unsupported URL` | Web no soportada o URL mal | Comprobar formato/permisos; usar `--write-unsupported` para diagnosticar |
+| `ERROR: Sign in to confirm you're not a bot` | YouTube pide verificación | `--cookies-from-browser firefox` o `--cookies cookies.txt` |
+| Descarga lenta o se corta | Throttling de la web | `--limit-rate`, `--retries`, o actualizar yt-dlp (`pipx upgrade yt-dlp`) |
+| Audio sin descargar pese a `-x` | Faltan ffmpeg/ffprobe | Instalar `ffmpeg` (dependencia para extraer/remuxear) |
+| Formato equivocado | Selección automática mala | Usar `-f bestvideo+bestaudio` o `-S res` explícitas |
+| YouTube cambió flujo y falla | Web bloquea versión vieja | `yt-dlp -U` para actualizar a la última versión |
 
 ## Ver também
 

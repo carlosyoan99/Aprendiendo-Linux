@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -78,6 +78,16 @@ pnpm add paquete                      # añadir dependencia
 1. **Usa `nvm` para Node.js** — los repos del sistema suelen tener versiones antiguas.
 2. **Commitea el lockfile** (`package-lock.json` o `yarn.lock`) para builds reproducibles.
 3. **No commitees `node_modules/`** — añádelo a `.gitignore`.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Error: EACCES: permission denied` al instalar global | Permisos sobre el `prefix` global | Usar NVM o reinstalar node_modules con usuario correcto, no `sudo npm` |
+| `node: not found` tras activar versión | PATH sin el binario | `nvm use` o recargar perfil (`source ~/.bashrc`) |
+| `npm install` lento o ENOENT | Caché corrupta / sin red | `npm cache clean --force` y revisar proxy/registry |
+| Dependencia no instalada (módulo roto) | Version mismatches en `package.json` | `rm -rf node_modules package-lock.json && npm install` |
+| Heap out of memory en build | Límite default de Node bajo | `NODE_OPTIONS="--max-old-space-size=4096"` |
 
 ## Ver también
 
