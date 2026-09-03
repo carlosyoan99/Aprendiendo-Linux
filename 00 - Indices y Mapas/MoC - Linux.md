@@ -80,6 +80,7 @@ categoria: indice
 - [[Artix Linux]] — Arch sin systemd (openrc/runit/s6) · [[Devuan]] — Debian sin systemd
 - [[Guix System]] — sistema declarativo 100% libre (Scheme) · [[SpiralLinux]] — Debian fácil · [[Q4OS]] — Debian ligera estilo Windows
 - [[EasyOS]] — ligera portable, de Puppy, contenedores propios
+- [[Oracle Linux]] — RHEL de Oracle, con Ksplice y UEK, para empresas/Oracle DB
 
 ## Entornos gráficos
 - [[GNOME]] · [[KDE Plasma]] · [[XFCE]] · [[Cinnamon]]
@@ -91,17 +92,18 @@ categoria: indice
 - [[COSMIC Desktop]] — DE en Rust por System76, alpha
 - [[CutefishOS]] — DE Wayland con estética macOS (descontinuado)
 - [[Comparativa entornos de escritorio]] — guía para elegir DE según perfil y caso de uso
-- [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Niri]] · [[River]]
+- [[i3]] · [[Awesome WM]] · [[DWM]] · [[Hyprland]] · [[Atajos de teclado - Hyprland]] — accesos rápidos del compositor · [[Niri]] · [[River]]
 - [[bspwm]] · [[Sway]] · [[qtile]] · [[Openbox]] · [[Fluxbox]] · [[spectrwm]]
 - [[herbstluftwm]]
 - [[Labwc]] — compositor Wayland minimalista tipo Openbox
 - [[Wayfire]] — compositor Wayland con efectos 3D (tipo Compiz)
 - [[Xmonad]] — WM tiling configurable en Haskell · [[IceWM]] — WM clásico ligero · [[Window Maker]] — WM estilo NeXTSTEP · [[twm]] — gestor por defecto de X11 (histórico)
+- [[fvwm]] — WM X11 clásico y altamente configurable · [[Ratpoison]] — WM tiling por teclado (tipo Screen) · [[evilwm]] — WM flotante minimalista en C
 - [[Comparativa gestores de ventanas]] — guía para elegir WM según perfil y caso de uso
 
 ## Programas comunes
-- [[Navegadores Web]] — índice + comparativa · [[Firefox]] · [[Chromium]] · [[Brave]] · [[LibreWolf]] · [[Vivaldi]] · [[Ungoogled Chromium]] · [[GNOME Web (Epiphany)]] · [[Falkon]] · [[Konqueror]] · [[google-chrome]] — Chrome de Google (con VAAPI en CachyOS) · [[Atajos de teclado - Firefox]] — accesos rápidos del navegador
-- [[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]] · [[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]] · [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto · [[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]] · [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto · [[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]] · [[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]] · [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto
+- [[Navegadores Web]] — índice + comparativa · [[Firefox]] · [[Chromium]] · [[Brave]] · [[LibreWolf]] · [[Vivaldi]] · [[Ungoogled Chromium]] · [[GNOME Web (Epiphany)]] · [[Falkon]] · [[Konqueror]] · [[google-chrome]] — Chrome de Google (con VAAPI en CachyOS) · [[Atajos de teclado - Firefox]] — accesos rápidos del navegador · [[Atajos de teclado - Chromium]] — accesos rápidos de Chromium/Chrome/Brave
+- [[Suite de Oficina]] — índice + comparativa · [[LibreOffice]] · [[Atajos de teclado - LibreOffice]] — accesos rápidos de la suite · [[OnlyOffice]] · [[WPS Office]] · [[FreeOffice]] · [[Calligra Suite]] · [[AbiWord]] · [[Gnumeric]] · [[Gestores de Archivos]] — índice + comparativa · [[Nautilus]] · [[Dolphin]] · [[Thunar]] · [[Nemo]] · [[PCManFM]] · [[Double Commander]] · [[SpaceFM]] · [[Atajos de teclado - Nautilus Thunar Dolphin]] — accesos rápidos por defecto · [[Emuladores de Terminal]] — índice + comparativa · [[GNOME Terminal]] · [[Konsole]] · [[Xfce Terminal]] · [[Alacritty]] · [[Kitty]] · [[Foot]] · [[st]] · [[wezterm]] · [[Atajos de teclado - GNOME Terminal y Kitty]] — accesos rápidos por defecto · [[Utilidades Base del Sistema]] — índice de paquetes base · [[binutils]] · [[procps-ng]] · [[Editores de Texto]] — índice + comparativa · [[Nano]] · [[Micro]] · [[Helix]] · [[Lapce]] · [[Zed]] · [[Antigravity]] · [[Geany]] · [[Kate]] · [[Gedit]] · [[Atajos de teclado - Editores Kate y Gedit]] — accesos rápidos por defecto · [[Atajos de teclado - Vim]] — accesos rápidos del editor modal
 - [[WireGuard VPN]] · [[Nouveau (controlador)]] — driver libre NVIDIA · [[NTFS-3G]] — controlador NTFS · [[GNOME VFS]] — sistema archivos virtual GNOME (histórico) · [[Genkernel]] — compilación del kernel (Gentoo)
 - [[Kubernetes]] — orquestación de contenedores (pods, deployments, services) · [[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]] · [[LXC y Contenedores del Sistema]] · [[Incus]] · [[Proxmox VE]] · [[ffmpeg]] · [[Android Debug Bridge]] — ADB · [[scrcpy]] · [[Xrdp]] — escritorio remoto · [[timeshift]] · [[Git]] · [[htop btop]] · [[Neofetch Fastfetch]]
 - [[Backups (borg restic duplicity rsync)]] — índice + comparativa + estrategia 3-2-1 · [[borg]] · [[restic]] · [[duplicity]]
@@ -141,7 +143,7 @@ categoria: indice
 - [[TUI tools]] — guía de Terminal User Interfaces (monitores, editores, git, docker, multimedia, redes)
 
 ## Terminal y comandos
-- [[La Shell]] · [[Shells (bash zsh fish)]] · [[Fish]] — shell con autosugerencias y syntax highlighting · [[Nushell]] — shell estructurada con datos tipados · [[tmux]] · [[screen]]
+- [[La Shell]] · [[Shells (bash zsh fish)]] · [[Fish]] — shell con autosugerencias y syntax highlighting · [[Nushell]] — shell estructurada con datos tipados · [[tmux]] · [[Atajos de teclado - tmux]] — accesos rápidos del multiplexor · [[screen]]
 - [[sed]] — editor de flujo · [[awk]] — procesamiento por columnas · [[sed y awk]] — índice
 - [[Cheat Sheet - Comandos Esenciales]] · [[SSH]] · [[grep]] · [[find]] · [[fd-find]] — búsqueda rápida · [[fzf]] — filtro difuso interactivo
 - [[Vim comandos avanzados]] — macros, registros, quickfix, plegados, vimdiff, personalización Lua

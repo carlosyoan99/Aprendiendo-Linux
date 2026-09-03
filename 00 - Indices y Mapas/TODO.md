@@ -419,21 +419,21 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **580** (+ 7 templates) |
-| **Estado resuelto** | 570 |
+| **Notas totales** | **589** (+ 7 templates) |
+| **Estado resuelto** | 575 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
-| **Estado borrador** | 0 (todos completados) |
+| **Estado borrador** | 4 (Oracle Linux, fvwm, Ratpoison, evilwm — v47) |
 | **Prioridad alta** | 216 |
-| **Prioridad media** | 205 |
-| **Prioridad baja** | 150 |
+| **Prioridad media** | 211 |
+| **Prioridad baja** | 153 |
 
 ### Por categoría (real)
 
 | Categoría | Notas | Categoría | Notas |
 |---|---|---|---|
-| **Programa** | 206 | **Comando** | 122 |
-| **Concepto** | 47 | **Distribución** | 54 |
-| **Sistema** | 49 | **Entorno / WM** | 38 |
+| **Programa** | 211 | **Comando** | 122 |
+| **Concepto** | 47 | **Distribución** | 55 |
+| **Sistema** | 49 | **Entorno / WM** | 41 |
 | **Troubleshooting** | 19 | **Índice** | 13 |
 | **Instalación** | 13 | **Terminal** | 5 |
 | **Automatización** | 8 | **Log** | 2 |
@@ -444,10 +444,10 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 |---|---|---|---|
 | 00 - Indices y Mapas | 13 | 01 - Conceptos Fundamentales | 46 |
 | 02 - Instalacion y Configuracion | 13 | 03 - Estructura del Sistema | 49 |
-| 04 - Entornos de Escritorio | 19 | 05 - Gestores de Ventanas | 19 |
+| 04 - Entornos de Escritorio | 19 | 05 - Gestores de Ventanas | 22 |
 | 06 - La Terminal | 6 | 07 - Comandos Esenciales | 122 |
-| 08 - Programas y Herramientas | 206 | 09 - Solucion de Problemas | 19 |
-| 10 - Automatizacion y Scripts | 10 | 11 - Distribuciones | 54 |
+| 08 - Programas y Herramientas | 211 | 09 - Solucion de Problemas | 19 |
+| 10 - Automatizacion y Scripts | 10 | 11 - Distribuciones | 55 |
 
 ---
 
@@ -497,6 +497,8 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-02 (v42): **Lote expansion 08 Programas cortas** — 10 notas 08 expandidas a ~100-140 líneas: kew (63→120), Antigravity (65→110), Gem (79→109), Gnumeric (81→120), google-chrome (82→102), Proton (82→112), snapper (83→100), Calligra Suite (83→118), FreeOffice (83→107), st (83→140). Secciones añadidas: instalación multi-distro, uso avanzado, comparativas con alternativas, troubleshooting.
 - Sesión 2026-09-02 (v45): **Notas nuevas distros/DE/WM faltantes** — 13 notas nuevas completas (estado borrador): distros Nobara Linux, Artix Linux, Guix System, Devuan, SpiralLinux, Q4OS, EasyOS, BigLinux (11); DE Unity (04); WM Xmonad, IceWM, Window Maker, twm (05). MoC actualizado con enlaces a todas. Commit `feat: 13 notas nuevas de distros DE y WM (v45)` = b387955. Stats → 580 notas.
 - Sesión 2026-09-02 (v46): **Borradores completados** — 13 notas marcadas `resuelto` (5 WMs/DEs: Unity, IceWM, Window Maker, Xmonad, twm + 8 distros: Artix, BigLinux, Devuan, EasyOS, Guix System, Nobara, Q4OS, SpiralLinux). Hashtags `#DE-WM` corregidos a `#entorno-escritorio`. 0 borradores restantes. Stats → 570 resuelto, 0 borrador.
+- Sesión 2026-09-02 (v47): **5 notas nuevas atajos de teclado** — tmux (24 L, sesiones/paneles/copy-mode), Vim (22 L, modos/movimiento/edición/macros), Hyprland (22 L, ventanas/workspaces/config), LibreOffice (28 L, Writer/Calc/Impress/formato), Chromium (23 L, pestañas/navegación/omnibox). MoC actualizado (585 notas).
+- Sesión 2026-09-02 (v47): **Ampliación de cobertura** — 4 notas nuevas (estado borrador): distro Oracle Linux (RHEL de Oracle, Ksplice/UEK) en 11; WM fvwm, Ratpoison, evilwm en 05. MoC actualizado. Corrección de líneas JYJ rotas en las notas WM (config fvwm/ratpoison). Stats → 589 notas, 4 borradores.
 
 ---
 
