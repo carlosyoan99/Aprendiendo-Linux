@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -82,6 +82,18 @@ ls ~/.cargo/bin/
 3. **No commitees `target/`** — añádelo a `.gitignore`.
 
 ## Ver también
+
+## Comparativa con alternativas
+
+| Aspecto | Cargo | npm | pip | go | gem |
+|---|---|---|---|---|---|
+| **Gestión de deps** | ✅ `Cargo.lock` determinista | ✅ `package-lock.json` | ⚠️ `requirements.txt` o `poetry.lock` | ✅ `go.sum` | ✅ `Gemfile.lock` |
+| **Compilación** | ✅ Integrada (build.rs) | ❌ | ❌ | ✅ Integrada | ❌ |
+| **Tests** | ✅ `cargo test` integrado | ⚠️ `npm test` | ⚠️ `pytest` externo | ✅ `go test` | ⚠️ `rspec` externo |
+| **Cross-compile** | ✅ `cross` | ❌ | ❌ | ✅ `GOOS/GOARCH` | ❌ |
+| **Docs** | ✅ `cargo doc` → docs.rs | ⚠️ readthedocs | ⚠️ pypi.org | ✅ `go doc` | ⚠️ rdoc |
+| **Velocidad binarios** | Muy rápida | Lenta (JS) | Lenta (Python) | Muy rápida | Lenta (Ruby) |
+| **Ideal para** | Rust systems/web/CLI | JavaScript full-stack | Python ML/Scripting | Go CLI/DevOps | Ruby on Rails |
 
 - [[Node.js]] — gestor de paquetes de JavaScript
 - [[pip]] — gestor de paquetes de Python

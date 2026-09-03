@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -84,6 +84,21 @@ alias ll='eza -la --icons --header --git'
 alias lt='eza --tree --level=2 --icons'
 alias la='eza -a --icons --group-directories-first'
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | eza | ls | exa | ls --color | lsd |
+|---|---|---|---|---|---|
+| **Colores** | ✅ Por tipo/permiso/git | ⚠️ `--color` | ✅ Igual que eza | ⚠️ Básico | ✅ Con iconos |
+| **Iconos** | ✅ Nerd Font | ❌ | ❌ | ❌ | ✅ Nerd Font |
+| **Git status** | ✅ `--git` inline | ❌ | ✅ | ❌ | ❌ |
+| **Árbol** | ✅ `--tree` | ❌ (usa `tree`) | ✅ | ❌ | ✅ |
+| **Fechas relativas** | ✅ `--date=relative` | ❌ | ✅ | ❌ | ❌ |
+| **Cabecera** | ✅ `--header` | ❌ | ❌ | ❌ | ❌ |
+| **Velocidad** | Muy rápida (Rust) | Muy rápida | Muy rápida | Muy rápida | Rápida |
+| **Ideal para** | CLI moderno diario | Universal, scripts | Discontinuado | Fallback ligero | Terminal con iconos |
+
+> **Nota:** `exa` fue abandonado en 2023; `eza` es su fork activo con mejoras. En scripts, `ls` sigue siendo universal.
 
 ## Ver también
 

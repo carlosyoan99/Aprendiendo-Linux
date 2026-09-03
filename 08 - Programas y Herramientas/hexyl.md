@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -72,6 +72,18 @@ hexyl --bytes 32 archivo         # primeros 32 bytes
 - Gris → NULL / bytes no imprimibles
 - Morado → bytes altos (>127)
 - Azul → delimitadores (nueva línea, tab)
+
+## Comparativa con alternativas
+
+| Aspecto | hexyl | xxd | hexdump -C | od -A x -t x1z | xxd -i |
+|---|---|---|---|---|---|
+| **Colores** | ✅ Sintácticos (ASCII/null/NULL) | ❌ Sin colores | ❌ Sin colores | ❌ Sin colores | ❌ Sin colores |
+| **Unicode** | ✅ Bloques UTF-8 | ❌ | ❌ | ❌ | ❌ |
+| **Rango de offsets** | ✅ `--skip/--length` | ⚠️ Limitado | ❌ Todo el archivo | ⚠️ Limitado | ❌ Todo el archivo |
+| **Formato salida** | hex + ASCII + leyenda | hex + ASCII | hex + ASCII | hex + texto | C array |
+| **Velocidad** | Rápido (Rust) | Muy rápido | Rápido | Rápido | Rápido |
+| **Dependencias** | Ninguna (binario estático) | vim | coreutils | coreutils | vim |
+| **Ideal para** | Inspección visual rápida | Edición hex en vim | Scripts, pipes | Configuración | Generar arrays C |
 
 ## Ver también
 

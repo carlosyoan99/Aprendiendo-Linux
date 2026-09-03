@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -86,6 +86,21 @@ vlc screen:// --screen-fps=15 --sout='#transcode{vcodec=h264}:file{dst=captura.m
 
 - Uso VLC sobre todo para reproducir streams de red (HLS) y grabar pantalla ocasionalmente.
 - Para reproducir un vídeo local rápido y ligero suele primar [[mpv]]; VLC queda como el "multiusos" con GUI.
+
+## Comparativa con alternativas
+
+| Aspecto | VLC | mpv | SMPlayer | Parole | Celluloid |
+|---|---|---|---|---|---|
+| **Interfaz** | Completa (Qt) | Mínima (OSD) | Completa (Qt) | Ligera (GTK) | Ligera (GTK) |
+| **Tamaño** | ~50 MB | ~5 MB | ~10 MB | ~5 MB | ~5 MB |
+| **Codecs** | ✅ Propios (libVLC) | ✅ FFmpeg | ✅ Usa mpv | ✅ GStreamer | ✅ Usa mpv |
+| **Aceleración GPU** | ⚠️ Parcial | ✅ Vulkan/OpenGL | ✅ Via mpv | ⚠️ GStreamer | ✅ Via mpv |
+| **Wayland** | ⚠️ XWayland | ✅ Nativo | ⚠️ XWayland | ✅ GTK4 nativo | ✅ Nativo |
+| **Streaming** | ✅ HLS, RTSP, MMS | ✅ (yt-dlp) | ✅ | ⚠️ Limitado | ✅ |
+| **Conversión** | ✅ `--sout` | ❌ | ❌ | ❌ | ❌ |
+| **Grabar pantalla** | ✅ `screen://` | ⚠️ con plugins | ❌ | ❌ | ❌ |
+| **Scripting** | ⚠️ Lua limitado | ✅ Lua extenso | ❌ | ❌ | ❌ |
+| **Ideal para** | Usuario general, multiusos | Avanzados, tiling WM | Alternativa mpv+GUI | GNOME ligero | GNOME moderno |
 
 ## Ver también
 

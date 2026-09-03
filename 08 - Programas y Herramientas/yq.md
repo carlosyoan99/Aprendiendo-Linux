@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-09-02
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -113,6 +113,19 @@ yq -e '.spec.template.spec.containers[0].resources.limits.memory' deployment.yam
 | No modifica el archivo | Falta `-i` (in-place) | Añadir flag `-i` |
 | Error con listas anidadas | Sintaxis de indexación | Usar `.[0]` en vez de `.[]` para un elemento |
 | XML no parsea | Formato inválido | Verificar que el XML está bien formado |
+
+## Comparativa con alternativas
+
+| Aspecto | yq | jq | xmlstarlet | sed/awk | python-yaml |
+|---|---|---|---|---|---|
+| **Formatos** | ✅ YAML, JSON, XML, CSV, TOML | ✅ Solo JSON | ✅ Solo XML | ⚠️ Texto genérico | ✅ Solo YAML |
+| **Escritura** | ✅ `yq -i` in-place | ✅ `jq` in-place | ✅ | ⚠️ Complejo | ❌ Solo lectura |
+| **Expresiones** | XPath-like | jq filter | XPath | Regex | Python dict |
+| **Dependencias** | Ninguna (binario Go) | Ninguna (binario C) | libxml2 | coreutils | Python |
+| **Velocidad** | Rápida | Muy rápida | Rápida | Muy rápida | Lenta (startup Python) |
+| **Ideal para** | Manipular YAML de K8s/Docker/Ansible | API JSON, transformaciones | XML complejo | Búsqueda/reemplazo rápido | Scripts Python |
+
+> **Regla práctica:** JSON → `jq`, YAML → `yq`, XML → `xmlstarlet`, texto → `sed/awk`.
 
 ## Ver también
 

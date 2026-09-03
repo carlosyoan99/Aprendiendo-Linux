@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -86,6 +86,20 @@ groups:
               expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
               interval: 1m
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | Grafana | Kibana | Datadog | Netdata | Prometheus UI |
+|---|---|---|---|---|---|
+| **Fuentes** | ✅ Prometheus, InfluxDB, SQL, CloudWatch, 100+ | ⚠️ Solo Elasticsearch | ⚠️ Solo Datadog SaaS | ⚠️ Solo Netdata | Solo Prometheus |
+| **Alertas** | ✅ Reglas con Canales (Slack, email, Telegram) | ✅ Watcher | ✅ Nativo | ✅ Básico | ⚠️ Básico |
+| **Dashboards** | ✅ JSON, import/export, comunidad masiva | ✅ Kibana UI | ✅ Nativo | ✅ Auto-generados | ❌ |
+| **Análisis logs** | ⚠️ Loki (plugin) | ✅ Nativo (ELK) | ✅ Nativo | ⚠️ Limitado | ❌ |
+| **Costo** | ✅ OSS gratuito | ✅ OSS | 💰 SaaS desde $15/host | ✅ OSS | ✅ OSS |
+| **Despliegue** | Docker/binary | Docker | SaaS | Agent | Integrado en Prometheus |
+| **Ideal para** | Multi-fuente, visualización, alerts | Logs Elasticsearch | Enterprise SaaS | Monitoreo auto-hosted | Métricas Prometheus básicas |
+
+> **Stack típico:** Prometheus (métricas) + Grafana (visualización/alertas) + Loki (logs) = alternativa OSS a Datadog.
 
 ## Ver también
 

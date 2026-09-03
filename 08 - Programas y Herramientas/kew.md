@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -105,6 +105,18 @@ kew status
 | No muestra carátula | Terminal no soporta blocks | Usar terminales compatibles (kitty, alacritty, wezterm) |
 | MPRIS no responde | Servicio D-Bus no activo | Verificar con `busctl --user list` y reiniciar sesión |
 | Falla al reproducir FLAC | Codec no instalado | Instalar `ffmpeg` o `libFLAC` |
+
+## Comparativa con alternativas
+
+| Aspecto | kew | cmus | ncmpcpp | mpc + MPD | nushell + yt-dlp |
+|---|---|---|---|---|---|
+| **Interfaz** | TUI con carátula | TUI completa | TUI con playlist | CLI simple | CLI |
+| **MPRIS** | ✅ Nativo | ⚠️ Con plugin | ⚠️ Con MPD | ✅ Via MPD | ❌ |
+| **Formatos** | FLAC, MP3, OGG, M4A, WAV | Todo (via FFmpeg) | Todo (via MPD) | Todo (via MPD) | ❌ |
+| **Playlist** | ✅ Archivos/directorio | ✅ Completa | ✅ Avanzada | ✅ Via MPD | ❌ |
+| **Filtros** | ❌ | ✅ | ✅ | ✅ | ❌ |
+| **Dependencias** | Pocas (libavcodec) | FFmpeg | MPD corriendo | MPD corriendo | FFmpeg |
+| **Ideal para** | Escuchar música rápido en terminal | Colecciones grandes, fans de terminal | Control avanzado de MPD | Múltiples clientes MPD | Scripts rápidos |
 
 ## Ver también
 

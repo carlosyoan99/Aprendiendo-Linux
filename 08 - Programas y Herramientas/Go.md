@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -75,6 +75,18 @@ require (
 1. **Usa módulos** (go mod) en lugar del antiguo GOPATH.
 2. **Commitea `go.sum`** para verificaciones de integridad.
 3. **No instales herramientas Go con apt** — usa `go install` para tener la última versión.
+
+## Comparativa con alternativas
+
+| Aspecto | Go | Rust (Cargo) | Node.js (npm) | Python (pip) | Ruby (Gem) |
+|---|---|---|---|---|---|
+| **Velocidad** | Muy rápida (compilado) | Muy rápida (compilado) | Lenta (interprete) | Lenta (interprete) | Lenta (interprete) |
+| **Binarios** | ✅ Estáticos, 1 binario | ✅ Estáticos, 1 binario | ❌ Require runtime | ❌ Require runtime | ❌ Require runtime |
+| **Gestor** | `go` (integrado) | `cargo` | `npm`/`pnpm`/`yarn` | `pip`/`poetry`/`uv` | `gem`/`bundler` |
+| **Registro** | pkg.go.dev | crates.io | npmjs.com | pypi.org | rubygems.org |
+| **Cross-compile** | ✅ `GOOS/GOARCH` trivial | ⚠️ `cross` | ❌ | ❌ | ❌ |
+| **Curva aprendizaje** | Baja | Media | Baja | Baja | Baja |
+| **Uso típico** | CLI, microservicios, DevOps | Sistemas, web, embebido | Web, scripts, APIs | ML, scripting, web | Web (Rails), scripts |
 
 ## Ver también
 

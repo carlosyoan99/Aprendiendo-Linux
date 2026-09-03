@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -89,6 +89,23 @@ git clone https://github.com/dylanaraps/mpv-config ~/.config/mpv
 | Streaming | ✅ (con yt-dlp) | ✅ (nativo) |
 | Scripting | ✅ Lua | ⚠️ Lua (limitado) |
 | Ideal para | Usuarios avanzados, tiling WMs | Usuarios generales |
+
+## Comparativa con alternativas
+
+| Aspecto | mpv | VLC | Celluloid | SMPlayer | ffplay |
+|---|---|---|---|---|---|
+| **Interfaz** | OSD mínima | GUI completa | GTK ligera | Qt completa | Ventana básica |
+| **Tamaño** | ~5 MB | ~50 MB | ~5 MB | ~10 MB | ~2 MB |
+| **Velocidad de arranque** | Instantáneo | ~1-2s | ~1s | ~1s | Instantáneo |
+| **Aceleración GPU** | ✅ Vulkan/OpenGL | ⚠️ Parcial | ✅ Via mpv | ✅ Via mpv | ❌ Software |
+| **Wayland** | ✅ Nativo | ⚠️ XWayland | ✅ Nativo | ⚠️ XWayland | ⚠️ XWayland |
+| **Scripting** | ✅ Lua extenso | ⚠️ Lua limitado | ❌ | ❌ | ❌ |
+| **Configuración** | Texto plano (~/.config/mpv/) | GUI + avanzado | Via mpv | GUI | ❌ |
+| **Streaming** | ✅ (yt-dlp integrado) | ✅ (nativo) | ✅ | ✅ | ⚠️ Limitado |
+| **Dependencias** | Pocas (FFmpeg) | Muchas (libVLC) | GTK + mpv | Qt + mpv | FFmpeg |
+| **Ideal para** | Avanzados, tiling WM, minimalistas | Usuario general | GNOME moderno | Alternativa con GUI | Prueba rápida |
+
+> **mpv vs VLC resumen:** mpv es más rápido, más ligero y más configurable; VLC es más "listo para usar" con más funciones out-of-the-box (grabación, conversión, DLNA).
 
 ## Ver también
 

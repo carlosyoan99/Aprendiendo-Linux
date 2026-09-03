@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-31
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -97,6 +97,22 @@ El punto clave: **Proton** = Wine + DXVK + Steam/DRM + parches de juegos, y adem
 | Negro en pantalla | Driver GPU obsoleto | Actualizar driver (Mesa o NVIDIA proprietary) |
 | Anti-cheat bloquea | EAC/BattlEye sin soporte Linux | Verificar en ProtonDB si el juego tiene soporte |
 | Audio no funciona | PipeWire/PulseAudio | Verificar `PULSE_SERVER` o usar `protontricks` |
+
+## Comparativa con alternativas
+
+| Aspecto | Proton (Valve) | Wine vanilla | Lutris | Bottles | CrossOver |
+|---|---|---|---|---|---|
+| **Integración Steam** | ✅ Nativa | ❌ | ✅ Lutris runner | ❌ | ❌ |
+| **DXVK (DX→Vulkan)** | ✅ Incluido | ⚠️ Manual | ✅ Incluido | ✅ Incluido | ✅ Incluido |
+| **VKD3D (DX12→VK)** | ✅ Incluido | ⚠️ Manual | ✅ Opcional | ✅ Incluido | ✅ Incluido |
+| **Anti-cheat** | ⚠️的部分 EAC/BattlEye | ❌ | ⚠️的部分 | ⚠️的部分 | ⚠️的部分 |
+| **Costo** | ✅ Gratis (con Steam) | ✅ Gratis | ✅ Gratis | ✅ Gratis | 💰 $70/año |
+| **Configuración** | Automática por juego | Manual | Semi-automática | Automática | Automática |
+| **ProtonDB** | ✅ Base de datos oficial | ❌ | ⚠️ Comunidad | ❌ | ❌ |
+| **Ideal para** | Steam, gaming nativo | Apps no-Steam | Multi-store (GOG, Epic) | Apps y juegos | Soporte profesional |
+
+> **Flujo típico:** Steam → Proton automático → si falla, consultar ProtonDB → probar versiones Proton-GE.
+> **Para no-Steam:** Lutris o Bottles.
 
 ## Ver también
 

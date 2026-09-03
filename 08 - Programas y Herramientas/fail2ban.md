@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -145,6 +145,21 @@ sudo journalctl -u sshd | grep "Failed password" | wc -l
 | `error: permission denied` | fail2ban no puede leer el log | Añadir usuario fail2ban al grupo `adm`: `sudo usermod -aG adm fail2ban` |
 | IP baneada pero sigue conectando | El firewall no está usando nftables/iptables | Verificar `banaction` en jail.local |
 | Muchos falsos positivos | `maxretry` demasiado bajo | Subir a 5-10 según el servicio |
+
+## Comparativa con alternativas
+
+| Aspecto | fail2ban | CrowdSec | DenyHosts | sshguard | UFW limit |
+|---|---|---|---|---|---|
+| **Enfoque** | Baneo por regex en logs | Baneo colaborativo (shared blocklist) | Baneo SSH específico | Baneo SSH firewall-based | Baneo a nivel UFW |
+| **Servicios** | ✅ SSH, Apache, Nginx, Postfix, etc. | ✅ 80+ parsers | ❌ Solo SSH | ⚠️ SSH + Apache | ❌ Solo SSH |
+| **Collaborativo** | ❌ | ✅ Comparte blocklists en la nube | ❌ | ❌ | ❌ |
+| **Acciones** | iptables, nftables, systemd-nspawn, cloudflare | iptables, nftables, cloudflare, geo-ip | iptables | iptables, PF | UFW reject |
+| **Config** | ✅ INI simple (`jail.local`) | ✅ YAML + dashboard | ⚠️ Config.txt | ⚠️ CLI flags | `ufw limit ssh` |
+| **Dashboard** | ❌ | ✅ Web UI incluido | ❌ | ❌ | ❌ |
+| **Ideal para** | Control manual, flexibilidad total | Protección colaborativa multi-host | Solo SSH, mínimo setup | SSH básico, ligero | Fuerza bruta SSH rápida |
+
+> **Elegir fail2ban si:** quieres control total sobre baneos y no necesitas blocklists colaborativas.
+> **Elegir CrowdSec si:** quieres protección colaborativa con blocklists compartidas y dashboard.
 
 ## Ver también
 - [[SSH]] — servicio a proteger primero (cambio de puerto, claves, desactivar root)

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -100,6 +100,25 @@ restic check --read-data --repo /mnt/disco_externo/restic-repo
 # Eliminar snapshots antiguos (forget + prune)
 restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --prune
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | restic | borg | duplicity | rsync | timeshift |
+|---|---|---|---|---|---|
+| **Deduplicación** | ✅ Full (content-defined chunking) | ✅ Full (más eficiente) | ❌ | ❌ | ❌ |
+| **Cifrado** | ✅ AES-256 (nativo) | ✅ AES-256 (nativo) | ✅ GPG | ❌ (solo SSH) | ✅ rsync hardlinks |
+| **Compresión** | ⚠️ Solo réplicas (rclone) | ✅ LZ4/ZSTD/nivel 1-9 | ✅ | ❌ | ❌ |
+| **Backends** | ✅ Local, SFTP, S3, B2, Azure, GCloud, rclone | ⚠️ Local, SSH, repo | ⚠️ Local, SSH, S3, GPG | ✅ Cualquier mount | ⚠️ Local, USB |
+| **Velocidad** | Rápida (paralelismo) | Muy rápida (chunking) | Lenta (GPG overhead) | Muy rápida (delta) | Rápida (hardlinks) |
+| **Snapshots** | ✅ Independientes | ✅ Independientes | ✅ Cadenas | ❌ | ✅ Por inode |
+| **Montar snapshot** | ✅ `restic mount` | ✅ `borg mount` | ❌ | ❌ | ❌ |
+| **Retención** | ✅ `--keep-daily/weekly/monthly` | ✅ `--keep-*` similar | ✅ `--full-if-older` | ❌ manual | ✅ Configurado |
+| **Dificultad** | Baja | Media | Media | Baja | Muy baja |
+| **Ideal para** | Multi-backend, cloud, scripts | SSH local, máxima dedup | Legado GPG, enterprise | Sincronización directa | Escritorio, rollback fácil |
+
+> **Elegir restic si:** necesitas múltiples backends cloud (S3, B2, Azure) con cifrado nativo.
+> **Elegir borg si:** solo usas SSH/local y quieres la máxima eficiencia en deduplicación.
+> **Elegir rsync si:** solo necesitas sincronizar archivos sin snapshots ni dedup.
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -92,6 +92,19 @@ bundle show gema                         # ruta de una gema instalada
 | Versión de gem antigua | Gem no actualizado | `gem update --system` |
 | Bundler no encuentra gema | Gemfile mal configurado | Verificar `source` en `Gemfile` |
 | Conflicto de versiones | Múltiples versiones instaladas | `gem cleanup` o `bundle exec` |
+
+## Comparativa con alternativas
+
+| Aspecto | Gem | npm | pip | Cargo | go |
+|---|---|---|---|---|---|
+| **Lenguaje** | Ruby | JavaScript | Python | Rust | Go |
+| **Lockfile** | ✅ `Gemfile.lock` (Bundler) | ✅ `package-lock.json` | ⚠️ `pip-compile` o `poetry.lock` | ✅ `Cargo.lock` | ✅ `go.sum` |
+| **Bundler** | ✅ Gestor de deps Ruby estándar | ✅ npm/pnpm/yarn | ⚠️ pip-tools/poetry/uv | ✅ Cargo (integrado) | ✅ go mod |
+| **Velocidad** | Lenta (Ruby) | Media | Lenta (Python) | Muy rápida (Rust) | Muy rápida (Go) |
+| **Binarios** | ❌ Interpretado | ❌ Interpretado | ❌ Interpretado | ✅ Compilado | ✅ Compilado |
+| **Uso típico** | Ruby on Rails, scripts | Web full-stack, APIs | ML, scripting, web | Sistemas, web, CLI | CLI, microservicios |
+
+> **Nota:** Gem/Bundler es el estándar de facto para Ruby. Rails funciona mejor con Bundler + `bundle exec`.
 
 ## Ver también
 

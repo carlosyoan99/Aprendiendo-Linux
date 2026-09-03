@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -95,6 +95,20 @@ Reduce TLB misses y mejora rendimiento de memoria:
 #   <hugepages/>
 # </memoryBacking>
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | KVM/QEMU | VirtualBox | VMware Workstation | Xen | Hyper-V |
+|---|---|---|---|---|---|
+| **Tipo** | Hypervisor tipo 1 (kernel) | Tipo 2 (host) | Tipo 2 (host) | Tipo 1 (kernel) | Tipo 1 (kernel) |
+| **Rendimiento** | ✅ Nativo (casi bare metal) | ⚠️ Overhead moderado | ⚠️ Overhead moderado | ✅ Nativo | ✅ Nativo |
+| **Rendimiento GPU** | ✅ PCIe passthrough (VFIO) | ⚠️ 3D limitado | ✅ VMware 3D | ⚠️ Limitado | ⚠️ DDA (Server) |
+| **Snapshots** | ✅ Via libvirt/qemu | ✅ Nativo | ✅ Nativo | ✅ Nativo | ✅ Nativo |
+| **CLI/Scripting** | ✅ virsh, qemu-cli | ⚠️ VBoxManage (limitado) | ⚠️ vmrun | ✅ xl | ✅ PowerShell |
+| **Live migration** | ✅ (con shared storage) | ❌ | ❌ | ✅ | ✅ |
+| **Nested virtualization** | ✅ | ⚠️ | ⚠️ | ✅ | ✅ |
+| **Licencia** | GPLv2 (libre) | GPLv2 + PUEL (extensiones) | Comercial | GPLv2 + Citrix | Propietaria (Windows Server) |
+| **Ideal para** | Servidores, escritorio avanzado, VFIO | Escritorio casual, testing | Escritorio con soporte VMware | Servidores enterprise | Entornos Microsoft |
 
 ## Ver también
 
