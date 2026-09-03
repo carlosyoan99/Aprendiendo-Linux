@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -217,6 +217,32 @@ virt-top -s cpu                       # ordenar por uso de CPU
 virt-top -s mem                       # ordenar por uso de RAM
 virt-top -b -n 1                      # batch mode, una iteración (para scripting)
 ```
+
+## Comparativa con alternativas
+
+| Aspecto | libvirt | virt-manager (GUI sobre libvirt) | Incus/LXD | VirtualBox CLI | Podman |
+|---|---|---|---|---|---|
+| **Rol** | API/daemon de gestión | Interfaz gráfica | Gestor de contenedores + VMs | Hipervisor propio | Contenedores |
+| **Hipervisor soportado** | KVM, QEMU, Xen, LXC, ESXi, Hyper-V... | Los de libvirt | QEMU (para VMs) | Solo VirtualBox | runc/crun |
+| **Automatización** | ✅ Excelente (virsh, Python) | ⚠️ Parcial | ✅ incus CLI | ⚠️ Limitado | ✅ Podman |
+| **Multi-host (remote)** | ✅ vía TLS/SSH | ✅ | ✅ cluster nativo | ❌ | ⚠️ Podman farm |
+| **Snapshots** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Granularidad** | Muy alta (XML completo) | Media | Media-alta | Media | Baja (apps) |
+| **Curva de aprendizaje** | Alta | Baja | Media | Baja | Baja |
+| **Ideal para** | Admins de virtualización, scripting | Desktop management | Homelab contenedores+VM | Desktop casual | Containers rootless |
+
+**Recomendación**: libvirt es la capa correcta si gestionas VMs de forma seria (scripts, multiples hosts, varios hipervisores). Para homelab con contenedores + alguna VM, Incus es más sencillo. Para un escritorio casual, virt-manager sobre libvirt ofrece GUI + toda la potencia detrás.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Could not access KVM kernel module` | VT-x/AMD-V desactivado o módulo no cargado | Activar virtualización en BIOS; cargar `kvm_intel`/`kvm_amd` (`sudo modprobe`) |
+| `error: Failed to connect socket to '/var/run/libvirt/libvirt-sock'` | Daemon libvirtd no está corriendo | `sudo systemctl start libvirtd` (y `enable`) |
+| `Permission denied` al acceder a libvirt | Usuario no pertenece al grupo `libvirt` | `sudo usermod -aG libvirt $USER` y volver a iniciar sesión |
+| VM no arranca: `CPU doesn't support ... 'vmx'` | CPU sin passthru completo | Habilitar `vmx`/`svm` en BIOS o restringir `<cpu mode='custom' match='exact'>` |
+| Guest con red pero sin DNS | El bridge por defecto no da DHCP a la máquina | Revisar la red virtual `default` (`virsh net-start default`; `virsh net-autostart default`) |
+| Storage se ve lento | Formato qcow2 fragmentado o sin preallocation | `qemu-img check` y si hace falta `qemu-img convert -O qcow2 -p src dst` |
 
 ## Ver también
 

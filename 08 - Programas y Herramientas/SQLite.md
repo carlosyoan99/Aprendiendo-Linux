@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -558,6 +558,19 @@ SQLite se usa como **formato de archivo** en muchos programas. En vez de inventa
 - Acceso concurrente de lectura
 - Ecosistema de herramientas (sqlite3, DB Browser)
 - No dependes de un servidor externo
+
+---
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `database is locked` al escribir | Otra conexión mantiene un lock de escritura | Reducir el número de escritores; usar `PRAGMA journal_mode=WAL;` y `busy_timeout`; cerrar sesiones abiertas |
+| `disk I/O error` en unidades de red/NFS | Bloqueo de fichero no soportado por el FS | No guardar DB en NFS/CIFS; usar almacenamiento local o `PRAGMA journal_mode=WAL` que funciona mejor localmente |
+| Archivo `.db` aparentemente vacío o `not a database` | Fichero corrupto o cortado | `PRAGMA integrity_check;` y restaurar desde backup; evitar apagones a media escritura |
+| `database table is locked` en backups | Copia sin WAL checkpoint | `sqlite3 db ".backup copia.db"` (garantiza consistencia) en vez de `cp`; o `PRAGMA wal_checkpoint` |
+| Performance baja en tablas grandes | Faltan índices | `CREATE INDEX ...` sobre las columnas usadas en WHERE/JOIN; usar `EXPLAIN QUERY PLAN` |
+| `database or disk is full` | Disco lleno durante escritura | Liberar espacio o comprimir con `VACUUM;`; revisar que el FS no tenga quota |
 
 ---
 

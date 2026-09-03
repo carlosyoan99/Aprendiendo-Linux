@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -185,6 +185,17 @@ paplay /usr/share/sounds/freedesktop/stereo/bell.oga  # vía pipewire-pulse
 | Consumo RAM | ~30-50 MB | ~10-20 MB | ~20-30 MB |
 | Configuración | Compleja | Compleja | Moderada |
 | Estado | ❌ Legado | ⚠️ Nicho profesional | ✅ Estándar actual |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Sin sonido tras actualizar | PulseAudio quedó activo y PipeWire no toma los sinks | `systemctl --user restart pipewire pipewire-pulse` y `pactl info` para confirmar que responde PipeWire |
+| App no suena en streaming | Backend aún configurado para PulseAudio | Forzar `module-pipewire-pulse`; `pactl load-module module-alsa-sink` |
+| Latencia alta al grabar | Config por defecto prioriza consumo bajo | Bajr `node.latency` (p.ej. `node.latency = 512/48000`) en `~/.config/pipewire/*.conf` |
+| Samplicarga de PulseAudio/JACK coexistiendo | Daemon viejo aún en ejecución | Comprobar `pactl info` y `ps aux | grep pulse`; desactivar PulseAudio con `systemctl --user mask pulseaudio` |
+| Screen share sin imagen en apps | Falta el portal de xdg-desktop-portal | Instalar el backend del escritorio (`xdg-desktop-portal-*`) que captura vía PipeWire |
+| Capture de pantalla negra en GNOME | Portal/grabación sin soporte del compositor | Revisar `journalctl` de xdg-desktop-portal y reiniciar la sesión |
 
 ## Ver también
 

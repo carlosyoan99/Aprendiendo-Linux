@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -302,6 +302,17 @@ CMD ["python", "app.py"]
 - [pyenv GitHub](https://github.com/pyenv/pyenv)
 - [Poetry](https://python-poetry.org/) — gestión de proyectos
 - [uv](https://github.com/astral-sh/uv) — gestor ultrarápido
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `command not found: pip` | pip no instalado o `python3-pip` ausente | `sudo apt install python3-pip` (Debian/Ubuntu) o activar el venv |
+| `error: externally-managed-environment` | PEP 668 en distros nuevas: pip no puede instalar global | Crear un `venv` (`python3 -m venv .venv`; `source .venv/bin/activate`) o usar `uv`/`pipx` |
+| `ModuleNotFoundError` tras instalar | Paquete instalado en otro intérprete o venv | Comprobar `which python3` y `pip --version`; reinstalar dentro del venv activo |
+| `SyntaxError` con print como función | Código de Python 2 ejecutándose con python 3 | `python3` (no `python`); usar `print("...")` con paréntesis |
+| Import lento / congelado en C | Compilación de dependencias en caliente | Instalar wheels (`pip install --only-binary :all:`) o usar `uv sync` |
+| `Segmentation fault` en módulo C | Binario compilado contra otra versión de Python | Reconstruir dentro del venv: `pip install --force-reinstall <paquete>` |
 
 ## Ver también
 

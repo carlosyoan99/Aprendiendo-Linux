@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -289,6 +289,17 @@ Permite guardar perfiles de escaneo, ver topología de red, y comparar resultado
 - [Nmap Reference Guide](https://nmap.org/book/man.html)
 - [NSE Scripts Database](https://nmap.org/nsedoc/)
 - [Nmap Network Scanning (libro oficial)](https://nmap.org/book/)
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Failed to resolve hostname` | DNS no resuelve el objetivo | Probar con IP directa o `--resolve-all`; validar con `nslookup` |
+| Solo muestra "no open" aunque el puerto esté abierto | Firewall del host descarta los paquetes | Usar `-sT` (TCP connect) o `-Pn` para no descartar por ping; algunos IDS requieren modo lento |
+| Escaneo muy lento | Routing de paquetes con muchos hosts/puertos | Reducir alcance con `-p` específico, aumentar `--min-rate=1000` o usar `-T4` |
+| `WARNING: SYN scan ... requires root` | Modo SYN necesita privilegios | Ejecutar con `sudo` o usar `-sT` como usuario normal |
+| Hosts "filtered" por ICMP | ICMP bloqueado por firewall | Añadir `-Pn` para saltar el ping y escanear directamente puertos TCP/UDP |
+| Script NSE no se ejecuta | Script con privilegios o dependencia de Ruby/Python | Usar `sudo nmap --script <nom> --script-args`; instalar dependencia del script |
 
 ## Ver también
 

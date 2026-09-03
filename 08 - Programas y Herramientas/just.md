@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -208,6 +208,17 @@ install: build
 - **Scripts multiplataforma**: funciona igual en Linux, macOS, Windows.
 - **Proyectos de equipo**: justfile es auto-documentado con `just --list`.
 - **CI/CD**: tareas que se ejecutan en pipelines.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `error: recipe ... was not found` | La tareá no existe (o hay mayúsculas) | Comprobar con `just --list`; los nombres distinguen mayúsculas |
+| Variable no se expande | Se escribió `$VAR` en vez de `{{VAR}}` | Usar la sintaxis de interpolación `{{VAR}}`; `$` se trata literal |
+| `just` no encuentra `justfile` | Está en un subdirectorio o sin nombre por defecto | Añadir `--justfile`/`--working-directory` o subir `justfile` al directorio raíz |
+| Receta se ejecuta aunque falla una línea anterior | `set -e` no activo por defecto | Añadir `set shell := ["bash", "-eu"]` al inicio del justfile |
+| Error de sintaxis en import | Ruta de `import` incorrecta | Verificar la ruta relativa al justfile y el orden de las `import` |
+| Argumentos pasan como literales | `parameter` sin comillas en la receta | Envolver el parámetro: `comando "{{ARCH}}"` para valores con espacios |
 
 ## Ver también
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -190,6 +190,18 @@ ansible-playbook site.yml --vault-password-file ~/.vault_pass
 - **Provisioning**: crear instancias en AWS/GCP/Azure con módulos cloud.
 - **Cumplimiento**: verificar que servidores cumplen políticas de seguridad.
 - **Orquestación**: ejecutar tareas en paralelo en múltiples hosts.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `unreachable` en un host | Error de conexión SSH o credenciales | Verificar `ansible_host` y `ansible_user` en inventory; probar `ssh user@host` a mano |
+| `Permission denied` al instalar paquetes | Falta sudo en la tarea `become` | Añadir `become: yes` (y `become_user: root`) a la tarea o play |
+| Módulo da `skipped` | Condición `when` no evaluada como true | Revisar variables con `ansible <host> -m debug -a "var=..."` |
+| `MODULE FAILURE` con error de sintaxis Python | Faltan librerías en el host objetivo | Confirmar que `python3` está instalado; usar `ansible_python_interpreter` |
+| Playbook no encuentra el inventory | Ruta de hosts incorrecta | Pasar `-i archivo` o ajustar `inventory` en `ansible.cfg` |
+| Cambios no se aplican en la siguiente ejecución | Definición no idempotente en la tarea | Usar estados idempotentes (`name: present/absent`, `state: started/restarted`) |
+| Ansibe lento en muchos hosts | Conexión SSH secuencial | Añadir `forks: 20` (o más) y activar SSH pipelining |
 
 ## Ver también
 

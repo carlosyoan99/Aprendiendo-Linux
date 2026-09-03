@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -269,6 +269,17 @@ pfetch                        # solo lo esencial, sin dependencias
 - [Neofetch GitHub](https://github.com/dylanaraps/neofetch) — archivado
 - [Screenfetch GitHub](https://github.com/KittyKatt/screenFetch)
 - [inxi GitHub](https://github.com/smxi/inxi) — alternativa sin logo
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Logo distro no se muestra / aparece en blanco | Falta información ASCII de distro o fuente | Actualizar fastfetch (`fastfetch --gen-config`); instalar fuente Nerd Font |
+| Salida cortada a la derecha | Terminal demasiado estrecha o fuente ancha | Ajustar `--width`/`--lines` en la config; reducir el logo a `--logo-width 18` |
+| Detecta la GPU que no es | Prioridad de GPU incorrecta en `lspci` | Configurar `--display-gpu-name` con el `pci bus_id` correcto en `fastfetch/config.jsonc` |
+| No muestra imagen real (solo color) | Terminal sin soporte kitty/sixel | Usar `--logo-type kitty` o `sixel`; en Wayland usar kitty protocol |
+| Neofetch ya no empaquetado | Proyecto archivado (abril 2024) | Migrar a Fastfetch (`pacman/manjaro` o binario estático) |
+| CPU/temp salen en 0 | Sensor sin permisos de lectura | Ejecutar con acceso a `/sys/class/thermal` o usar `--speed-type` con valores válidos |
 
 ## Ver también
 

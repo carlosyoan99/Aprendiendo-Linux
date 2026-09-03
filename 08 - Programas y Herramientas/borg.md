@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -199,6 +199,17 @@ journalctl -u backup-borg.service -n 20
 | **Recuperación tras apagón** | ❌ Se pierde | ✅ `Persistent=true` |
 | **Control de recursos** | ❌ | ✅ CPUQuota, MemoryMax, IOSchedulingClass |
 | **Aleatorizar ejecución** | ❌ | ✅ `RandomizedDelaySec` |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Repository object not found` | Repo remoto corrupto o parcial | `borg check` para diagnosticar; en remoto usar `borg compact` y verificar disco |
+| `Failed to create/acquire the lock` | Otro proceso borg en ejecución (o crash) | Terminar el proceso y borrar el lock: `borg break-lock <repo>` (solo si nadie más está creando) |
+| Backup lento / gran salto de tamaño | Base de datos o VM en bloque completo | Excluir archivos de DB en caliente y usar el retorno de snapshots (`--exclude`); retry con `--checkpoint-interval` |
+| `Permission denied` al abrir repo | Falta la passphrase o keyring | Poner `BORG_REPO` y `BORG_PASSPHRASE` en el entorno; comprobar `BORG_KEY_FILE` |
+| Restauración deja archivos sin permisos | borg no aplica metadatos | Usar `borg extract --numeric-owner` para conservar ownership numérico |
+| Espacio en disco remoto insuficiente | Prune no se ha ejecutado | Programar `borg prune --keep-daily 7 --keep-weekly 4` para mantener la retención |
 
 ## Ver también
 

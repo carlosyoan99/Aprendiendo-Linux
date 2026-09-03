@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -261,6 +261,17 @@ docker run --privileged -d --name incus -v /var/lib/incus linuxcontainers/incus
 docker exec incus incus admin init --auto
 docker exec incus incus launch ubuntu:24.04 inner-container
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Error: Failed to connect to local running server` | Demonio incus no arrancado o socket inexistente | `sudo systemctl enable --now incus` o `sudo incus admin init` |
+| Contenedor nested sin red | Red `default` de Incus no iniciada | `incus network list` y arrancar `incus profile device add default eth0 nic network=incusbr0` |
+| `unix socket: Permission denied` | Usuario sin acceso al grupo incus-admin | `sudo usermod -aG incus-admin $USER` y relogin |
+| Imágenes no descargan (certificado) | Remote sin aceptar su fingerprint | `incus remote add images https://images.linuxcontainers.org --accept-certificate` |
+| No se puede lanzar VM (en vez de contenedor) | Falta `--vm` o hardware de virtualización | Usar `incus launch images:ubuntu/24.04 myvm --vm`; verificar KVM/`/dev/kvm` |
+| Snapshot lleno / no crea | Disco del pool de storage al límite | Revisar `incus storage show default` y compactar/limpiar snapshots viejos |
 
 ## Ver también
 

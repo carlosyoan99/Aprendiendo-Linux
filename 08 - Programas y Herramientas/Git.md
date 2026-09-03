@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -1009,6 +1009,17 @@ __pycache__/
 - `.gitignore` se versiona (va en el repo). `.env` y archivos con secretos **nunca** deben commiteare.
 - Los hooks en `.git/hooks/` no se versionan. Usa `core.hooksPath` para compartirlos con el equipo.
 - El reflog es local. No esperes recuperar commits en otro clon del repositorio.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `fatal: not a git repository` | Estás en una carpeta sin repositorio | `git init` o navegar al directorio con `.git` |
+| `fatal: refusing to merge unrelated histories` | Las ramas no comparten ancestro común | Si es intencional: `git pull --allow-unrelated-histories`, o añadir remote y traer con `git fetch` |
+| `warning: LF will be replaced by CRLF` / salto de línea | Config `core.autocrlf` en Windows | Ajustar `git config core.autocrlf input`; añadir `.gitattributes` para normalizar |
+| `CONFLICT (content)` al merge | Cambios concurrentes en el mismo bloque | Resolver a mano el conflicto marcado `<<<<<<< ======= >>>>>>>`; o `git checkout --theirs/--ours` y commitear |
+| `You have unstaged changes` al checkout | Cambios sin commitear en archivos que saltan de rama | `git switch --discard-changes` con cuidado o `git stash` primero |
+| Diff no se ve / lento en repos enormes | Rastreo de muchos objetos | `git maintenance start` / `git gc`; acelerar con `git config diff.renames` y split del repo con `sparse-checkout` |
 
 ## Ver también
 

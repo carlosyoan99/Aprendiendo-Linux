@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -557,6 +557,19 @@ sudo systemctl enable --now neo4j
               └──────────────────────────────────────┘
   ● = sistema cubierto en esta nota
 ```
+
+---
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `MongooseServer: Cannot connect to MongoDB instance` | Servidor no arrancado o puerto equivocado | `systemctl status mongod`; usar `localhost:27017`; en Docker `docker compose up -d mongodb` |
+| `Authentication failed` al conectar | Usuario/contraseña incorrectos a la DB auth | Verificar con `mongosh --username ... --password ... --authenticationDatabase admin`; crear con `db.createUser` |
+| `Cannot allocate memory` en instancias pequeñas | WiredTiger reserva mucha RAM | Limitar con `storage.wiredTiger.engineConfig.cacheSizeGB` en `mongod.conf` |
+| Documentos muy grandes / límite 16 MB | Documento individual excede el límite BSON | Subdividir en documentos más pequeños o usar GridFS para bloques |
+| Consultas lentas en colecciones grandes | Sin índices en campos filtrados | `db.collection.createIndex({ campo: 1 })`; revisar con `explain()` |
+| Redis lag / eviction | Memoria limitada con LRU evicting | Configurar `maxmemory-policy` (p.ej. `noeviction`) o userextra RAM |
 
 ---
 

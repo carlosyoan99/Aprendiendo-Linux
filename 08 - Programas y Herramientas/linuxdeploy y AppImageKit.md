@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -527,7 +527,16 @@ CMD ["/bin/bash"]
 
 **Recomendación**: usa **linuxdeploy** para el 90% de los casos (sobre todo si tienes Qt, GTK o Python). Usa **appimagetool** directamente solo si necesitas control total sobre la compresión o firma GPG.
 
----
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `AppImageRun ... not executable` | El AppImage generado no tiene bit +x | `chmod +x AppName.AppImage` antes de ejecutar |
+| `can't open shared object file` al arrancar | Falta alguna librería del toolkit en el AppDir | Añadir el paquete con `--include`/`-d` de linuxdeploy (p.ej. las .so de Qt/GTK) |
+| FUSE no disponible (AppImage clásico) | FUSE desactivado (p.ej. en contenedores/chroot) | Extraer: `./App.AppImage --appimage-extract`; o usar `--appimage-extract-and-run` |
+| `Wrong architecture`/se rompe en otra distro | Librerías ligadas a glibc de otra versión | Compilar con `--appimage-extract` y tratar de incluir glibc portátil o usar el modo `static` del toolkit |
+| Icono/desktop no encontrado | Falta `.desktop` e icono en `usr/share/` | Crear `AppName.desktop` + iconos en sus rutas estándar y re-ejecutar linuxdeploy |
+| Firma deshabilitada / no firma | GPG no configurado | Montar certificado con `--sign` y `GNUPGHOME`; o firmar después manualmente |
 
 ## Ver también
 
