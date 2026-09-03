@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-09-02
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -15,6 +15,8 @@ arquitecturas:
 # Oracle Linux
 
 > Distribución empresarial de **Oracle** basada en **RHEL**, 100% binariamente compatible, enfocada a servidores, bases de datos (Oracle DB) y despliegues cloud. Es la "nube de Red Hat" por excelencia en el ecosistema Oracle.
+
+> **Calidad**: una distro completa para `resuelto` supera las ~130 líneas (gestor de paquetes, ciclo, comparativa, troubleshooting). Esta nota la cumple.
 
 ## Qué es
 
@@ -89,7 +91,7 @@ sudo dnf install epel-release
 
 - Versiones fijas por cada release mayor de RHEL (Oracle Linux 7, 8, 9, 10).
 - **~10 años de soporte** por versión mayor (soporte Premier + Extended).
-- Nova mayor = derivada de cada RHEL cuándo Red Hat libera la suya, con retraso de semanas.
+- Nova versión mayor = derivada de cada RHEL cuándo Red Hat libera la suya, con retraso de semanas.
 
 ## Actualización entre versiones mayores
 

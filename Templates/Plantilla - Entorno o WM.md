@@ -20,6 +20,16 @@ _Descripción general: tipo (DE, WM, compositor Wayland), filosofía, público o
 
 -
 
+## Características clave
+
+| Aspecto | Detalle |
+|---|---|
+| **Tipo** | (tiling / flotante / compositor) |
+| **Motor** | X11 / Wayland / ambos |
+| **Configuración** | archivo principal |
+| **Dependencias** | |
+| **RAM en idle** | |
+
 ## Requisitos del sistema
 
 | Componente | Mínimo | Recomendado |
@@ -107,4 +117,4 @@ _Temas, barras, lanzadores, widgets, compositores recomendados, fondos de pantal
 - [[Otro WM o DE]] — comparativa
 - [[Wayland vs X11]] — servidor gráfico subyacente
 
-#DE-WM
+#entorno-escritorio

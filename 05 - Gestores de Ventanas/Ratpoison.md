@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-09-02
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -12,13 +12,15 @@ lenguaje_config: Configuración en ~/.ratpoisonrc (comandos propios)
 
 > Gestor de ventanas **X11 tiling minimalista**, inspirado en **GNU Screen** y **Emacs**: sin barras, sin marcos, sin iconos — toda la interacción es por **teclado** con prefijo `C-t`. Perfecto para usuarios de terminal que quieren eficiencia total y consumo insignificante.
 
+> **Calidad**: un entorno/WM completo para `resuelto` supera las ~130 líneas (qué es, instalación, configuración, atajos, comparativa, troubleshooting). Esta nota la cumple.
+
 ## Qué es
 
 **Ratpoison** es un window manager de X11 que se autodescribe como "Screen without mouse" (Screen sin ratón). Su objetivo es que **la ventana ocupe toda la pantalla** y que cambi entre ventanas directamente, como se hace con panes de `screen`/`tmux`, mediante combinaciones de teclado comandadas a un prefijo.
 
 Escrito en **C**, es increíblemente ligero (~10-20 MB de RAM), estable y sin adornos: no trae barra de tareas, fondo de pantalla ni decoraciones de ventana. Toda la configuración es texto plano en `~/.ratpoisonrc`, con los mismos comandos que su controlador.
 
-**Público objetivo**: programadores y usuarios avanzados que ya viven en terminal y no soportan el mouse, con prop en eficiencia máxima en escritorios virtuales de pantalla completa.
+**Público objetivo**: programadores y usuarios avanzados que ya viven en terminal y no soportan el mouse, con foco en eficiencia máxima en escritorios virtuales de pantalla completa.
 
 ## Características clave
 

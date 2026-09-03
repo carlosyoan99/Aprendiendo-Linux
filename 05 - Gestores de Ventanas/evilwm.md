@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-09-02
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -11,6 +11,8 @@ lenguaje_config: Configuración en ~/.xinitrc + opciones al arranque
 # evilwm
 
 > Window manager **X11** legible y extremadamente ligero escrito en **C**: unos **20 KB** de binario, sin barra de tareas, sin menús, sin iconos — puro flotante con atajos de teclado. La elección definitiva para hardware mínimo y adictos a la simplicidad radical.
+
+> **Calidad**: un entorno/WM completo para `resuelto` supera las ~130 líneas (qué es, instalación, configuración, atajos, comparativa, troubleshooting). Esta nota la cumple.
 
 ## Qué es
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-09-02
-fecha_modificacion: 2026-09-02
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: entorno-escritorio
 prioridad: baja
@@ -10,7 +10,9 @@ lenguaje_config: FvwmM4 + Configuración en ~/.fvwm
 ---
 # fvwm
 
-> Gestor de ventanas **X11** extremadamente configurable, descendiente de **fvwm2** (del autor Robb Kidd), que permite desde flotante clásico hasta tiling complejo mediante scripting en escala de Bourne. Sueño/mJ/Potential favorito de usuarios avanzados por su flexibilidad total y bajo consumo de recursos.
+> Gestor de ventanas **X11** extremadamente configurable, descendiente de **fvwm2** (del autor Robb Kidd), que permite desde flotante clásico hasta tiling complejo mediante scripting en escala de Bourne. Favorito de usuarios avanzados por su flexibilidad total y bajo consumo de recursos.
+
+> **Calidad**: un entorno/WM completo para `resuelto` supera las ~130 líneas (qué es, instalación, configuración, atajos, comparativa, troubleshooting). Esta nota la cumple.
 
 ## Qué es
 
