@@ -419,7 +419,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **609** (+ 9 templates) |
+| **Notas totales** | **610** (+ 9 templates) |
 | **Estado resuelto** | 582 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log.md, Log-2026.md, Prompts de Trabajo) |
 | **Estado borrador** | 0 (todos completados) |
@@ -499,6 +499,7 @@ Plan para expandir las notas <100 líneas imprescindibles. Cada lote = una sesi�
 - Sesión 2026-09-02 (v46): **Borradores completados** — 13 notas marcadas `resuelto` (5 WMs/DEs: Unity, IceWM, Window Maker, Xmonad, twm + 8 distros: Artix, BigLinux, Devuan, EasyOS, Guix System, Nobara, Q4OS, SpiralLinux). Hashtags `#DE-WM` corregidos a `#entorno-escritorio`. 0 borradores restantes. Stats → 570 resuelto, 0 borrador.
 - Sesión 2026-09-02 (v47): **5 notas nuevas atajos de teclado** — tmux (24 L, sesiones/paneles/copy-mode), Vim (22 L, modos/movimiento/edición/macros), Hyprland (22 L, ventanas/workspaces/config), LibreOffice (28 L, Writer/Calc/Impress/formato), Chromium (23 L, pestañas/navegación/omnibox). MoC actualizado (589 notas).
 - Sesión 2026-09-02 (v47): **Ampliación de cobertura** — 4 notas nuevas (estado borrador): distro Oracle Linux (RHEL de Oracle, Ksplice/UEK) en 11; WM fvwm, Ratpoison, evilwm en 05. MoC actualizado. Corrección de líneas JYJ rotas en las notas WM (config fvwm/ratpoison). Stats → 589 notas, 4 borradores.
+- Sesión 2026-09-03 (v60): **journald nueva + dmidecode expandida** — [[journald]] (08, logs systemd: journalctl básico/filtros/tiempo/JSON/kernel, persistencia /var/log/journal, FSS firmado, vacuum, troubleshooting, comparativa con rsyslog/dmesg/auditd). [[dmidecode]] expandida (88→145: tabla DMI types 0-41, extracción con -s, detección de VM, comparativa lshw/inxi/lspci/smartctl). MoC actualizado. Stats → 610 notas.
 - Sesión 2026-09-03 (v59): **Comparativa añadida a 8 notas 08** — jq (vs yq/fx/gron/jql/jello), QEMU (vs VirtualBox/VMware/UTM), libvirt (vs Incus/VirtualBox/Podman), Genkernel (vs dracut/mkinitcpio/update-initramfs/dist-kernel), node_exporter (vs Telegraf/collectd/Netdata/sysstat), Prometheus (vs InfluxDB/VictoriaMetrics/Netdata/Zabbix/Nagios), Video4Linux (vs libcamera/PipeWire), Multimedia (rol: GStreamer/VLC/MPV/HandBrake/FFmpeg/Kodi). Solo quedan 3 notas índice (Diagnóstico hardware, Navegadores, Utilidades) que ya tienen tablas comparativas internas. Stats sin cambio (609 notas).
 - Sesión 2026-09-03 (v58): **Comparativa contenedores expandida** (00, ~400→520 líneas) — añadidas: tabla de seguridad (superficie de ataque, rootless, userns, firmado de imágenes), migraciones prácticas (Docker→Podman con skopeo/socket Docker, LXD→Incus export/import, systemd-nspawn→Incus, rsync genérico), comparativa de redes (bridge/host/macvlan/none/DNS interno/port mapping). Stats sin cambio (609 notas).
 - Sesión 2026-09-03 (v57): **WireGuard VPN expandida** (304→518 líneas) — añadidas: QR para móviles (qrencode), PSK (PresharedKey), recarga en caliente (wg syncconf), systemd-networkd, integración Docker, firewall completo (ufw route/nftables/firewalld), ajuste MTU (PPPoE/túneles), protección fugas DNS (kill switch estricto). Stats sin cambio (609 notas).

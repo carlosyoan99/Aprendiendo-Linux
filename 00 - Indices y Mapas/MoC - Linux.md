@@ -128,7 +128,7 @@ categoria: indice
 - [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — índice + comparativa de gestores · [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]]
 - [[just]] — ejecutor de tareas tipo make · [[mise]] — gestor de versiones universal · [[hyperfine]] — benchmark CLI con análisis estadístico · [[eza]] — ls moderno en Rust (colores, iconos, árbol) · [[zoxide]] — cd inteligente que aprende frecuencia · [[starship]] — prompt cross-platform en Rust · [[sd]] — sed moderno y simple · [[hexyl]] — visor hexadecimal con colores · [[rclone]] — sincronización cloud (S3, Drive, 70+ backends) · [[yt-dlp]] — descargador de vídeos multi-sitio
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
-- [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]]
+- [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]] · [[journald]] — logs de systemd: journalctl, filtros, persistencia, auditoría
 - [[atuin]] — historial de shell con sincronización
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
