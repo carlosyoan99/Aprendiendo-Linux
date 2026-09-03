@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-08-30
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -142,6 +142,16 @@ style = "bold dimmed white"
 | **Config** | TOML | JSON/JSONC | Zsh | Zsh |
 | **Multi-shell** | ✅ 9 shells | ✅ | ❌ | ❌ |
 | **Cross-platform** | ✅ | ✅ | ❌ | ❌ |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Prompt no cambia | Starship no inicializado | Añadir `eval "$(starship init bash)"` a `.bashrc`/config de shell |
+| Íconos cuadrados | Falta Nerd Font | Instalar/asignar Nerd Font en la terminal |
+| Rama Git no se muestra | Repo sin git actualizado | Verificar en repo git y módulo `git_branch` activo |
+| Prompt lento | Ejecución de módulos | Desactivar en `toml` módulos costosos o cadencia mayor |
+| Config desde git a nivel | Repo de config | Revisar perfil y entorno/shell global |
 
 ## Ver también
 

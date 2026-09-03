@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -155,6 +155,15 @@ micro - < archivo.txt
 | Split/pestañas | ❌ | ✅ (pestañas) | ✅ |
 | Multi-cursor | ❌ | ❌ | ✅ (Neovim con plugins) |
 | Ideal para | Edits rápidos | Edición diaria, migración desde GUI | Programación avanzada |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Atajos tipo nano no funcionan | Config por defecto | Ver `bindings.json` y tocados en `~/.config/micro` |
+| Terminal chica roza UX | Tamaño | Usar el editor en ventana/tmux más grande |
+| No resalta sintaxis | Falta plugin/lenguaje | Instalar `micro -plugin install` y paquete de lenguaje |
+| Prompt no preserva tintes | Terrenal/TERM | Usar `micro` en terminal 256color y config `colorscheme` |
 
 ## Ver también
 

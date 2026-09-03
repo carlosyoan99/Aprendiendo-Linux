@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -151,6 +151,15 @@ cd "$path"
 | **Tamaño** | ~10 MB | ~5 MB | ~50 MB + Python | ~100 KB | ~8 MB |
 
 > yazi es el más rápido y moderno. Si usas ranger y es lento, cambia a yazi.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Vista previa de imágenes vacía | Falta `chafa`/`ueberzug` | Instalar el visor de imágenes requerido para TUI |
+| Sin previa de PDF | Dependencia `pdftotext` | Instalar poppler/xpdf |
+| No abre en directorio | Terminal en cwd distinto | Ejecutar `yazi` desde el directorio o configurar "cd on quit" |
+| Atajos custom no aplican | YAML mal | Validar `yazi.toml` y revisión de dependencias |
 
 ## Ver también
 

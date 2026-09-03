@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -157,6 +157,15 @@ tmux new-session -d 'cava' \; split-window -h 'ncmpcpp'
 | **glava** | Visualizador con efectos OpenGL (más vistoso, más pesado) |
 | **cli-visualizer** | Similar a cava, con más modos de visualización |
 | **fizsh** | Shell prompt con visualización de audio |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No hay barras (silencio) | No detecta sink de audio | Habilitar fuente/PulseAudio; elegir entrada correcta en config de `cava` |
+| Ruido/parpadeo | Sincronización | Configurar `sensitivity` y `framerate` en `~/.config/cava/config` |
+| Con PipeWire no ve | Backend obsoleto | Usar `cava` con sink de monitor de PipeWire/Pulse |
+| Visualización distorsionada | Terminal lenta | Bajar `framerate`/`bars` |
 
 ## Ver también
 

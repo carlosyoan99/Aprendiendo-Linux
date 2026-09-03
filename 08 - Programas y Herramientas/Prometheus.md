@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -138,6 +138,29 @@ groups:
 rule_files:
   - "/etc/prometheus/rules.yml"
 ```
+
+## Comparativa con alternativas
+
+| Herramienta | Tipo | Modelo de datos | Escalado | Cuándo elegirla |
+|---|---|---|---|---|
+| **Prometheus** | Time-series DB + scrape | Métricas pull (exporters) | Sharding manual, 15 días retención por defecto | Estándar CNCF, Kubernetes nativo, alertas robustas |
+| **Grafana + InfluxDB** | TSDB + dashboard | Push (líneas Influx) | Simple | Ya usas InfluxDB, series con tags flexibles, escritura push |
+| **VictoriaMetrics** | TSDB compatible Prometheus | Pull + push, PromQL | ✅ Cluster nativo, menos RAM/CPU | Prometheus a gran escala sin gestión manual |
+| **Netdata** | Monitoreo en tiempo real | Push propio | Una máquina / dashboards instantáneos | Quieres visibilidad inmediata sin configurar scrape |
+| **Zabbix** | Monitoreo clásico | Agent + polling | ✅ Empresarial | Infraestructura clásica (SNMP, agentes, sin contenedores) |
+| **Nagios/Icinga** | Monitoreo clásico | Checks + plugins | ✅ Empresarial | Monitorización tradicional de servicios |
+
+**Recomendación**: para Kubernetes y stacks modernos, Prometheus es el estándar de facto. Para homelab simple con dashboards ya hechos, Netdata. Para infraestructura empresarial clásica con SNMP/agentes, Zabbix. Si Prometheus te queda corto en volumen, migra el backend a VictoriaMetrics sin tocar PromQL.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Targets rojo (DOWN) | Endpoint no responde o scrape mal | Verificar `targets` en `/targets` y `scrape_interval`; revisar firewall/puerto |
+| Alertas no disparan | Rules de alerta mal validadas | Usar `promtool check rules rules.yml` antes de cargar |
+| TSDB crece infinito | Retention largo | Configurar `retention.time`/`size` (`--storage.tsdb.retention.time=30d`) |
+| Disk lleno | Block de TSDB grandes | Reducir retention o usar WAL/CGI |
+| Integración de exporters no aparece | Config scrape | Añadir el job (ej. `node_exporter.prometheus.yml`) y reload |
 
 ## Ver también
 

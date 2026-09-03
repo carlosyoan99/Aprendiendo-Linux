@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -136,6 +136,16 @@ http https://api.github.com/users/octocat | jq '{login, name, location}'
 # Contar elementos
 http https://api.github.com/users/octocat/repos | jq length
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `http` no resuelve | Alias/Shell | Usar la ruta completa o ajustar alias para que no colisione |
+| SSL certificate error | Certificado CA | Usar `--verify=no` solo en dev o agregar CA en `--verify=<ruta>` |
+| Output enorme en terminal | Colección no filtrada | Filtrar con `--pretty` y ver piping `.` (documento) o `[0]` para arrays |
+| JSON post con acentos se rompe | Encoding | Asegurar UTF-8 y `Content-Type: application/json; charset=utf-8` |
+| Tiempo de espera | Ruta/red | Usar `--timeout <seg>` y revisar conexión |
 
 ## Ver también
 

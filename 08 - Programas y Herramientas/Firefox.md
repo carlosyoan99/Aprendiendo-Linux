@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -130,6 +130,16 @@ firefox
 # Para hacerlo permanente, añadir a ~/.profile o /etc/environment
 # echo \"export MOZ_ENABLE_WAYLAND=1\" >> ~/.profile
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| CPU alto / ventanas se pegan | Falta aceleración por hardware | Activar `media.ffmpeg.vaapi.enabled` y `gfx.webrender.all` para HW accel |
+| Reproducción de video negra | Codecs propietarios | Instalar codecs (H.264/HEVC) del distro — ej. `libavcodec-extra` |
+| Firefox no abre tras crash | Perfil corrupto | Arrancar con `firefox --safe-mode` o crear perfil nuevo |
+| Sync no funciona | Firma/servidor | Revisar cuenta y servidores de sync |
+| Wayland con cursor gris | Backend incorrecto | Lanzar con `MOZ_ENABLE_WAYLAND=1` o `MOZ_USE_XINPUT2=1` |
 
 ## Ver también
 

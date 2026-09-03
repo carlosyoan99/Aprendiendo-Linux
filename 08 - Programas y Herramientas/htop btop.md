@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -159,6 +159,15 @@ nvtop                                    # lanzar monitor de GPU
 | **nmon** | Clásico de IBM, muy usado en servidores. Guarda logs para análisis histórico |
 | **bashtop** (antiguo btop) | Predecesor de btop, escrito en Bash. Ya no se mantiene |
 | **atop** | Snapshots históricos, análisis retroactivo. Ideal para servidores |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| htop no muestra los núcleos/I/O | Permisos o config | Revisar vista de CPU y perms de `/proc`; medir I/O con flags adecuados |
+| btop sin gráficas de GPU | Falta driver/lib | Instalar dependencias (rocm-smi, nvidia-smi) para métricas de GPU |
+| htop muerto con cgroups | Vista parcial | Ver niño/árbol con F5, o permisos para `/proc` |
+| CPU% de procesos erróneo | Recolector | Ajustar `update_delay`/prioridad o preferir `btop` con verbose |
 
 ## Ver también
 
