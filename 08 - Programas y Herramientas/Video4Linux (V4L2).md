@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -188,6 +188,18 @@ sudo usermod -aG video $USER
 | **v4l2loopback** | Cámaras virtuales para OBS+Meet | `sudo apt install v4l2loopback-dkms` |
 
 ---
+
+## Comparativa con alternativas
+
+| API | Ámbito | Estado | Cuándo elegirla |
+|---|---|---|---|
+| **V4L2** | Video/captura en Linux (webcams, TV, capture cards) | ✅ Estándar activo | Todo lo que es captura de video en Linux |
+| **PipeWire** | Audio + video (desktop, Wayland screen sharing) | ✅ Estándar moderno | Captura de pantalla/escritorio, apps modernas, streaming |
+| **GStreamer** | Framework multimedia (no API de captura) | ✅ Activo | Procesar video capturado (filtros, transcodificar) |
+| **libcamera** | API de cámaras modernas (ISP, MIPI CSI, móvil) | ✅ En crecimiento | Cámaras integradas de laptops/phone-grade, soporte avanzado |
+| **Media Foundation (Windows)** | Captura en Windows | — | Portar apps a Windows (no aplica en Linux) |
+
+**Recomendación**: V4L2 sigue siendo la API base para webcams USB y capture cards — no va a desaparecer. Para nuevas integraciones con cámaras integradas (especialmente en laptops con ISP), revisa primero si hay soporte **libcamera**. PipeWire complementa a V4L2 para el escritorio (no lo reemplaza en captura de hardware).
 
 ## Ver también
 

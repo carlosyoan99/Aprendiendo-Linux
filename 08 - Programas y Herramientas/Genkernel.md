@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -104,6 +104,19 @@ ls /boot/kernel-* /boot/initramfs-*
 | Kernel compilado pero no arranca | Falta un módulo esencial en initramfs | Usar `--lvm --luks --mdadm --firmware` según necesidades |
 | Espacio en /boot insuficiente | Muchos kernels acumulados | Limpiar kernels viejos: `sudo emerge --depclean` |
 | Compilación muy lenta | CPUs limitados | Usar `MAKEOPTS="-j$(nproc)"` en `/etc/portage/make.conf` |
+
+## Comparativa con alternativas
+
+| Herramienta | Distro | Enfoque | Ventaja | Cuándo elegirla |
+|---|---|---|---|---|
+| **genkernel** | Gentoo | Compila kernel + initramfs con autodetección | Fácil, casi todo automático, initramfs completo (LVM/LUKS/mdadm) | Primeras compilaciones, sistemas con RAID/LUKS, no quieres configurar a mano |
+| **Kernel manual (`make menuconfig`)** | Gentoo | Configuración explícita del kernel | Máxima optimización, kernel mínimo, sin initramfs (o initramfs genkernel) | Usuarios avanzados que saben qué módulos necesitan |
+| **dist-kernel / gentoo-kernel-bin** | Gentoo | Binarios precompilados de la distro | Cero compilación, actualizaciones rápidas | Quieres mantenimiento mínimo, no necesitas personalizar |
+| **dracut** | Fedora/RHEL | Genera initramfs modular | Initramfs a medida, fácil de debuggear | Generar initramfs manualmente en distros RPM |
+| **mkinitcpio** | Arch | Genera initramfs con hooks | Simple, rápido, hooks declarativos | Generar initramfs manualmente en Arch |
+| **update-initramfs** | Debian/Ubuntu | Wrapper sobre mkinitramfs | Incluido, cero configuración | Regenerar initramfs tras cambios de módulos |
+
+**Recomendación**: en Gentoo, empieza con genkernel para tener un sistema que arranca seguro, y migra a kernel manual solo cuando entiendas qué módulos necesita tu hardware. Para otras distros, genkernel no aplica — usa la herramienta nativa (dracut/mkinitcpio/update-initramfs).
 
 ## Notas personales
 

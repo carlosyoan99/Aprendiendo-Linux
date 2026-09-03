@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -161,6 +161,72 @@ ip addr show wg0
 ip link show wg0
 ```
 
+### Recargar configuración en caliente (sin cortar el túnel)
+
+```bash
+# Al añadir un peer o cambiar AllowedIPs, aplicar sin reiniciar la interfaz:
+sudo wg syncconf wg0 <(wg-quick strip wg0)
+
+# Explicación:
+# - wg-quick strip wg0 → extrae la config actual en formato wg
+# - wg syncconf wg0 ... → aplica diferencias en caliente
+# No se pierde la conexión de los peers activos (no hay re-handshake)
+
+# Alternativa con systemd:
+sudo systemctl reload wg-quick@wg0
+```
+
+### QR para clientes móviles (Android/iOS)
+
+```bash
+# Generar un archivo de config de cliente y convertirlo en QR:
+# 1. Generar claves del móvil
+wg genkey | tee mobile-privatekey | wg pubkey > mobile-publickey
+
+# 2. Crear config del cliente (similar a la del cliente de escritorio)
+cat > mobile.conf << 'EOF'
+[Interface]
+Address = 10.0.0.5/32
+PrivateKey = $(cat mobile-privatekey)
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = <clave-pública-del-servidor>
+Endpoint = vpn.mi-servidor.com:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+EOF
+
+# 3. Instalar qrencode y generar el QR
+sudo apt install qrencode                 # o pacman -S qrencode
+qrencode -t ansiutf8 < mobile.conf        # QR en terminal
+qrencode -t PNG -o mobile.png < mobile.conf  # QR como imagen
+
+# 4. Escanear con la app oficial WireGuard (Android/iOS)
+```
+
+### Añadir PSK (PresharedKey) — capa extra de seguridad
+
+```bash
+# PSK añade cifrado simétrico adicional al handshake
+# Es útil entre pares: aunque se comprometa una clave privada,
+# el atacante necesita también el PSK para ese peer concreto.
+
+# Generar PSK (el MISMO valor en ambos lados):
+wg genpsk > psk
+
+# Servidor:
+[Peer]
+PublicKey = <clave-pública-del-cliente>
+PresharedKey = $(cat psk)                 # ← añadir
+AllowedIPs = 10.0.0.2/32
+
+# Cliente:
+[Peer]
+PublicKey = <clave-pública-del-servidor>
+PresharedKey = $(cat psk)                 # ← mismo valor
+Endpoint = vpn.mi-servidor.com:51820
+```
+
 ### Output de `wg show`
 
 ```
@@ -249,6 +315,66 @@ sudo wg-quick up mullvad-us
 curl ifconfig.me                          # debería mostrar la IP del proveedor
 ```
 
+### WireGuard con systemd-networkd (sin wg-quick)
+
+```bash
+# systemd-networkd puede gestionar WireGuard nativamente (systemd 244+)
+# Útil si ya usas systemd-networkd para el resto de la red
+
+# /etc/systemd/network/50-wg0.netdev
+[NetDev]
+Name = wg0
+Kind = wireguard
+Description = WireGuard tunnel
+
+[WireGuard]
+ListenPort = 51820
+PrivateKey = <clave-privada-del-servidor>
+
+[WireGuardPeer]
+PublicKey = <clave-pública-del-cliente>
+AllowedIPs = 10.0.0.2/32
+# PresharedKey = <psk>                    # si usas PSK
+# Endpoint = 203.0.113.5:51820            # en el lado del cliente
+# PersistentKeepalive = 25
+
+# /etc/systemd/network/50-wg0.network
+[Match]
+Name = wg0
+
+[Network]
+Address = 10.0.0.1/24
+
+# Activar
+sudo systemctl enable --now systemd-networkd
+# Verificar
+networkctl status wg0
+```
+
+### WireGuard y Docker (acceso a containers)
+
+```bash
+# Los containers usan la red bridge docker0 (172.17.0.0/16)
+# Para que un peer VPN alcance los containers:
+
+# 1. Añadir la red de Docker a AllowedIPs en el peer
+[Peer]
+PublicKey = <clave-pública-del-cliente>
+AllowedIPs = 10.0.0.2/32, 172.17.0.0/16   # ← red de Docker
+
+# 2. Permitir forwarding en el firewall
+sudo sysctl -w net.ipv4.ip_forward=1
+
+# 3. Añadir reglas de forwarding (PostUp del servidor):
+PostUp = iptables -A FORWARD -i wg0 -o docker0 -j ACCEPT
+PostUp = iptables -A FORWARD -i docker0 -o wg0 -j ACCEPT
+# Con nftables:
+# nft add rule inet filter forward iifname "wg0" oifname "docker0" accept
+
+# 4. Si el container publica puertos en localhost, no hace falta nada más
+# Para acceder al container por su IP docker0: 172.17.0.2:puerto
+```
+
 ---
 
 ## Q&A / Troubleshooting
@@ -272,6 +398,94 @@ sudo sysctl -w net.ipv4.ip_forward=1
 # Permanente
 echo "net.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/99-ipforward.conf
 # o editar /etc/sysctl.conf
+```
+
+### Firewall completo para servidor WireGuard (ufw / nftables)
+
+```bash
+# ufw (Ubuntu/Debian):
+sudo ufw allow 51820/udp                  # puerto WireGuard
+sudo ufw allow in on wg0                  # permitir tráfico entrante del túnel
+sudo ufw route allow in on wg0            # permitir forwarding por el túnel (ufw >= 0.36)
+sudo ufw enable
+
+# Si ufw route no está disponible, las reglas de PostUp lo cubren:
+# PostUp = ufw route allow in on wg0 out on eth0
+# PostDown = ufw route delete allow in on wg0 out on eth0
+
+# nftables (servidor):
+sudo tee /etc/nftables.conf << 'EOF'
+#!/usr/sbin/nft -f
+flush ruleset
+
+table inet filter {
+    chain input {
+        type filter hook input priority filter; policy drop;
+        ct state established,related accept
+        iifname "lo" accept
+        iifname "wg0" accept
+        udp dport 51820 accept
+        # TCP/UDP de tus servicios (SSH, web...) aquí
+        tcp dport 22 accept
+    }
+    chain forward {
+        type filter hook forward priority filter; policy drop;
+        iifname "wg0" accept
+        oifname "wg0" ct state related,established accept
+    }
+}
+
+table ip nat {
+    chain postrouting {
+        type nat hook postrouting priority srcnat;
+        oifname "eth0" masquerade
+    }
+}
+EOF
+sudo systemctl restart nftables
+
+# firewalld (Fedora/RHEL):
+sudo firewall-cmd --add-port=51820/udp --permanent
+sudo firewall-cmd --add-masquerade --permanent
+sudo firewall-cmd --reload
+```
+
+### MTU — ajuste cuando hay pérdida de paquetes o lentitud
+
+```bash
+# Síntoma: conexión estable pero ciertas webs no cargan / paquetes grandes se pierden
+# Causa: MTU por defecto de wg-quick (1420) supera el MTU del enlace (PPPoE = 1492, túneles = menor)
+
+# Probar MTU más bajo (1400 es seguro para la mayoría):
+[Interface]
+Address = 10.0.0.2/32
+MTU = 1400                                # ← añadir a la interfaz
+PrivateKey = <clave-privada>
+
+# O detectar el MTU correcto desde el cliente:
+ping -M do -s 1450 10.0.0.1               # sin fragmentar; bajar hasta que responda
+# MTU real = tamaño_que_funciona + 28 bytes de overhead IP+ICMP
+
+# wg-quick aplica MTU automáticamente si la interfaz externa tiene MTU conocido;
+# el valor 1420 es el estándar para túneles sobre IPv4/IPv6.
+```
+
+### Protección contra fugas DNS (kill switch + DNS)
+
+```bash
+# 1. Forzar DNS dentro del túnel (ya visto en la config del cliente):
+DNS = 1.1.1.1                              # o el DNS del proveedor
+
+# 2. Bloquear tráfico fuera del túnel cuando está activo (kill switch estricto):
+# Con nftables en el cliente:
+nft add rule inet filter output ct state established,related accept
+nft add rule inet filter output iifname != "wg0" udp dport 53 drop
+
+# 3. Verificar que no hay fugas:
+# - Resolver un dominio y ver por qué interfaz sale:
+ip route get 1.1.1.1                       # debe pasar por wg0
+# - curl un servicio de detección de DNS:
+curl https://ipleak.net                    # comprobar DNS e IP mostrados
 ```
 
 ---

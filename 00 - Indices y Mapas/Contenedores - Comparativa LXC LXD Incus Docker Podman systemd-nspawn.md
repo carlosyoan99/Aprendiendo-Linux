@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: indice
 prioridad: alta
@@ -265,6 +265,127 @@ systemctl --user start web
 | **Ideal para** | Seguridad, entornos rootless, servers con systemd, Kubernetes locales |
 
 **⬆️ Ventaja sobre Docker**: Sin daemon = menos superficie de ataque, rootless = sin permisos de root, quadlets = integración systemd.
+
+---
+
+## Comparativa de seguridad
+
+| Aspecto | Docker | Podman | LXC/Incus | systemd-nspawn |
+|---|---|---|---|---|
+| **Daemon con root** | ❌ Sí (dockerd, riesgo histórico) | ✅ No | ✅ Daemon rootless parcial | ✅ No |
+| **Rootless por defecto** | ❌ No (experimental) | ✅ Sí (nativo) | ⚠️ Parcial | ✅ Sí |
+| **Aislamiento por defecto** | Namespaces + seccomp + AppArmor/SELinux | Igual que Docker | Namespaces + AppArmor/SELinux | Namespaces + systemd |
+| **Escalar a root desde container** | ⚠️ Posible (daemon) | ❌ No (rootless) | ⚠️ Posible si rootless no activo | ⚠️ Con `--boot` y cap |
+| **Superficie de ataque** | Media (daemon + socket) | Baja (sin daemon) | Media (daemon incusd) | Baja (sin daemon) |
+| **Firmado de imágenes** | ⚠️ Content trust opcional | ✅ Cosign/sigstore nativo | ⚠️ Firma del repositorio | — |
+| **SELinux/AppArmor** | ✅ Soporta | ✅ Soporta (stronger defaults) | ✅ Soporta | ✅ Soporta |
+| **UidMapping (userns)** | ⚠️ Limitado | ✅ Nativo | ✅ Nativo | ✅ Nativo |
+| **Ideal para alta seguridad** | — | ✅ **Podman (rootless)** | ✅ **Incus/LXC (userns)** | ✅ systemd-nspawn (light) |
+
+**Recomendación**: para entornos de alta seguridad, **Podman rootless** o **Incus con userns** son las opciones más robustas. Docker legacy con daemon root es la superficie de ataque más grande.
+
+---
+
+## Migraciones prácticas
+
+### Docker → Podman (casi transparente)
+
+```bash
+# 1. Alias directo
+alias docker=podman
+
+# 2. Migrar imágenes existentes (docker archive → podman)
+docker save nginx:alpine | podman load
+
+# 3. Migrar containers en marcha (docker → podman) con skopeo:
+skopeo copy docker-daemon:nginx:alpine containers-storage:nginx:alpine
+
+# 4. Migrar volúmenes (docker volume → podman volume):
+docker volume create mi-vol
+podman volume create mi-vol
+# Copiar datos manualmente con un container intermedio:
+podman run --rm -v mi-vol:/dest -v $(pwd)/tmp:/src alpine cp -r /src/. /dest/
+
+# 5. Migrar redes
+docker network create mi-red
+podman network create mi-red
+
+# 6. Migrar docker-compose:
+# Podman soporta docker-compose con: podman-compose (Python) o
+# usando el socket Docker:
+#   systemctl --user enable --now podman.socket
+#   export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+#   docker compose up -d  # funciona sin cambios
+
+# 7. Migrar Dockerfiles: sin cambios (build OCI compatible)
+```
+
+### LXD → Incus (fork, casi idéntico)
+
+```bash
+# 1. Instalar incus
+sudo apt install incus
+
+# 2. Importar configuración de LXD (si existe):
+incus admin init
+
+# 3. Migrar containers:
+# Opción A — copiar datos:
+lxc stop mi-servidor
+sudo rsync -av /var/lib/lxd/containers/mi-servidor/ /var/lib/incus/containers/mi-servidor/
+incus start mi-servidor
+
+# Opción B — exportar/importar:
+lxc export mi-servidor backup.tar.gz
+incus import backup.tar.gz mi-servidor
+
+# 4. Migrar snapshots:
+lxc snapshot mi-servidor snap1
+lxc export mi-servidor --snapshots backup-con-snaps.tar.gz
+incus import backup-con-snaps.tar.gz mi-servidor
+
+# 5. Verificar: los comandos son 1:1 (lxc → incus)
+incus list
+```
+
+### systemd-nspawn → Incus (de directorio a contenedor gestionado)
+
+```bash
+# Exportar árbol de systemd-nspawn:
+sudo tar -czf mi-contenedor.tar.gz -C /var/lib/machines/ mi-contenedor
+
+# Importar en Incus como imagen:
+incus image import mi-contenedor.tar.gz --alias mi-contenedor
+incus launch mi-contenedor mi-nuevo
+```
+
+### Migración de datos entre cualquiera de ellos
+
+```bash
+# Estrategia genérica: montar el volumen origen y copiar al destino
+# 1. Conectar ambos sistemas de almacenamiento (nfs, sshfs, bind mount)
+# 2. Copiar con rsync preservando permisos y owners:
+rsync -avz --numeric-ids origen/ destino/
+# 3. Verificar integridad:
+rsync -avzn --numeric-ids origen/ destino/   # dry-run: 0 diferencias
+```
+
+---
+
+## Comparativa de redes
+
+| Modo de red | Docker | Podman | LXC/Incus | systemd-nspawn |
+|---|---|---|---|---|
+| **bridge** | ✅ docker0 | ✅ podman0 (default) | ✅ incusbr0 | ⚠️ Con `--network-bridge` |
+| **host** | ✅ `--network=host` | ✅ `--network=host` | ✅ `network: host` | ✅ `--network=host` |
+| **macvlan** | ✅ | ✅ | ✅ | ⚠️ Manual |
+| **none/aislado** | ✅ | ✅ | ✅ | ✅ por defecto |
+| **DNS interno** | ✅ (docker network) | ✅ (podman network) | ✅ (dnsmasq incus) | ⚠️ Manual |
+| **Port mapping** | `-p 80:80` | `-p 80:80` | `devicenat` o proxy | `--port` |
+| **Load balancing entre peers** | ❌ | ❌ | ✅ (cluster) | ❌ |
+| **IPv6** | ✅ | ✅ | ✅ | ✅ |
+
+**Nota**: Docker y Podman comparten la misma filosofía de red (bridge + port mapping). Incus destaca por su DNS interno y networking gestionado por daemon. systemd-nspawn es el más manual (la red por defecto es aislada).
 
 ---
 

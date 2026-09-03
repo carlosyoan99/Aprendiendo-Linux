@@ -112,6 +112,22 @@ Los drivers VirtIO ofrecen rendimiento casi nativo a los guests:
 | Snapshot/corrupción del disco | Interrupción durante escritura | Usar `qemu-img check`/`rebase` y snapshots en caliente con cuidado |
 | Red de la VM no sale | Falta `-netdev`/bridge | Configurar `-netdev user` (SLIRP) o bridge con TAP |
 
+## Comparativa con alternativas
+
+| Aspecto | QEMU | VirtualBox | VMware Workstation | UTM |
+|---|---|---|---|---|
+| **Tipo** | Emulador + hipervisor (con KVM) | Hipervisor Type 2 | Hipervisor Type 2 | Frontend QEMU (macOS/iOS) |
+| **Rendimiento con KVM** | Máximo (nativo) | Medio | Alto | Alto (usa QEMU) |
+| **Emulación CPU sin KVM** | ✅ Completa (ARM, MIPS, RISC-V...) | ❌ Solo x86 | ❌ Solo x86 | ✅ (heredado de QEMU) |
+| **CLI** | ✅ qemu-system-x86_64 | ⚠️ VBoxManage (limitado) | ⚠️ vmrun (comercial) | ❌ GUI |
+| **GPU passthrough (VFIO)** | ✅ Sí | ❌ No | ⚠️ Parcial | ⚠️ Parcial (macOS) |
+| **Scripting/automatización** | ✅ Excelente | ⚠️ Limitado | ⚠️ Limitado | ❌ |
+| **Snapshots** | ✅ qemu-img | ✅ | ✅ | ✅ |
+| **Licencia** | GPL (libre) | GPL/PUEL | Comercial | GPL |
+| **Ideal para** | Servidores, devs, embedded, passthrough | Desktop casual | Desktop enterprise | Usuarios Apple |
+
+**Recomendación**: en Linux con KVM, QEMU es imbatible en rendimiento y control. VirtualBox solo tiene sentido si quieres la GUI más amigable o soporte de guest aislado sin KVM. Para emular arquitecturas que no sean x86 (ARM, RISC-V), QEMU es la única opción real.
+
 ## Ver también
 
 - [[KVM]] — aceleración por hardware

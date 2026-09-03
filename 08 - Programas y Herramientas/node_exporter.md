@@ -90,6 +90,18 @@ node_exporter --help | grep collector
 | Duplicación de métricas de disco | `textfile` y colector a la vez | Limpiar `/var/lib/node_exporter/textfile` solapado |
 | Timeout en scrape | Demasiados collectors o máquina lenta | Deshabilitar collectors pesados con `--no-collector.xxx` |
 
+## Comparativa con alternativas
+
+| Herramienta | Tipo | Métricas | Formato | Cuándo elegirla |
+|---|---|---|---|---|
+| **node_exporter** | Daemon ligero (Go) | Sistema: CPU, RAM, disco, red, filesystems | Prometheus (text exposition) | Es el estándar del stack Prometheus |
+| **Telegraf** (InfluxData) | Agente con muchos plugins | Sistema + apps (MySQL, Docker, MQTT...) | InfluxDB, Prometheus, Graphite... | Necesitas métricas de apps sin escribir exporters |
+| **collectd** | Daemon clásico (C) | Sistema + plugins | RRD, Graphite, Prometheus (vía plugin) | Sistemas legacy, bajo consumo |
+| **Netdata** | Daemon en tiempo real | Sistema + apps, dashboard propio | Proprietary (con export a Prometheus) | Quieres dashboards listos sin Grafana |
+| **sysstat (sar/iostat)** | Herramientas CLI | Sistema por intervalos | Texto/CSV | Auditoría histórica puntual, sin daemon de red |
+
+**Recomendación**: si ya usas Prometheus, node_exporter es la elección natural. Si quieres un dashboard sin montar Grafana, Netdata es más rápido de desplegar. Telegraf gana cuando necesitas un solo agente para todo (sistema + apps + colas).
+
 ## Ver también
 
 - [[Prometheus]] — servidor que recolecta las métricas

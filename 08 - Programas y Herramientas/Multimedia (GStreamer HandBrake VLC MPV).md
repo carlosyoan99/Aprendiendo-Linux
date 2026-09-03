@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -51,6 +51,20 @@ vainfo
 sudo apt install mesa-va-drivers           # Intel/AMD
 sudo apt install nvidia-vaapi-driver       # NVIDIA
 ```
+
+## Comparativa de herramientas por rol
+
+| Herramienta | Rol | GUI | CLI | Ideal para |
+|---|---|---|---|---|
+| **GStreamer** | Framework multimedia (pipelines) | ❌ | ✅ | Backends de GNOME, desarrollo de apps |
+| **VLC** | Reproductor universal | ✅ | ⚠️ (cvlc) | Reproducir cualquier formato con GUI |
+| **MPV** | Reproductor minimalista | ⚠️ (OSC) | ✅ | Reproducción eficiente, scripting, integración con keybinds |
+| **HandBrake** | Conversor/transcodificador | ✅ | ⚠️ (HandBrakeCLI) | Ripear/convertir video con presets |
+| **FFmpeg** | Swiss-army CLI (códec, filtros, grabación) | ❌ | ✅ | Todo: transcodificar, grabar, stream, extraer audio |
+| **Kodi** | Centro multimedia (TV) | ✅ | ❌ | Salón, librerías grandes, remote |
+| **Rhythmbox/Clementine** | Música (no video) | ✅ | ❌ | Librería de música |
+
+**Recomendación rápida**: ¿Reproducir algo? → MPV (ligero) o VLC (universal). ¿Convertir? → HandBrake. ¿Automatizar/scripting? → FFmpeg. ¿Desarrollar una app con video? → GStreamer.
 
 ## Ver también
 

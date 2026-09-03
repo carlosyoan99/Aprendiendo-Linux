@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -127,6 +127,21 @@ curl -s api | jq -r '.[] | [.name, .status, (.age | tostring)] | @tsv'
 # Pretty-print con indentación personalizada
 jq --indent 4 . file.json
 ```
+
+## Comparativa con alternativas
+
+| Herramienta | Tipo | Ventaja | Cuándo elegirla |
+|---|---|---|---|
+| **jq** | Procesador JSON CLI | Estándar, portátil (C, sin deps), filtros potentes | Uso general, scripts, piping |
+| **yq** | Procesador YAML/JSON/XML/TOML | Misma sintaxis que jq para múltiples formatos | Necesitas YAML (k8s, CI/CD) además de JSON |
+| **fx** | Visor JSON interactivo (TUI) | Navegación interactiva, buscar/expandir nodos | Inspeccionar JSON grandes de forma visual |
+| **gron** | Convertidor JSON → líneas planas | Grep-able: `gron file.json \| grep algo` | Explorar estructuras desconocidas |
+| **jello / jmespath** | Python-based JSON | Lógica Python en vez de sintaxis jq | Ya usas Python y prefieres su sintaxis |
+| **jql** | Procesador JSON Rust | Rápido en archivos enormes, sintaxis SQL-like | JSON de cientos de MB |
+| **sed/awk** | Texto puro | Sin instalación | Solo transformaciones simples, no estructurales |
+| **python -m json.tool** | Validación | Viene con Python | Solo validar/formatear, no consultar |
+
+**Recomendación**: jq es la opción por defecto. Instala **yq** como segunda herramienta si trabajas con YAML. Para explorar JSON interactivamente, **fx**.
 
 ## Enlaces externos
 
