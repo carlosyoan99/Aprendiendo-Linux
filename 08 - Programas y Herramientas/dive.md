@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -121,6 +121,15 @@ COPY . .
 | **Sugerencias de mejora** | ✅ | ❌ | ❌ | ❌ |
 
 > dive es la mejor herramienta para **optimizar** imágenes. Para uso diario (logs, exec, start/stop) usa [[lazydocker]].
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `could not determine Docker client` | Docker daemon no accesible | Comprobar socket y permisos; probar `dive <imagen>` con acceso de usuario al daemon |
+| Análisis con `--image-analyzer` etc | Version de imagen vieja | Actualizar dive para métricas nuevas |
+| Sin layers en imágenes no de API | Build multistage | Usar `dive build -t img .` para ver capas |
+| Permisos con rootless docker | Socket rootless | Configurar `DOCKER_HOST`/contexto adecuado |
 
 ## Ver también
 

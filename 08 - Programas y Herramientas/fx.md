@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -126,6 +126,15 @@ node -e "console.log(JSON.stringify(process.env))" | fx
 | **Ideal para** | Explorar JSON | Procesar JSON | Ver archivos | Paginar |
 
 > `fx` es para **explorar** JSON interactivamente. `jq` es para **procesar** JSON en scripts. Se complementan: `cat data.json | jq '.users' | fx`.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| JSON gigante lento | Render completo | Filtrar antes con `jq '.[]' | fx` o acotar campos |
+| `PIPE` error con grandes streams | Streaming parcial | Usar `fx -e`/tail input, o pasar archivo con `--input` |
+| Output formateado distinto a `jq` | Semántica de orden/coma | Revisar docs de streaming de fx para diferencias |
+| No abre fichero grande en memoria | RAM | Usar `fx file.json` seguro o streaming (`-s`) |
 
 ## Ver también
 

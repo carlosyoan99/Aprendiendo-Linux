@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -113,6 +113,16 @@ systemctl list-timers | grep timeshift
 | **Btrbk** | Backup de snapshots Btrfs a discos externos |
 | **Deja Dup** | Backup de archivos personales (no del sistema), interfaz GNOME simple |
 | **rsync manual** | Control total, sin GUI |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `rsync fails`/snapshot incompleto | Partición destino sin espacio o permisos | Liberar espacio en el disco de backup; revisar que sea partición real no el sistema |
+| Timeshift lento | Muchos archivos/rsync | Excluir rutas pesadas (`.cache`, logs) o usar Btrfs si lo soportas |
+| Restauración termina sin cambios | Tipo de archivos distinto entre snapshot y raíz | Restaurar a una raíz del mismo FS (btrfs↔btrfs, ext4↔ext4) |
+| No ve snapshots Btrfs | Btrfs sin tool | Instalar soporte btrfs-progs y subvolumen configurado correctamente |
+| Pendiente de cargar | Permisos de la carpeta de snapshots | Revisar owner y punto de montaje de `~/timeshift` |
 
 ## Ver también
 

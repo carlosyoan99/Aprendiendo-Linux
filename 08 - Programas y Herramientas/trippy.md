@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-08-30
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -118,6 +118,15 @@ Trippy 0.11.0 — google.com (142.250.80.46)
 | **Velocidad** | Rápida | Rápida | Lenta | Muy rápida |
 
 > trippy es la mejor herramienta actual para diagnóstico visual de red. Reemplaza a `mtr`, `traceroute` y `ping -f` en un solo comando.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No muestra saltos | Firewall bloquea ICMP | Probar `--tcp`/`--udp` para paquetes TCP/UDP |
+| SALIDA lentísima | Timeout alto por salto | Ajustar `--max-hop` y timeout (`--timeout`) |
+| Caracteres rotos en TUI | ANSI/TERM | Terminal moderno y `TERM=xterm-256color` |
+| Permisos para sockets sin priviledge | Ping necesita icmp | Algunos distros necesitan `sysctl net.ipv4.ping_group_range` |
 
 ## Ver también
 

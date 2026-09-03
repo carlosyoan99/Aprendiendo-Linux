@@ -120,6 +120,15 @@ restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --prune
 > **Elegir borg si:** solo usas SSH/local y quieres la máxima eficiencia en deduplicación.
 > **Elegir rsync si:** solo necesitas sincronizar archivos sin snapshots ni dedup.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `unable to connect to repo` | Repo/backend no accesible | Revisar credenciales (S3/SFTP) y red; verificar `RESTIC_PASSWORD` |
+| Snapshot corrupto al borrar | Compaction incompleto | `restic prune` + verificar con `restic check` |
+| MySQL/DB backups incohérentes | Backup en caliente del DB | Backup de snapshots de la BD o copia coherente antes de restic |
+| Restore lento | Mucha deduplicación/bandwidth | Usar `--parallel` y backend local en vez de remoto para restore grande |
+
 ## Ver también
 
 - [[borg]] — backup deduplicado más eficiente en espacio

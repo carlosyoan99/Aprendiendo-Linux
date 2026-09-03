@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -115,6 +115,16 @@ scrcpy -s <serial>
 - Para mejor rendimiento, usa USB en lugar de WiFi (menos latencia, más estable).
 - Si tienes problemas de conexión: verifica que `adb devices` reconozca el dispositivo y que hayas aceptado la clave de depuración en el móvil.
 - scrcpy no graba audio por defecto (solo video). Para grabar audio del móvil se necesitan herramientas adicionales.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Device not found`/sin dispositivos | ADB no detecta el teléfono | Habilitar depuración USB y `adb devices`; probar cable/puerto |
+| Pantalla negra / fps bajo | Codec sin aceleración | Probar `--video-codec` y `--max-size`; revisar rendimiento |
+| No copia texto al pegar | Clipboards de Android | Usar `scrcpy --vb-codec` / `--clipboard` adecuado a versión |
+| Sonido no se escucha en el PC | PipeWire/audio sink | Configurar sink de audio para captura Android |
+| Control táctil no responde | Toque no mapeado por app | Reiniciar scrcpy; en apps de juego usar modo especial |
 
 ## Ver también
 

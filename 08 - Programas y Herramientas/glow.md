@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -119,6 +119,15 @@ glow --style github README.md
 | **Modo presentación** | ✅ `-p` | ❌ | ❌ | ❌ | ❌ |
 
 > glow es la mejor opción para leer documentación Markdown en terminal. Si trabajas con notas Markdown a diario (como en este vault), es indispensable.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Markdown se renderiza sin estilo | Falta config o TUI degradado | `glow` en terminal moderno; revisar `glow --config` |
+| Tablas muy anchas se cortan | Width pequeño | Usar `--width <n>` o maximizar terminal |
+| Emojis raros en emoji | Fuente de glifo | Usar Nerd Font/póliza con emojis |
+| URL/emojis coloreados raro | Color scheme | Configurar `[style]` en `glow.yml` |
 
 ## Ver también
 

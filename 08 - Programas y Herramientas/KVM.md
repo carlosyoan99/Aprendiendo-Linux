@@ -110,6 +110,16 @@ Reduce TLB misses y mejora rendimiento de memoria:
 | **Licencia** | GPLv2 (libre) | GPLv2 + PUEL (extensiones) | Comercial | GPLv2 + Citrix | Propietaria (Windows Server) |
 | **Ideal para** | Servidores, escritorio avanzado, VFIO | Escritorio casual, testing | Escritorio con soporte VMware | Servidores enterprise | Entornos Microsoft |
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `KVM: entry failed, hardware error` | Virtualización deshabilitada en BIOS | Activar VT-x/AMD-V en la BIOS/UEFI |
+| `/dev/kvm` no existe | Módulo kvm no cargado | `modprobe kvm_intel`/`kvm_amd` y añadir a `modules` |
+| Passthru GPU da pantalla en negro | IOMMU no habilitado | Añadir `intel_iommu=on`/`amd_iommu=on` al kernel |
+| VM lenta/Host pegado por CPU | Oversubscription | Usar vCPU bien dimensionadas y `cpu mode=host-passthrough` |
+| Libvirt no ignicia | Daemon o socket | `systemctl start libvirtd` y permisos en `kvm`/`libvirt` groups |
+
 ## Ver también
 
 - [[QEMU]] — emulación de hardware

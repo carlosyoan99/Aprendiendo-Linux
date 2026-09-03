@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -116,6 +116,16 @@ crm cluster stop
 - [Wikipedia — Heartbeat](https://es.wikipedia.org/wiki/Heartbeat_(Linux-HA_Daemon))
 - [High-Availability Linux](https://es.wikipedia.org/wiki/High-Availability_Linux)
 - [Pacemaker Explained](https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html/Pacemaker_Explained/)
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Nodo no se comunica (split-brain) | Pérdida de red/fencing | Configurar STONITH/fencing y revisar enlaces de heartbeat |
+| `Heartbeat: bad heartbeat` / sin latido | Config de interfaz errónea | Revisar `ha.cf` (`ucast/`bcast interface), puerto 694 abierto |
+| Recurso no arranca en Standby | Failover config mal | Revisar `resource`/`rsc_defaults` en CRM y permisos |
+| Logs llenos de errores de ownership | LibMC/COROSYNC | `pcs status`/`crm status`, reiniciar ambos nodos en orden |
+| Un nodo se queda Offline | Fencing fails / quorum perdido | Verificar quorum y fencing (STONITH) correcto |
 
 ## Ver también
 

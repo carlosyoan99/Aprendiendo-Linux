@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -113,6 +113,15 @@ color title-focus        white          blue    bold
 | **Curva aprendizaje** | Media | Muy baja | Baja | Alta |
 
 > tig es **el más rápido** para consultar el historial (log, blame, diff). Para trabajar (stage, commit, branch), [[lazygit]] o [[gitui]] son mejores.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `tig: command not found` | No instalado / PATH | Instalar (`pacman -S tig`/`apt install tig`) y revisar PATH |
+| No muestra diffs de staged | TIG requiere index | Usar `tig status` o `tig diff --cached` |
+| Colorización rara | TERM/codepage | Asegurar TERM=xterm-256color y `color ui auto` en config |
+| Atajos no responden | Config de keybindings | Revisar `.tigrc` bind y posibles colisiones MVim |
 
 ## Ver también
 
