@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-07-26
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: alta
@@ -100,6 +100,17 @@ Los drivers VirtIO ofrecen rendimiento casi nativo a los guests:
 # Disco: <target dev='vda' bus='virtio'/>
 # Red:   <model type='virtio'/>
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| VM muy lenta/BSOD | Falta KVM o acceleración | Usar `-enable-kvm`, comprobar `/dev/kvm` y permiso de usuario en `kvm` group |
+| `Could not open KVM device` | Sin acceso a `/dev/kvm` | `sudo usermod -aG kvm $(whoami)` o ejecutar con permiso |
+| Pantalla en negro sin ventana | Falta `-display`/`-vga` | `-display sdl`/`-display gtk` o `-vga virtio` |
+| Audio o USB no pasan | Falta `-device`/qemu extras | Añadir `-soundhw` / `-device usb-host` y paquetes QA |
+| Snapshot/corrupción del disco | Interrupción durante escritura | Usar `qemu-img check`/`rebase` y snapshots en caliente con cuidado |
+| Red de la VM no sale | Falta `-netdev`/bridge | Configurar `-netdev user` (SLIRP) o bridge con TAP |
 
 ## Ver también
 

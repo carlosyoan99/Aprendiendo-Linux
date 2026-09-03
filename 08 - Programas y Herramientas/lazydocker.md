@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-24
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -105,6 +105,15 @@ lazydocker
 | **Binario único** | ✅ Sí | ✅ | ❌ Web server | ✅ |
 
 > Si usas Docker constante, lazydocker te ahorra escribir comandos todo el día. Si solo usas `docker run` de vez en cuando, no lo necesitas.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `docker: command not found`/socket | Docker CLI/daemon no accesible | User en grupo `docker` o usar `sudo`; comprobar socket `/var/run/docker.sock` |
+| Sin contenedores aunque existan | No coincide con status | Usar `-s` para ver filtros/status daemon |
+| Cuelga en screenshot | TUI y Docker lento | Aumentar el score/refresh; o revisar networking daemon |
+| No permite conectar a daemon remoto | Env `DOCKER_HOST` no propagado | Exportar `DOCKER_HOST=ssh://...`/`tcp://` antes de lanzar |
 
 ## Ver también
 

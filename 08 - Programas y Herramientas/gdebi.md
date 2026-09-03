@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-25
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: baja
@@ -99,6 +99,15 @@ for f in *.deb; do gdebi --check "$f"; done
 | **dpkg -i** | Solo instalar, sin dependencias |
 | **apt install ./f.deb** | Alternativa moderna (recomendada) |
 | **Eddy** | Instalador .deb gráfico (elementary OS) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Dependency is not satisfiable` | Falta paquete en repos | Deja que gdebi añada el repo, o instala las deps con `apt` antes |
+| `.deb` descargado sin firma | dpkg check of key | Confiar en la clave o `--no-check` solo temporalmente |
+| No es un archivo `.deb` válido | Descarga incompleta/corrupta | Redescargar y verificar checksum |
+| Permisos al instalar para el usuario | Necesita root | Usar `sudo gdebi <archivo>.deb` |
 
 ## Ver también
 

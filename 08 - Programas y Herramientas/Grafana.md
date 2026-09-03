@@ -101,6 +101,16 @@ groups:
 
 > **Stack típico:** Prometheus (métricas) + Grafana (visualización/alertas) + Loki (logs) = alternativa OSS a Datadog.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Panel "No data" | Datasource sin datos o query errónea | Verificar intervalo, datasource y que Prometheus/Influx respondan |
+| UI no carga / 302 | Config o auth | Revisar `grafana-server.ini` (`root_url`, `http_port`), reiniciar servicio |
+| Login con correo roto | SMTP no configurado | Configurar `[smtp]` o usar auth local |
+| Alertas no disparan | Evaluación/permisos | Revisar reglas, las evaluaciones del periodo y que el datasource esté healthy |
+| Dashboard no persiste plugins | Permisos de carpeta | `grafana-cli plugins install` y permisos en `/var/lib/grafana/plugins` |
+
 ## Ver también
 
 - [[Prometheus]] — fuente de datos principal

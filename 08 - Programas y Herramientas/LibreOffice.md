@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: programa
 prioridad: media
@@ -110,6 +110,16 @@ Si LibreOffice es demasiado pesado para tu equipo:
 | **AbiWord** + **Gnumeric** | Muy ligero (~10 MB) | Básica |
 | **OnlyOffice Desktop Editors** | Medio (~300 MB) | Excelente |
 | **WPS Office** | Medio (~200 MB) | Excelente (no libre) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Arranque muy lento / bloquea | Perfil corrupto o índice | Borrar/resetear `~/.config/libreoffice` y `~/.config/.libreoffice` temporalmente |
+| Fuentes se ven raras en docs | Fuentes MS ausentes | Instalar `ttf-mscorefonts-installer` |
+| No guarda en formatos MS | Falta filtro completo | Instalar variantes completas (`libreoffice-full`) |
+| No abre .docx/.xlsx correctamente | Compatibilidad de filtros | Actualizar LibreOffice; usar el modo de compatibilidad |
+| `soffice` desde CLI no convierte | Headless flag | `soffice --headless --convert-to pdf archivo` |
 
 ## Ver también
 

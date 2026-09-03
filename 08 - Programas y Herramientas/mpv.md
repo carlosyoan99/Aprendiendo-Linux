@@ -107,6 +107,16 @@ git clone https://github.com/dylanaraps/mpv-config ~/.config/mpv
 
 > **mpv vs VLC resumen:** mpv es más rápido, más ligero y más configurable; VLC es más "listo para usar" con más funciones out-of-the-box (grabación, conversión, DLNA).
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Sin video (audio sí) | Falta codec/decoder de vídeo (libva/vaapi) | `mpv --hwdec=auto` requiere codecs; instalar `libavcodec-extra` |
+| `Cannot load codec` | Build de mpv sin x264/h264 | Reinstalar con soporte de codecs completo |
+| Video stutter en 4K | Aceleración de hw mal | Configurar `hwdec=auto-safe`, driver correcto (vaapi/nvenc) |
+| Sin audio en container | Extractor/audio faltante | Probar `--audio-device=help` y seleccionar salida |
+| Ventana se congela al avanzar | Loading de index | Usar `--demuxer-max-bytes` mayor (seek menos fragmentario) |
+
 ## Ver también
 
 - [[vlc]] — reproductor con GUI completa
