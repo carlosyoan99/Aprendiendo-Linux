@@ -54,6 +54,8 @@ ls /var/log/journal/
 
 ```ini
 [Journal]
+# Storage: auto (persistente si /var/log/journal existe), persistent, volatile, none
+Storage=auto
 # Límite de almacenamiento (SystemMaxUse)
 SystemMaxUse=500M
 # Tamaño máximo por archivo
@@ -62,10 +64,14 @@ SystemMaxFileSize=50M
 SystemMaxFiles=100
 # Compresión
 Compress=yes
+# Firmar logs (detección de manipulación, FSS)
+Seal=yes
 # Sincronizar a disco (seguridad vs rendimiento)
 SyncIntervalSec=5m
 # Nivel máximo de log (0 emerg - 7 debug)
 MaxLevelStore=debug
+# Reenvío a syslog clásico
+ForwardToSyslog=no
 ```
 
 ---
@@ -100,8 +106,21 @@ journalctl _PID=1234
 # Por usuario
 journalctl _UID=1000
 
+# Por transporte/origen
+journalctl _TRANSPORT=kernel            # solo kernel
+journalctl _TRANSPORT=syslog            # vía syslog
+journalctl _TRANSPORT=stdout            # salida de servicios systemd
+
+# Por comando/unidad (filtros por metadata)
+journalctl _COMM=sshd                   # logs del comando sshd
+journalctl _SYSTEMD_UNIT=nginx.service  # logs de la unidad systemd
+
 # Por prioridad
 journalctl -p err                       # solo errores y superiores
+
+# Mantenimiento
+sudo journalctl --rotate                # rotación manual
+journalctl -o export > backup.journal   # exportar en formato binario
 journalctl -p warning -u nginx          # combinado con unidad
 ```
 
@@ -344,7 +363,7 @@ journalctl -f -p warning
 
 - [[systemd]] — el ecosistema que gestiona journald
 - [[auditd]] — auditoría de seguridad (complementa a journald)
-- [[dmesg]] — mensajes del kernel
+- [[Coreutils y util-linux]] — incluye `dmesg` (mensajes del kernel)
 - [[Monitorización (Prometheus node_exporter)]] — monitoreo de métricas
 - [[Solución de Problemas - Recursos]] — diagnóstico general
 
