@@ -21,6 +21,7 @@ Historial completo del año (detallado): [[Log-2026]].
 |---|---|---|---|---|
 | 2026-09-02 | v48 | fix | 05/11 | 4 notas v47 (Oracle Linux, fvwm, Ratpoison, evilwm) → resuelto |
 | 2026-09-02 | v47 | feat | 05/11/MoC | 4 notas nuevas de cobertura: Oracle Linux (distro RHEL), fvwm, Ratpoison, evilwm (WMs X11); MoC actualizado |
+| 2026-09-03 | v62 | expand | 08 | suckless expandida (58→150: compilar config.h, parches, sesión DWM+slstatus, troubleshooting) + Foot expandida (88→185: foot.ini completo, atajos, server mode, comparativa terminales) |
 | 2026-09-03 | v60 | feat | 08 | 1 nota nueva journald (logs systemd: journalctl, filtros, persistencia, auditoría) + dmidecode expandida (88→145: DMI types, -s strings, detectar VM, comparativa lshw/inxi); MoC actualizado |
 | 2026-09-03 | v59 | expand | 08 | 8 notas 08 con Comparativa añadida: jq (yq/fx/gron/jql), QEMU (VirtualBox/VMware/UTM), libvirt (Incus/VirtualBox/Podman), Genkernel (dracut/mkinitcpio/update-initramfs), node_exporter (Telegraf/collectd/Netdata), Prometheus (InfluxDB/VictoriaMetrics/Zabbix), V4L2 (libcamera/PipeWire), Multimedia (GStreamer/VLC/MPV/HandBrake) |
 | 2026-09-03 | v58 | expand | 00 | Comparativa contenedores expandida (¿400→520): seguridad (superficie ataque, rootless, userns), migraciones Docker→Podman/LXD→Incus/nspawn→Incus, redes (bridge/host/macvlan/port mapping) |
