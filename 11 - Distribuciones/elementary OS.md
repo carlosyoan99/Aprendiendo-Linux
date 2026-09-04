@@ -103,6 +103,16 @@ sudo dd if=elementaryos-*.iso of=/dev/sdX bs=4M status=progress
 
 **En resumen**: elementary prioriza la estética pulida estilo macOS; Zorin apunta a migrantes de Windows con layouts intercambiables; Mint ofrece clásico y estable; Ubuntu es la base general más extendida.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| AppCenter no muestra apps | Flatpak/AppCenter sin actualizar | `sudo apt update && sudo apt full-upgrade`; si falla focus de Flatpak, `flatpak repair --user` |
+| Tema GTK no afecta apps | algunas apps GTK2/outdated | Activar el tema en `gsettings set org.gnome.desktop.interface gtk-theme` o forzar con el theme override de elementary |
+| Gestión de ventanas no responde | Mutter/Pantheon sin recargar | Reiniciar la sesión desde el menú de usuario o `dbus-run-session` en caso extremo |
+| Actualizaciones de repos `stable`/`lts` contradictorias | mezcla de paquetes PPA | Eliminar PPAs no oficiales con `ppa-purge` y quedarse en `main`/`updates` de elementary |
+| Tarjeta gráfica o Wi-Fi presenta stutter | drivers del kernel LTS antiguo | Instalar el kernel HWE (`sudo apt install linux-generic-hwe-<release>`) |
+
 ## Ver también
 
 - [[Ubuntu]] — base de elementary OS

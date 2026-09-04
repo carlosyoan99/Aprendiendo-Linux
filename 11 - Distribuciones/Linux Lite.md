@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -129,6 +129,15 @@ A diferencia de otras distros, los menús de Linux Lite listan el software por *
 | **Estilo Windows** | XP/7 | Win 7/10/11 | XP/7 | XP |
 | **Público** | Migrantes + hardware modesto | Migrantes + moderno | Migrantes + usuarios general | Hardware muy antiguo |
 | **Soporte** | 5 años (LTS) | 5 años (LTS) | 5 años (LTS) | 5 años (LTS) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Wi-Fi no se detecta en portátiles nuevos | firmware Broadcom/Realtek no incluido | Conectar por cable y `sudo apt install firmware-b43-installer firmware-realtek` |
+| XFCE se ve pixelado/antiguo | tema GTK por defecto minimalista | Instalar temas modernos GTK3 e iconos `papirus-icon-theme` |
+| El instalador no arranca en UEFI de algunos equipos | compatibilidad SecureBoot | Desactivar SecureBoot o elegir ISO EFI específica; usar pendrive con `dd` correcto |
+| Actualización no permite nuevas versiones mayores | el helper de Linux Lite apunta a versión antigua | Seguir la guía oficial de upgrade mayor (no `do-release-upgrade` a secas) |
 
 ## Enlaces externos
 

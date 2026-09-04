@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -100,6 +100,16 @@ Tras el anuncio de 2020, la comunidad creó dos forks principales:
 # - Disco: 2 GB (sin GUI) / 20 GB (con GUI)
 # - Procesador: x86_64
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| CentOS 7/8 ya sin actualizaciones | EOL de la versión (CentOS 7 finalizó 2024) | Migrar a un clon RHEL: `sudo migrate2rocky` (Rocky) o `almalinux-deploy` (AlmaLinux) |
+| Repositorio base vacío/400 | espejo old del EOL | Usar `vault.centos.org` o migrar; no insistir en `base/` de una versión muerta |
+| `dnf` no encuentra paquete | firma GPG del repositorio cambiada | `sudo dnf clean all && sudo dnf makecache`; si persiste, actualizar la key del repo |
+| Kernel independiente no firma para SecureBoot | módulos unsigned | Firmar los módulos DKMS con la MOK (Machine Owner Key) en shim |
+| CentOS Stream adelanta paquetes | modelo rolling upstream de RHEL | Si necesitas estabilidad binaria, usar Rocky/AlmaLinux en lugar de Stream |
 
 ## Enlaces externos
 

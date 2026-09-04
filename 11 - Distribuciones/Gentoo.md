@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -157,6 +157,15 @@ En junio de 2018, el espejo GitHub del repositorio de Gentoo fue comprometido po
 - **Pentoo** — distribución de pentesting basada en Gentoo
 - **SystemRescue** — CD de rescate, usa Portage
 - **Sabayon Linux** — fork con binarios precompilados (hoy descontinuada)
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `emerge` falla al compilar (error en `gcc`) | USE/CXXFLAGS incompatibles en ese paquete | Revisar el log de build en `/var/tmp/portage/`, relajar `CXXFLAGS` o probar `emerge =paquete-<version>-rN` |
+| Paquete bloqueado por USE conflictivo | flags incompatibles en el ebuild | `emerge --autounmask-write` y revisar `/etc/portage/package.use` antes de reintentar |
+| Kernel no arranca tras `genkernel` | config y módulos fuera de sincronía | `genkernel all` de nuevo o `genkernel --menuconfig all` regenerar initramfs |
+| `revdep-rebuild` detecta ABI rota | librería actualizada | `emerge --deep --with-bdeps=y @world` y `revdep-rebuild` |
 
 ## Ver también
 

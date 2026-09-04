@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -86,6 +86,17 @@ Releases mayores cada ~3 años, con ~10 años de soporte completo (más 5 adicio
 ## Notas de instalación propias
 
 -
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `SELinux is preventing...` al arrancar un servicio | contexto SELinux incorrecto para el puerto/archivo | `sudo dnf install policycoreutils-python-utils` y `sudo ausearch -m avc | audit2allow -M policy && sudo semodule -i policy.pp` |
+| `dnf` no puede resolver el repositorio | mirror obsoleto o DNS | `sudo dnf clean all && sudo dnf makecache`; probar otro mirror en `/etc/yum.repos.d/` |
+| No arranca tras instalar un nuevo kernel | fallo en initramfs/GRUB | Revisar `journalctl -b -1`; regenerar initramfs con `sudo dracut -f` |
+| Cockpit no responde en :9090 | socket no activado o firewall | `sudo systemctl enable --now cockpit.socket` y abrir `9090/tcp` en firewalld |
+| Repositorio EPEL no disponible | `epel-release` no instalado | `sudo dnf install epel-release` |
+| `dnf` tarda mucho en cada operación | chequeo de GPG/metadata en cada cache | `sudo dnf config-manager --save --setopt=fastestmirror=true` |
 
 ## Enlaces externos
 

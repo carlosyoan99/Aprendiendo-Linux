@@ -156,6 +156,16 @@ osc commit                               # subir cambios
 
 **En resumen**: openSUSE es único por ofrecer a la vez Leap (estable) y Tumbleweed (rolling) con la potente herramienta YaST y Snapper/Btrfs para rollback; Fedora lidera en novedades; Rocky es el RHEL-compatible estable; Debian es la estabilidad pura.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `zypper` falla con `lock` o actualización interrumpida | otro proceso de zypper en curso | Esperar; si persiste, revisar `ps aux | grep zypper` y eliminar el `.lock` en `/var/run/` con precaución |
+| El sistema no arranca tras un `Tumbleweed` update | snapshots de Btrfs permiten rollback | Reiniciar, en GRUB elegir el snapshot previo de Snapper o `snapper rollback <n>` |
+| Paquete no encontrado en Leap | packman/repos no habilitados | `zypper ar -cfp 90 https://ftp.gwdg.de/pub/linux/misc/packman/... update packman` o usar `zypper addrepo` |
+| YaST no abre por permisos | falta de componente `yast2-*` en la edición | `sudo zypper in yast2-*` o abrir vía `sudo YaST` |
+| Tumbleweed rompe paquetes propietarios | rolling actualiza `glibc`/librerías | Usar Leap para estabilidad o `snapper rollback` ante regresiones |
+
 ## Ver también
 
 - [[Fedora]] — otra distro con adopción temprana de tecnologías

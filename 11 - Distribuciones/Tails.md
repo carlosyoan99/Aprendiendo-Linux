@@ -126,6 +126,15 @@ Tails incluye **Electrum** conectado por defecto a Tor para transacciones de Bit
 
 **En resumen**: Tails es un SO efímero enfocado a Tor por defecto; Parrot añade privacidad y herramientas de pentesting para uso persistente; Kali es la solución de auditoría técnica; el Tor Browser es solo la pieza de navegación.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Persistencia no se monta al arrancar | partición persistente corrupta o contraseña errónea | Reiniciar; verificar en «Persistencia» que la partición está cifrada (LUKS) y se desbloquea con la clave correcta |
+| No hay conexión Tor | relays/circuitos llenos o reloj del sistema mal | Comprobar hora (`Tails` usa NTP discreto); reintentar «New Identity» o esperar a que se recupere el circuito |
+| DNS filtra peticiones | red con sistema de terceros | Tails fuerza Tor para todo el tráfico; si un proxy de red lo bloquea, usar un puente/plugins de Tor desde las preferencias de red |
+| USB no arranca en otro equipo | SecureBoot / falta de firmware | Desactivar SecureBoot o usar Tails USB Installer; regenerar con la misma llave de arranque |
+
 ## Ver también
 
 - [[Kali Linux]] — herramienta de pentesting, enfoque diferente

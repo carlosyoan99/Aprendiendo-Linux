@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-26
-fecha_modificacion: 2026-08-31
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -98,6 +98,15 @@ flatpak install flathub org.mozilla.firefox
 | **Gamescope** | ✅ Nativo | ✅ Nativo | ✅ Nativo |
 | **Comunidad** | Muerta | Grande | Mediana |
 | **Recomendado** | ❌ No | ✅ Sí | ✅ Sí (HTPC) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| No arranca en hardware NVIDIA | HoloISO no soporta NVIDIA | Cambiar a Bazzite o ChimeraOS (que sí soportan NVIDIA); es un proyecto descontinuado |
+| Gamescope no lanza el juego | falta hardware AMD o config de GPU | Asegurar Mesa Vulkan (`libvulkan_radeon`) y correr `gamescope -- %command%` en Steam |
+| Sin updates ni seguridad | proyecto descontinuado | Migrar a Bazzite/ChimeraOS; no hay repositorios mantenidos de HoloISO |
+| Steam no detecta la cuenta en modo gaming | sesión por defecto Steam Deck | Arrancar el modo escritorio (KDE) e iniciar sesión normal de Steam una vez |
 
 ## Ver también
 

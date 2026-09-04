@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -150,6 +150,16 @@ cd void-packages
 | **Tamaño base** | ~400 MB | ~1 GB | ~300 MB |
 | **Curva** | Media | Baja-media | Alta |
 | **Velocidad paquetes** | Muy rápida | Rápida | Lenta (compila) |
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `XBPS` bloqueado (`lock file`) | otra operación xbps en curso | Esperar; `rm /var/db/xbps/.xbps.lock*` solo si el proceso murió |
+| Falta firmware Wi-Fi | paquete `*-firmware-xbps` no instalado | `sudo xbps-install linux-firmware` y los `intel/amd` si aplica |
+| `musl` incompatible con app binaria | app compilada con glibc | Usar la edición glibc de Void o ejecutar la app via container/compat |
+| runit no arranca el servicio | enlace simbólico en `/etc/runit/runsvdir` mal | `sudo ln -s /etc/sv/nombre /var/service/` y comprobar `sv status` |
+| Paquete parcial tras red débil | descarga corrupta en xbps | `sudo xbps-remove -RHo` para limpiar huérfanos y reinstalar el paquete |
 
 ## Ver también
 

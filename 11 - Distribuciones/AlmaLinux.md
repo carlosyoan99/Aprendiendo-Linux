@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-19
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -107,6 +107,16 @@ sudo dd if=AlmaLinux-9-latest-x86_64-dvd.iso of=/dev/sdX bs=4M status=progress
 # Instalador Anaconda (el mismo de RHEL/Fedora)
 # Soporta: particionado manual, LVM, LUKS, RAID, Btrfs
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `SELinux is preventing...` con un servicio | contexto incorrecto | `sudo dnf install policycoreutils-python-utils` y `ausearch -m avc | audit2allow -M mi-policy && semodule -i` |
+| Migración desde CentOS falla a mitad | paquetes de una versión EOL | Usar el proyecto **ELevate** (`sudo dnf install elevate-release && sudo elevate`) en lugar de scripts manuales |
+| Repositorio EPEL da 404 | release de una versión sin EPEL activo | Instalar la variante correspondiente con `dnf install epel-release` y verificar la versión mayor en `os-release` |
+| Cockpit no arranca en :9090 | socket desactivado / firewall | `sudo systemctl enable --now cockpit.socket` + abrir `9090/tcp` |
+| Actualización mayor bloqueada por paquetes huérfanos | dependencias rotas entre releases | `sudo dnf system-upgrade download --releasever=X --allowerasing` y revisar errores antes de `--reboot` |
 
 ## Ver también
 

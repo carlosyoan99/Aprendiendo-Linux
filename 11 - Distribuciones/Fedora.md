@@ -96,6 +96,17 @@ Releases cada ~6 meses (abril y octubre), con ~13 meses de soporte por versión.
 
 -
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `dnf` falla con errores de GPG/metadata a mitad de upgrade | repositorio inestable o cache corrupta | `sudo dnf clean all && sudo dnf makecache`, luego reintentar el upgrade |
+| Codec H.264/H.265 ausente en Firefox/GNOME | libre codecs no incluidos por políticas de Fedora | Instalar RPM Fusion (`sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm`) |
+| `gpg: NO_PUBKEY` al instalar un COPR | firma del repositorio third-party desconocida | Verificar que el COPR es de confianza y que `rpm -qa gpg-pubkey*` no lo sustituye |
+| Actualización entre versiones mayores bloqueada | `dnf system-upgrade` sin limpieza previa | `sudo dnf system-upgrade download --releasever=X --allowerasing` tras `dnf clean all` |
+| Arranque lento o logo PLYmouth congelado | initrd regenerado de forma incompleta | `sudo dracut --regenerate-all --force` |
+| Falta el firmware/código de red Wi-Fi en instalación limpia | paquetes `*-firmware` no instalados | `sudo dnf install wl-clipboard wpa_supplicant NetworkManager-wwan` |
+
 ## Enlaces externos
 
 - [Sitio oficial de Fedora](https://fedoraproject.org/)

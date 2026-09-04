@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: alta
@@ -303,6 +303,16 @@ Sigue el ritmo de Ubuntu (LTS cada 2 años), con versiones intermedias menos fre
 sudo apt update && sudo apt full-upgrade -y
 sudo apt install pop-desktop             # asegurar paquetes COSMIC completos
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| NVIDIA sin aceleración / pantalla negra | driver o ISO equivocada | Usar la ISO "NVIDIA" y verificar `prime-select nvidia`; cargar módulo `nvidia` correcto |
+| Tiling automático no se activa | COSMIC/PDT desconfigurado | Reiniciar la sesión COSMIC o instalar `pop-shell` (`sudo apt install pop-shell`) y activar en ajustes |
+| Repositorio `apt update` falla tras release | fuentes `jammy`/`noble` desfasadas | `sudo sed -i 's/focal/noble/' /etc/apt/sources.list.d/*.list` acorde a tu release y `apt update` |
+| Docking/multi-monitor glitch | extensiones y `system76-power` | `sudo apt install system76-power` y `system76-power graphics nvidia` según necesidad |
+| Actualización mayor no aparece | el repos `pop-os` retrasa | `sudo apt full-upgrade`; revisar el release de Pop anunciado en support |
 
 ## Ver también
 

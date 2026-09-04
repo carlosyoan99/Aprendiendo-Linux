@@ -126,6 +126,17 @@ Rolling release — no hay "versiones" discretas. Se instala una vez y se actual
 
 **En resumen**: Arch es la base "pura" de control total; Manjaro la endulza con repos curados, EndeavourOS la empaqueta fácil sin adulterar, y Debian prioriza la estabilidad por encima de la novedad.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `error: failed to init transaction (unable to lock database)` | otra instancia de pacman en curso | Esperar a que termine o `rm /var/lib/pacman/db.lck` (con precaución) |
+| `PGP signature could not be verified` al instalar AUR | keyring desactualizado | `sudo pacman-key --init && sudo pacman-key --populate archlinux` |
+| Actualización rompe el sistema (rolling) | paquete con ABI rota en `core` | Revisar noticias en archlinux.org y foros antes del `-Syu`; pulsar a `pacman -Syu` incremental o usar snapshot/Btrfs |
+| `File /var/cache/pacman/pkg/x is corrupted` | paquete descargado a medias | `sudo pacman -Scc` (limpiar cache) y `sudo pacman -Syu` de nuevo |
+| Sin gestor gráfico (boot a TTY) | falta un DE/WM en `~/.xinitrc` o `startx` | Instalar un DE (p.ej. `pacman -S gnome`) y habilitar el servicio de display-manager correspondiente |
+| paquetes de AUR fallan por construir | dependencias `--noconfirm` o entorno sucio | Usar helper (yay/paru) con `--cleanafter`, o `makepkg -si` en el directorio del PKGBUILD |
+
 ## Ver también
 
 - [[CachyOS]] — Arch optimizado para rendimiento con instalador gráfico

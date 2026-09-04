@@ -143,6 +143,16 @@ Kali Linux es una herramienta profesional para **entornos autorizados**. Usar la
 
 **En resumen**: Kali es el estándar de la industria para auditoría de seguridad; Parrot añade capas de privacidad y uso diario; Tails es de uso único para anonimato absoluto; sobre Arch puedes montar tu propio stack de pentesting a medida.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `You are not allowed to run ... as root` (herramientas sin `sudo`) | muchos tools requieren privilegios | Prefijar con `sudo` (p.ej. `sudo nmap`, `sudo airodump-ng`); no usar `kali` como root permanente |
+| El adaptador Wi-Fi no entra en modo monitor | driver no soporta monitor / falta firmware | Verificar `ip link`, cargar firmware (`sudo apt install firmware-*-wireless`) y usar `airmon-ng check kill` antes |
+| Repositorios `kali-last-snapshot` dan 404 | snapshot EOL de la versión | Cambiar a `kali-rolling`/`kali-linux-weekly` en las fuentes de apt y `sudo apt update` |
+| Herramienta de metapaquete no se encuentra | categoría no instalada | `sudo apt install kali-linux-everything` o el metapaquete concreto (ej. `kali-tools-web`) |
+| VM muy lenta al ejecutar herramientas de fuerza bruta | falta aceleración o pocos recursos | Habilitar VT-x/AMD-V en la VM y asignar más RAM/CPU |
+
 ## Ver también
 
 - [[Parrot OS]] — alternativa con enfoque en privacidad

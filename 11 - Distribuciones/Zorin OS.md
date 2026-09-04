@@ -97,6 +97,16 @@ sudo dd if=zorin-17-core-*.iso of=/dev/sdX bs=4M status=progress
 
 **En resumen**: Zorin es el mejor puente para quien viene de Windows con layouts intercambiables y Zorin Appearance; Mint es el clásico amigable; elementary brilla en diseño estilo macOS; Ubuntu es la base general.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Zorin OS Pro no activa sus características | suscripción Pro no verificada | Revisar que se compró la licencia en zorin.com; Pro se desbloquea en el instalador con la clave de compra |
+| Los layouts (Windows/macOS) no aplican | Zorin Appearance sin reconstruir la sesión | Abrir Zorin Appearance → Layouts, o reiniciar sesión desde el menú de usuario |
+| HiDPI borroso en aplicaciones | escalado fraccional no soportado por la app | En Zorin Appearance activar escalado fraccional o usar cómputo GNOME (`gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"`) |
+| Actualización del kernel rompe el Wi-Fi | Driver inalámbrico no recompilado | `sudo apt install linux-headers-$(uname -r)` y los DKMS de la tarjeta |
+| Repositorios antiguos tras el release anual | `apt` apunta a una versión desfasada | `sudo apt update` y `sudo apt full-upgrade`; si no hay novedades, reactivar en `Software & Updates` |
+
 ## Ver también
 
 - [[Ubuntu]] — base de Zorin OS

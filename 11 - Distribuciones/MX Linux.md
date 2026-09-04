@@ -116,6 +116,16 @@ sudo apt update && sudo apt upgrade         # actualizar
 
 **En resumen**: MX Linux destaca por su ligereza y **MX Tools** únicas sobre Debian estable; Mint es amigable sobre Ubuntu; Lubuntu es la ultra-ligera; Debian patrocinado es la base estable pura.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| MX Tools no migran bien un snapshot a otro equipo | semillas de sesión y drivers distintos | Usar `MX Snapshot` para incluir paquetes extra y regenerar `initramfs` en el destino |
+| Sin Wi-Fi tras instalar | firmware propietario no presente en el ISO de menor tamaño | Conectar por cable y `sudo apt install firmware-iwlwifi`/`firmware-linux-nonfree` (`MX Repo Installer`) |
+| Sysvinit vs systemd confuso (dos menús de arranque) | MX soporta ambos inits | Elegir persistente la opción deseada en el menú de GRUB o con `MX Boot Options` |
+| Reposos lento al actualizar | mirrors por defecto genéricos | Usar `MX Repo Manager` para elegir un mirror cercano |
+| Aplicación de Flatpak no abre | sin Flatpak/repos habilitados | `sudo apt install flatpak && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo` |
+
 ## Ver también
 
 - [[Debian]] — base de MX Linux

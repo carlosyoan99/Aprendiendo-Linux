@@ -395,6 +395,16 @@ NixOS es la distro más innovadora del ecosistema Linux actual. Su modelo declar
 
 **En resumen**: NixOS es la revolución declarativa — definir el sistema en código y reproducirlo/rollback atómicamente es su ventaja única; Arch, Debian y Fedora son imperativas: se configuran "en vivo" y su coherencia depende del mantenimiento del admin.
 
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `Nix store` no se actualiza tras editar `configuration.nix` | falta reconstruir el perfil | `sudo nixos-rebuild switch` (también `boot` o `switch --flake <uri>`) |
+| No arranca el perfil nuevo | fallo en la generación | Elegir la generación anterior en GRUB (rollback atómico de NixOS) |
+| Paquete no disponible | flake/revisión de `nixpkgs` desactualizada | `nix-channel --update` y `nixos-rebuild`; o pinear el `fetchTarball` a la revisión correcta |
+| `Garbage collector` borra paquete en uso | referencias huérfanas | `sudo nix-collect-garbage -d` con precaución; mantener los perfiles activos |
+| Exceso de espacio ocupado por `/nix/store` | sin deduplicación de hashes | Añadir `nix.autoOptimiseStore = true` en config y `sudo nix store optimise` para deduplicar hash |
+
 ## Ver también
 
 - [[Arch Linux]] — enfoque minimalista imperativo

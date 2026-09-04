@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: media
@@ -289,6 +289,16 @@ cat /etc/manjaro-release
 pacman-mirrors --fasttrack            # seleccionar mirrors rápidos
 pacman-mirrors --country Argentina    # mirrors por país
 ```
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `pacman-mirrors` deja mirrors lentos/vacíos | lista de mirrors desactualizada | `sudo pacman-mirrors --fasttrack && sudo pacman -Syyu` |
+| AUR rompe dependencias de Arch | Manjaro retrasa algunos paquetes | Usar AUR con cuidado tras los repos oficiales; esperar al reflejo `stable` de Manjaro |
+| Actualización a medias deja el sistema a medias | `-Syu` interrumpida | Repetir `sudo pacman -Syu`; si persiste `sudo pacman -Syyu` y `sudo pacman -Scc` |
+| `corrupted package file` al instalar | descarga corrupta en cache | `sudo pacman -Scc` (limpiar cache) y reinstalar el paquete |
+| Kernel recién instalado no arranca | initramfs sin regenerar | `sudo mkinitcpio -P` y `sudo update-grub` |
 
 ## Enlaces externos
 

@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-20
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -134,6 +134,15 @@ Ver [[Linux Lite]], [[Debian]], [[XFCE]].
 ## Estado actual (2026)
 
 El proyecto continúa activo aunque es mantenido principalmente por la comunidad. Tras el fallecimiento de su creador original (Mark Greaves, 2020), el equipo reorganizó el desarrollo y lanzó versiones basadas en Debian. Hoy sigue siendo una opción sólida para equipos con recursos limitados que dependen de aplicaciones web.
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| App de web / web app no abre | falta Chromium/Web App backend | `sudo apt install peppermint-manager` y asegurar Chromium o el navegador indicado |
+| Ligereza percibida pero consumo alto | muchas apps web como PWA | Limitar apps en ejecución; usar la edición más minimalista sin firefox/material por defecto |
+| Panel Altura/Iconos no responde | XFCE/Panel corrupto | Reiniciar panel: `xfce4-panel -r` o `pkill xfce4-panel && xfce4-panel &` |
+| Wi-Fi inestable en el sabor específico | módulo de network de la base | Usar `NetworkManager` (`systemctl restart NetworkManager`); instalar `firmware-*` para el adaptador |
 
 ## Enlaces externos
 

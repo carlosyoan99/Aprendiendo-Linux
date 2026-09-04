@@ -1,6 +1,6 @@
 ---
 fecha_creacion: 2026-07-18
-fecha_modificacion: 2026-07-25
+fecha_modificacion: 2026-09-03
 estado: resuelto
 categoria: distribucion
 prioridad: baja
@@ -234,6 +234,16 @@ CMD ["/app"]
 - [musl libc — Differences from glibc](https://wiki.musl-libc.org/functional-differences-from-glibc.html)
 - [GitHub gliderlabs/docker-alpine](https://github.com/gliderlabs/docker-alpine)
 - [Docker Hub — Alpine oficial](https://hub.docker.com/_/alpine)
+
+## Troubleshooting
+
+| Problema | Causa | Solución |
+|---|---|---|
+| `apk` no encuentra paquete | repos edge/main no habilitados | `apk update`; añadir `http://dl-cdn.alpinelinux.org/alpine/edge/main` en `/etc/apk/repositories` |
+| DNS no resuelve en contenedor | falta el resolutor en `resolv.conf` | `echo nameserver 8.8.8.8 > /etc/resolv.conf` o usar `--dns` en Docker |
+| App binaria requiere glibc | musl no es compatible binario | Instalar librerías via `apk add gcompat`/`libc6-compat` o usar el binario de la distro glibc |
+| OpenRC servicio no inicia en boot | falta `rc-update add` | `rc-update add <svc> default` y `rc-service <svc> start` |
+| Sin timezone local | `/etc/localtime` no configurado | `apk add tzdata` y copiar `ln -sf /usr/share/zoneinfo/<Zona> /etc/localtime` |
 
 ## Ver también
 
