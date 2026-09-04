@@ -391,6 +391,8 @@ ffmpeg -f x11grab -framerate 30 -video_size 640x480 -i :0.0 -t 5 -c:v libx264 te
 
 ## Ver también
 
+- [[OBS Studio]] — nota dedicada: escenas, audio multi-track, cámara virtual, replay buffer, plugins, workflow completo
+
 - [[ffmpeg]] — grabación/conversión CLI
 - [[PipeWire]] — servidor multimedia (captura de audio/video)
 - [[Problemas de audio avanzados]] — captura de audio, latencia

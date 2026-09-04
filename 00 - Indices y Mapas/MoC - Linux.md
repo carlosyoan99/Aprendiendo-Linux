@@ -132,7 +132,7 @@ categoria: indice
 - [[atuin]] — historial de shell con sincronización
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS
-- [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[Grabación de pantalla y streaming]] — OBS, NVENC/VAAPI, wf-recorder, baja latencia, Twitch/YouTube
+- [[Nextcloud]] — nube privada self-hosted · [[Video4Linux (V4L2)]] · [[ffmpeg]] · [[OBS Studio]] — grabación y streaming: escenas, audio multi-track, cámara virtual, replay buffer, plugins · [[Grabación de pantalla y streaming]] — OBS, NVENC/VAAPI, wf-recorder, baja latencia, Twitch/YouTube
 - [[Videojuegos en Linux]] · [[Wine]] · [[Proton]] — capa de compatibilidad de juegos de Valve · [[Bottles]] · [[Gamescope]] · [[Snap y Flatpak]] · [[AppImage]] · [[linuxdeploy y AppImageKit]] · [[flatpak-builder]] — herramienta para compilar Flatpaks
 - [[Parted Magic]] — Live CD de particionado y rescate · [[gparted]] — editor de particiones gráfico
 - [[GNUstep]] — framework Cocoa libre
