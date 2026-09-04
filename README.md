@@ -26,7 +26,7 @@ Vault de **Obsidian** para documentar el aprendizaje de Linux de forma increment
 
 | Métrica | Valor |
 |---|---|
-| **Notas totales** | **611** (+ 9 templates) |
+| **Notas totales** | **612** (+ 9 templates) |
 | **Estado resuelto** | 582 |
 | **Estado en progreso** | 6 (TODO, MoC, Dashboard, Log, Log-2026, Prompts de Trabajo) |
 | **Estado borrador** | 0 |

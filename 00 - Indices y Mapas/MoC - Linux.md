@@ -28,7 +28,7 @@ categoria: indice
 - [[Distribuciones de Linux]] — qué son, familias, modelos, tabla comparativa
 - [[Regular Expressions]] — patrones de búsqueda en texto (grep, sed, awk, vim) — referencia central de BRE, ERE, PCRE, lookaround, patrones prácticos
 - [[Variables de Entorno y PATH]] · [[Symlinks y Dotfiles]] · [[Compilación desde Código Fuente]] · [[Linux From Scratch (LFS)]] — construye tu propio Linux desde cero
-- [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — índice · [[PAM]] · [[chage]] · [[chsh]] · [[skel]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers · [[SSH Hardening]] — endurecimiento SSH: claves, fail2ban, port knocking, certificates · [[AppArmor]] — MAC con perfiles: enforce, complain, containers · [[DNS encriptado (DoH DoT)]] — DNS cifrado: DoH, DoT, proveedores, systemd-resolved · [[Accesibilidad en Linux]] — lectores de pantalla, alto contraste, daltonismo, teclado virtual
+- [[Personalización en Linux]] · [[Contenedores]] · [[Contenedores orquestación]] — Docker Compose, Swarm, Kubernetes · [[LXC y Contenedores del Sistema]] · [[Gestión de usuarios avanzada (PAM chage skel chsh)]] — índice · [[PAM]] · [[chage]] · [[chsh]] · [[skel]] · [[XDG Base Directory y dotfiles modernos]] · [[Canonical y su ecosistema]] · [[Seguridad en Linux (Guía completa)]] — ebook de ciberseguridad para newcomers · [[SSH Hardening]] — endurecimiento SSH: claves, fail2ban, 2FA, chroot, límites, certificates · [[AppArmor]] — MAC con perfiles: enforce, complain, containers · [[DNS encriptado (DoH DoT)]] — DNS cifrado: DoH, DoT, proveedores, systemd-resolved · [[Accesibilidad en Linux]] — lectores de pantalla, alto contraste, daltonismo, teclado virtual
 - [[Docker]] — contenedores, build, ship, run
 - [[Exec Shield]] — protección NX · [[Graphics Execution Manager (GEM)]] — memoria GPU · [[Int 80h]] — syscalls x86 · [[RTAI (Tiempo Real)]] — tiempo real en Linux
 - [[Namespaces (Linux)]] — aislamiento de recursos, base de contenedores
@@ -107,7 +107,7 @@ categoria: indice
 - [[WireGuard VPN]] · [[Nouveau (controlador)]] — driver libre NVIDIA · [[NTFS-3G]] — controlador NTFS · [[GNOME VFS]] — sistema archivos virtual GNOME (histórico) · [[Genkernel]] — compilación del kernel (Gentoo)
 - [[Kubernetes]] — orquestación de contenedores (pods, deployments, services) · [[Virtualización (KVM QEMU libvirt)]] — índice del stack · [[KVM]] · [[QEMU]] · [[libvirt]] · [[VirtualBox]] — virtualización Type 2, snapshots, CLI, Guest Additions · [[LXC y Contenedores del Sistema]] · [[Incus]] · [[Proxmox VE]] · [[ffmpeg]] · [[Android Debug Bridge]] — ADB · [[scrcpy]] · [[Xrdp]] — escritorio remoto · [[timeshift]] · [[Git]] · [[Atajos de teclado - Git]] — aliases, funciones shell, atajos de staging/rebase · [[Atajos de teclado - Docker CLI]] — aliases Docker/Compose, funciones shell, atajos de containers · [[htop btop]] · [[Neofetch Fastfetch]]
 - [[Backups (borg restic duplicity rsync)]] — índice + comparativa + estrategia 3-2-1 · [[borg]] · [[restic]] · [[duplicity]]
-- [[Nginx]] — servidor web, proxy inverso, balanceador de carga
+- [[Nginx]] — servidor web, proxy inverso, balanceador de carga · [[Hardening de Nginx]] — TLS, cabeceras, rate limit, fail2ban, WAF, auditoría
 - [[DNS y BIND]] — servidor DNS, zonas, resolución local
 - [[Nmap]] — descubrimiento de red, escaneo de puertos
 - [[Samba]] — compartición de archivos con Windows (SMB/CIFS) · [[sshfs]] — montar sistemas de archivos remotos vía SSH
@@ -128,7 +128,7 @@ categoria: indice
 - [[Lenguajes y gestores (Node.js Cargo PIP Go Gem)]] — índice + comparativa de gestores · [[Node.js]] · [[Cargo]] · [[pip]] · [[Go]] · [[Gem]]
 - [[just]] — ejecutor de tareas tipo make · [[mise]] — gestor de versiones universal · [[hyperfine]] — benchmark CLI con análisis estadístico · [[eza]] — ls moderno en Rust (colores, iconos, árbol) · [[zoxide]] — cd inteligente que aprende frecuencia · [[starship]] — prompt cross-platform en Rust · [[sd]] — sed moderno y simple · [[hexyl]] — visor hexadecimal con colores · [[rclone]] — sincronización cloud (S3, Drive, 70+ backends) · [[yt-dlp]] — descargador de vídeos multi-sitio
 - [[fx]] — visor JSON interactivo · [[bandwhich]] — monitor de ancho de banda TUI
-- [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]] · [[journald]] — logs de systemd: journalctl, filtros, persistencia, auditoría
+- [[Podman]] — contenedores sin daemon · [[auditd]] · [[fail2ban]] · [[journald]] — logs de systemd: journalctl, filtros, persistencia, auditoría, monitoreo remoto
 - [[atuin]] — historial de shell con sincronización
 - [[obsidian]] — notas en Markdown con grafo de conocimiento · [[telegram-desktop]] — mensajería de Telegram · [[pavucontrol]] — mezclador y control de dispositivos de audio
 - [[Multimedia (GStreamer HandBrake VLC MPV)]] — índice + comparativa · [[gstreamer]] · [[vlc]] · [[mpv]] · [[handbrake]] · [[kew]] — reproductor de música TUI con MPRIS

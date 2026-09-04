@@ -203,6 +203,97 @@ journalctl --disk-usage
 
 ---
 
+## Monitoreo remoto (servidor central de logs)
+
+systemd incluye tres herramientas para centralizar logs en un servidor: **journal-remote** (recibe), **journal-upload** (envía) y **journal-gatewayd** (HTTP). Ideal para vigilar varios servidores desde uno solo.
+
+### Arquitectura
+
+```
+Servidor A ─┐
+Servidor B ─┼─► systemd-journal-upload ──► [RED/TLS] ──► systemd-journal-remote (central)
+Servidor C ─┘                                                    │
+                                                              journalctl --merge
+```
+
+### Servidor central (receptor)
+
+```bash
+# Debian/Ubuntu
+sudo apt install systemd-journal-remote
+
+# Arch
+sudo pacman -S systemd-journal-remote
+
+# Activar el servicio que escucha en el puerto 19532
+sudo systemctl enable --now systemd-journal-remote.socket
+sudo systemctl enable --now systemd-journal-remote.service
+```
+
+Los logs recibidos se guardan en `/var/log/journal/remote/`. Consulta todos los hosts con `journalctl --merge`.
+
+### Cliente (emisor) — por HTTP
+
+```bash
+# /etc/systemd/journal-upload.conf
+[Upload]
+URL=http://192.168.1.10:19532
+
+sudo systemctl enable --now systemd-journal-upload
+```
+
+### Cliente (emisor) — con TLS (recomendado en producción)
+
+```bash
+# 1. Generar CA y certificados (en el servidor central)
+openssl req -x509 -newkey rsa:2048 -nodes -days 3650 \
+    -keyout ca.key -out ca.crt -subj "/CN=Log CA"
+
+# Certificado del servidor central
+openssl req -newkey rsa:2048 -nodes -keyout server.key -out server.csr -subj "/CN=logserver"
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 3650
+
+# Certificado de cada cliente
+openssl req -newkey rsa:2048 -nodes -keyout client.key -out client.csr -subj "/CN=client1"
+openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days 3650
+```
+
+```bash
+# 2. Servidor central: habilitar HTTPS en /etc/systemd/journal-remote.conf
+[Remote]
+Seal=true
+ListenHTTPS=443
+ServerKeyFile=/etc/journal-remote/server.key
+ServerCertificateFile=/etc/journal-remote/server.crt
+TrustedCertificateFile=/etc/journal-remote/ca.crt
+```
+
+```bash
+# 3. Cliente: /etc/systemd/journal-upload.conf
+[Upload]
+URL=https://logserver:443
+ServerKeyFile=/etc/journal-upload/client.key
+ServerCertificateFile=/etc/journal-upload/client.crt
+TrustedCertificateFile=/etc/journal-upload/ca.crt
+```
+
+### Otra opción: journal-gatewayd (consultar vía HTTP)
+
+```bash
+sudo systemctl enable --now systemd-journal-gatewayd.socket
+# Sirve los logs en http://servidor:19531/ (browse, export, machine)
+# Proteger detrás de un proxy con autenticación; no exponer a Internet directo
+```
+
+### Notas de producción
+
+- Los clientes pueden tardar un poco en enviar; comprobar con `systemctl status systemd-journal-upload`.
+- Filtra qué se envía si hay demasiado volumen: `journalctl -o export | …` no aplica aquí; en su lugar limita con `MaxUse`/persistencia o configuración de la fuente.
+- Combina con [[Fail2ban]] o alertas: `journalctl -f -u sshd` en el central para ver intentos de login de todos los hosts a la vez.
+- Para empresas, alternativas completas: **rsyslog** con TLS (clásico), **Loki** (Grafana) o **Graylog** — journal-remote es la opción nativa sin stack extra.
+
+---
+
 ## Troubleshooting
 
 | Problema | Causa | Solución |
@@ -242,8 +333,10 @@ journalctl -f -p warning
 | **auditd** | Auditoría de seguridad | Reglas de acceso, ejecución, llamadas al sistema |
 | **Logwatch / logcheck** | Resúmenes periódicos por email | Alertas resumidas automáticas |
 | **GoAccess** | Análisis de logs web | Stats de Nginx/Apache |
+| **journal-remote/upload** | Centralización nativa | Sin stack extra, TLS integrado, `--merge` |
+| **Loki / Graylog** | Centralización empresarial | Retención larga, dashboards, búsqueda full-text |
 
-**Recomendación**: usa journald/journalctl como fuente primaria. Añade **rsyslog** solo si necesitas reenvío a un servidor central de logs. Para seguridad y auditoría, complementa con [[auditd]].
+**Recomendación**: usa journald/journalctl como fuente primaria. Para centralizar logs de varios servidores usa **systemd-journal-remote/upload** (nativo, con TLS); si necesitas retención larga y dashboards, **Loki** o **Graylog**. Para seguridad y auditoría, complementa con [[auditd]].
 
 ---
 

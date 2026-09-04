@@ -325,6 +325,120 @@ sudo sshd -T | grep -E "port|permitrootlogin|passwordauthentication|pubkeyauthen
 
 ---
 
+## 11. Autenticación en dos pasos (2FA) con PAM/TOTP
+
+La clave SSH ya es un factor fuerte; añadir TOTP (Google Authenticator/FreeOTP) protege contra claves robadas.
+
+```bash
+# Debian/Ubuntu
+sudo apt install libpam-google-authenticator
+
+# Arch
+sudo pacman -S libpam-google-authenticator
+
+# Generar secreto para el usuario (escanea el QR con tu app)
+google-authenticator
+```
+
+```bash
+# /etc/pam.d/sshd — añadir (primeras líneas del archivo):
+# auth required pam_google_authenticator.so
+
+# /etc/ssh/sshd_config:
+# ChallengeResponseAuthentication yes   (Debian/Ubuntu legacy)
+# KbdInteractiveAuthentication yes      (nuevo OpenSSH)
+# AuthenticationMethods publickey,keyboard-interactive
+
+sudo systemctl restart sshd
+```
+
+> Con `AuthenticationMethods publickey,keyboard-interactive` exiges **clave + código TOTP** — dos factores obligatorios. Sin esa línea, PAM solo se pide si la clave falla.
+
+### Verificación y recuperación
+
+```bash
+# El secreto vive en ~/.google_authenticator (protegerlo)
+chmod 600 ~/.google_authenticator
+
+# Si pierdes el teléfono, las códigos de emergencia impresos al generarlo
+# son la única vía — guárdalos offline.
+```
+
+---
+
+## 12. Límites de sesión y protección de recursos
+
+Mitiga brute force masivo, DoS y sesiones zombi:
+
+```bash
+# /etc/ssh/sshd_config
+
+# Conexiones simultáneas sin autenticar por socket (anti DoS)
+MaxStartups 10:30:100          # 10 libres, 30% de rechazo hasta 100
+
+# Tiempo límite para autenticarse (anti login lento/brute force)
+LoginGraceTime 30s
+
+# Expulsar sesiones inactivas
+ClientAliveInterval 300         # comprobar cada 5 min
+ClientAliveCountMax 2           # expulsar tras 10 min sin respuesta
+
+# Usuarios/grupos permitidos (whitelist estricta)
+AllowUsers admin deploy
+# AllowGroups ssh-users
+
+# Máximo de sesiones/forwards por conexión
+MaxSessions 4
+MaxAuthTries 3
+
+sudo systemctl restart sshd
+```
+
+> `MaxStartups 10:30:100` es el estándar anti-slowloris: al superar 10 conexiones sin autenticar, el 30% de las nuevas se rechazan al azar, hasta un tope de 100.
+
+---
+
+## 13. Chroot para usuarios (SFTP/SSH restringido)
+
+Aísla a un usuario en su propio directorio para que no vea el resto del sistema:
+
+```bash
+# /etc/ssh/sshd_config:
+Match Group sftponly
+    ChrootDirectory /srv/sftp/%u
+    ForceCommand internal-sftp
+    PasswordAuthentication yes
+    X11Forwarding no
+    AllowTcpForwarding no
+
+sudo groupadd sftponly
+sudo mkdir -p /srv/sftp/usuario/upload
+sudo chown root:root /srv/sftp/usuario
+sudo chown usuario:sftponly /srv/sftp/usuario/upload
+```
+
+> **Regla de oro del chroot**: el directorio raíz del chroot y todos sus padres deben ser `root:root` con permisos 755. El usuario solo puede escribir en subdirectorios. Si `ForceCommand internal-sftp`, el usuario queda limitado a SFTP (sin shell).
+
+---
+
+## 14. sshguard (alternativa ligera a fail2ban)
+
+```bash
+# Debian/Ubuntu
+sudo apt install sshguard
+
+# Arch
+sudo pacman -S sshguard
+
+sudo systemctl enable --now sshguard
+```
+
+sshguard vigila logs y banea IPs vía nftables/iptables con **penalización progresiva** (la siguiente agresión tarda más en expirar). Se configura en `/etc/sshguard/sshguard.conf` (whitelist en `/etc/sshguard/whitelist`).
+
+**sshguard vs fail2ban**: sshguard es más simple y ligero (no hay plantillas de jail, solo logs a vigilar); fail2ban es más flexible y tiene filtros predefinidos para cientos de servicios. Para un servidor mínimo solo con SSH, sshguard suele bastar.
+
+---
+
 ## Comparativa de métodos de hardening
 
 | Método | Seguridad | Complejidad | Mantenimiento |
@@ -335,10 +449,13 @@ sudo sshd -T | grep -E "port|permitrootlogin|passwordauthentication|pubkeyauthen
 | **AllowUsers** | Media | Fácil | Media |
 | **Port knocking** | Media-Alta | Media | Media |
 | **SSH Certificates** | Muy alta | Alta | Media |
+| **2FA (TOTP/PAM)** | Muy alta | Media | Media |
+| **Chroot SFTP** | Alta (acceso limitado) | Media | Baja |
+| **Límites de sesión** | Media (anti DoS) | Fácil | Ninguno |
 | **Todos combinados** | Máxima | Media | Media |
 
-**Recomendación mínima**: claves + fail2ban + AllowUsers
-**Recomendación completa**: todos los anteriores + SSH certs + port knocking
+**Recomendación mínima**: claves + fail2ban/sshguard + AllowUsers + límites de sesión
+**Recomendación completa**: todos los anteriores + SSH certs + 2FA + port knocking
 
 ---
 
